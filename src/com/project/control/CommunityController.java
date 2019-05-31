@@ -35,19 +35,19 @@ public class CommunityController extends HttpServlet {
 		String command = request.getPathInfo();
 		ActionForward actionForward = null;
 		if(command.equals("/communityList")) {
+			actionForward=communityService.allList(request, response);
+		}else if(command.equals("/communityNotice")){
 			actionForward=communityService.list(request, response);
-		}else if(command.equals("/communityNotice")) {
-			actionForward=communityService.notice(request, response);
 		}else if(command.equals("/communityBoard")) {
-			actionForward=communityService.board(request, response);			
+			actionForward=communityService.list(request, response);
 		}else if(command.equals("/communityReview")) {
-			actionForward=communityService.review(request, response);			
+			actionForward=communityService.list(request, response);
 		}else if(command.equals("/communityUsed")) {
-			actionForward=communityService.used(request, response);
+			actionForward=communityService.list(request, response);
 		}else if(command.equals("/communityQna")) {
-			actionForward=communityService.qna(request, response);
+			actionForward=communityService.list(request, response);
 		}else if(command.equals("/communityBug")) {
-			actionForward=communityService.bug(request, response);
+			actionForward=communityService.list(request, response);
 		}else {
 			actionForward = new ActionForward(); // ?? 이거 왜함?
 		}

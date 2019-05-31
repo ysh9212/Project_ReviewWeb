@@ -32,7 +32,7 @@
   	<servlet-name>review</servlet-name>
   	<servlet-class>com.project.control.reviewController</servlet-class>
   </servlet>
-  <servlet-mapping>
+    <servlet-mapping>
   	<servlet-name>review</servlet-name>
   	<url-pattern>/review/*</url-pattern>
   </servlet-mapping>

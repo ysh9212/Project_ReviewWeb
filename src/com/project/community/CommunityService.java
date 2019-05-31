@@ -7,6 +7,11 @@ import com.project.action.Action;
 import com.project.action.ActionForward;
 
 public class CommunityService implements Action{
+	
+	public ActionForward allList(HttpServletRequest request, HttpServletResponse response) {
+		ActionForward actionForward = new ActionForward();
+		return actionForward;
+	}
 
 	@Override
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
@@ -37,41 +42,5 @@ public class CommunityService implements Action{
 		ActionForward actionForward = new ActionForward();
 		return actionForward;
 	}
-	
-	public ActionForward notice(HttpServletRequest request, HttpServletResponse response) {
-		ActionForward actionForward = new ActionForward();
-		return actionForward;
-	}
-	
-	public ActionForward board(HttpServletRequest request, HttpServletResponse response) {
-		ActionForward actionForward = new ActionForward();
-		return actionForward;
-	}
-	
-	public ActionForward review(HttpServletRequest request, HttpServletResponse response) {
-		ActionForward actionForward = new ActionForward();
-		
-		return actionForward;
-	}
-	
-	public ActionForward used(HttpServletRequest request, HttpServletResponse response) {
-		ActionForward actionForward = new ActionForward();
-		
-		return actionForward;
-	}
-	
-	public ActionForward qna(HttpServletRequest request, HttpServletResponse response) {
-		ActionForward actionForward = new ActionForward();
-		
-		return actionForward;
-	}
-	
-	public ActionForward bug(HttpServletRequest request, HttpServletResponse response) {
-		ActionForward actionForward = new ActionForward();
-		
-		return actionForward;
-	}
-	
-	
 
 }
