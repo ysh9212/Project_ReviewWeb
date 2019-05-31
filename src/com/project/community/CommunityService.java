@@ -10,6 +10,7 @@ public class CommunityService implements Action{
 	
 	public ActionForward allList(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
+		
 		return actionForward;
 	}
 
