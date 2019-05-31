@@ -70,8 +70,8 @@
 			<div class="col-12">
 
 				<div id="copyright">
-					&copy; Untitled. All rights reserved. | Design: <a
-						href="http://html5up.net">HTML5 UP</a>
+					&copy; Untitled. All rights reserved. | Design: 
+					<a href="#">HTML5 UP</a>
 				</div>
 
 			</div>

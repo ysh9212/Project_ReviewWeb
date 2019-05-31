@@ -4,15 +4,15 @@
 
 <html>
 	<head>
-		<title>Minimaxing by HTML5 UP</title>
+		<title>Project Review</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="./assets/css/main.css" />
 	</head>
 	<body>
+<%@include file = "./temp/header.jsp" %>
 		<div id="page-wrapper">
 
-<%@include file = "./temp/header.jsp" %>
 
 			<!-- Banner -->
 				<div id="banner-wrapper">

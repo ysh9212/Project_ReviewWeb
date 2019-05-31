@@ -12,13 +12,13 @@
 					</h1>
 					<nav id="nav">
 						<a href="index.html" class="current-page-item">HOME</a> 
-						<a href="twocolumn1.html">REVIEW</a> 
-						<a href="twocolumn2.html">NEWS</a> 
-						<a href="onecolumn.html">COMMUNITY</a>
-						<a href="threecolumn.html">SHOP</a>
-						<a href="threecolumn.html">EVENT</a>
-						<a href="threecolumn.html">LOGIN</a>
-						<a href="threecolumn.html">JOIN</a>
+						<a href="#">REVIEW</a> 
+						<a href="#">NEWS</a> 
+						<a href="#">COMMUNITY</a>
+						<a href="#">SHOP</a>
+						<a href="#">EVENT</a>
+						<a href="#">LOGIN</a>
+						<a href="#">JOIN</a>
 					</nav>
 				</header>
 
