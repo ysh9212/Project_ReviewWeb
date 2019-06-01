@@ -35,7 +35,7 @@ public class ShopController extends HttpServlet {
 		String command = request.getPathInfo();
 		ActionForward actionForward = null;
 		
-		if(command.equals("/noticeSelect")) {
+		if(command.equals("/shopWrite")) {
 			
 		}
 		if(actionForward.isCheck()) {
