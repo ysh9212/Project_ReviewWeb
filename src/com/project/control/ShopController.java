@@ -19,7 +19,7 @@ import sun.rmi.server.Dispatcher;
 @WebServlet("/ShopController")
 public class ShopController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -33,10 +33,14 @@ public class ShopController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getPathInfo();
-		ActionForward actionForward = null;
-		
-		if(command.equals("/shopWrite")) {
-			
+		ActionForward actionForward = new ActionForward();
+		System.out.println(command);
+		if(command.equals("/shopList")) {
+			actionForward.setCheck(true);
+			actionForward.setPath("../WEB-INF/views/shop/shopList.jsp");
+		}else if(command.equals("/notice/noticeList")){
+			actionForward.setCheck(true);
+			actionForward.setPath("../../WEB-INF/views/shop/notice/noticeList.jsp");
 		}
 		if(actionForward.isCheck()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
