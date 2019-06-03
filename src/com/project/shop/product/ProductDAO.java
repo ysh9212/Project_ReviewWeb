@@ -1,4 +1,4 @@
-package com.project.product;
+package com.project.shop.product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
