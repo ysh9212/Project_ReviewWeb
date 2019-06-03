@@ -10,13 +10,12 @@
 		<link rel="stylesheet" href="../assets/css/main.css" />
 </head>
 <body>
-<%@include file = "../temp/header.jsp" %>
-	<h1>Noitce</h1>
+<%@include file = "../../temp/header.jsp" %>
+	<h1>Qna</h1>
 	
 
-<%@include file="../temp/footer.jsp" %>
+<%@include file="../../temp/footer.jsp" %>
 
-		</div>
 
 		<!-- Scripts -->
 			<script src="./assets/js/jquery.min.js"></script>

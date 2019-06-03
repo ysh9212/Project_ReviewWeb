@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
 <head>
 		<title>Project Review</title>
@@ -9,18 +10,12 @@
 		<link rel="stylesheet" href="../assets/css/main.css" />
 </head>
 <body>
-	<%@include file = "../temp/header.jsp" %>
-	<a href="./notice/communityNotice">Notice</a>
-	<a href="./bug/communityBug">Bug</a>
-	<a href="./board/communityBoard">Board</a>
-	<a href="./qna/communityQna">Qna</a>
-	<a href="./used/communityUsed">used</a>
-	<a href="./review/communityReview">review</a>
-
+<%@include file = "../../temp/header.jsp" %>
+	<h1>Bug</h1>
 	
-	<%@include file="../temp/footer.jsp" %>
 
-		</div>
+<%@include file="../../temp/footer.jsp" %>
+
 
 		<!-- Scripts -->
 			<script src="./assets/js/jquery.min.js"></script>
@@ -28,6 +23,5 @@
 			<script src="./assets/js/breakpoints.min.js"></script>
 			<script src="./assets/js/util.js"></script>
 			<script src="./assets/js/main.js"></script>
-	
 </body>
 </html>

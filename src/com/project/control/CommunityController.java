@@ -11,6 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project.action.ActionForward;
 import com.project.community.CommunityService;
+import com.project.community.board.BoardService;
+import com.project.community.bug.BugService;
+import com.project.community.notice.NoticeService;
+import com.project.community.qna.QnaService;
+import com.project.community.review.ReviewService;
+import com.project.community.used.UsedService;
 
 /**
  * Servlet implementation class CommunityController
@@ -19,6 +25,12 @@ import com.project.community.CommunityService;
 public class CommunityController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CommunityService communityService;
+	private NoticeService noticeService;
+	private BoardService boardService;
+	private ReviewService reviewService;
+	private UsedService usedService;
+	private QnaService qnaService;
+	private BugService bugService;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -27,6 +39,12 @@ public class CommunityController extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
         communityService = new CommunityService(); // 객체 생성을 안해서 service로 계속 연결을 못하고 있었음;
+        noticeService = new NoticeService();
+        boardService = new BoardService();
+        reviewService = new ReviewService();
+        usedService = new UsedService();
+        qnaService = new QnaService();
+        bugService = new BugService();
     }
 
 	/**
@@ -40,19 +58,20 @@ public class CommunityController extends HttpServlet {
 		// command = "/communityList" 로 오는거 확인;
 		if(command.equals("/communityList")) {
 			// System.out.println("if에 걸러짐"); 확인
-			actionForward=communityService.allList(request, response);
-		}else if(command.equals("/communityNotice")){
 			actionForward=communityService.list(request, response);
-		}else if(command.equals("/communityBoard")) {
-			actionForward=communityService.list(request, response);
-		}else if(command.equals("/communityReview")) {
-			actionForward=communityService.list(request, response);
-		}else if(command.equals("/communityUsed")) {
-			actionForward=communityService.list(request, response);
-		}else if(command.equals("/communityQna")) {
-			actionForward=communityService.list(request, response);
-		}else if(command.equals("/communityBug")) {
-			actionForward=communityService.list(request, response);
+		}else if(command.equals("/notice/communityNotice")){
+			actionForward = noticeService.list(request, response);
+		}else if(command.equals("/board/communityBoard")) {
+			actionForward = boardService.list(request, response);
+		}else if(command.equals("/review/communityReview")) {
+			System.out.println("리뷰");
+			actionForward = reviewService.list(request, response);
+		}else if(command.equals("/used/communityUsed")) {
+			actionForward = usedService.list(request, response);
+		}else if(command.equals("/qna/communityQna")) {
+			actionForward = qnaService.list(request, response);
+		}else if(command.equals("/bug/communityBug")) {
+			actionForward = bugService.list(request, response);
 		}else {
 			actionForward = new ActionForward(); // ?? 이거 왜함? 초기화인가?
 		}
