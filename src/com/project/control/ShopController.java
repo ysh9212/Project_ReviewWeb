@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.project.action.ActionForward;
+import com.project.shop.notice.ShopNoticeService;
+import com.project.shop.qna.ShopQnaService;
 
-import sun.rmi.server.Dispatcher;
 
 /**
  * Servlet implementation class ShopController
@@ -19,12 +20,15 @@ import sun.rmi.server.Dispatcher;
 @WebServlet("/ShopController")
 public class ShopController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+    private ShopNoticeService shopNoticeService;
+    private ShopQnaService shopQnaService;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public ShopController() {
         super();
+        shopNoticeService = new ShopNoticeService();
+        shopQnaService = new ShopQnaService();
         // TODO Auto-generated constructor stub
     }
 
@@ -34,13 +38,17 @@ public class ShopController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getPathInfo();
 		ActionForward actionForward = new ActionForward();
-		System.out.println(command);
 		if(command.equals("/shopList")) {
 			actionForward.setCheck(true);
 			actionForward.setPath("../WEB-INF/views/shop/shopList.jsp");
 		}else if(command.equals("/notice/noticeList")){
-			actionForward.setCheck(true);
-			actionForward.setPath("../../WEB-INF/views/shop/notice/noticeList.jsp");
+			actionForward = shopNoticeService.list(request, response);
+		}else if(command.equals("/notice/noticeSelect")) {
+			actionForward = shopNoticeService.select(request, response);
+		}else if(command.equals("/qna/qnaList")) {
+			actionForward = shopQnaService.list(request, response);
+		}else if(command.equals("/qna/qnaSelect")) {
+			actionForward = shopQnaService.select(request, response);
 		}
 		if(actionForward.isCheck()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());

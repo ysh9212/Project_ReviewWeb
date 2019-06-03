@@ -7,14 +7,14 @@ public class Search {
 		return kind;
 	}
 	public void setKind(String kind) {
-		if(kind == null) {
-			this.kind = "pc";
-		} else if(kind.equals("mobile")) {
-			this.kind = "mobile";
-		} else if(kind.equals("etc")) {
-			this.kind = "etc";
-		} else {
-			this.kind = "pc";
+		if(kind ==null) {
+			this.kind = "title";
+		}else if(kind.equals("w")) {
+			this.kind = "writer";
+		}else if(kind.equals("c")) {
+			this.kind = "contents";
+		}else {
+			this.kind = "title";
 		}
 		
 	}
