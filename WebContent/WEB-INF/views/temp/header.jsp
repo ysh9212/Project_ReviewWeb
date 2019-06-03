@@ -14,7 +14,8 @@
 						<a href="index.html" class="current-page-item">HOME</a> 
 						<a href="#">REVIEW</a> 
 						<a href="#">NEWS</a> 
-						<a href="#">COMMUNITY</a>
+						<a href="./community/communityList">COMMUNITY</a>
+						<a href="./community/communityNotice">COMMUNITY</a>
 						<a href="#">SHOP</a>
 						<a href="#">EVENT</a>
 						<a href="#">LOGIN</a>

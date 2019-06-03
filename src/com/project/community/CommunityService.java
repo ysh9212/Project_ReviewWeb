@@ -9,14 +9,21 @@ import com.project.action.ActionForward;
 public class CommunityService implements Action{
 	
 	public ActionForward allList(HttpServletRequest request, HttpServletResponse response) {
+		// System.out.println("allList"); µµÂø È®ÀÎ;
 		ActionForward actionForward = new ActionForward();
+		actionForward.setCheck(true);
+		actionForward.setPath("../WEB-INF/views/community/communityList.jsp");
 		
 		return actionForward;
 	}
 
 	@Override
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
+		// System.out.println("notice"); µµÂøÈ®ÀÎ;
 		ActionForward actionForward = new ActionForward();
+		actionForward.setCheck(true);
+		actionForward.setPath("../WEB-INF/views/community/communityNotice.jsp");
+		
 		return actionForward;
 	}
 
