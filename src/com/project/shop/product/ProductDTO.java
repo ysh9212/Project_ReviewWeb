@@ -1,4 +1,4 @@
-package com.project.product;
+package com.project.shop.product;
 
 public class ProductDTO {
 	private int pnum;
