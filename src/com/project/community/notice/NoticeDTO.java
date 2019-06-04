@@ -1,5 +1,7 @@
 package com.project.community.notice;
 
-public class NoticeDTO {
+import com.project.board.BoardDTO;
+
+public class NoticeDTO extends BoardDTO{
 
 }

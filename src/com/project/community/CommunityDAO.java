@@ -3,35 +3,57 @@ package com.project.community;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.List;
 
+import com.project.board.BoardDAO;
+import com.project.board.BoardDTO;
+import com.project.page.SearchRow;
 import com.project.util.DBConnector;
 
-public class CommunityDAO {
+public class CommunityDAO implements BoardDAO{
+
+	// 각 게시판으로부터 몇개의 글씩 가져오기 때문에 다 사용하지 않아도 됨;
 	
-	public ArrayList<CommunityDTO> List() throws Exception{
-		ArrayList<CommunityDTO> ar = new ArrayList<CommunityDTO>();
-		
-		return ar;
-	} 
-	
-	public int insert(CommunityDTO communityDTO) throws Exception{
-		int result = 0;
-		
-		Connection con = DBConnector.getConnect();
-		// String sql = "insert into community values(con_seq.nextval,?,?,?,?,sysdate)";
-		String sql = "insert into community values(con_seq.nextval,?,?,?,?,sysdate)";
-		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, communityDTO.getTitle());
-		st.setString(2, communityDTO.getnName());
-		st.setInt(3, communityDTO.getHit());
-		st.setInt(4, communityDTO.getGood());
-		result = st.executeUpdate();
-		
-		st.close();
-		con.close();
-		
-		
-		return result;
-		
+	@Override
+	public int getNum() throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
+
+	@Override
+	public int getTotalCount(SearchRow searchRow, Connection con) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<BoardDTO> selectList(SearchRow searchRow, Connection con) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BoardDTO selectOne(int no, Connection con) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int insert(Connection con) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(Connection con) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int delete(int no, Connection con) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 }

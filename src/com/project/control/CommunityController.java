@@ -64,7 +64,6 @@ public class CommunityController extends HttpServlet {
 		}else if(command.equals("/board/communityBoard")) {
 			actionForward = boardService.list(request, response);
 		}else if(command.equals("/review/communityReview")) {
-			System.out.println("¸®ºä");
 			actionForward = reviewService.list(request, response);
 		}else if(command.equals("/used/communityUsed")) {
 			actionForward = usedService.list(request, response);
