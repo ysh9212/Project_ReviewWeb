@@ -122,6 +122,7 @@ public class CommunityController extends HttpServlet {
 		// 그래야 path를 연결해서 출력 할 수 있는듯?
 		if(actionForward.isCheck()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
+			System.out.println(view);
 			view.forward(request, response);
 		}else {
 			response.sendRedirect(actionForward.getPath());
