@@ -20,15 +20,20 @@
     <filter-name>encoding</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
   <servlet>
-  	<servlet-name>shop</servlet-name>
-  	<servlet-class>com.project.control.ShopController</servlet-class>
+    <servlet-name>shop</servlet-name>
+    <servlet-class>com.project.control.ShopController</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>shop</servlet-name>
-  	<url-pattern>/shop/*</url-pattern>
+    <servlet-name>shop</servlet-name>
+    <url-pattern>/shop/*</url-pattern>
   </servlet-mapping>
-  
-  
+  <servlet>
+  	<servlet-name>shopqnacomments</servlet-name>
+  	<servlet-class>com.project.control.ShopCommentsController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>shopqnacomments</servlet-name>
+  	<url-pattern>/shopqnacomments/*</url-pattern>
+  </servlet-mapping>
 </web-app>
