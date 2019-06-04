@@ -112,6 +112,17 @@ public class ShopNoticeDAO implements BoardDAO {
 	}
 
 	@Override
+	public int updateHit(int no, Connection con) throws Exception {
+		String sql = "update shop_notice set hit = hit+'1' where no=?";
+		PreparedStatement st= con.prepareStatement(sql);
+		st.setInt(1, no);
+		int result = st.executeUpdate();
+		st.close();
+		
+		return result;
+	}
+
+	@Override
 	public int delete(int num, Connection con) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;

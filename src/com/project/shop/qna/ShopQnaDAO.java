@@ -73,49 +73,80 @@ ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
 	}
 
 	@Override
-	public BoardDTO selectOne(int num, Connection con) throws Exception {
-		ShopNoticeDTO noticeDTO = new ShopNoticeDTO();
+	public BoardDTO selectOne(int no, Connection con) throws Exception {
+		ShopQnaDTO shopQnaDTO = new ShopQnaDTO();
 		
 		String sql = "select * from shop_qna where no=?";
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		
-		st.setInt(1, num);
+		st.setInt(1, no);
 		
 		ResultSet rs = st.executeQuery();
 		
 		if(rs.next()) {
-			noticeDTO.setNo(rs.getInt("no"));
-			noticeDTO.setTitle(rs.getString("title"));
-			noticeDTO.setContents(rs.getString("contents"));
-			noticeDTO.setWriter(rs.getString("writer"));
-			noticeDTO.setReg_date(rs.getString("reg_date"));
-			noticeDTO.setHit(rs.getInt("hit"));
-			noticeDTO.setRecommend(rs.getInt("recommend"));
-			noticeDTO.setDecommend(rs.getInt("decommend"));
+			shopQnaDTO.setNo(rs.getInt("no"));
+			shopQnaDTO.setTitle(rs.getString("title"));
+			shopQnaDTO.setContents(rs.getString("contents"));
+			shopQnaDTO.setWriter(rs.getString("writer"));
+			shopQnaDTO.setReg_date(rs.getString("reg_date"));
+			shopQnaDTO.setHit(rs.getInt("hit"));
+			shopQnaDTO.setRecommend(rs.getInt("recommend"));
+			shopQnaDTO.setDecommend(rs.getInt("decommend"));
 		}
 		rs.close();
 		st.close();
 		
-		return noticeDTO;
+		return shopQnaDTO;
 	}
 
 	@Override
 	public int insert(BoardDTO boardDTO, Connection con) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		String sql = "insert into shop_qna values(shop_qna_seq.nextval,?,?,?,sysdate,0,0,0)";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, boardDTO.getTitle());
+		st.setString(2, boardDTO.getContents());
+		st.setString(3, boardDTO.getWriter());
+		result = st.executeUpdate();
+		st.close();
+		return result;
 	}
 
 	@Override
 	public int update(BoardDTO boardDTO, Connection con) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		String sql = "update shop_qna set title=?, contents=? where no=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, boardDTO.getTitle());
+		st.setString(2, boardDTO.getContents());
+		st.setInt(3, boardDTO.getNo());
+		
+		result = st.executeUpdate();
+		st.close();
+		return result;
 	}
 
 	@Override
-	public int delete(int num, Connection con) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateHit(int no, Connection con) throws Exception {
+		String sql = "update shop_qna set hit = hit+'1' where no=?";
+		PreparedStatement st= con.prepareStatement(sql);
+		st.setInt(1, no);
+		int result = st.executeUpdate();
+		st.close();
+		
+		return result;
+	}
+
+	@Override
+	public int delete(int no, Connection con) throws Exception {
+		String sql = "delete shop_qna where no=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, no);
+		int result = st.executeUpdate();
+		st.close();
+		return result;
 	}
 
 }

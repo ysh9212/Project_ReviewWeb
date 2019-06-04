@@ -63,6 +63,7 @@
 			</c:if>
 		</ul>
 		</div>
+		<a href="./${board}Write" class="btn btn-primary">Write</a>
 	</div>
 </div>
 

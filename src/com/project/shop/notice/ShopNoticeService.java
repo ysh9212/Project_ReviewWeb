@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.project.action.Action;
 import com.project.action.ActionForward;
 import com.project.board.BoardDTO;
 import com.project.shopPage.SearchMakePage;
@@ -14,12 +15,30 @@ import com.project.shopPage.SearchPager;
 import com.project.shopPage.SearchRow;
 import com.project.util.DBConnector;
 
-public class ShopNoticeService {
+public class ShopNoticeService implements Action{
 	private ShopNoticeDAO noticeDAO;
 	public ShopNoticeService() {
 		noticeDAO = new ShopNoticeDAO();
 	}
+	@Override
+	public ActionForward insert(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ActionForward update(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ActionForward delete(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
+	@Override
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
 		int curPage = 1;
@@ -62,6 +81,8 @@ public class ShopNoticeService {
 		
 		return actionForward;
 	}
+	
+	@Override
 	public ActionForward select(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
 		
@@ -72,7 +93,7 @@ public class ShopNoticeService {
 			con = DBConnector.getConnect();
 			int no = Integer.parseInt(request.getParameter("no"));
 			boardDTO = noticeDAO.selectOne(no, con);
-			
+			noticeDAO.updateHit(no, con);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

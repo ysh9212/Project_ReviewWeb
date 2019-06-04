@@ -49,7 +49,16 @@ public class ShopController extends HttpServlet {
 			actionForward = shopQnaService.list(request, response);
 		}else if(command.equals("/qna/qnaSelect")) {
 			actionForward = shopQnaService.select(request, response);
+		}else if(command.equals("/qna/qnaWrite")) {
+			actionForward = shopQnaService.insert(request, response);
+		}else if(command.equals("/qna/qnaUpdate")) {
+			actionForward = shopQnaService.update(request, response);
+		}else if(command.equals("/qna/qnaDelete")) {
+			actionForward = shopQnaService.delete(request, response);
 		}
+		
+		
+		
 		if(actionForward.isCheck()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
 			view.forward(request, response);
