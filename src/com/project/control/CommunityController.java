@@ -57,20 +57,63 @@ public class CommunityController extends HttpServlet {
 		// System.out.println(command);
 		// command = "/communityList" 로 오는거 확인;
 		if(command.equals("/communityList")) {
-			// System.out.println("if에 걸러짐"); 확인
 			actionForward=communityService.list(request, response);
 		}else if(command.equals("/notice/communityNotice")){
 			actionForward = noticeService.list(request, response);
+		}else if(command.equals("/notice/communityNoticeWrite")) {
+			actionForward = noticeService.insert(request, response);
+		}else if(command.equals("/notice/communityNoticeUpdate")) {
+			actionForward = noticeService.update(request, response);
+		}else if(command.equals("/notice/communityNoticeDelete")) {
+			actionForward = noticeService.delete(request, response);
+			
 		}else if(command.equals("/board/communityBoard")) {
 			actionForward = boardService.list(request, response);
+		}else if(command.equals("/board/communityBoardWrite")){
+			actionForward = boardService.insert(request, response);
+		}else if(command.equals("/board/communityBoardUpdate")){
+			actionForward = boardService.update(request, response);
+		}else if(command.equals("/board/communityBoardDelete")){
+			actionForward = boardService.delete(request, response);
+			
 		}else if(command.equals("/review/communityReview")) {
 			actionForward = reviewService.list(request, response);
+		}else if(command.equals("/review/communityReviewWrite")){
+			actionForward = reviewService.insert(request, response);
+		}else if(command.equals("/review/communityReviewUpdate")){
+			actionForward = reviewService.update(request, response);
+		}else if(command.equals("/review/communityReviewDelete")){
+			actionForward = reviewService.delete(request, response);
+			
 		}else if(command.equals("/used/communityUsed")) {
 			actionForward = usedService.list(request, response);
+		}else if(command.equals("/used/communityusedWrite")){
+			actionForward = usedService.insert(request, response);
+		}else if(command.equals("/used/communityusedUpdate")){
+			actionForward = usedService.update(request, response);
+		}else if(command.equals("/used/communityusedDelete")){
+			actionForward = usedService.delete(request, response);
+			
 		}else if(command.equals("/qna/communityQna")) {
 			actionForward = qnaService.list(request, response);
+		}else if(command.equals("/qna/communityQnaWrite")){
+			actionForward = qnaService.insert(request, response);
+		}else if(command.equals("/qna/communityQnaUpdate")){
+			actionForward = qnaService.update(request, response);
+		}else if(command.equals("/qna/communityQnaDelete")){
+			actionForward = qnaService.delete(request, response);
+			
+			
 		}else if(command.equals("/bug/communityBug")) {
 			actionForward = bugService.list(request, response);
+		}else if(command.equals("/bug/communityBugWrite")){
+			actionForward = bugService.insert(request, response);
+		}else if(command.equals("/bug/communityBugUpdate")){
+			actionForward = bugService.update(request, response);
+		}else if(command.equals("/bug/communityBugDelete")){
+			actionForward = bugService.delete(request, response);
+			
+			
 		}else {
 			actionForward = new ActionForward(); // ?? 이거 왜함? 초기화인가?
 		}
