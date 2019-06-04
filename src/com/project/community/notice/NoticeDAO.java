@@ -41,7 +41,7 @@ public class NoticeDAO implements BoardDAO{
 	}
 
 	@Override
-	public int insert(Connection con) throws Exception {
+	public int insert(BoardDTO boardDTO, Connection con) throws Exception {
 		int result = 0;
 		String sql = "insert into community_notice values(notice_seq.nextval,?,?,sysdate,0,0,0,?)";
 		PreparedStatement st = con.prepareStatement(sql);
@@ -54,7 +54,7 @@ public class NoticeDAO implements BoardDAO{
 	}
 
 	@Override
-	public int update(Connection con) throws Exception {
+	public int update(BoardDTO boardDTO, Connection con) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}

@@ -39,13 +39,13 @@ public class CommunityDAO implements BoardDAO{
 	}
 
 	@Override
-	public int insert(Connection con) throws Exception {
+	public int insert(BoardDTO boardDTO, Connection con) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int update(Connection con) throws Exception {
+	public int update(BoardDTO boardDTO, Connection con) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}

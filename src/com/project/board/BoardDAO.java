@@ -15,9 +15,9 @@ public interface BoardDAO {
 	
 	public BoardDTO selectOne(int no, Connection con) throws Exception;
 	
-	public int insert(Connection con) throws Exception;
+	public int insert(BoardDTO boardDTO, Connection con) throws Exception;
 	
-	public int update(Connection con) throws Exception;
+	public int update(BoardDTO boardDTO, Connection con) throws Exception;
 	
 	public int delete(int no, Connection con) throws Exception;
 	
