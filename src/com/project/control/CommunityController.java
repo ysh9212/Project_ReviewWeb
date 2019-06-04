@@ -53,9 +53,6 @@ public class CommunityController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getPathInfo();
 		ActionForward actionForward = null;
-		// System.out.println("controller 도착");
-		// System.out.println(command);
-		// command = "/communityList" 로 오는거 확인;
 		if(command.equals("/communityList")) {
 			actionForward=communityService.list(request, response);
 		}else if(command.equals("/notice/communityNotice")){
@@ -122,7 +119,6 @@ public class CommunityController extends HttpServlet {
 		// 그래야 path를 연결해서 출력 할 수 있는듯?
 		if(actionForward.isCheck()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
-			System.out.println(view);
 			view.forward(request, response);
 		}else {
 			response.sendRedirect(actionForward.getPath());
