@@ -25,7 +25,7 @@ public interface BoardDAO {
 		//update
 		public int update(BoardDTO boardDTO, Connection con) throws Exception;
 		
-		//조회수 업
+		//議고쉶�닔 �뾽
 		public int updateHit(int no, Connection con) throws Exception;
 		
 		//delete

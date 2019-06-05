@@ -15,7 +15,7 @@
 						<a href="${pageContext.request.contextPath }/index.do" class="current-page-item">HOME</a> 
 						<a href="#">REVIEW</a> 
 						<a href="#">NEWS</a> 
-						<a href="#">COMMUNITY</a>
+						<a href="${pageContext.request.contextPath}/community/communityList">COMMUNITY</a>
 						<a href="${pageContext.request.contextPath }/shop/shopList">SHOP</a>
 						<a href="#">EVENT</a>
 						<a href="#">LOGIN</a>

@@ -36,4 +36,44 @@
   	<servlet-name>shopqnacomments</servlet-name>
   	<url-pattern>/shopqnacomments/*</url-pattern>
   </servlet-mapping>
+  <servlet>
+  	<servlet-name>news</servlet-name>
+  	<servlet-class>com.project.control.NewsController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>news</servlet-name>
+  	<url-pattern>/news/*</url-pattern>
+  </servlet-mapping>
+    <servlet>
+  	<servlet-name>review</servlet-name>
+  	<servlet-class>com.project.control.ReviewController</servlet-class>
+  </servlet>
+    <servlet-mapping>
+  	<servlet-name>review</servlet-name>
+  	<url-pattern>/review/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>community</servlet-name>
+    <servlet-class>com.project.control.CommunityController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>community</servlet-name>
+    <url-pattern>/community/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>event</servlet-name>
+  	<servlet-class>com.project.control.EventController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>event</servlet-name>
+  	<url-pattern>/event/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>member</servlet-name>
+  	<servlet-class>com.project.control.MemberController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>member</servlet-name>
+  	<url-pattern>/member/*</url-pattern>
+  </servlet-mapping>
 </web-app>
