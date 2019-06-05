@@ -18,10 +18,9 @@
 <body>
 <%@include file = "../../temp/header.jsp" %>
 <div id="h_body">
-	<h1>Notice Board</h1>
 </div>
-<jsp:include page="../communityCommon/navi.jsp"/>
 <div id="body">
+<jsp:include page="../communityCommon/navi.jsp"/>
 <hr>
 	<div class="container">
 	<table class="table table-hover">

@@ -12,15 +12,9 @@
 <body>
 <%@include file = "../../temp/header.jsp" %>
 <div id="h_body">
-	<h1>Notice Board</h1>
-</div>
 <jsp:include page="../communityCommon/navi.jsp"/>
+</div>
 <div id = "page-wrapper">
-
-	
-
-	
-
 		<div id="main">
 			<div class="container">
 				<section class="tiles">
@@ -29,7 +23,7 @@
 								<img src="../images/hani.jpg" alt="" width="400" height="300">
 								</span>
 								<a href="#">
-								<h2>대박 물품</h2>
+								<h2>중고 물품</h2>
 								<div class="content">
 								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
 								</div>
@@ -40,7 +34,7 @@
 								<img src="../images/hani.jpg" alt="" width="400" height="300">
 								</span>
 								<a href="#">
-								<h2>대박 물품</h2>
+								<h2>중고 물품</h2>
 								<div class="content">
 								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
 								</div>
@@ -50,7 +44,7 @@
 								<img src="../images/hani.jpg" alt="" width="400" height="300">
 								</span>
 								<a href="#">
-								<h2>대박 물품</h2>
+								<h2>중고 물품</h2>
 								<div class="content">
 								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
 								</div>
@@ -61,7 +55,7 @@
 								<img src="../images/hani.jpg" alt="" width="400" height="300">
 								</span>
 								<a href="#">
-								<h2>대박 물품</h2>
+								<h2>중고 물품</h2>
 								<div class="content">
 								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
 								</div>
@@ -72,7 +66,7 @@
 								<img src="../images/hani.jpg" alt="" width="400" height="300">
 								</span>
 								<a href="#">
-								<h2>대박 물품</h2>
+								<h2>중고 물품</h2>
 								<div class="content">
 								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
 								</div>
@@ -83,7 +77,7 @@
 								<img src="../images/hani.jpg" alt="" width="400" height="300">
 								</span>
 								<a href="#">
-								<h2>대박 물품</h2>
+								<h2>중고 물품</h2>
 								<div class="content">
 								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
 								</div>

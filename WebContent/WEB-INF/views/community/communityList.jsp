@@ -19,17 +19,14 @@
 </head>
 <body>
 	<%@include file="../temp/header.jsp"%>
-	<div id="h_body">
-		<h1>공 지 사 항</h1>
-	</div>
-<jsp:include page="./communityCommon/navi.jsp"/>
 	<div id="body">
+<jsp:include page="./communityCommon/navi.jsp"/>
 		<hr>
 		<div class="table_body">
 			<div class="container">
 				<table class="table table-hover">
-					<h1>공지사항</h1>
 					<tr>
+						<h1>공지사항</h1>
 						<td>Title</td>
 					</tr>
 				</table>

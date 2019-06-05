@@ -6,7 +6,6 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-
 				<header id="header">
 					<h1>
 						<a href="${pageContext.request.contextPath }/index.do" id="logo">GAZUA</a>
@@ -22,7 +21,6 @@
 						<a href="#">JOIN</a>
 					</nav>
 				</header>
-
 			</div>
 		</div>
 	</div>
