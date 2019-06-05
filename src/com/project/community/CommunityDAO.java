@@ -7,7 +7,6 @@ import java.util.List;
 
 import com.project.board.BoardDAO;
 import com.project.board.BoardDTO;
-import com.project.page.SearchRow;
 import com.project.util.DBConnector;
 
 public class CommunityDAO implements BoardDAO{

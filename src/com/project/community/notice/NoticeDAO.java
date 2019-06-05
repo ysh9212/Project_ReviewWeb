@@ -8,7 +8,8 @@ import java.util.List;
 
 import com.project.board.BoardDAO;
 import com.project.board.BoardDTO;
-import com.project.page.SearchRow;
+import com.project.shopPage.Search;
+import com.project.shopPage.SearchRow;
 
 public class NoticeDAO implements BoardDAO{
 	
@@ -20,13 +21,11 @@ public class NoticeDAO implements BoardDAO{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	@Override
 	public int getTotalCount(SearchRow searchRow, Connection con) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	@Override
 	public List<BoardDTO> selectList(SearchRow searchRow, Connection con) throws Exception {
 		List<BoardDTO> ar = new ArrayList<BoardDTO>();
@@ -38,7 +37,7 @@ public class NoticeDAO implements BoardDAO{
 			noticeDTO.setNo(rs.getInt("no"));
 			noticeDTO.setTitle(rs.getString("title"));
 			noticeDTO.setWriter(rs.getString("writer"));
-			noticeDTO.setDate(rs.getDate("date"));
+			noticeDTO.setReg_date(rs.getString("reg_date"));
 			noticeDTO.setHit(rs.getInt("hit"));
 			noticeDTO.setRecommend(rs.getInt("recommand"));
 			noticeDTO.setDecommend(rs.getInt("decommand"));
@@ -49,7 +48,11 @@ public class NoticeDAO implements BoardDAO{
 		st.close();
 		return ar;
 	}
-
+	@Override
+	public int updateHit(int no, Connection con) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	@Override
 	public BoardDTO selectOne(int no, Connection con) throws Exception {
 		NoticeDTO noticeDTO = null;
@@ -62,7 +65,7 @@ public class NoticeDAO implements BoardDAO{
 			noticeDTO.setNo(rs.getInt("no"));
 			noticeDTO.setTitle(rs.getString("title"));
 			noticeDTO.setWriter(rs.getString("writer"));
-			noticeDTO.setDate(rs.getDate("date"));
+			noticeDTO.setReg_date(rs.getString("reg_date"));
 			noticeDTO.setHit(rs.getInt("hit"));
 			noticeDTO.setRecommend(rs.getInt("recommand"));
 			noticeDTO.setDecommend(rs.getInt("decommand"));
