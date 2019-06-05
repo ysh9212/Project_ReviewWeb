@@ -45,7 +45,7 @@
 		
 		</div>
 		<div class="container">
-		<ul class="pager">
+		<ul class="center">
 			<c:if test="${pager.curBlock gt 1 }">
 				<li class="previous"><a href="./${board}List?curPage=${pager.startNum-1}&kind=${pager.search.kind}&search=${pager.search.search}">Previous</a></li>
 			</c:if>
@@ -62,8 +62,8 @@
 				<li class="next"><a href="./${board}List?curPage=${pager.lastNum+1}&kind=${pager.search.kind}&search=${pager.search.search}">Next</a></li>
 			</c:if>
 		</ul>
-		</div>
 		<a href="./${board}Write" class="btn btn-primary">Write</a>
+		</div>
 	</div>
 </div>
 
