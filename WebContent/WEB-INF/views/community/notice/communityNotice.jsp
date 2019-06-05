@@ -12,15 +12,42 @@
 			<script src="./assets/js/util.js"></script>
 			<script src="./assets/js/main.js"></script>
 <html>
+<style type="text/css">
+	#h_body{
+	width: 1200px;
+	height: 100px;
+	background-color: blue;
+	margin: 0 auto;
+	}
+	#h_1_body{
+	width: 1200px;
+	height: 50px;
+	background-color: red;
+	margin: 0 auto;
+	}
+	#body{
+	width: 1200px;
+	height: 1080px;
+	background-color: white;
+	margin: 0 auto;
+	}
+</style>
 <head>
 </head>
 <body>
-
 <%@include file = "../../temp/header.jsp" %>
+<div id="h_body">
+	<h1>Notice Board</h1>
+</div>
+	<div id="h_1_body">
+		navi
+	</div>
+<div id="body">
+<hr>
 	<div class="container">
 	<table class="table table-hover">
 		<tr>
-			<td>No</td><td>Title</td><td>Writer</td><td>Date</td><td>hit</td><td>추천</td><td>비추천</td>
+			<td>No</td><td>Title</td><td>Writer</td><td>Date</td><td>Hit</td><td>Recommand</td><td>Decommand</td>
 		</tr>
 	</table>
 	</div>
@@ -29,6 +56,7 @@
 
 
 
+</div>
 <%@include file="../../temp/footer.jsp" %>
 </body>
 </html>
