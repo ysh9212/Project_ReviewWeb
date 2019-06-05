@@ -10,19 +10,6 @@
 </head>
 <body>
 <%@include file = "../temp/header.jsp" %>
-		
-				<div class="container">
-				<div class="row">
-				<div class="col-12">
-				<nav id ="nav">
-						<a href="./shopList">상품</a>
-						<a href="./notice/noticeList">공지사항</a>
-						<a href="./qna/qnaList">Q&A</a>
-						<a href="#">자주묻는 질문</a>
-						</nav>
-			</div>
-			</div>
-		</div>
 <div id = "page-wrapper">
 
 	
