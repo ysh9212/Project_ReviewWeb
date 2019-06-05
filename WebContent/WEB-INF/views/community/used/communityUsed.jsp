@@ -1,62 +1,100 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<meta charset="utf-8" />
+<html>
+<head>
+<meta charset="UTF-8">
+<title>중고물품</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="../../assets/css/main.css" />
-<c:import url="../temp/bootstrap.jsp"/>
-		<!-- Scripts -->
-			<script src="./assets/js/jquery.min.js"></script>
-			<script src="./assets/js/browser.min.js"></script>
-			<script src="./assets/js/breakpoints.min.js"></script>
-			<script src="./assets/js/util.js"></script>
-			<script src="./assets/js/main.js"></script>
-<html>
-<style type="text/css">
-	#h_body{
-	width: 1200px;
-	height: 100px;
-	background-color: blue;
-	margin: 0 auto;
-	}
-	#h_1_body{
-	width: 1200px;
-	height: 50px;
-	background-color: red;
-	margin: 0 auto;
-	}
-	#body{
-	width: 1200px;
-	height: 1080px;
-	background-color: white;
-	margin: 0 auto;
-	}
-</style>
-<head>
+<jsp:include page="../communityCommon/css.jsp"/>
 </head>
 <body>
 <%@include file = "../../temp/header.jsp" %>
 <div id="h_body">
 	<h1>Notice Board</h1>
 </div>
-	<div id="h_1_body">
-		navi
-	</div>
-<div id="body">
-<hr>
-	<div class="container">
-	<table class="table table-hover">
-		<tr>
-			<td>No</td><td>Title</td><td>Writer</td><td>Date</td><td>Hit</td><td>Recommand</td><td>Decommand</td>
-		</tr>
-	</table>
-	</div>
+<jsp:include page="../communityCommon/navi.jsp"/>
+<div id = "page-wrapper">
 
+	
 
+	
 
+		<div id="main">
+			<div class="container">
+				<section class="tiles">
+							<article class="style2">
+								<span class="image">
+								<img src="../images/hani.jpg" alt="" width="400" height="300">
+								</span>
+								<a href="#">
+								<h2>대박 물품</h2>
+								<div class="content">
+								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
+								</div>
+								</a>
+							</article>
+							<article class="style2">
+								<span class="image">
+								<img src="../images/hani.jpg" alt="" width="400" height="300">
+								</span>
+								<a href="#">
+								<h2>대박 물품</h2>
+								<div class="content">
+								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
+								</div>
+								</a>
+							</article><article class="style2">
+								<span class="image">
+								<img src="../images/hani.jpg" alt="" width="400" height="300">
+								</span>
+								<a href="#">
+								<h2>대박 물품</h2>
+								<div class="content">
+								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
+								</div>
+								</a>
+							</article>
+							<article class="style2">
+								<span class="image">
+								<img src="../images/hani.jpg" alt="" width="400" height="300">
+								</span>
+								<a href="#">
+								<h2>대박 물품</h2>
+								<div class="content">
+								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
+								</div>
+								</a>
+							</article>
+							<article class="style2">
+								<span class="image">
+								<img src="../images/hani.jpg" alt="" width="400" height="300">
+								</span>
+								<a href="#">
+								<h2>대박 물품</h2>
+								<div class="content">
+								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
+								</div>
+								</a>
+							</article>
+							<article class="style2">
+								<span class="image">
+								<img src="../images/hani.jpg" alt="" width="400" height="300">
+								</span>
+								<a href="#">
+								<h2>대박 물품</h2>
+								<div class="content">
+								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
+								</div>
+								</a>
+							</article>
+				</section>
+			</div><!-- container -->
+		</div><!--main  -->
+		<%@include file= "../../temp/footer.jsp" %>
+</div> <!-- page-wrapper  -->
 
-
-</div>
-<%@include file="../../temp/footer.jsp" %>
+<%@include file="../../temp/activeweb.jsp" %>
 </body>
 </html>

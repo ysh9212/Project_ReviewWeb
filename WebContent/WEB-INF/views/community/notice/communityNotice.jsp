@@ -12,25 +12,7 @@
 			<script src="./assets/js/util.js"></script>
 			<script src="./assets/js/main.js"></script>
 <html>
-<style type="text/css">
-	#h_body{
-	width: 1200px;
-	height: 100px;
-	background-color: blue;
-	margin: 0 auto;
-	}
-	#h_1_body{
-	width: 1200px;
-	height: 50px;
-	background-color: red;
-	margin: 0 auto;
-	}
-	#body{
-	width: 1200px;
-	height: 1080px;
-	background-color: white;
-	margin: 0 auto;
-	}
+<jsp:include page="../communityCommon/css.jsp"/>
 </style>
 <head>
 </head>
@@ -39,9 +21,7 @@
 <div id="h_body">
 	<h1>Notice Board</h1>
 </div>
-	<div id="h_1_body">
-		navi
-	</div>
+<jsp:include page="../communityCommon/navi.jsp"/>
 <div id="body">
 <hr>
 	<div class="container">
