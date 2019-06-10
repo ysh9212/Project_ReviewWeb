@@ -15,7 +15,7 @@
 					<nav id="nav">
 						<a href="${pageContext.request.contextPath }/index.do" class="current-page-item">HOME</a> 
 						<a href="#">REVIEW</a> 
-						<a href="#">NEWS</a> 
+						<a href="${pageContext.request.contextPath }/news/newsList">NEWS</a> 
 						<a href="#">COMMUNITY</a>
 						<div class="dropdown">
 						<a href="${pageContext.request.contextPath }/shop/shopList">SHOP</a>
