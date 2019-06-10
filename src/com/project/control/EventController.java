@@ -10,42 +10,42 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.project.action.ActionForward;
-import com.project.news.NewsService;
+import com.project.event.EventService;
 
 /**
- * Servlet implementation class NewsController
+ * Servlet implementation class EventController
  */
-@WebServlet("/NewsController")
-public class NewsController extends HttpServlet {
+@WebServlet("/EventController")
+public class EventController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-private NewsService newsService;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NewsController() {
+    public EventController() {
         super();
         // TODO Auto-generated constructor stub
-    newsService = new NewsService();
-    
+        EventService eventService = new EventService();
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	EventService eventService = new EventService();
 		String command = request.getPathInfo();
 		ActionForward actionForward = new ActionForward();
 		System.out.println(command);
-		if (command.equals("/newsList")) {
-			actionForward = newsService.list(request, response);
-		}else if(command.equals("/newsSelect")) {
-			actionForward =newsService.select(request, response);
-		}else if(command.equals("/newsUpdate")) {
-			actionForward = newsService.update(request, response);
-		}else if(command.equals("/qnaUpdate")) {
-			actionForward = newsService.update(request, response);
-		}else if(command.equals("/qnaDelete")) {
-			actionForward = newsService.delete(request, response);
+		if (command.equals("/eventList")) {
+			actionForward = eventService.list(request, response);
+		}else if(command.equals("/eventSelect")) {
+			actionForward =eventService.select(request, response);
+		}else if(command.equals("/eventUpdate")) {
+			actionForward =eventService.update(request, response);
+		}else if(command.equals("/eventUpdate")) {
+			actionForward = eventService.update(request, response);
+		}else if(command.equals("/eventDelete")) {
+			actionForward = eventService.delete(request, response);
 		}
 		
 		
@@ -56,6 +56,7 @@ private NewsService newsService;
 			response.sendRedirect(actionForward.getPath());
 		}
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
