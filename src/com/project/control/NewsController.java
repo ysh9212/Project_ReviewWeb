@@ -35,7 +35,6 @@ private NewsService newsService;
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getPathInfo();
 		ActionForward actionForward = new ActionForward();
-		System.out.println("aa");
 		if (command.equals("/newsList")) {
 			actionForward = newsService.list(request, response);
 		}else if(command.equals("/newsSelect")) {

@@ -21,12 +21,10 @@
 							<a href="${pageContext.request.contextPath }/shop/qna/qnaList">QnA</a>
 							<a href="${pageContext.request.contextPath }/shop/mqna/mqnaList">자주 묻는 질문</a>
 						</div>
-						
-						</div>
-						<a href="#">EVENT</a>
-						<a href="#">LOGIN</a>
-						<a href="#">JOIN</a>
 					</nav>
+						
+			</div>
+
 				</header>
 			</div>
 		</div>
