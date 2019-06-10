@@ -66,7 +66,8 @@
 	
 	.ps_box, .ps_box_disable {
     display: block;
-    width: 100%
+    position: relative;
+    width: 100%;
     height: 51px;
     border: solid 1px #dadada;
     padding: 10px 14px 10px 14px;
@@ -168,13 +169,27 @@
 .sel{
 	width: 100%;
     height: 29px;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 18px;
     color: #000;
     border: none;
     border-radius: 0;
     -webkit-appearance: none;
 }
+
+.int {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 29px;
+    padding-right: 25px;
+    line-height: 29px;
+    border: none;
+    background: #fff;
+    font-size: 15px;
+    box-sizing: border-box;
+    z-index: 10;
+    }
 
 </style>
 </head>
@@ -289,7 +304,7 @@
 				이메일 인증
 				</label>
 			</h3>
-			<span class="ps_box box_right_space int email ">
+			<span class="ps_box box_right_space email ">
 				<input type="text" id="email" name="email" maxlength="100" placeholder="이메일 입력" aria-label="이메일 입력" class="int">
 			</span>
 			
