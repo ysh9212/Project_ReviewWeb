@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${board}List</title>
+<title>Q&A</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="../../assets/css/main.css" />
 </head>
@@ -45,7 +45,15 @@
 		
 		</div>
 		<div class="container">
-		<ul class="pager">
+				<form action="./qnaList">
+			<select name="kind">
+				<option value="t">제목</option>
+				<option value="c">내용</option>
+			</select>
+			<input type="text" name="search">
+			<button class="btn1 blue rounded">Search</button>	
+		</form>
+		<ul class="pager center">
 			<c:if test="${pager.curBlock gt 1 }">
 				<li class="previous"><a href="./${board}List?curPage=${pager.startNum-1}&kind=${pager.search.kind}&search=${pager.search.search}">Previous</a></li>
 			</c:if>
@@ -62,8 +70,8 @@
 				<li class="next"><a href="./${board}List?curPage=${pager.lastNum+1}&kind=${pager.search.kind}&search=${pager.search.search}">Next</a></li>
 			</c:if>
 		</ul>
-		</div>
 		<a href="./${board}Write" class="btn btn-primary">Write</a>
+		</div>
 	</div>
 </div>
 

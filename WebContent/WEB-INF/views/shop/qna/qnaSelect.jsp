@@ -21,7 +21,7 @@
 			if (check) {
 				$.get("./qnaDelete?no=${dto.no}", function(data) {
 					$.get("./qnaList", function(data) {
-
+						location.href ="./qnaList";
 					});
 
 				});
@@ -60,11 +60,10 @@
 				</table>
 
 
+			<a href="./qnaDelete?no=${dto.no}" class="btn" id="delete">Delete</a>
+			<a href="./qnaUpdate?no=${dto.no}" class="btn">Update</a>
 			</div>
 			
-			<a href="./qnaUpdate?no=${dto.no}" class="btn btn-primary">Update</a>
-			<%-- <a href="./qnaDelete?no=${dto.no}" class="delete" id="del">Delete</a> --%>
-			<button id="delete" class="del">Delete</button>
 		</div>
 	</div>
 

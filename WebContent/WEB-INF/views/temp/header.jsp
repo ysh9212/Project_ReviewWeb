@@ -20,6 +20,7 @@
 						<div class="dropdown">
 						<a href="${pageContext.request.contextPath }/shop/shopList">SHOP</a>
 						<div class="dropdown-content">
+							<a href="${pageContext.request.contextPath }/shop/shopList">상품</a>
 							<a href="${pageContext.request.contextPath }/shop/notice/noticeList">공지사항</a>
 							<a href="${pageContext.request.contextPath }/shop/qna/qnaList">QnA</a>
 							<a href="${pageContext.request.contextPath }/shop/mqna/mqnaList">자주 묻는 질문</a>
