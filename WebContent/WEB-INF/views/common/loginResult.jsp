@@ -5,13 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+</head>
+<body>
 <script type="text/javascript">
 	alert('${message}');
 	location.href="${path}";
 </script>
-</head>
-<body>
-
 </body>
 </html>
-

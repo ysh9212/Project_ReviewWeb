@@ -27,6 +27,7 @@
   <servlet-mapping>
     <servlet-name>shop</servlet-name>
     <url-pattern>/shop/*</url-pattern>
+
   </servlet-mapping>
   <servlet>
   	<servlet-name>shopqnacomments</servlet-name>
@@ -36,4 +37,16 @@
   	<servlet-name>shopqnacomments</servlet-name>
   	<url-pattern>/shopqnacomments/*</url-pattern>
   </servlet-mapping>
+
+
+  
+  <servlet>
+    <servlet-name>member</servlet-name>
+    <servlet-class>com.project.control.MemberController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>member</servlet-name>
+    <url-pattern>/member/*</url-pattern>
+  </servlet-mapping>
+
 </web-app>

@@ -5,13 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-	alert('${message}');
-	location.href="${path}";
-</script>
 </head>
 <body>
-
+<h1> my page</h1>
 </body>
+<%@include file = "../temp/header.jsp" %>
+<div id="page-wrapper">
+	<div id="main">
+		<div class="container">
+		
+		
+		</div>
+	</div>
+</div>
 </html>
-
