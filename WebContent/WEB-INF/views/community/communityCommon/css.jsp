@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<!-- Scripts -->
+		<script src="./assets/js/jquery.min.js"></script>
+		<script src="./assets/js/browser.min.js"></script>
+		<script src="./assets/js/breakpoints.min.js"></script>
+		<script src="./assets/js/util.js"></script>
+		<script src="./assets/js/main.js"></script>
+
 <style type="text/css">
 
 #body {
@@ -9,11 +16,6 @@
 	background-color: white;
 	margin: 0 auto;
 }
-
-#h_body{
-	margin: 0 auto;
-}
-
 .table_body {
 	width: 500px;
 	height: 350px;
@@ -32,8 +34,9 @@
 }
 
 ul {
+  width: 1250px;
   list-style-type: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   overflow: hidden;
   background-color: #333;

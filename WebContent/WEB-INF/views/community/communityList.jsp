@@ -16,6 +16,7 @@
 <jsp:include page="./communityCommon/css.jsp"/>
 </style>
 <head>
+<title>게시판</title>
 </head>
 <body>
 	<%@include file="../temp/header.jsp"%>

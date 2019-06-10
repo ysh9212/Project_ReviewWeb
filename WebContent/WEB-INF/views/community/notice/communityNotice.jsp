@@ -5,16 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="../../assets/css/main.css" />
 <c:import url="../temp/bootstrap.jsp"/>
-		<!-- Scripts -->
-			<script src="./assets/js/jquery.min.js"></script>
-			<script src="./assets/js/browser.min.js"></script>
-			<script src="./assets/js/breakpoints.min.js"></script>
-			<script src="./assets/js/util.js"></script>
-			<script src="./assets/js/main.js"></script>
 <html>
 <jsp:include page="../communityCommon/css.jsp"/>
 </style>
 <head>
+<title>공지사항</title>
 </head>
 <body>
 <%@include file = "../../temp/header.jsp" %>

@@ -5,17 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="../../assets/css/main.css" />
 <c:import url="../temp/bootstrap.jsp"/>
+
 <html>
 <jsp:include page="../communityCommon/css.jsp"/>
+</style>
 <head>
+<title>자유게시판</title>
 </head>
 <body>
-
 <%@include file = "../../temp/header.jsp" %>
-<div id="h_body">
-<jsp:include page="../communityCommon/navi.jsp"/>
-</div>
 <div id="body">
+<jsp:include page="../communityCommon/navi.jsp"/>
 <hr>
 	<div class="container">
 	<table class="table table-hover">
@@ -24,18 +24,7 @@
 		</tr>
 	</table>
 	</div>
-
-
-
-
-
 </div>
 <%@include file="../../temp/footer.jsp" %>
-		<!-- Scripts -->
-			<script src="./assets/js/jquery.min.js"></script>
-			<script src="./assets/js/browser.min.js"></script>
-			<script src="./assets/js/breakpoints.min.js"></script>
-			<script src="./assets/js/util.js"></script>
-			<script src="./assets/js/main.js"></script>
 </body>
 </html>
