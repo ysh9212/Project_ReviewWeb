@@ -27,6 +27,7 @@
   <servlet-mapping>
     <servlet-name>shop</servlet-name>
     <url-pattern>/shop/*</url-pattern>
+
   </servlet-mapping>
   <servlet>
   	<servlet-name>shopqnacomments</servlet-name>
