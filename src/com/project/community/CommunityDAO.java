@@ -18,14 +18,21 @@ public class CommunityDAO implements BoardDAO{
 
 	@Override
 	public int getNum() throws Exception {
-		// TODO Auto-generated method stub
+		int result=0;
+		Connection con = DBConnector.getConnect();
+		String sql = "select * from dual";
+		PreparedStatement st = con.prepareStatement(sql);
+		ResultSet rs = st.executeQuery();
+		rs.next();
+		result = rs.getInt(1);
+		DBConnector.disConnect(rs, st, con);
 		return 0;
 	}
 
 	@Override
 	public int getTotalCount(SearchRow searchRow, Connection con) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result=0;
+		return result;
 	}
 	// 자유게시판 가져오는 용도;
 	@Override

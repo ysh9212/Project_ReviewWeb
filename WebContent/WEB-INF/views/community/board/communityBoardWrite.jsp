@@ -8,22 +8,21 @@
 
 <html>
 <jsp:include page="../communityCommon/css.jsp"/>
+</style>
 <head>
-<title>자유게시판</title>
+<title>공지사항 작성</title>
 </head>
 <body>
 <%@include file = "../../temp/header.jsp" %>
 <div id="body">
+<label>작성자<input type="text"></label>
+<input type="text">
+<textarea rows="" cols=""></textarea>
 <jsp:include page="../communityCommon/navi.jsp"/>
 <hr>
 	<div class="container">
-	<table class="table table-hover">
-		<tr>
-			<td>No</td><td>Title</td><td>Writer</td><td>Date</td><td>Hit</td><td>Recommand</td><td>Decommand</td>
-		</tr>
-	</table>
+		<h1>공지사항 작성</h1>
 	</div>
-	<button>Write</button>
 </div>
 <%@include file="../../temp/footer.jsp" %>
 </body>

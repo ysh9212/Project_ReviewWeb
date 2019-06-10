@@ -84,6 +84,7 @@
 			</div>
 			<!--main  -->
 	</div>
+	<!-- body -->
 			<%@include file="../../temp/footer.jsp"%>
 		</div>
 		<!-- page-wrapper  -->

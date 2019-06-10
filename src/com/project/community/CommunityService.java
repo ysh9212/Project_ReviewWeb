@@ -11,7 +11,6 @@ public class CommunityService implements Action{
 
 	@Override
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
-		// System.out.println("notice"); µµÂøÈ®ÀÎ;
 		ActionForward actionForward = new ActionForward();
 		actionForward.setCheck(true);
 		actionForward.setPath("../WEB-INF/views/community/communityList.jsp");

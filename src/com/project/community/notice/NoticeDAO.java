@@ -10,6 +10,7 @@ import com.project.board.BoardDAO;
 import com.project.board.BoardDTO;
 import com.project.shopPage.Search;
 import com.project.shopPage.SearchRow;
+import com.project.util.DBConnector;
 
 public class NoticeDAO implements BoardDAO{
 	
@@ -18,13 +19,28 @@ public class NoticeDAO implements BoardDAO{
 	
 	@Override
 	public int getNum() throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result=0;
+		Connection con = DBConnector.getConnect();
+		String sql = "select notice_seq.nextval from dual";
+		PreparedStatement st = con.prepareStatement(sql);
+		ResultSet rs = st.executeQuery();
+		rs.next();
+		result=rs.getInt(1);
+		DBConnector.disConnect(rs, st, con);
+		return result;
 	}
 	@Override
 	public int getTotalCount(SearchRow searchRow, Connection con) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		String sql = "select count(num) from community_notice where"+searchRow.getSearch().getKind()+"like ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1,  "%"+searchRow.getSearch().getSearch()+"%");
+		ResultSet rs = st.executeQuery();
+		rs.next();
+		result = rs.getInt(1);
+		rs.close();
+		st.close();
+		return result;
 	}
 	@Override
 	public List<BoardDTO> selectList(SearchRow searchRow, Connection con) throws Exception {

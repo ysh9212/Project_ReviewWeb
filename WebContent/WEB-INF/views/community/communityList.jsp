@@ -67,13 +67,44 @@
 				<div class="container">
 					<table class="table table-hover">
 						<h1>중고게시판</h1>
-							<tr>
-								<td>Title</td>
-							</tr>
+												<section class="tiles">
+						<article class="style2">
+							<span class="image"> <img src="../images/hani.jpg" alt=""
+								width="400" height="300">
+							</span> <a href="#">
+								<h2>중고 물품</h2>
+								<div class="content">
+									<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
+								</div>
+							</a>
+						</article>
+						<article class="style2">
+							<span class="image"> <img src="../images/hani.jpg" alt=""
+								width="400" height="300">
+							</span> <a href="#">
+								<h2>중고 물품</h2>
+								<div class="content">
+									<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
+								</div>
+							</a>
+						</article>
+						<article class="style2">
+							<span class="image"> <img src="../images/hani.jpg" alt=""
+								width="400" height="300">
+							</span> <a href="#">
+								<h2>중고 물품</h2>
+								<div class="content">
+									<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
+								</div>
+							</a>
+						</article>
+					</section>
 					</table>
 				</div>
 			</div>
 		</div>
+		<div id = f_body>
 	<%@include file="../temp/footer.jsp"%>
+		</div>
 </body>
 </html>
