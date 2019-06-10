@@ -12,9 +12,9 @@ public class DBConnector {
 		String url = "jdbc:oracle:thin:@211.238.142.44:1521:xe";
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		
-		//2. driver 메모리에 로딩
+		//2. driver 硫붾え由ъ뿉 濡쒕뵫
 		Class.forName(driver);
-		//3. 로그인 Connection
+		//3. 濡쒓렇�씤 Connection
 		Connection con = DriverManager.getConnection(url, user, password);
 				
 				
