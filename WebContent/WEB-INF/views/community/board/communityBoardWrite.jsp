@@ -15,14 +15,14 @@
 <body>
 <%@include file = "../../temp/header.jsp" %>
 <div id="body">
-<label>작성자<input type="text"></label>
-<input type="text">
-<textarea rows="" cols=""></textarea>
-<jsp:include page="../communityCommon/navi.jsp"/>
-<hr>
 	<div class="container">
-		<h1>공지사항 작성</h1>
+		<h1>자유게시판 작성</h1>
 	</div>
+<label/>작성자<input type="text">
+<br>
+<label/>제목<input type="text">
+<br>
+<label/>내용<textarea rows="" cols=""></textarea>
 </div>
 <%@include file="../../temp/footer.jsp" %>
 </body>

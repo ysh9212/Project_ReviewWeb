@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project.action.ActionForward;
 import com.project.community.CommunityService;
-import com.project.community.board.BoardService;
+import com.project.community.board.cBoardService;
 import com.project.community.bug.BugService;
 import com.project.community.notice.NoticeService;
 import com.project.community.qna.QnaService;
@@ -26,7 +26,7 @@ public class CommunityController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CommunityService communityService;
 	private NoticeService noticeService;
-	private BoardService boardService;
+	private cBoardService boardService;
 	private ReviewService reviewService;
 	private UsedService usedService;
 	private QnaService qnaService;
@@ -40,7 +40,7 @@ public class CommunityController extends HttpServlet {
         // TODO Auto-generated constructor stub
         communityService = new CommunityService(); // 객체 생성을 안해서 service로 계속 연결을 못하고 있었음;
         noticeService = new NoticeService();
-        boardService = new BoardService();
+        boardService = new cBoardService();
         reviewService = new ReviewService();
         usedService = new UsedService();
         qnaService = new QnaService();

@@ -19,12 +19,13 @@
 	<div class="container">
 	<table class="table table-hover">
 		<tr>
-			<td>No</td><td>Title</td><td>Writer</td><td>Date</td><td>Hit</td><td>Recommand</td><td>Decommand</td>
+			<td>번호</td><td>제목</td><td>글쓴이</td><td>날짜</td><td>조회수</td><td>추천</td><td>비추천</td>
 		</tr>
 	</table>
 	</div>
-	<button>Write</button>
+	<a href="./${board}communityBoardWrite" class="btn btn-primary">Write</a>
 </div>
 <%@include file="../../temp/footer.jsp" %>
 </body>
 </html>
+
