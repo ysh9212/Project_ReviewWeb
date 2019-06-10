@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.project.action.ActionForward;
+import com.project.shop.mqna.ShopMqnaService;
 import com.project.shop.notice.ShopNoticeService;
 import com.project.shop.qna.ShopQnaService;
 
@@ -22,6 +23,7 @@ public class ShopController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private ShopNoticeService shopNoticeService;
     private ShopQnaService shopQnaService;
+    private ShopMqnaService shopMqnaService;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -29,6 +31,7 @@ public class ShopController extends HttpServlet {
         super();
         shopNoticeService = new ShopNoticeService();
         shopQnaService = new ShopQnaService();
+        shopMqnaService = new ShopMqnaService();
         // TODO Auto-generated constructor stub
     }
 
@@ -37,24 +40,30 @@ public class ShopController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getPathInfo();
+		int last = command.lastIndexOf("/");
+		command = command.substring(last);
 		ActionForward actionForward = new ActionForward();
 		if(command.equals("/shopList")) {
 			actionForward.setCheck(true);
 			actionForward.setPath("../WEB-INF/views/shop/shopList.jsp");
-		}else if(command.equals("/notice/noticeList")){
+		}else if(command.equals("/noticeList")){
 			actionForward = shopNoticeService.list(request, response);
-		}else if(command.equals("/notice/noticeSelect")) {
+		}else if(command.equals("/noticeSelect")) {
 			actionForward = shopNoticeService.select(request, response);
-		}else if(command.equals("/qna/qnaList")) {
+		}else if(command.equals("/qnaList")) {
 			actionForward = shopQnaService.list(request, response);
-		}else if(command.equals("/qna/qnaSelect")) {
+		}else if(command.equals("/qnaSelect")) {
 			actionForward = shopQnaService.select(request, response);
-		}else if(command.equals("/qna/qnaWrite")) {
+		}else if(command.equals("/qnaWrite")) {
 			actionForward = shopQnaService.insert(request, response);
-		}else if(command.equals("/qna/qnaUpdate")) {
+		}else if(command.equals("/qnaUpdate")) {
 			actionForward = shopQnaService.update(request, response);
-		}else if(command.equals("/qna/qnaDelete")) {
+		}else if(command.equals("/qnaDelete")) {
 			actionForward = shopQnaService.delete(request, response);
+		}else if(command.equals("/mqnaList")) {
+			actionForward = shopMqnaService.list(request, response);
+		}else if(command.equals("/mqnaSelect")) {
+			actionForward = shopMqnaService.select(request, response);
 		}
 		
 		

@@ -16,6 +16,13 @@
 						<a href="#">NEWS</a> 
 						<a href="${pageContext.request.contextPath}/community/communityList">COMMUNITY</a>
 						<a href="${pageContext.request.contextPath }/shop/shopList">SHOP</a>
+						<div class="dropdown-content">
+							<a href="${pageContext.request.contextPath }/shop/notice/noticeList">공지사항</a>
+							<a href="${pageContext.request.contextPath }/shop/qna/qnaList">QnA</a>
+							<a href="${pageContext.request.contextPath }/shop/mqna/mqnaList">자주 묻는 질문</a>
+						</div>
+						
+						</div>
 						<a href="#">EVENT</a>
 						<a href="#">LOGIN</a>
 						<a href="#">JOIN</a>
