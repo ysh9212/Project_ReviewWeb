@@ -129,6 +129,7 @@
     color: #fff;
     background-color: #007294;
     margin-top: 40px;
+    
     }
     
     .wa_blind {
@@ -311,13 +312,15 @@
 		</div>
 		<span class="error_next_box" id="emailMsg" style="display:none" role="alert"></span>
 		
-	</div>
-			
-			<div>
+		<div>
 				<button type="button" id="btnJoin" class="btn_type">
 				<span>Join</span>
 				</button>
 			</div>
+		
+		
+	</div>
+			
 		
 		</div>
 		
