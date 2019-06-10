@@ -15,9 +15,6 @@
 						<a href="#">REVIEW</a> 
 						<a href="${pageContext.request.contextPath}/community/communityList">COMMUNITY</a>
 						<a href="${pageContext.request.contextPath}/news/newsList">NEWS</a> 
-						<a href="${pageContext.request.contextPath}/shop/shopList">SHOP</a>
-						<a href="${pageContext.request.contextPath }/news/newsList">NEWS</a> 
-						<div class="dropdown">
 						<a href="${pageContext.request.contextPath }/shop/shopList">SHOP</a>
 						<div class="dropdown-content">
 							<a href="${pageContext.request.contextPath }/shop/notice/noticeList">공지사항</a>

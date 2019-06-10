@@ -57,5 +57,14 @@
 		<servlet-name>member</servlet-name>
 		<url-pattern>/member/*</url-pattern>
 	</servlet-mapping>
-
+	<servlet>
+		<servlet-name>community</servlet-name>
+		<servlet-class>com.project.control.CommunityController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>community</servlet-name>
+		<url-pattern>/community/*</url-pattern>
+	</servlet-mapping>
+	
+	
 </web-app>
