@@ -12,13 +12,13 @@ import com.project.board.BoardDTO;
 import com.project.shopPage.SearchRow;
 import com.project.util.DBConnector;
 
-public class cBoardDAO implements BoardDAO{
+public class ComBoardDAO implements BoardDAO{
 
 	@Override
 	public int getNum() throws Exception {
 		int result = 0;
 		Connection con = DBConnector.getConnect();
-		String sql = "";
+		String sql = "select community_seq.nextval from dual";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		rs.next();
@@ -29,6 +29,15 @@ public class cBoardDAO implements BoardDAO{
 
 	@Override
 	public int getTotalCount(SearchRow searchRow, Connection con) throws Exception {
+		int result = 0;
+		String sql = "select count(no) from community_board where"+searchRow.getSearch().getKind()+"like ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, "%"+searchRow.getSearch().getSearch()+"%");
+		ResultSet rs = st.executeQuery();
+		rs.next();
+		result = rs.getInt(1);
+		rs.close();
+		st.close();
 		return 0;
 	}
 
@@ -37,7 +46,23 @@ public class cBoardDAO implements BoardDAO{
 		List<BoardDTO> ar = new ArrayList<BoardDTO>();
 		String sql = "select no from community_board order by desc";
 		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, "%"+searchRow.getSearch().getSearch()+"%");
+		st.setInt(2, searchRow.getStartRow());
+		st.setInt(3, searchRow.getLastRow());
 		ResultSet rs = st.executeQuery();
+		while(rs.next()) {
+			ComBoardDTO comBoardDTO = new ComBoardDTO();
+			comBoardDTO.setNo(rs.getInt("no"));
+			comBoardDTO.setTitle(rs.getString("title"));
+			comBoardDTO.setWriter(rs.getString("writer"));
+			comBoardDTO.setReg_date(rs.getString("reg_date"));
+			comBoardDTO.setHit(rs.getInt("hit"));
+			comBoardDTO.setRecommend(rs.getInt("recommend"));
+			comBoardDTO.setDecommend(rs.getInt("decommend"));
+			ar.add(comBoardDTO);
+		}
+		rs.close();
+		st.close();
 		return ar;
 	}
 

@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.project.action.Action;
 import com.project.action.ActionForward;
 
-public class cBoardService implements Action{
+public class ComBoardService implements Action{
 
 	@Override
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {

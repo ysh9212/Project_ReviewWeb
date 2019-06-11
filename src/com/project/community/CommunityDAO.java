@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.project.board.BoardDAO;
 import com.project.board.BoardDTO;
-import com.project.community.board.cBoardDTO;
+import com.project.community.board.ComBoardDTO;
 import com.project.community.bug.BugDTO;
 import com.project.community.notice.NoticeDTO;
 import com.project.community.qna.QnaDTO;
@@ -19,7 +19,7 @@ import com.project.util.DBConnector;
 
 public class CommunityDAO implements BoardDAO{
 
-	// 리스트 불러오기
+	// 대시보드임 게시글을 불러오는데만 사용됨;
 	
 	// 공지사항;
 	@Override
@@ -31,8 +31,8 @@ public class CommunityDAO implements BoardDAO{
 		return ar;
 	}
 	// 자유게시판;
-	public List<cBoardDTO> noticeList(SearchRow searchRow, Connection con) throws Exception{
-		List<cBoardDTO> ar = new ArrayList<cBoardDTO>();
+	public List<ComBoardDTO> noticeList(SearchRow searchRow, Connection con) throws Exception{
+		List<ComBoardDTO> ar = new ArrayList<ComBoardDTO>();
 		String sql = "select title from community_board order by desc";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
@@ -55,7 +55,7 @@ public class CommunityDAO implements BoardDAO{
 		return ar;
 	}
 	
-	// 게시글 이동;
+	// 게시글로 이동;
 	
 	// 자유게시판;
 	@Override
@@ -108,7 +108,14 @@ public class CommunityDAO implements BoardDAO{
 		st.setInt(1, no);
 		ResultSet rs = st.executeQuery();
 		if(rs.next()) {
-			// reviewDTO.setContents(rs.getString("contents"));
+			reviewDTO.setNo(rs.getInt("no"));
+			reviewDTO.setTitle(rs.getString("title"));
+			reviewDTO.setWriter(rs.getString("writer"));
+			reviewDTO.setReg_date(rs.getString("reg_date"));
+			reviewDTO.setHit(rs.getInt("hit"));
+			reviewDTO.setRecommend(rs.getInt("recommend"));
+			reviewDTO.setDecommend(rs.getInt("decommend"));
+			reviewDTO.setContents(rs.getString("contents"));
 		}
 		rs.close();
 		st.close();
@@ -122,8 +129,17 @@ public class CommunityDAO implements BoardDAO{
 		st.setInt(1, no);
 		ResultSet rs = st.executeQuery();
 		if(rs.next()) {
-			
+			bugDTO.setNo(rs.getInt("no"));
+			bugDTO.setTitle(rs.getString("title"));
+			bugDTO.setWriter(rs.getString("writer"));
+			bugDTO.setReg_date(rs.getString("reg_date"));
+			bugDTO.setHit(rs.getInt("hit"));
+			bugDTO.setRecommend(rs.getInt("recommend"));
+			bugDTO.setDecommend(rs.getInt("decommend"));
+			bugDTO.setContents(rs.getString("contents"));
 		}
+		rs.close();
+		st.close();
 		return bugDTO;
 	}
 	// 중고장터;
@@ -134,8 +150,17 @@ public class CommunityDAO implements BoardDAO{
 		st.setInt(1, no);
 		ResultSet rs = st.executeQuery();
 		if(rs.next()) {
-			
+			usedDTO.setNo(rs.getInt("no"));
+			usedDTO.setTitle(rs.getString("title"));
+			usedDTO.setWriter(rs.getString("writer"));
+			usedDTO.setReg_date(rs.getString("reg_date"));
+			usedDTO.setHit(rs.getInt("hit"));
+			usedDTO.setRecommend(rs.getInt("recommend"));
+			usedDTO.setDecommend(rs.getInt("decommend"));
+			usedDTO.setContents(rs.getString("contents"));
 		}
+		rs.close();
+		st.close();
 		return usedDTO;
 	}
 
