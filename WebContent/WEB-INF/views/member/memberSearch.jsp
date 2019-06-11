@@ -7,18 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h2> 아이디 / 비밀번호 찾기 </h2>
 <%@include file = "../temp/header.jsp" %>
 <div id="page-wrapper">
 	<div id="main">
 		<div class="container">
-			<form action="./memberMyPage">
-				<h1> my page</h1>
 			
-			
-			</form>
+		
 		</div>
 	</div>
 </div>
 <%@include file="../temp/footer.jsp" %>
+
 </body>
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,28 +8,146 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="../assets/css/main.css" />
+<style type="text/css">
+html{color: -internal-root-color;}
+
+	#container{
+		margin: 0 auto;
+    	max-width: 768px;
+    	min-width: 460px;
+    	
+	}
+	
+	#main {
+    padding: 40px 0;
+}
+
+#wrap{
+	width: 500px;
+	margin: 0 auto;
+}
+.int {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 29px;
+    padding-right: 25px;
+    line-height: 29px;
+    border: none;
+    background: #fff;
+    font-size: 15px;
+    box-sizing: border-box;
+    z-index: 10;
+    }
+
+
+ .btn_type{
+    width: 100%;
+    padding: 21px 0 17px;
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    color: #fff;
+    background-color: #007294;
+    margin-top : 20px;
+    
+    }
+    
+    .login_title{
+		margin : 19px 0 8px;
+		font-size: 14px;
+		font-weight: 700;
+	}
+    
+    label{cursor: default;}
+    .ps_box.int_id{padding-right: 110px;}
+    
+    .ps_box, .ps_box_disable {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 51px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    background: #fff;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+	#btnLogin1 {
+		width : 100%;
+	}
+	
+.btn_type2{
+    width: 25%;
+    padding: 4px 0;
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    color: #fff;
+    background-color: #007294;
+    margin-top : 10px;
+    margin-right : 8px;
+	float : right;
+    }
+    
+    .btn_wrap2{
+    	margin: right;
+    }
+    
+    .remember{
+    	margin-top: 13px;
+    }
+</style>
+
 </head>
 <body>
 <%@include file = "../temp/header.jsp" %>
 <div id="page-wrapper">
-<div id ="main">
-	<div class="container">
-		<form method="post" action="./memberLogin">
-			<h1 style="text-align: center;">로그인 화면</h1>
-				<div class="form-group">
-					<input type="text"  placeholder="아이디" name="id">
+	<div id ="main">
+		<div class="container">
+		<div id = "wrap">
+<form method="post" action="./memberLogin">
+
+			<div class="login_content">
+				<div class="login_row">
+					<h3 class="login_title"><label for="id">아이디</label></h3>
+					<span class="ps_box">
+						<input type="text" id="id" class="int" name="id" value="${cookie.check.value}" title="아이디 입력" maxlength="20" placeholder="아이디를 입력하세요">
+					</span>
 				</div>
-				<div class="form-group">
-					<input type="password" placeholder="비밀번호" name="pw">
+				<div class="login_row">
+					<h3 class="login_title"><label for="pswd1">비밀번호</label></h3>
+					<span class="ps_box int_pass">
+						<input type="password" id="pw" name="pw" class="int" title="비밀번호 입력" maxlength="20" placeholder="비밀번호를 입력하세요">
+					</span>
 				</div>
-				<div class="checkbox">
-					<label><input type="checkbox" name="check" > Remember me</label>
+				
+				<div class="btn_login">
+					<div class="btn_wrap">
+							<input type="submit" id=" btn btnLogin1" class="btn_type" value="로그인">
+						
+					</div>
 				</div>
-					<input type="submit" class="btn btn-primary form-control" value="로그인">
-		</form>
+		
+			</div>
+			
+	<div class="btn_wrap2">
+		<label><input type="checkbox" name="check" value="1" class="remember"> Remember me</label>
+		<a href=""><button type="button" id="btnLogin2" class="btn_type2"><span>아이디/비밀번호 찾기</span></button></a>
+	</div>
+</form>
+<div class="ch_btn">
+	
+	
+		</div>
+	</div>
 	</div>
 </div>
-
 </div>
 <%@include file="../temp/footer.jsp" %>
 
