@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +22,10 @@ html{color: -internal-root-color;}
     padding: 40px 0;
 }
 
+#wrap{
+	width: 500px;
+	margin: 0 auto;
+}
 .int {
     display: block;
     position: relative;
@@ -37,17 +42,16 @@ html{color: -internal-root-color;}
 
 
  .btn_type{
-    display: block;
     width: 100%;
     padding: 21px 0 17px;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 700;
     text-align: center;
     cursor: pointer;
     box-sizing: border-box;
     color: #fff;
     background-color: #007294;
-    margin-top: 40px;
+    margin-top : 20px;
     
     }
     
@@ -72,20 +76,49 @@ html{color: -internal-root-color;}
     box-sizing: border-box;
     vertical-align: top;
 }
-</style>
+	#btnLogin1 {
+		width : 100%;
+	}
 	
+.btn_type2{
+    width: 15%;
+    padding: 5px 0;
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    color: #fff;
+    background-color: #007294;
+    margin-top : 10px;
+    margin-right : 8px;
+
+    
+    }
+    
+    .checkbox{
+    margin-top : 10px;
+    }
+    
+    .btn_wrap2{
+    	margin: right;
+    }
+</style>
+
 </head>
 <body>
 <%@include file = "../temp/header.jsp" %>
-<form method="post" action="./memberLogin">
 <div id="page-wrapper">
 	<div id ="main">
 		<div class="container">
+		<div id = "wrap">
+<form method="post" action="./memberLogin">
+
 			<div class="login_content">
 				<div class="login_row">
 					<h3 class="login_title"><label for="id">아이디</label></h3>
 					<span class="ps_box">
-						<input type="text" id="id" class="int" title="ID" maxlength="20" placeholder="아이디를 입력하세요">
+						<input type="text" id="id" class="int" name="id" value="${cookie.check.value}" title="아이디 입력" maxlength="20" placeholder="아이디를 입력하세요">
 					</span>
 				</div>
 				<div class="login_row">
@@ -94,16 +127,30 @@ html{color: -internal-root-color;}
 						<input type="password" id="pw" name="pw" class="int" title="비밀번호 입력" maxlength="20" placeholder="비밀번호를 입력하세요">
 					</span>
 				</div>
-				<div>
-					<button type="button" id="btnLogin" class="btn_type">
-					<span>Login</span>
-					</button>
+				
+				<div class="btn_login">
+					<div class="btn_wrap">
+							<input type="submit" id=" btn btnLogin1" class="btn_type" value="로그인">
+						
+					</div>
 				</div>
+		
 			</div>
+			<div class="checkbox">
+		<label><input type="checkbox" name="check" value="1"> Remember me</label>
+	</div>
+</form>
+<div class="ch_btn">
+	
+	<div class="btn_wrap2">
+		<button type="button" id="btnLogin2" class="btn_type2"><span>아이디 찾기</span></button>
+		<button type="button" id="btnLogin3" class="btn_type2"><span>비밀번호 찾기</span></button>
+	</div>
 		</div>
 	</div>
+	</div>
 </div>
-</form>
+</div>
 <%@include file="../temp/footer.jsp" %>
 
 

@@ -38,6 +38,11 @@
     	
 	}
 	
+	#wrap{
+	width: 500px;
+	margin: 0 auto;
+}
+	
 	div, form {display: block;}
 	
 	.ipin_box, .row_group{
@@ -202,8 +207,9 @@
 <div id="page-wrapper">
 	<div id="main">
 		<div class="container">
+		<div id = "wrap">
 		
-		<h2> 여기는 회원가입 하는 곳입니다.</h2>
+		<h2> 회원가입합시다.</h2>
 		<div class="join_content">
 			<div class="join_row">
 				<h3 class="join_title">
@@ -320,7 +326,7 @@
 		
 		
 	</div>
-			
+			</div>
 		
 		</div>
 		
