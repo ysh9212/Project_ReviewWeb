@@ -5,6 +5,7 @@ import java.sql.Connection;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 import com.project.action.Action;
 import com.project.action.ActionForward;
@@ -12,9 +13,11 @@ import com.project.util.DBConnector;
 
 public class MemberService implements Action {
 	private MemberDAO memberdao;
+
 	
 	public MemberService() {
 		memberdao = new MemberDAO();
+
 	}
 	
 	public ActionForward idCheck(HttpServletRequest request, HttpServletResponse response) {
@@ -48,6 +51,8 @@ public class MemberService implements Action {
 	
 	public ActionForward mypage(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionforward = new ActionForward();
+		String method = request.getMethod();
+		boolean check = true;
 		
 		String path = "../WEB-INF/views/member/memberMypage.jsp";
 		
@@ -72,13 +77,13 @@ public class MemberService implements Action {
 			MemberDTO memberDTO = new MemberDTO();
 			
 			String checkbox = request.getParameter("check");
-			
-			if(checkbox != null) {
+			System.out.println(request.getParameter("id"));
+			if(checkbox!=null) {
 				Cookie c = new Cookie("check", request.getParameter("id"));
 				c.setMaxAge(60*60*24*7);
 				response.addCookie(c);
 			} else {
-				Cookie c = new Cookie("check","");
+				Cookie c = new Cookie("check",null);
 				response.addCookie(c);
 			}
 			
@@ -96,7 +101,7 @@ public class MemberService implements Action {
 					request.setAttribute("message", "로그인 실패");
 					request.setAttribute("path", "./memberLogin");
 					check = true;
-					path = "../WEB-INF/views/common/loginResult.jsp";
+					path = "../WEB-INF/views/common/result.jsp";
 				}
 			} catch (Exception e) {
 				// TODO: handle exception

@@ -45,6 +45,8 @@
 		
 		</div>
 		
+		<input type="button" id="write" onclick='location.href="./newsWrite.jsp"' value="글쓰기" >
+		
 	</div>
 </div>
 
