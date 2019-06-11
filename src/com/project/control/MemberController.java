@@ -49,6 +49,8 @@ public class MemberController extends HttpServlet {
 			actionforward = memberService.idCheck(request, response);
 		}else if(command.equals("/memberMypage")) {
 			actionforward = memberService.mypage(request, response);
+		}else if(command.equals("./memberSearch")) {
+			actionforward = memberService.search(request, response);
 		}
 		
 		if(actionforward.isCheck()) {

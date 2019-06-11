@@ -81,8 +81,8 @@ html{color: -internal-root-color;}
 	}
 	
 .btn_type2{
-    width: 15%;
-    padding: 5px 0;
+    width: 25%;
+    padding: 4px 0;
     font-size: 10px;
     font-weight: 700;
     text-align: center;
@@ -92,16 +92,15 @@ html{color: -internal-root-color;}
     background-color: #007294;
     margin-top : 10px;
     margin-right : 8px;
-
-    
-    }
-    
-    .checkbox{
-    margin-top : 10px;
+	float : right;
     }
     
     .btn_wrap2{
     	margin: right;
+    }
+    
+    .remember{
+    	margin-top: 13px;
     }
 </style>
 
@@ -136,16 +135,15 @@ html{color: -internal-root-color;}
 				</div>
 		
 			</div>
-			<div class="checkbox">
-		<label><input type="checkbox" name="check" value="1"> Remember me</label>
+			
+	<div class="btn_wrap2">
+		<label><input type="checkbox" name="check" value="1" class="remember"> Remember me</label>
+		<a href=""><button type="button" id="btnLogin2" class="btn_type2"><span>아이디/비밀번호 찾기</span></button></a>
 	</div>
 </form>
 <div class="ch_btn">
 	
-	<div class="btn_wrap2">
-		<button type="button" id="btnLogin2" class="btn_type2"><span>아이디 찾기</span></button>
-		<button type="button" id="btnLogin3" class="btn_type2"><span>비밀번호 찾기</span></button>
-	</div>
+	
 		</div>
 	</div>
 	</div>

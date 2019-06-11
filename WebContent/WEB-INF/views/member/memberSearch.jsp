@@ -7,12 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2> 아이디 찾기 </h2>
+<h2> 아이디 / 비밀번호 찾기 </h2>
 <%@include file = "../temp/header.jsp" %>
 <div id="page-wrapper">
 	<div id="main">
 		<div class="container">
-		
+			
 		
 		</div>
 	</div>

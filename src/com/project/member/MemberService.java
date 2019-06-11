@@ -58,6 +58,16 @@ public class MemberService implements Action {
 		
 		return actionforward;
 	}
+	
+	public ActionForward search(HttpServletRequest request, HttpServletResponse response) {
+		ActionForward actionforward = new ActionForward();
+		String method = request.getMethod();
+		boolean check = true;
+		
+		String path = "../WEB-INF/views/member/memberSearch.jsp";
+		
+		return actionforward;
+	}
 	@Override
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
