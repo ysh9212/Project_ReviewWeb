@@ -65,10 +65,8 @@ input::-moz-focus-inner {
 }
 
 input, select, textarea {
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	-ms-appearance: none;
-	appearance: none;
+
+
 }
 
 /* Basic */
@@ -331,23 +329,7 @@ td{
 				border-radius: 100%;
 				width: 100%;
 			}
-.dropdown{
-	position: relative;
-	display: inline-block;
-}
-.dropdown-content{
-	display: none;
-	position: absolute;
-	background-color: #e3e9dc;
-	min-width: 160px;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	padding: 12px 16px;
-	z-index: 100;
-	font-color: black;
-}
-.dropdown:hover .dropdown-content{
-	display: block;
-}
+
 
 
 /* Tiles */

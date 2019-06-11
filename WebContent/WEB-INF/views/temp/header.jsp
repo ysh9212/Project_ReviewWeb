@@ -1,3 +1,4 @@
+﻿<%@page import="com.project.member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -24,9 +25,18 @@
 						</div>
 						
 						</div>
-						<a href="#">EVENT</a>
-						<a href="#">LOGIN</a>
-						<a href="#">JOIN</a>
+						<a href="${pageContext.request.contextPath }/event/eventList">EVENT</a>
+						<% MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");%>
+						<% if(memberDTO != null){ %>
+						<a class="nav-link" href="<%=application.getContextPath()%>/member/memberLogout">Logout</a>
+						<a class="nav-link" href="<%=application.getContextPath()%>/member/memberMypage">Mypage</a>
+					
+						<%}else { %>
+						<a class="mav-link" href="<%=application.getContextPath()%>/member/memberLogin">Login</a>
+						<a class="nav-link" href="<%=application.getContextPath()%>/member/memberCheck">Join</a>
+						
+						<%} %>
+						
 					</nav>
 				</header>
 			</div>
