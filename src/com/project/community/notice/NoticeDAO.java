@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.project.board.BoardDAO;
 import com.project.board.BoardDTO;
+import com.project.community.board.ComBoardDTO;
 import com.project.shopPage.Search;
 import com.project.shopPage.SearchRow;
 import com.project.util.DBConnector;
@@ -19,22 +20,22 @@ public class NoticeDAO implements BoardDAO{
 	
 	@Override
 	public int getNum() throws Exception {
-		int result=0;
+		int result = 0;
 		Connection con = DBConnector.getConnect();
-		String sql = "select notice_seq.nextval from dual";
+		String sql = "select community_seq.nextval from dual";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		rs.next();
-		result=rs.getInt(1);
+		result = rs.getInt(1);
 		DBConnector.disConnect(rs, st, con);
 		return result;
 	}
 	@Override
 	public int getTotalCount(SearchRow searchRow, Connection con) throws Exception {
 		int result = 0;
-		String sql = "select count(num) from community_notice where"+searchRow.getSearch().getKind()+"like ?";
+		String sql ="select count(no) from community_board where "+searchRow.getSearch().getKind()+" like ?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1,  "%"+searchRow.getSearch().getSearch()+"%");
+		st.setString(1, "%"+searchRow.getSearch().getSearch()+"%");
 		ResultSet rs = st.executeQuery();
 		rs.next();
 		result = rs.getInt(1);
@@ -44,8 +45,8 @@ public class NoticeDAO implements BoardDAO{
 	}
 	@Override
 	public List<BoardDTO> selectList(SearchRow searchRow, Connection con) throws Exception {
-		List<BoardDTO> ar = new ArrayList<BoardDTO>();
-		String sql = "select * from community_noitce";
+		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
+		String sql = "select no, title, writer, reg_date, hit, recommend, decommend from community_notice";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		while(rs.next()) {
@@ -55,10 +56,9 @@ public class NoticeDAO implements BoardDAO{
 			noticeDTO.setWriter(rs.getString("writer"));
 			noticeDTO.setReg_date(rs.getString("reg_date"));
 			noticeDTO.setHit(rs.getInt("hit"));
-			noticeDTO.setRecommend(rs.getInt("recommand"));
-			noticeDTO.setDecommend(rs.getInt("decommand"));
-			noticeDTO.setContents(rs.getString("contents"));
-			ar.add(noticeDTO);	
+			noticeDTO.setRecommend(rs.getInt("recommend"));
+			noticeDTO.setDecommend(rs.getInt("decommend"));
+			ar.add(noticeDTO);
 		}
 		rs.close();
 		st.close();

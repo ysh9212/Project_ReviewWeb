@@ -1,44 +1,58 @@
 package com.project.community;
 
+import java.sql.Connection;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.project.action.Action;
 import com.project.action.ActionForward;
+import com.project.board.BoardDTO;
+import com.project.community.board.ComBoardDAO;
+import com.project.community.bug.BugDAO;
+import com.project.community.notice.NoticeDAO;
+import com.project.community.qna.QnaDAO;
+import com.project.community.review.ReviewDAO;
+import com.project.community.used.UsedDAO;
+import com.project.shopPage.SearchRow;
+import com.project.util.DBConnector;
 
-public class CommunityService implements Action{
-	
-
-	@Override
+public class CommunityService {
+	private NoticeDAO noticeDAO;
+	private ComBoardDAO comBoardDAO;
+	private ReviewDAO reviewDAO;
+	private UsedDAO usedDAO;
+	private QnaDAO qnaDAO;
+	private BugDAO bugDAO;
+	public CommunityService() {
+		noticeDAO = new NoticeDAO();
+		comBoardDAO = new ComBoardDAO();
+		reviewDAO = new ReviewDAO();
+		usedDAO = new UsedDAO();
+		qnaDAO = new QnaDAO();
+		bugDAO = new BugDAO();
+		
+	}
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
-		actionForward.setCheck(true);
-		actionForward.setPath("../WEB-INF/views/community/communityList.jsp");
-		
-		return actionForward;
-	}
-
-	@Override
-	public ActionForward select(HttpServletRequest request, HttpServletResponse response) {
-		ActionForward actionForward = new ActionForward();
-		return actionForward;
-	}
-
-	@Override
-	public ActionForward insert(HttpServletRequest request, HttpServletResponse response) {
-		ActionForward actionForward = new ActionForward();
-		return actionForward;
-	}
-
-	@Override
-	public ActionForward update(HttpServletRequest request, HttpServletResponse response) {
-		ActionForward actionForward = new ActionForward();
-		return actionForward;
-	}
-
-	@Override
-	public ActionForward delete(HttpServletRequest request, HttpServletResponse response) {
-		ActionForward actionForward = new ActionForward();
+		SearchRow searchRow = new SearchRow();
+		try {
+			Connection con = DBConnector.getConnect();
+			List<BoardDTO> ar = noticeDAO.selectList(searchRow, con);
+			List<BoardDTO> ar2 = comBoardDAO.selectList(searchRow, con);
+			request.setAttribute("nlist", ar);
+			request.setAttribute("nboard", "nboard");
+			
+			request.setAttribute("blist", ar2);
+			request.setAttribute("bboard", "bboard");
+			actionForward.setCheck(true);
+			actionForward.setPath("../WEB-INF/views/community/communityList.jsp");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			actionForward.setCheck(true);
+			actionForward.setPath("../WEB-INF/views/community/communityList.jsp");
+		}
 		return actionForward;
 	}
 

@@ -31,12 +31,28 @@ public class CommunityDAO implements BoardDAO{
 		return ar;
 	}
 	// 자유게시판;
-	public List<ComBoardDTO> noticeList(SearchRow searchRow, Connection con) throws Exception{
-		List<ComBoardDTO> ar = new ArrayList<ComBoardDTO>();
+	public List<ComBoardDTO> noticeList(Connection con) throws Exception{
+		ArrayList<ComBoardDTO> ar = new ArrayList<ComBoardDTO>();
 		String sql = "select title from community_board order by desc";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
+		while(rs.next()) {
+			ComBoardDTO comBoardDTO = new ComBoardDTO();
+			comBoardDTO.setTitle(rs.getString("title"));
+		}
 		return ar;
+	}
+	public int boardGetTotalCount(SearchRow searchRow, Connection con) throws Exception{
+		int result=0;
+		String sql = "select count(no) from community_board where "+searchRow.getSearch().getKind()+" like ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, "%"+searchRow.getSearch().getSearch()+"%");
+		ResultSet rs = st.executeQuery();
+		rs.next();
+		result = rs.getInt(1);
+		rs.close();
+		st.close();
+		return result;
 	}
 	// 유저리뷰;
 	public List<ReviewDTO> reviewList(SearchRow searchRow, Connection con) throws Exception{

@@ -6,14 +6,13 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.project.action.ActionForward;
 import com.project.board.BoardDAO;
 import com.project.board.BoardDTO;
 import com.project.shopPage.SearchRow;
 import com.project.util.DBConnector;
 
 public class ComBoardDAO implements BoardDAO{
-
+	
 	@Override
 	public int getNum() throws Exception {
 		int result = 0;
@@ -26,11 +25,10 @@ public class ComBoardDAO implements BoardDAO{
 		DBConnector.disConnect(rs, st, con);
 		return result;
 	}
-
 	@Override
 	public int getTotalCount(SearchRow searchRow, Connection con) throws Exception {
 		int result = 0;
-		String sql = "select count(no) from community_board where"+searchRow.getSearch().getKind()+"like ?";
+		String sql ="select count(no) from community_board where "+searchRow.getSearch().getKind()+" like ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+searchRow.getSearch().getSearch()+"%");
 		ResultSet rs = st.executeQuery();
@@ -38,17 +36,13 @@ public class ComBoardDAO implements BoardDAO{
 		result = rs.getInt(1);
 		rs.close();
 		st.close();
-		return 0;
+		return result;
 	}
-
 	@Override
 	public List<BoardDTO> selectList(SearchRow searchRow, Connection con) throws Exception {
-		List<BoardDTO> ar = new ArrayList<BoardDTO>();
-		String sql = "select no from community_board order by desc";
+		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
+		String sql = "select no, title, writer, reg_date, hit, recommend, decommend from community_board";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, "%"+searchRow.getSearch().getSearch()+"%");
-		st.setInt(2, searchRow.getStartRow());
-		st.setInt(3, searchRow.getLastRow());
 		ResultSet rs = st.executeQuery();
 		while(rs.next()) {
 			ComBoardDTO comBoardDTO = new ComBoardDTO();
@@ -65,7 +59,6 @@ public class ComBoardDAO implements BoardDAO{
 		st.close();
 		return ar;
 	}
-
 	@Override
 	public BoardDTO selectOne(int no, Connection con) throws Exception {
 		BoardDTO boardDTO = new BoardDTO();
@@ -87,29 +80,27 @@ public class ComBoardDAO implements BoardDAO{
 		st.close();
 		return boardDTO;
 	}
-
 	@Override
 	public int insert(BoardDTO boardDTO, Connection con) throws Exception {
 		return 0;
 	}
-
 	@Override
 	public int update(BoardDTO boardDTO, Connection con) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	@Override
 	public int updateHit(int no, Connection con) throws Exception {
-		// TODO Auto-generated method stub
+		String sql = "update community_board set hit = hit+'1' where no=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, no);
+		int result = st.executeUpdate();
+		st.close();
 		return 0;
 	}
-
 	@Override
 	public int delete(int no, Connection con) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-
 }

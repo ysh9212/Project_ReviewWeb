@@ -26,7 +26,7 @@ public class CommunityController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CommunityService communityService;
 	private NoticeService noticeService;
-	private ComBoardService boardService;
+	private ComBoardService comBoardService;
 	private ReviewService reviewService;
 	private UsedService usedService;
 	private QnaService qnaService;
@@ -40,7 +40,7 @@ public class CommunityController extends HttpServlet {
         // TODO Auto-generated constructor stub
         communityService = new CommunityService(); // 객체 생성을 안해서 service로 계속 연결을 못하고 있었음;
         noticeService = new NoticeService();
-        boardService = new ComBoardService();
+        comBoardService = new ComBoardService();
         reviewService = new ReviewService();
         usedService = new UsedService();
         qnaService = new QnaService();
@@ -53,8 +53,11 @@ public class CommunityController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getPathInfo();
 		ActionForward actionForward = null;
+		// 대시보드
 		if(command.equals("/communityList")) {
 			actionForward=communityService.list(request, response);
+		
+		// 공지사항
 		}else if(command.equals("/notice/communityNotice")){
 			actionForward = noticeService.list(request, response);
 		}else if(command.equals("/notice/communityNoticeWrite")) {
@@ -63,16 +66,18 @@ public class CommunityController extends HttpServlet {
 			actionForward = noticeService.update(request, response);
 		}else if(command.equals("/notice/communityNoticeDelete")) {
 			actionForward = noticeService.delete(request, response);
-			
+		
+		// 자유게시판
 		}else if(command.equals("/board/communityBoard")) {
-			actionForward = boardService.list(request, response);
+			actionForward = comBoardService.list(request, response);
 		}else if(command.equals("/board/communityBoardWrite")){
-			actionForward = boardService.insert(request, response);
+			actionForward = comBoardService.insert(request, response);
 		}else if(command.equals("/board/communityBoardUpdate")){
-			actionForward = boardService.update(request, response);
+			actionForward = comBoardService.update(request, response);
 		}else if(command.equals("/board/communityBoardDelete")){
-			actionForward = boardService.delete(request, response);
-			
+			actionForward = comBoardService.delete(request, response);
+		
+		// 사용자리뷰
 		}else if(command.equals("/review/communityReview")) {
 			actionForward = reviewService.list(request, response);
 		}else if(command.equals("/review/communityReviewWrite")){
@@ -81,7 +86,8 @@ public class CommunityController extends HttpServlet {
 			actionForward = reviewService.update(request, response);
 		}else if(command.equals("/review/communityReviewDelete")){
 			actionForward = reviewService.delete(request, response);
-			
+		
+		// 중고나라
 		}else if(command.equals("/used/communityUsed")) {
 			actionForward = usedService.list(request, response);
 		}else if(command.equals("/used/communityusedWrite")){
@@ -90,7 +96,8 @@ public class CommunityController extends HttpServlet {
 			actionForward = usedService.update(request, response);
 		}else if(command.equals("/used/communityusedDelete")){
 			actionForward = usedService.delete(request, response);
-			
+		
+		// QnA
 		}else if(command.equals("/qna/communityQna")) {
 			actionForward = qnaService.list(request, response);
 		}else if(command.equals("/qna/communityQnaWrite")){
@@ -100,7 +107,7 @@ public class CommunityController extends HttpServlet {
 		}else if(command.equals("/qna/communityQnaDelete")){
 			actionForward = qnaService.delete(request, response);
 			
-			
+		// 버그리포트
 		}else if(command.equals("/bug/communityBug")) {
 			actionForward = bugService.list(request, response);
 		}else if(command.equals("/bug/communityBugWrite")){
@@ -109,8 +116,6 @@ public class CommunityController extends HttpServlet {
 			actionForward = bugService.update(request, response);
 		}else if(command.equals("/bug/communityBugDelete")){
 			actionForward = bugService.delete(request, response);
-			
-			
 		}else {
 			actionForward = new ActionForward(); // ?? 이거 왜함? 초기화인가?
 		}
