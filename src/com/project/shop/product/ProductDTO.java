@@ -1,55 +1,42 @@
 package com.project.shop.product;
 
 public class ProductDTO {
-	private int pnum;
-	private int pcategory_num;
-	private String pname;
-	private String pcontents;
-	private int price;
-	private String preg_date;
-	private int pcount;
-	public int getPnum() {
-		return pnum;
+	private int product_no;
+	private String product_color;
+	private String product_size;
+	private int product_stock;
+	private int product_price;
+	public int getProduct_no() {
+		return product_no;
 	}
-	public void setPnum(int pnum) {
-		this.pnum = pnum;
+	public void setProduct_no(int product_no) {
+		this.product_no = product_no;
 	}
-	public int getPcategory_num() {
-		return pcategory_num;
+	public String getProduct_color() {
+		return product_color;
 	}
-	public void setPcategory_num(int pcategory_num) {
-		this.pcategory_num = pcategory_num;
+	public void setProduct_color(String product_color) {
+		this.product_color = product_color;
 	}
-	public String getPname() {
-		return pname;
+	public String getProduct_size() {
+		return product_size;
 	}
-	public void setPname(String pname) {
-		this.pname = pname;
+	public void setProduct_size(String product_size) {
+		this.product_size = product_size;
 	}
-	public String getPcontents() {
-		return pcontents;
+	public int getProduct_stock() {
+		return product_stock;
 	}
-	public void setPcontents(String pcontents) {
-		this.pcontents = pcontents;
+	public void setProduct_stock(int product_stock) {
+		this.product_stock = product_stock;
 	}
-	public int getPrice() {
-		return price;
+	public int getProduct_price() {
+		return product_price;
 	}
-	public void setPrice(int price) {
-		this.price = price;
+	public void setProduct_price(int product_price) {
+		this.product_price = product_price;
 	}
-	public String getPreg_date() {
-		return preg_date;
-	}
-	public void setPreg_date(String preg_date) {
-		this.preg_date = preg_date;
-	}
-	public int getPcount() {
-		return pcount;
-	}
-	public void setPcount(int pcount) {
-		this.pcount = pcount;
-	}
+	
 	
 	
 }

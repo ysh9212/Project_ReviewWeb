@@ -29,11 +29,36 @@
     <url-pattern>/shop/*</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>shopqnacomments</servlet-name>
-  	<servlet-class>com.project.control.ShopCommentsController</servlet-class>
+    <servlet-name>shopqnacomments</servlet-name>
+    <servlet-class>com.project.control.ShopCommentsController</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>shopqnacomments</servlet-name>
-  	<url-pattern>/shopqnacomments/*</url-pattern>
+    <servlet-name>shopqnacomments</servlet-name>
+    <url-pattern>/shopqnacomments/*</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>indexadmin</servlet-name>
+    <servlet-class>com.project.control.IndexAdminController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>indexadmin</servlet-name>
+    <url-pattern>/admin.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>manage</servlet-name>
+  	<servlet-class>com.project.control.ManageController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>manage</servlet-name>
+  	<url-pattern>/admin/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>comments</servlet-name>
+  	<servlet-class>com.project.control.CommentsController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>comments</servlet-name>
+  	<url-pattern>/comments/*</url-pattern>
+  </servlet-mapping>
+	
 </web-app>
