@@ -75,7 +75,7 @@ public class EventDAO implements BoardDAO {
 	@Override
 	public BoardDTO selectOne(int num, Connection con) throws Exception {
 		EventDTO eventDTO = null;
-		String sql = "select * from news where no=?";
+		String sql = "select * from event where no=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, num);
 		ResultSet rs = st.executeQuery();
@@ -124,8 +124,13 @@ public class EventDAO implements BoardDAO {
 
 	@Override
 	public int updateHit(int no, Connection con) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql = "update event set hit = hit+'1' where no=?";
+		PreparedStatement st= con.prepareStatement(sql);
+		st.setInt(1, no);
+		int result = st.executeUpdate();
+		st.close();
+		
+		return result;
 	}
 
 }

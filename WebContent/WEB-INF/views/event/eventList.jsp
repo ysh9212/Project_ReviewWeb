@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../assets/css/main.css" />
+<link rel="stylesheet" href="../assets/css/main.css"/>
 </head>
 <body>
 <%@include file="../temp/header.jsp" %>
@@ -43,6 +43,25 @@
 		</table>
 		
 		
+		</div>
+		<div class="container">
+		<ul class="pager">
+			<c:if test="${pager.curBlock gt 1 }">
+				<li class="previous"><a href="./${board}List?curPage=${pager.startNum-1}&kind=${pager.search.kind}&search=${pager.search.search}">Previous</a></li>
+			</c:if>
+			<li>
+				<ul class="pagination">
+					<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" step="1" var="i">
+					<li><a href="./${board}List?curPage=${i}&kind=${pager.search.kind}&search=${pager.search.search}">${i}</a></li>
+					
+					</c:forEach>
+				</ul>
+
+			</li>
+			<c:if test="${pager.curBlock lt pager.totalBlock }">
+				<li class="next"><a href="./${board}List?curPage=${pager.lastNum+1}&kind=${pager.search.kind}&search=${pager.search.search}">Next</a></li>
+			</c:if>
+		</ul>
 		</div>
 		
 	</div>

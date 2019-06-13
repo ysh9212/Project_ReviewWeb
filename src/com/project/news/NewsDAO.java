@@ -73,14 +73,13 @@ public class NewsDAO implements BoardDAO {
 	}
 
 	@Override
-	public BoardDTO selectOne(int num, Connection con) throws Exception {
-		NewsDTO newsDTO = null;
-		String sql = "select * from news where no=?";
+	public BoardDTO selectOne(int no, Connection con) throws Exception {
+		NewsDTO newsDTO = new NewsDTO();
+		String sql = "select * from NEWS where no=?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, num);
+		st.setInt(1, no);
 		ResultSet rs = st.executeQuery();
 		if (rs.next()) {
-			newsDTO = new NewsDTO();
 			newsDTO.setNo(rs.getInt("no"));
 			newsDTO.setTitle(rs.getString("title"));
 			newsDTO.setContents(rs.getString("contents"));
@@ -88,10 +87,8 @@ public class NewsDAO implements BoardDAO {
 			newsDTO.setReg_date(rs.getString("reg_date"));
 			newsDTO.setHit(rs.getInt("hit"));
 		}
-
 		rs.close();
 		st.close();
-
 		return newsDTO;
 	}
 
@@ -117,15 +114,21 @@ public class NewsDAO implements BoardDAO {
 	}
 
 	@Override
-	public int delete(int num, Connection con) throws Exception {
+	public int delete(int no, Connection con) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int updateHit(int no, Connection con) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql = "update news set hit = hit+'1' where no=?";
+		PreparedStatement st= con.prepareStatement(sql);
+		st.setInt(1, no);
+		int result = st.executeUpdate();
+		st.close();
+		
+		return result;
 	}
+
 
 }
