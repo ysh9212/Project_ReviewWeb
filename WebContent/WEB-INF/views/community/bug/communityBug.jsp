@@ -34,7 +34,9 @@
 					<c:forEach items="${list}" var="dto">
 						<tr>
 							<td>${dto.no}</td>
-							<td><a href="./communityBugSelect?no=${dto.no}">${dto.title}</a><td>
+							<td>
+							<a href="./communityBugSelect?no=${dto.no}">${dto.title}</a>
+							</td>
 							<td>${dto.writer}</td>
 							<td>${dto.reg_date}</td>
 							<td>${dto.hit}</td>
@@ -43,7 +45,7 @@
 				</tbody>
 			</table>
 		</div>
-
+		<a href="./communityBoardWrite" class="btn btn-primary">Write</a>
 	</div>
 	<%@include file="../../temp/footer.jsp"%>
 </body>
