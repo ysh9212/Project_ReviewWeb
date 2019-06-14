@@ -1,5 +1,7 @@
 package com.project.community.qna;
 
-public class QnaDTO {
+import com.project.board.BoardDTO;
+
+public class QnaDTO extends BoardDTO{
 
 }

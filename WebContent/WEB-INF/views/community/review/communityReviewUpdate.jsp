@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 글쓰기</title>
+<title>유저리뷰 글수정</title>
 <c:import url="../../temp/bootstrap.jsp" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -33,7 +33,7 @@ $(function() {
 	    }, 
 	    fOnAppLoad : function(){
 	        //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-	        oEditors.getById["contents"].exec("PASTE_HTML", ["내용을 입력하세요"]);
+	        oEditors.getById["contents"].exec("PASTE_HTML",);
 	    },
 	    fCreator: "createSEditor2"
 	}); //텍스트 폼 바꿈 스마트에디터
@@ -52,18 +52,19 @@ $(function() {
 	<div class="page-wrapper">
 		<div id="main">
 			<div class="container">
-			<form id ="frm"action="./communityBoardWrite" method="post">
+			<form id ="frm"action="./communityReviewUpdate" method="post">
+			<input type="hidden" name = "no" value="${dto.no }">
 			<div class="form-group">
 				<label for="title">Title:</label> 
-				<input type="text" class="form-control" id="title" name = "title">
+				<input type="text" class="form-control" id="title" name = "title" value="${dto.title}">
 			</div>
 			<div class="form-group">
 				<label for="writer">Writer:</label> 
-				<input type="text" class="form-control" id="writer" name="writer">
+				<input type="text" class="form-control" id="writer" name="writer" value="${dto.writer}">
 			</div>
 			<div class="form-group">
 				<label for="contents">Contents:</label>
-				<textarea class="form-control" rows="5" id="contents" name="contents"></textarea>
+				<textarea class="form-control" rows="5" id="contents" name="contents">${dto.contents}</textarea>
 			</div>		
 				<input type="button" id = "save" class="btn btn-danger" value = "write">
 			</form>

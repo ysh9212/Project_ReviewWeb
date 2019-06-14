@@ -44,7 +44,6 @@ public class NewsService implements Action {
 		try {
 			con = DBConnector.getConnect();
 			List<BoardDTO> ar = newsDAO.selectList(searchRow, con);
-			System.out.println(ar);
 			// 2.page
 			totalCount = newsDAO.getTotalCount(searchRow, con);
 			SearchPager searchPager = s.makePage(totalCount);
