@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,7 @@
 			<tr>
 					<td>${dto.no}</td>
 				<td>
-				<a href="./${board}Select?no=${dto.no}">${dto.title }
+				<a href="./newsSelect?no=${dto.no}">${dto.title }
 				</a>
 				</td>
 				<td>${dto.writer }</td>
@@ -41,16 +42,28 @@
 			</c:forEach>
 			</tbody>
 		</table>
-		
-		
 		</div>
-		
-		<input type="button" id="write" onclick='location.href="./newsWrite.jsp"' value="글쓰기" >
-		
+		<div class="container">
+		<ul class="pager">
+			<c:if test="${pager.curBlock gt 1 }">
+				<li class="previous"><a href="./${board}List?curPage=${pager.startNum-1}&kind=${pager.search.kind}&search=${pager.search.search}">Previous</a></li>
+			</c:if>
+			<li>
+				<ul class="pagination">
+					<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" step="1" var="i">
+					<li><a href="./${board}List?curPage=${i}&kind=${pager.search.kind}&search=${pager.search.search}">${i}</a></li>
+					
+					</c:forEach>
+				</ul>
+
+			</li>
+			<c:if test="${pager.curBlock lt pager.totalBlock }">
+				<li class="next"><a href="./${board}List?curPage=${pager.lastNum+1}&kind=${pager.search.kind}&search=${pager.search.search}">Next</a></li>
+			</c:if>
+		</ul>
+		</div>
 	</div>
 </div>
-
-
 
 <%@include file="../temp/footer.jsp" %>
 <%@include file="../temp/activeweb.jsp" %>
