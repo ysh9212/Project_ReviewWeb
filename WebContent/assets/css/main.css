@@ -88,7 +88,7 @@ input, select, textarea {
 	body {
 		font-size: 13.5pt;
 		font-family: sans-serif;
-		background-color: #e3e9dc;
+		
 		font-family: 'Ubuntu Condensed', sans-serif;
 		color: #878e83;
 		letter-spacing: -1px;
@@ -223,6 +223,26 @@ input, select, textarea {
   width:100%;
   transition:800ms ease all;
 }
+	/* 슬라이드 조작 */
+	 .slide{height:400px;overflow:hidden;position:relative;}
+    .slide li{position:absolute;left:0;right:0;top:0;bottom:0;opacity:0;transition:1s;}
+    .slide li:nth-child(1){background:#ffa;}
+    .slide li:nth-child(2){background:#faa;}
+    .slide li:nth-child(3){background:#afa;}
+    .slide li:nth-child(4){background:#aaf;}
+    .slide input{display:none;}
+    .slide .bullet{position:absolute;bottom:20px;left:0;right:0;text-align:center;z-index:10;}
+    .slide .bullet label{width:10px;height:10px;border-radius:10px;border:2px solid #666;display:inline-block;background:#fff;font-size:0;transition:0.5s;cursor:pointer;}
+    /* 슬라이드 조작 */
+    #pos1:checked ~ ul li:nth-child(1),
+    #pos2:checked ~ ul li:nth-child(2),
+    #pos3:checked ~ ul li:nth-child(3),
+    #pos4:checked ~ ul li:nth-child(4){opacity:1;}
+    /* bullet 조작 */
+    #pos1:checked ~ .bullet label:nth-child(1),
+    #pos2:checked ~ .bullet label:nth-child(2),
+    #pos3:checked ~ .bullet label:nth-child(3),
+    #pos4:checked ~ .bullet label:nth-child(4){background:#666;}
 	
 /* TABLE */
 .table{
@@ -2154,7 +2174,6 @@ td a{
 
 	#banner-wrapper {
 		background: #c8d2bc url(images/bg1.png);
-		padding: 2em 0;
 	}
 
 	#banner {
@@ -2198,6 +2217,7 @@ td a{
 
 	#footer-wrapper {
 		padding: 4em 0;
+		background-color: #e3e9dc;
 	}
 
 /* Copyright */
@@ -2553,7 +2573,8 @@ td a{
 		/* Footer */
 
 			#footer-wrapper {
-				padding: 40px 0;
+				padding: 25px 0;
+				height: 100px;
 			}
 
 		/* Copyright */

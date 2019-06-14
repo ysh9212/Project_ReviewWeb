@@ -15,17 +15,31 @@
 
 
 			<!-- Banner -->
+			<div class="container" style="padding-top:4em;">
 				<div id="banner-wrapper">
-					<div class="container">
 
-						<div id="banner">
-							<h2>여기에는 인기많은 리뷰 게시물</h2>
-							<span>아니면 광고나 다른 넣고싶은거</span>
-						</div>
+							<div class="slide">
+									<h2 style="text-align: center;">UDK</h2>
+									 <input type="radio" name="pos" id="pos1" checked>
+									    <input type="radio" name="pos" id="pos2">
+									    <input type="radio" name="pos" id="pos3">
+									    <input type="radio" name="pos" id="pos4">
+									    <ul>
+									      <li></li>
+									      <li></li>
+									      <li></li>
+									      <li></li>
+									    </ul>
+									    <p class="bullet">
+									      <label for="pos1">1</label>
+									      <label for="pos2">2</label>
+									      <label for="pos3">3</label>
+									      <label for="pos4">4</label>
+									    </p>
+								</div>
 
-					</div>
 				</div>
-
+			</div>
 			<!-- Main -->
 				<div id="main">
 					<div class="container">
@@ -64,7 +78,7 @@
 							<div class="col-4 col-6-medium col-12-small">
 
 								<section>
-									<h2>뉴스</h2>
+									<h2>리뷰</h2>
 									<div>
 										<div class="row">
 											<div class="col-6 col-12-small">
@@ -93,60 +107,36 @@
 							<div class="col-6 col-12-medium">
 
 								<section>
-									<h2>인기 많은 리뷰글이나 인기많은 쇼핑</h2>
-									<p>Duis neque nisi, dapibus sed mattis quis, rutrum et accumsan.
-									Suspendisse nibh. Suspendisse vitae magna eget odio amet mollis
-									justo facilisis quis. Sed sagittis mauris amet tellus gravida
-									lorem ipsum dolor sit amet consequat blandit lorem ipsum dolor
-									sit amet consequat sed dolore.</p>
+									<h2>SHOP</h2>
+									<p></p>
 									<ul class="big-image-list">
 										<li>
-											<a href="#"><img src="./images/pic3.jpg" alt="" class="left" /></a>
-											<h3>Magna Gravida Dolore</h3>
-											<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo
-											facilisis amet quis consectetur in, sollicitudin vitae justo. Cras
-											Maecenas eu arcu purus, phasellus fermentum elit.</p>
+											<a href="#"><img src="./images/galaxy-s10-5g.jpg" alt="" class="left" /></a>
+											<h3>갤럭시 S10 5G</h3>
+											<p>완벽에 가까워진 새로운 디자인.	정교한 레이저 가공, 온 스크린 지문 인식 그리고 다이내믹 아몰레드를 탑재한 가장 혁신적인 시네마틱 인피니티
+											<br>디스플레이가 탄생했습니다.</p>
 										</li>
 										<li>
-											<a href="#"><img src="./images/pic4.jpg" alt="" class="left" /></a>
-											<h3>Magna Gravida Dolore</h3>
-											<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo
-											facilisis amet quis consectetur in, sollicitudin vitae justo. Cras
-											Maecenas eu arcu purus, phasellus fermentum elit.</p>
+											<a href="#"><img src="./images/samlaptop.jpg" alt="laptop" class="left" /></a>
+											<h3>삼성 노트북9 Always</h3>
+											<p>충전은빠르게 사용은 여유롭게<br>
+											 <strong>대용량배터리 75Wh 배터리</strong><br>
+											최신8세대 인텔CPU + UFS + GIGA WI-FI<br>
+											<strong>최첨단 기술 탑재</strong>
+											</p>
 										</li>
 										<li>
-											<a href="#"><img src="./images/pic5.jpg" alt="" class="left" /></a>
-											<h3>Magna Gravida Dolore</h3>
-											<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo
-											facilisis amet quis consectetur in, sollicitudin vitae justo. Cras
-											Maecenas eu arcu purus, phasellus fermentum elit.</p>
+											<a href="#"><img src="./images/iphone.jpg" alt="" class="left" /></a>
+											<h3>IPhone XR</h3>
+											<p>전면 화면 디자인.iPhone 중 가장 긴 배터리 사용시간. <strong>놀랍도록 빠른 성능. 
+											생활 방수 기능.</strong><br>
+											 스튜디오급 사진 및 4K 동영상 촬영 기능. <br>
+											 더욱 <strong>안전</strong>해진 Face ID까지. </p>
 										</li>
 									</ul>
 								</section>
 
 							</div>
-							<div class="col-6 col-12-medium">
-
-								<article class="blog-post">
-									<h2>Just another blog post</h2>
-									<a class="comments" href="#">33 comments</a>
-									<a href="#"><img src="./images/pic6.jpg" alt="" class="top blog-post-image" /></a>
-									<h3>Magna Gravida Dolore</h3>
-									<p>Aenean non massa sapien. In hac habitasse platea dictumst.
-									Maecenas sodales purus et nulla sodales aliquam. Aenean ac
-									porttitor metus. In hac habitasse platea dictumst. Phasellus
-									blandit turpis in leo scelerisque mollis. Nulla venenatis
-									ipsum nec est porta rhoncus. Mauris sodales sed pharetra
-									nisi nec consectetur. Cras elit magna, hendrerit nec
-									consectetur in, sollicitudin vitae justo. Cras amet aliquet
-									Aliquam ligula turpis, feugiat id fermentum malesuada,
-									rutrum eget turpis. Mauris sodales sed pharetra nisi nec
-									consectetur. Cras elit magna, hendrerit nec consectetur
-									in sollicitudin vitae.</p>
-									<footer class="controls">
-										<a href="#" class="button">Continue Reading</a>
-									</footer>
-								</article>
 
 							</div>
 						</div>
@@ -155,7 +145,6 @@
 
 <%@include file="./temp/footer.jsp" %>
 
-		</div>
 
 		<!-- Scripts -->
 			<script src="./assets/js/jquery.min.js"></script>
