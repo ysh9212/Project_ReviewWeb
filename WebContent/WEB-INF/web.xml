@@ -61,4 +61,5 @@
     <servlet-name>event</servlet-name>
     <url-pattern>/event/*</url-pattern>
   </servlet-mapping>
+
 </web-app>

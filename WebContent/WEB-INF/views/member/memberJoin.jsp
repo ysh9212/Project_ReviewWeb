@@ -6,16 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../assets/css/main.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <style type="text/css">
 	#main {
     padding: 40px 0;
 }
 	
-	button, input, select, textarea{
-		border: 0;
-		border-radius: 0;
-		-webkit-appearance: none;
-	}
 	
 	body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, select, table, td, textarea, th, ul {
     margin: 0;
@@ -196,53 +192,343 @@
     box-sizing: border-box;
     z-index: 10;
     }
+    
+    .checkPwd{
+    	margin-top: 15px;
+    	font-size: 7px;
+    }
+    .check{
+    	margin-top: 15px;
+    	font-size: 8px;
+    }
+    
+    
 
 </style>
+<script type="text/javascript">
+	$(function(){
+		var frm = document.frm;
+			
+			
+			var gender = document.getElementById('gender').value;
+			var email = document.getElementById('email').value;
+		
+			
+			$('#id').keyup(function(){
+				var id = document.getElementById('id').value;
+				var idcheck = document.getElementById('idcheck');
+				if(id.length > 9){
+					idcheck.innerHTML = '아이디는 10자 미만으로 입력하세요';
+				}else if(id.length < 10){
+					idcheck.innerHTML = '';
+				}else if(id == ''){
+					idcheck.innerHTML = '아이디를 입력해주세요.';
+				}
+				
+			});
+			
+			$('#idoverlap').click(function(){
+				var id = document.getElementById('id').value;
+				var xhttp;
+				if(window.XMLHttpRequest){
+					xhttp = new XMLHttpRequest();
+				}else {
+					xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				
+				xhttp.open("GET","../member/idCheck?id="+id, true);
+				
+				xhttp.send();
+				
+				xhttp.onreadystatechange = function(){
+					if(this.readyState == 4 && this.status == 200){
+						
+						if(this.responseText.trim()=='1'){
+						$('#result').html("사용가능한 ID");
+						$("#result").css("color","blue");
+						} else{
+							$('#result').html("사용 불가능한 ID");
+							$("#result").css("color","red");
+							$("#id").val("").focus();
+				
+						}
+					}
+				}			
+			});
+			
+			$('#pswd1').blur(function() {
+				var pw = document.getElementById('pswd1');
+				var pwcheck = document.getElementById('pwcheck');
+				if (pw.value.length < 6&& pw.value.length>1) {
+					document.getElementById('pwcheck').style.color = "red";
+					pwcheck.innerHTML = '패스워드는 6자 이상으로 입력하세요';
+				} else if (pw.value.length > 5) {
+					pwcheck.innerHTML = '';
+				} else if(pw.value ==''){
+					document.getElementById('pwcheck').style.color = "red";
+					pwcheck.innerHTML='필수 입력 항목입니다.';
+				}
+			});
+			
+			$('#pswd2').blur(function() {
+				var pwd1 = document.getElementById('pswd2');
+				var pwdoverlap = document.getElementById('pwdoverlap');
+				if (pswd1.value == pwd1.value) {
+					document.getElementById('pwdoverlap').style.color = "blue";
+					pwdoverlap.innerHTML = '비밀번호가 일치합니다';
+				} else if(pswd2.value ==''){
+					document.getElementById('pwdoverlap').style.color = "red";
+					pwdoverlap.innerHTML = '필수 입력 항목입니다.';
+				} 
+				else if(pswd1.value != pwd1.value){
+					document.getElementById('pwdoverlap').style.color = "red";
+					pwdoverlap.innerHTML = '비밀번호가 일치하지 않습니다';
+				}
+			});
+			//닉네임
+			$('#nickname').keyup(function(){
+				var nickname = document.getElementById('nickname').value;
+				var nicknamecheck = document.getElementById('nicknamecheck');
+				if(nickname.length > 5){
+					document.getElementById('nicknamecheck').style.color = "red";
+					nicknamecheck.innerHTML = '닉네임은 6자 미만으로 입력하세요';
+				}else if(nickname.length < 6){
+					nicknamecheck.innerHTML = '';
+				}else if(nickname == ''){
+					nicknamecheck.innerHTML = '닉네임을 입력해주세요.';
+				}
+				
+			});
+			
+			$('#idoverlap2').click(function(){
+				var nickname = document.getElementById('nickname').value;
+				var xhttp;
+				if(window.XMLHttpRequest){
+					xhttp = new XMLHttpRequest();
+				}else {
+					xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				
+				xhttp.open("GET","../member/nicknameCheck?nickname="+nickname, true);
+				
+				xhttp.send();
+				
+				xhttp.onreadystatechange = function(){
+					if(this.readyState == 4 && this.status == 200){
+						if(this.responseText.trim()=='1'){
+						$('#result2').html("사용가능한 닉네임");
+						$("#result2").css("color","blue");
+						} else{
+							$('#result2').html("사용 불가능한 닉네임");
+							$("#result2").css("color","red");
+							$("#nickname").val("").focus();
+				
+						}
+					}
+				}			
+			});
+			
+			//이름
+			$('#name').blur(function() {
+			var name = document.getElementById('name');
+			var namec = document.getElementById('namecheck');
+			if (name.value == '') {
+				document.getElementById('namecheck').style.color = "red";
+				namec.innerHTML = '필수 입력 항목입니다';
+			} else if (name.value.length > 5) {
+				namec.innerHTML = '';
+			}
+			});
+			
+			$('#yy').blur(function() {
+				var yy = document.getElementById('yy');
+				var yyc = document.getElementById('birthcheck');
+				if (yy.value == '') {
+					document.getElementById('birthcheck').style.color = "red";
+					yyc.innerHTML = '필수 입력 항목입니다';
+				}
+			});
+			
+			$('#dd').blur(function() {
+				var dd = document.getElementById('dd');
+				var ddc = document.getElementById('birthcheck');
+				if (dd.value == '') {
+					document.getElementById('birthcheck').style.color = "red";
+					ddc.innerHTML = '필수 입력 항목입니다';
+				} 
+			});
+			
+			$('#phone').blur(function() {
+				var phone = document.getElementById('phone');
+				var phonec = document.getElementById('phonecheck');
+				if (phone.value == '') {
+					document.getElementById('phonecheck').style.color = "red";
+					phonec.innerHTML = '필수 입력 항목입니다';
+				} else if (phone.value.length > 5) {
+					phonec.innerHTML = '';
+				}
+			});
+			
+			$('#address').blur(function() {
+				var address = document.getElementById('address');
+				var addressc = document.getElementById('addresscheck');
+				if (address.value == '') {
+					document.getElementById('addresscheck').style.color = "red";
+					addressc.innerHTML = '필수 입력 항목입니다';
+				} else if (address.value.length > 5) {
+					addressc.innerHTML = '';
+				}
+			});
+			
+			//이메일
+			$('#email').blur(function() {
+				var email = document.getElementById('email');
+				var emailc = document.getElementById('emailcheck');
+				if (email.value == '') {
+					document.getElementById('emailcheck').style.color = "red";
+					emailc.innerHTML = '필수 입력 항목입니다';
+				} else if (email.value.length > 5) {
+					emailc.innerHTML = '';
+				}
+			});
+			
+			
+			//아이디
+			//비밀번호
+			//닉네임
+			//이름
+			//년 월 일
+			//성별
+			//핸드폰번호
+			//주소
+			//이메일
+			
+			$('#btnJoin').click(function(){
+				
+			if(!id && id.length){
+				alert("아이디를 입력하세요");
+				f.id.focus();
+				return false;
+			}	
+				
+			if(!pswd1){
+				alert("패스워드를 입력하세요");
+				f.pswd1.focus();
+				return false;
+			}
+			
+			if(!nickname){
+				alert("닉네임을 입력하세요");
+				f.nickname.focus();
+				return false;
+			}
+			
+			if(!name){
+				alert("이름을 입력하세요");
+				f.name.focus();
+				return false;
+			}
+			
+			if(!yy){
+				alert("태어난 년도를 입력하세요");
+				f.yy.focus();
+				return false;
+			}
+			if(!mm){
+				alert("태어난 달을 선택하세요");
+				f.mm.focus();
+				return false;
+			}
+			if(!dd){
+				alert("태어난 일을 입력하세요");
+				f.dd.focus();
+				return false;
+			}
+			if(!gender){
+				alert("성별을 선택하세요");
+				f.gender.focus();
+				return false;
+			}
+			
+			if(!phone){
+				alert("핸드폰 번호를 입력하세요");
+				f.phone.focus();
+				return false;
+			}
+			
+			if(!address){
+				alert("주소를 입력하세요");
+				f.address.focus();
+				return false;
+			}
+			
+			if(!email){
+				alert("이메일을 입력하세요");
+				f.email.focus();
+				return false;
+			}
+			
+			location.href = "./memberJoin.jsp";
+		});
+			
+	});
+	
+	
+	
+		
+
+
+</script>
+
 </head>
 <body>
-<%@include file = "../temp/header.jsp" %>
+<%@include file="../temp/header.jsp" %>
 
 
-<form action="./memberJoin" method="post" enctype="multipart/form-data">
+<form action="${pageContext.request.contextPath}/member/memberJoin" method="post" enctype="multipart/form-data">
 <div id="page-wrapper">
 	<div id="main">
 		<div class="container">
-		<div id = "wrap">
-		
-		<h2> 회원가입합시다.</h2>
-		<div class="join_content">
-			<div class="join_row">
-				<h3 class="join_title">
-				<label for="id">아이디</label>
-				</h3>
-			<span class="ps_box int_id">
-				<input type="text" id="id" class="int" title="ID" maxlength="20">
-			</span>
-			<span class="error_next_box" id="idMsg" style role="alert">필수 정보입니다.</span>
-			</div>
-			<div class="join_row">
-			<h3 class="join_title">
-				<label for="pswd1">비밀번호</label>
-			</h3>
-			<span class="ps_box int_pass" id="pswdImg">
-				<input type="password" id="pswd1" name="pswd1" class="int" title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20">
-				<span class="1b1">
-					<span id="pswd1Span" class="step_txt"></span>
-				</span>
-			</span>
-			<span class="error_next_box" id="pswd1Msg" style role="alert">필수 정보입니다.</span>
+			<div id = "wrap">
+				<h2> 회원가입합시다.</h2>
+				<div class="join_content">
+					<div class="join_row">
+						<h3 class="join_title"><label for="id">아이디</label></h3>
+						<span class="ps_box int_id"><input type="text" id="id" class="int" title="ID" maxlength="20"></span>
+						<input type="hidden" id="idConfirm" value="0">
+						<input type="button" value="중복확인" id="idoverlap" >
+						<div id="result" class="check"></div>
+						<div id="idcheck" class="check"></div>
+						
+					</div>
+					<div class="join_row">
+						<h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+						<span class="ps_box int_pass" id="pswdImg">
+							<input type="password" id="pswd1" name="pswd1" class="int" title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20" >
+						</span>
+							<div id="pwcheck" class="check"></div>
+						</div>
 			
 			<h3 class="join_title">
 				<label for="pswd2">비밀번호 재확인</label>
 			</h3>
-			<span class="ps_box int_pass_check" id="pswd2Img">
+			<span class="ps_box int_pass" id="pswd2Img">
 				<input type="password" id="pswd2" name="pswd2" class="int" title="비밀번호 재확인 입력" aria-describedby="pswd2Blind" maxlength="20">
-				<span id="pswd2Blind" class="wa_blind">설정하려는 비밀번호가 맞는지 확인하기 위해 다시 입력 해주세요.</span>
-			</span>
-			<span class="error_next_box" id="pswd2Msg" style role="alert">필수 정보입니다.</span>
+			</span>	
+				<div id="pwdoverlap" class="check"></div>
 			</div>
-		</div>
-		<div class="row_group">
+		<!--  -->
+			<div class="join_row">
+				<h3 class="join_title">
+					<label for="nickname">닉네임</label>
+				</h3>
+				<span class="ps_box box_right_space"><input type="text" id="nickname" name="nickname" title="닉네임" class="int" maxlength="40"></span>
+				<input type="hidden" id="idConfirm" value="0">
+				<input type="button" value="중복확인" id="idoverlap2" >
+				<div id="result2" class="check"></div>
+				<div id="nicknamecheck" class ="check"></div>
+			</div>
+		
 			<div class="join_row">
 				<h3 class="join_title">
 					<label for="name">이름</label>
@@ -250,7 +536,7 @@
 				<span class="ps_box box_right_space">
 					<input type="text" id="name" name="name" title="이름" class="int" maxlength="40">
 				</span>
-				<span class="error_next_box" id="nameMsg" style="display:none" role="alert"></span>
+				<div id="namecheck" class ="check"></div>
 			</div>
 		<div class="join_row join_birthday">
 			<h3 class="join_title">
@@ -259,12 +545,12 @@
 			<div class="bir_wrap">
 				<div class="bir_yy">
 					<span class="ps_box">
-						<input type="text" id="yy" placeholder="년(4자)" aria-label="년(4자)" class="int" maxlength="4">
+						<input type="text" id="yy" name="yy" placeholder="년(4자)" aria-label="년(4자)" class="int" maxlength="4">
 					</span>
 				</div>
 				<div class="bir_mm">
 					<span class="ps_box">
-						<select id="mm" class="sel" aria-label="월">
+						<select id="mm" name="mm"class="sel" aria-label="월">
 							<option>월</option>
 							<option value="01">1</option>
 							<option value="02">2</option>
@@ -281,17 +567,17 @@
 						</select>
 					</span>
 				</div>
+			
 				<div class="bir_dd">
 					<span class="ps_box">
-						<input type="text" id="dd" placeholder="일" class="int" maxlength="2">
+						<input type="text" id="dd" name="dd" placeholder="일" class="int" maxlength="2">
 						<label for="dd" class="1b1"></label>
 					</span>
 				</div>
 			</div>
 		</div>
-		<span class="error_next_box" id="birthdayMsg" style="display:none: role="alert">
-		</span>
-		</div>
+		<div id="birthcheck" class = "check"></div>
+		
 		<div class="join_row join_sex">
 			<h3 class="join_title">
 				<label for="gender">성별</label>
@@ -304,7 +590,31 @@
 				</select>
 			</div>
 		</div>
-		<span class="error_next_box" id="genderMsg" style="display:none" role="alert"></span>
+		<div id="gendercheck" class = "check"></div>
+		
+		<div class="join_row">
+				<h3 class="join_title">
+					<label for="phone">핸드폰 번호</label>
+				</h3>
+				<span class="ps_box box_right_space">
+					<input type="text" id="phone" name="phone" title="핸드폰 번호" class="int" maxlength="40">
+				</span>
+				<div id="phonecheck" class ="check"></div>
+			</div>
+			
+		<!--  -->
+		
+		<div class="join_row">
+				<h3 class="join_title">
+					<label for="address">주소</label>
+				</h3>
+				<span class="ps_box box_right_space">
+					<input type="text" id="address" name="address" title="주소" class="int" maxlength="40">
+				</span>
+				<div id="addresscheck" class ="check"></div>
+			</div>
+			
+		<!--  -->
 		<div class="join_row join_email">
 			<h3 class="join_title">
 				<label for="email">
@@ -314,22 +624,18 @@
 			<span class="ps_box box_right_space email ">
 				<input type="text" id="email" name="email" maxlength="100" placeholder="이메일 입력" aria-label="이메일 입력" class="int">
 			</span>
+			<div id="emailcheck" class = "check"></div>
 			
 		</div>
-		<span class="error_next_box" id="emailMsg" style="display:none" role="alert"></span>
-		
+	
 		<div>
-				<button type="button" id="btnJoin" class="btn_type">
-				<span>Join</span>
-				</button>
+				<input type="submit" id="btnJoin" class="btn_type" value="Join">
 			</div>
 		
 		
 	</div>
 			</div>
-		
 		</div>
-		
 	</div>
 	
 </form>
