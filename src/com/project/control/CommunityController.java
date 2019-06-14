@@ -60,26 +60,36 @@ public class CommunityController extends HttpServlet {
 		// 공지사항
 		}else if(command.equals("/notice/communityNotice")){
 			actionForward = noticeService.list(request, response);
+		}else if(command.equals("/notice/communityNoticeSelect")) {
+			actionForward = noticeService.select(request, response);
+			
+			// 사용안함;
 		}else if(command.equals("/notice/communityNoticeWrite")) {
 			actionForward = noticeService.insert(request, response);
+			// 사용안함;
 		}else if(command.equals("/notice/communityNoticeUpdate")) {
 			actionForward = noticeService.update(request, response);
+			// 사용안함;
 		}else if(command.equals("/notice/communityNoticeDelete")) {
 			actionForward = noticeService.delete(request, response);
 		
 		// 자유게시판
 		}else if(command.equals("/board/communityBoard")) {
 			actionForward = comBoardService.list(request, response);
+		}else if(command.equals("/board/communityBoardSelect")) {
+			actionForward = comBoardService.select(request, response);
 		}else if(command.equals("/board/communityBoardWrite")){
 			actionForward = comBoardService.insert(request, response);
 		}else if(command.equals("/board/communityBoardUpdate")){
 			actionForward = comBoardService.update(request, response);
 		}else if(command.equals("/board/communityBoardDelete")){
 			actionForward = comBoardService.delete(request, response);
-		
+
 		// 사용자리뷰
 		}else if(command.equals("/review/communityReview")) {
 			actionForward = reviewService.list(request, response);
+		}else if(command.equals("/review/communityReviewSelect")) {
+			actionForward = reviewService.select(request, response);
 		}else if(command.equals("/review/communityReviewWrite")){
 			actionForward = reviewService.insert(request, response);
 		}else if(command.equals("/review/communityReviewUpdate")){
@@ -90,6 +100,8 @@ public class CommunityController extends HttpServlet {
 		// 중고나라
 		}else if(command.equals("/used/communityUsed")) {
 			actionForward = usedService.list(request, response);
+		}else if(command.equals("/used/communutyUsedSelect")) {
+			actionForward = usedService.select(request, response);
 		}else if(command.equals("/used/communityusedWrite")){
 			actionForward = usedService.insert(request, response);
 		}else if(command.equals("/used/communityusedUpdate")){
@@ -100,6 +112,8 @@ public class CommunityController extends HttpServlet {
 		// QnA
 		}else if(command.equals("/qna/communityQna")) {
 			actionForward = qnaService.list(request, response);
+		}else if(command.equals("/qna/communityQnaSelect")) {
+			actionForward = qnaService.select(request, response);
 		}else if(command.equals("/qna/communityQnaWrite")){
 			actionForward = qnaService.insert(request, response);
 		}else if(command.equals("/qna/communityQnaUpdate")){
@@ -110,16 +124,22 @@ public class CommunityController extends HttpServlet {
 		// 버그리포트
 		}else if(command.equals("/bug/communityBug")) {
 			actionForward = bugService.list(request, response);
+		}else if(command.equals("/bug/communityBugSelect")){
+			actionForward = bugService.select(request, response);
+		
+		
+			// 사용안함;
 		}else if(command.equals("/bug/communityBugWrite")){
 			actionForward = bugService.insert(request, response);
+			// 사용안함;
 		}else if(command.equals("/bug/communityBugUpdate")){
 			actionForward = bugService.update(request, response);
+			// 사용안함;
 		}else if(command.equals("/bug/communityBugDelete")){
 			actionForward = bugService.delete(request, response);
 		}else {
 			actionForward = new ActionForward(); // ?? 이거 왜함? 초기화인가?
 		}
-		
 		// service에서 해결한 뒤 다시 return받은 actionforward를 이용해 requesetdispatcher 를 세팅;
 		// 그래야 path를 연결해서 출력 할 수 있는듯?
 		if(actionForward.isCheck()) {

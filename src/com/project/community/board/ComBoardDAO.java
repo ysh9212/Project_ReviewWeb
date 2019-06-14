@@ -61,33 +61,48 @@ public class ComBoardDAO implements BoardDAO{
 	}
 	@Override
 	public BoardDTO selectOne(int no, Connection con) throws Exception {
-		BoardDTO boardDTO = new BoardDTO();
-		String sql = "select * from community_notice where no=?";
+		ComBoardDTO comBoardDTO = new ComBoardDTO();
+		String sql = "select * from community_board where no=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, no);
 		ResultSet rs = st.executeQuery();
 		if(rs.next()) {
-			boardDTO.setNo(rs.getInt("no"));
-			boardDTO.setTitle(rs.getString("title"));
-			boardDTO.setWriter(rs.getString("writer"));
-			boardDTO.setReg_date(rs.getString("reg_date"));
-			boardDTO.setHit(rs.getInt("hit"));
-			boardDTO.setRecommend(rs.getInt("recommend"));
-			boardDTO.setDecommend(rs.getInt("decommend"));
-			boardDTO.setContents(rs.getString("contents"));
+			comBoardDTO.setNo(rs.getInt("no"));
+			comBoardDTO.setTitle(rs.getString("title"));
+			comBoardDTO.setWriter(rs.getString("writer"));
+			comBoardDTO.setReg_date(rs.getString("reg_date"));
+			comBoardDTO.setHit(rs.getInt("hit"));
+			comBoardDTO.setRecommend(rs.getInt("recommend"));
+			comBoardDTO.setDecommend(rs.getInt("decommend"));
+			comBoardDTO.setContents(rs.getString("contents"));
 		}
 		rs.close();
 		st.close();
-		return boardDTO;
+		return comBoardDTO;
 	}
 	@Override
 	public int insert(BoardDTO boardDTO, Connection con) throws Exception {
-		return 0;
+		int result = 0;
+		String sql = "insert into community_board values(community_seq.nextval,?,?,sysdate,0,0,0,?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, boardDTO.getTitle());
+		st.setString(2, boardDTO.getWriter());
+		st.setString(3, boardDTO.getContents());
+		result = st.executeUpdate();
+		st.close();
+		return result;
 	}
 	@Override
 	public int update(BoardDTO boardDTO, Connection con) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		String sql = "update community_board set title=?, contents=? where no=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, boardDTO.getTitle());
+		st.setString(2, boardDTO.getContents());
+		st.setInt(3, boardDTO.getNo());
+		result = st.executeUpdate();
+		st.close();
+		return result;
 	}
 	@Override
 	public int updateHit(int no, Connection con) throws Exception {
@@ -96,11 +111,15 @@ public class ComBoardDAO implements BoardDAO{
 		st.setInt(1, no);
 		int result = st.executeUpdate();
 		st.close();
-		return 0;
+		return result;
 	}
 	@Override
 	public int delete(int no, Connection con) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql = "delete community_board where no=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, no);
+		int result = st.executeUpdate();
+		st.close();
+		return result;
 	}
 }

@@ -36,7 +36,7 @@
 			<tr>
 				<td>${bdto.no}</td>
 				<td>
-				<a href="./${board}select?no=${bdto.no}">${bdto.title}</a>
+				<a href="./communityBoardSelect?no=${bdto.no}">${bdto.title}</a>
 				</td>
 				<td>${bdto.writer}</td>
 				<td>${bdto.reg_date}</td>
@@ -48,7 +48,7 @@
 		</tbody>
 	</table>
 	</div>
-	<a href="./${board}communityBoardWrite" class="btn btn-primary">Write</a>
+	<a href="./communityBoardWrite" class="btn btn-primary">Write</a>
 </div>
 <%@include file="../../temp/footer.jsp" %>
 </body>

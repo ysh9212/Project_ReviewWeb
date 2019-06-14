@@ -39,12 +39,26 @@ public class CommunityService {
 		try {
 			Connection con = DBConnector.getConnect();
 			List<BoardDTO> ar = noticeDAO.selectList(searchRow, con);
-			List<BoardDTO> ar2 = comBoardDAO.selectList(searchRow, con);
-			request.setAttribute("nlist", ar);
-			request.setAttribute("nboard", "nboard");
+			List<BoardDTO> bAr = comBoardDAO.selectList(searchRow, con);
+			List<BoardDTO> rAr = reviewDAO.selectList(searchRow, con);
+			List<BoardDTO> bugAr = bugDAO.selectList(searchRow, con);
+			List<BoardDTO> uAr = usedDAO.selectList(searchRow, con);
 			
-			request.setAttribute("blist", ar2);
-			request.setAttribute("bboard", "bboard");
+			request.setAttribute("nlist", ar);
+			request.setAttribute("nboard", "공지사항");
+
+			request.setAttribute("blist", bAr);
+			request.setAttribute("bboard", "자유게시판");
+
+			request.setAttribute("rlist", rAr);
+			request.setAttribute("rboard", "유저리뷰");
+
+			request.setAttribute("buglist", bugAr);
+			request.setAttribute("bugboard", "버그게시판");
+
+			request.setAttribute("ulist", uAr);
+			request.setAttribute("uboard", "중고상품");
+
 			actionForward.setCheck(true);
 			actionForward.setPath("../WEB-INF/views/community/communityList.jsp");
 		} catch (Exception e) {

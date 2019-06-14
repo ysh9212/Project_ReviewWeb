@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 글수정</title>
+<title>유저리뷰 글수정</title>
 <c:import url="../../temp/bootstrap.jsp" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -52,19 +52,19 @@ $(function() {
 	<div class="page-wrapper">
 		<div id="main">
 			<div class="container">
-			<form id ="frm"action="./communityBoardUpdate" method="post">
-			<input type="hidden" name = "no" value="${bdto.no }">
+			<form id ="frm"action="./communityQnaUpdate" method="post">
+			<input type="hidden" name = "no" value="${qdto.no}">
 			<div class="form-group">
 				<label for="title">Title:</label> 
-				<input type="text" class="form-control" id="title" name = "title" value="${bdto.title}">
+				<input type="text" class="form-control" id="title" name = "title" value="${qdto.title}">
 			</div>
 			<div class="form-group">
 				<label for="writer">Writer:</label> 
-				<input type="text" class="form-control" id="writer" name="writer" value="${bdto.writer}">
+				<input type="text" class="form-control" id="writer" name="writer" value="${qdto.writer}">
 			</div>
 			<div class="form-group">
 				<label for="contents">Contents:</label>
-				<textarea class="form-control" rows="5" id="contents" name="contents">${bdto.contents}</textarea>
+				<textarea class="form-control" rows="5" id="contents" name="contents">${qdto.contents}</textarea>
 			</div>		
 				<input type="button" id = "save" class="btn btn-danger" value = "write">
 			</form>
