@@ -15,6 +15,7 @@
 					<nav id="nav">
 						<a href="${pageContext.request.contextPath }/index.do" class="current-page-item">HOME</a> 
 						<a href="#">REVIEW</a> 
+
 							<a href="${pageContext.request.contextPath }/news/newsList">NEWS</a>
 						<a href="#">COMMUNITY</a>
 						<div class="dropdown">
@@ -29,12 +30,12 @@
 						<a href="${pageContext.request.contextPath }/event/eventList">EVENT</a>
 						<% MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");%>
 						<% if(memberDTO != null){ %>
-						<a class="nav-link" href="<%=application.getContextPath()%>/member/memberLogout">Logout</a>
-						<a class="nav-link" href="<%=application.getContextPath()%>/member/memberMypage">Mypage</a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/member/memberLogout">Logout</a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/member/memberMypage">Mypage</a>
 					
 						<%}else { %>
-						<a class="mav-link" href="<%=application.getContextPath()%>/member/memberLogin">Login</a>
-						<a class="nav-link" href="<%=application.getContextPath()%>/member/memberCheck">Join</a>
+						<a class="mav-link" href="${pageContext.request.contextPath}/member/memberLogin">Login</a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/member/memberCheck">Join</a>
 						
 						<%} %>
 						

@@ -86,7 +86,7 @@ ActionForward actionForward = new ActionForward();
 			con = DBConnector.getConnect();
 			int no = Integer.parseInt(request.getParameter("no"));
 			boardDTO =eventDAO.selectOne(no, con);
-			newsDAO.updateHit(no, con);
+			eventDAO.updateHit(no, con);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -101,7 +101,7 @@ ActionForward actionForward = new ActionForward();
 		String path = "";
 		if(boardDTO != null) {
 			request.setAttribute("dto", boardDTO);
-			path = "../../WEB-INF/views/event/eventSelect.jsp";
+			path = "../WEB-INF/views/event/eventSelect.jsp";
 		}else {
 			request.setAttribute("message", "No Data");
 			request.setAttribute("path", "./newsList");
