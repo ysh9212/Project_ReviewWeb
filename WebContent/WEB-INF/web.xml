@@ -37,27 +37,28 @@
     <url-pattern>/shopqnacomments/*</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>news</servlet-name>
-    <servlet-class>com.project.control.NewsController</servlet-class>
+    <servlet-name>indexadmin</servlet-name>
+    <servlet-class>com.project.control.IndexAdminController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>news</servlet-name>
-    <url-pattern>/news/*</url-pattern>
+    <servlet-name>indexadmin</servlet-name>
+    <url-pattern>/admin.do</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>member</servlet-name>
-    <servlet-class>com.project.control.MemberController</servlet-class>
+  	<servlet-name>manage</servlet-name>
+  	<servlet-class>com.project.control.ManageController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>member</servlet-name>
-    <url-pattern>/member/*</url-pattern>
+  	<servlet-name>manage</servlet-name>
+  	<url-pattern>/admin/*</url-pattern>
   </servlet-mapping>
-    <servlet>
-    <servlet-name>event</servlet-name>
-    <servlet-class>com.project.control.EventController</servlet-class>
+  <servlet>
+  	<servlet-name>comments</servlet-name>
+  	<servlet-class>com.project.control.CommentsController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>event</servlet-name>
-    <url-pattern>/event/*</url-pattern>
+  	<servlet-name>comments</servlet-name>
+  	<url-pattern>/comments/*</url-pattern>
   </servlet-mapping>
+	
 </web-app>
