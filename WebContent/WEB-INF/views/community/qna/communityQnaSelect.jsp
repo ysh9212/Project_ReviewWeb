@@ -16,7 +16,7 @@
 		$('#delete').click(function() {
 			var check = confirm("정말 삭제하시겠습니까?");
 			if(check){
-				$.get("./communityQnaDelete?no=${qdto.no}",function(data){
+				$.get("./communityQnaDelete?no=${dto.no}",function(data){
 					if(data>0){
 						alert("삭제 되었습니다.");
 					}else{
@@ -48,21 +48,21 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>${qdto.no}</td>
-							<td>${qdto.title}</td>
-							<td>${qdto.writer}</td>
-							<td>${qdto.reg_date}</td>
-							<td>${qdto.hit}</td>
+							<td>${dto.no}</td>
+							<td>${dto.title}</td>
+							<td>${dto.writer}</td>
+							<td>${dto.reg_date}</td>
+							<td>${dto.hit}</td>
 						</tr>
 					</tbody>
 					<tr>
-						<td colspan="6">${qdto.contents}
+						<td colspan="6">${dto.contents}
 					</tr>
 				</table>
 			</div>
 		</div>
 		<a href="./communityQna">목록</a>
-		<a href="./communityQnaUpdate?no=${qdto.no}">수정</a>
+		<a href="./communityQnaUpdate?no=${dto.no}">수정</a>
 		<button id="delete" class="del">삭제</button>
 		<button id="recommend" class="rec">추천</button>
 		<button id="decommend" class="dec">비추천</button>

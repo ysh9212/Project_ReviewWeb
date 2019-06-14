@@ -28,18 +28,22 @@
 						<td>글쓴이</td>
 						<td>날짜</td>
 						<td>조회수</td>
+						<td>추천</td>
+						<td>비추천</td>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${rlist}" var="rdto">
+					<c:forEach items="${list}" var="dto">
 						<tr>
-							<td>${rdto.no}</td>
+							<td>${dto.no}</td>
 							<td>
-							<a href="./communityReviewSelect?no=${rdto.no}">${rdto.title}</a>
+							<a href="./communityReviewSelect?no=${dto.no}">${dto.title}</a>
 							</td>
-							<td>${rdto.writer}</td>
-							<td>${rdto.reg_date}</td>
-							<td>${rdto.hit}</td>
+							<td>${dto.writer}</td>
+							<td>${dto.reg_date}</td>
+							<td>${dto.hit}</td>
+							<td>${dto.recommend}</td>
+							<td>${dto.decommend}</td>
 						</tr>
 					</c:forEach>
 				</tbody>

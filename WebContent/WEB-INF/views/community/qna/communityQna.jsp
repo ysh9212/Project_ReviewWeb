@@ -32,17 +32,17 @@
 			</tr>
 		</thead>
 		<tbody>
-		<c:forEach items="${qlist}" var="qdto">
+		<c:forEach items="${list}" var="dto">
 			<tr>
-				<td>${qdto.no}</td>
+				<td>${dto.no}</td>
 				<td>
-				<a href="./communityQnaSelect?no=${qdto.no}">${qdto.title}</a>
+				<a href="./communityQnaSelect?no=${dto.no}">${dto.title}</a>
 				</td>
-				<td>${qdto.writer}</td>
-				<td>${qdto.reg_date}</td>
-				<td>${qdto.hit}</td>
-				<td>${qdto.recommend}</td>
-				<td>${qdto.decommend}</td>
+				<td>${dto.writer}</td>
+				<td>${dto.reg_date}</td>
+				<td>${dto.hit}</td>
+				<td>${dto.recommend}</td>
+				<td>${dto.decommend}</td>
 			</tr>
 		</c:forEach>
 		</tbody>

@@ -42,9 +42,9 @@ public class QnaService implements Action{
 			List<BoardDTO> ar = qnaDAO.selectList(searchRow, con);
 			totalCount = qnaDAO.getTotalCount(searchRow, con);
 			SearchPager searchPager = s.makePage(totalCount);
-			request.setAttribute("qpager", searchPager);
-			request.setAttribute("qlist", ar);
-			request.setAttribute("qboard", "qboard");
+			request.setAttribute("pager", searchPager);
+			request.setAttribute("list", ar);
+			request.setAttribute("board", "board");
 			actionForward.setCheck(true);
 			actionForward.setPath("../../WEB-INF/views/community/qna/communityQna.jsp");
 		} catch (Exception e) {
@@ -80,7 +80,7 @@ public class QnaService implements Action{
 		}
 		String path = "";
 		if(boardDTO != null) {
-			request.setAttribute("qdto", boardDTO);
+			request.setAttribute("dto", boardDTO);
 			path = "../../WEB-INF/views/community/qna/communityQnaSelect.jsp";
 		}else {
 			request.setAttribute("message", "No Data");
@@ -199,7 +199,7 @@ public class QnaService implements Action{
 					e.printStackTrace();
 				}
 			} // end of finally
-			request.setAttribute("qdto", boardDTO);
+			request.setAttribute("dto", boardDTO);
 		}
 		actionForward.setCheck(check);
 		actionForward.setPath(path);

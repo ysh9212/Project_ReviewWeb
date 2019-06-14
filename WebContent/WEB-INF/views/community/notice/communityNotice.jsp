@@ -31,15 +31,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${nlist}" var="ndto">
+					<c:forEach items="${list}" var="dto">
 						<tr>
-							<td>${ndto.no}</td>
+							<td>${dto.no}</td>
 							<td>
-							<a href="./communityNoticeSelect?no=${ndto.no}">${ndto.title}</a>
+							<a href="./communityNoticeSelect?no=${dto.no}">${dto.title}</a>
 							</td>
-							<td>${ndto.writer}</td>
-							<td>${ndto.reg_date}</td>
-							<td>${ndto.hit}</td>
+							<td>${dto.writer}</td>
+							<td>${dto.reg_date}</td>
+							<td>${dto.hit}</td>
 						</tr>
 					</c:forEach>
 				</tbody>

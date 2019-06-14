@@ -41,9 +41,9 @@ public class BugService implements Action{
 			List<BoardDTO> ar = bugDAO.selectList(searchRow, con);
 			totalCount = bugDAO.getTotalCount(searchRow, con);
 			SearchPager searchPager = s.makePage(totalCount);
-			request.setAttribute("bugpager", searchPager);
-			request.setAttribute("buglist", ar);
-			request.setAttribute("bugboard", "bugboard");
+			request.setAttribute("pager", searchPager);
+			request.setAttribute("list", ar);
+			request.setAttribute("board", "board");
 			actionForward.setCheck(true);
 			actionForward.setPath("../../WEB-INF/views/community/bug/communityBug.jsp");
 		} catch (Exception e) {
@@ -80,7 +80,7 @@ public class BugService implements Action{
 		}
 		String path = "";
 		if(boardDTO != null) {
-			request.setAttribute("bugdto", boardDTO);
+			request.setAttribute("dto", boardDTO);
 			path = "../../WEB-INF/views/community/bug/communityBugSelect.jsp";
 		}else {
 			request.setAttribute("message", "No Data");

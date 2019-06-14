@@ -17,7 +17,7 @@
 			var check = confirm("정말 삭제하시겠습니까?");
 			if (check) {
 				// $.get 지금 페이지로 위 주소를 보낸뒤 값을 data로 받는다.
-				$.get("./communityBoardDelete?no=${bdto.no}", function(data) {
+				$.get("./communityBoardDelete?no=${dto.no}", function(data) {
 					if(data>0){
 						alert("삭제 되었습니다.");
 					}else{
@@ -48,20 +48,20 @@
 						</tr>
 					</thead>
 					<tr>
-						<td>${bdto.no}</td>
-						<td>${bdto.title}</td>
-						<td>${bdto.writer}</td>
-						<td>${bdto.reg_date}</td>
-						<td>${bdto.hit}</td>
+						<td>${dto.no}</td>
+						<td>${dto.title}</td>
+						<td>${dto.writer}</td>
+						<td>${dto.reg_date}</td>
+						<td>${dto.hit}</td>
 					</tr>
 					<tr>
-						<td colspan="6">${bdto.contents}
+						<td colspan="6">${dto.contents}
 					</tr>
 				</table>
 			</div>
 		</div>
 		<a href="./communityBoard">목록</a>
-		<a href="./communityBoardUpdate?no=${bdto.no}">수정</a>
+		<a href="./communityBoardUpdate?no=${dto.no}">수정</a>
 		<button id="list" class="list">목록</button>
 		<button id="update" class="update">수정</button>
 		<button id="delete" class="del">삭제</button>

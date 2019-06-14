@@ -31,13 +31,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${buglist}" var="bugdto">
+					<c:forEach items="${list}" var="dto">
 						<tr>
-							<td>${bugdto.no}</td>
-							<td><a href="./communityBugSelect?no=${bugdto.no}">${bugdto.title}</a><td>
-							<td>${bugdto.writer}</td>
-							<td>${bugdto.reg_date}</td>
-							<td>${bugdto.hit}</td>
+							<td>${dto.no}</td>
+							<td><a href="./communityBugSelect?no=${dto.no}">${dto.title}</a><td>
+							<td>${dto.writer}</td>
+							<td>${dto.reg_date}</td>
+							<td>${dto.hit}</td>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -32,17 +32,17 @@
 			</tr>
 		</thead>
 		<tbody>
-		<c:forEach items="${blist}" var="bdto">
+		<c:forEach items="${list}" var="dto">
 			<tr>
-				<td>${bdto.no}</td>
+				<td>${dto.no}</td>
 				<td>
-				<a href="./communityBoardSelect?no=${bdto.no}">${bdto.title}</a>
+				<a href="./communityBoardSelect?no=${dto.no}">${dto.title}</a>
 				</td>
-				<td>${bdto.writer}</td>
-				<td>${bdto.reg_date}</td>
-				<td>${bdto.hit}</td>
-				<td>${bdto.recommend}</td>
-				<td>${bdto.decommend}</td>
+				<td>${dto.writer}</td>
+				<td>${dto.reg_date}</td>
+				<td>${dto.hit}</td>
+				<td>${dto.recommend}</td>
+				<td>${dto.decommend}</td>
 			</tr>
 		</c:forEach>
 		</tbody>

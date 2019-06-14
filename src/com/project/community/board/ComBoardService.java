@@ -44,9 +44,9 @@ public class ComBoardService implements Action{
 		//2. page;
 		totalCount = comBoardDAO.getTotalCount(searchRow, con);
 		SearchPager searchPager = s.makePage(totalCount);
-		request.setAttribute("bpager", searchPager);
-		request.setAttribute("blist", ar);
-		request.setAttribute("bboard", "bboard");
+		request.setAttribute("pager", searchPager);
+		request.setAttribute("list", ar);
+		request.setAttribute("board", "board");
 		actionForward.setCheck(true);
 		actionForward.setPath("../../WEB-INF/views/community/board/communityBoard.jsp");
 		} catch (Exception e) {
@@ -83,7 +83,7 @@ public class ComBoardService implements Action{
 		}
 		String path = "";
 		if(boardDTO != null) {
-			request.setAttribute("bdto", boardDTO);
+			request.setAttribute("dto", boardDTO);
 			path = "../../WEB-INF/views/community/board/communityBoardSelect.jsp";
 		}else {
 			request.setAttribute("message", "No Data");

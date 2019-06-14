@@ -8,7 +8,7 @@
 <html>
 <jsp:include page="../communityCommon/css.jsp"/>
 <head>
-<title>${nboard}select</title>
+<title>${board}select</title>
 </head>
 <body>
 <%@include file = "../../temp/header.jsp" %>
@@ -28,14 +28,14 @@
 						</tr>
 					</thead>
 					<tr>
-						<td>${ndto.no}</td>
-						<td>${ndto.title}</td>
-						<td>${ndto.writer}</td>
-						<td>${ndto.reg_date}</td>
-						<td>${ndto.hit}</td>
+						<td>${dto.no}</td>
+						<td>${dto.title}</td>
+						<td>${dto.writer}</td>
+						<td>${dto.reg_date}</td>
+						<td>${dto.hit}</td>
 					</tr>
 					<tr>
-						<td colspan="6">${ndto.contents}
+						<td colspan="6">${dto.contents}
 					</tr>
 				</table>
 			</div>

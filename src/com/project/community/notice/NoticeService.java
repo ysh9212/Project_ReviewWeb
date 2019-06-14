@@ -41,9 +41,9 @@ public class NoticeService implements Action{
 			List<BoardDTO> ar = noticeDAO.selectList(searchRow, con);
 			totalCount = noticeDAO.getTotalCount(searchRow, con);
 			SearchPager searchPager = s.makePage(totalCount);
-			request.setAttribute("npager", searchPager);
-			request.setAttribute("nlist", ar);
-			request.setAttribute("nboard", "nboard");
+			request.setAttribute("pager", searchPager);
+			request.setAttribute("list", ar);
+			request.setAttribute("board", "board");
 			actionForward.setCheck(true);
 			actionForward.setPath("../../WEB-INF/views/community/notice/communityNotice.jsp");
 		} catch (Exception e) {
@@ -80,7 +80,7 @@ public class NoticeService implements Action{
 		}
 		String path = "";
 		if(boardDTO != null) {
-			request.setAttribute("ndto", boardDTO);
+			request.setAttribute("dto", boardDTO);
 			path = "../../WEB-INF/views/community/notice/communityNoticeSelect.jsp";
 		}else {
 			request.setAttribute("message", "No Data");

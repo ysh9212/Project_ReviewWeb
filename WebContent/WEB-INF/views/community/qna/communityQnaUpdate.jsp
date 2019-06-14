@@ -53,18 +53,18 @@ $(function() {
 		<div id="main">
 			<div class="container">
 			<form id ="frm"action="./communityQnaUpdate" method="post">
-			<input type="hidden" name = "no" value="${qdto.no}">
+			<input type="hidden" name = "no" value="${dto.no}">
 			<div class="form-group">
 				<label for="title">Title:</label> 
-				<input type="text" class="form-control" id="title" name = "title" value="${qdto.title}">
+				<input type="text" class="form-control" id="title" name = "title" value="${dto.title}">
 			</div>
 			<div class="form-group">
 				<label for="writer">Writer:</label> 
-				<input type="text" class="form-control" id="writer" name="writer" value="${qdto.writer}">
+				<input type="text" class="form-control" id="writer" name="writer" value="${dto.writer}">
 			</div>
 			<div class="form-group">
 				<label for="contents">Contents:</label>
-				<textarea class="form-control" rows="5" id="contents" name="contents">${qdto.contents}</textarea>
+				<textarea class="form-control" rows="5" id="contents" name="contents">${dto.contents}</textarea>
 			</div>		
 				<input type="button" id = "save" class="btn btn-danger" value = "write">
 			</form>

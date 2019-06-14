@@ -17,7 +17,7 @@
 		$('#delete').click(function() {
 			var check = confirm("정말 삭제하시겠습니까?");
 			if (check) {
-				$.get("./communityReviewDelete?no=${rdto.no}", function(data) {
+				$.get("./communityReviewDelete?no=${dto.no}", function(data) {
 					if (data > 0) {
 						alert("삭제되었습니다.");
 					} else {
@@ -48,20 +48,20 @@
 							</tr>
 						</thead>
 						<tr>
-							<td>${rdto.no}</td>
-							<td>${rdto.title}</td>
-							<td>${rdto.writer}</td>
-							<td>${rdto.reg_date}</td>
-							<td>${rdto.hit}</td>
+							<td>${dto.no}</td>
+							<td>${dto.title}</td>
+							<td>${dto.writer}</td>
+							<td>${dto.reg_date}</td>
+							<td>${dto.hit}</td>
 						</tr>
 						<tr>
-							<td colspan="6">${rdto.contents}
+							<td colspan="6">${dto.contents}
 						</tr>
 					</table>
 				</div>
 			</div>
 			<a href="./communityReview">목록</a> <a
-				href="./communityReviewUpdate?no=${rdto.no}">수정</a>
+				href="./communityReviewUpdate?no=${dto.no}">수정</a>
 			<button id="list" class="list">목록</button>
 			<button id="update" class="update">수정</button>
 			<button id="delete" class="del">삭제</button>

@@ -41,9 +41,9 @@ public class ReviewService implements Action{
 		List<BoardDTO> ar = reviewDAO.selectList(searchRow, con);
 		totalCount = reviewDAO.getTotalCount(searchRow, con);
 		SearchPager searchPager = s.makePage(totalCount);
-		request.setAttribute("rpager", searchPager);
-		request.setAttribute("rlist", ar);
-		request.setAttribute("rboard", "rboard");
+		request.setAttribute("pager", searchPager);
+		request.setAttribute("list", ar);
+		request.setAttribute("board", "board");
 		actionForward.setCheck(true);
 		actionForward.setPath("../../WEB-INF/views/community/review/communityReview.jsp");
 		} catch (Exception e) {
@@ -79,7 +79,7 @@ public class ReviewService implements Action{
 		}
 		String path = "";
 		if(boardDTO != null) {
-			request.setAttribute("rdto", boardDTO);
+			request.setAttribute("dto", boardDTO);
 			path = "../../WEB-INF/views/community/review/communityReviewSelect.jsp";
 		}else {
 			request.setAttribute("message", "No Data");
@@ -198,7 +198,7 @@ public class ReviewService implements Action{
 					e.printStackTrace();
 				}
 			} // end of finally
-			request.setAttribute("rdto", boardDTO);
+			request.setAttribute("dto", boardDTO);
 		}
 		actionForward.setCheck(check);
 		actionForward.setPath(path);
