@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+
 encoding//src/com/project/board/BoardDAO.java=UTF-8
+
+encoding//WebContent/WEB-INF/views/temp/adminsetting.jsp=UTF-8
+encoding//WebContent/assets/css/admincss.jsp=UTF-8

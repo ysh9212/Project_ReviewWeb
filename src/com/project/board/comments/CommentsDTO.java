@@ -1,22 +1,22 @@
-package com.project.shop.qna.comments;
+package com.project.board.comments;
 
 public class CommentsDTO {
-	private int cnum;
-	private int num;
+	private int cno;
+	private int no;
 	private String writer;
 	private String contents;
 	private String reg_date;
-	public int getCnum() {
-		return cnum;
+	public int getCno() {
+		return cno;
 	}
-	public void setCnum(int cnum) {
-		this.cnum = cnum;
+	public void setCno(int cno) {
+		this.cno = cno;
 	}
-	public int getNum() {
-		return num;
+	public int getNo() {
+		return no;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setNo(int no) {
+		this.no = no;
 	}
 	public String getWriter() {
 		return writer;
@@ -36,5 +36,6 @@ public class CommentsDTO {
 	public void setReg_date(String reg_date) {
 		this.reg_date = reg_date;
 	}
+	
 	
 }

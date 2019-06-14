@@ -1,4 +1,4 @@
-package com.project.shop.qna.comments;
+package com.project.shop.notice.comments;
 
 import java.sql.Connection;
 import java.sql.SQLException;

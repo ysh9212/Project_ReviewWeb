@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.project.action.ActionForward;
-import com.project.shop.notice.comments.CommentsService;
+import com.project.board.comments.CommentsService;
 
 /**
- * Servlet implementation class ShopCommentsController
+ * Servlet implementation class CommentsController
  */
-@WebServlet("/ShopCommentsController")
-public class ShopCommentsController extends HttpServlet {
+@WebServlet("/CommentsController")
+public class CommentsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CommentsService commentsService;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShopCommentsController() {
+    public CommentsController() {
         super();
         commentsService = new CommentsService();
         // TODO Auto-generated constructor stub
@@ -34,7 +34,6 @@ public class ShopCommentsController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getPathInfo();
-		System.out.println(command);
 		ActionForward actionForward = null;
 		if(command.equals("/commentsList")) {
 			actionForward = commentsService.list(request, response);
@@ -47,12 +46,11 @@ public class ShopCommentsController extends HttpServlet {
 		}
 		
 		if(actionForward.isCheck()) {
-			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
+			RequestDispatcher view =request.getRequestDispatcher(actionForward.getPath());
 			view.forward(request, response);
 		}else {
 			response.sendRedirect(actionForward.getPath());
 		}
-	
 	}
 
 	/**
