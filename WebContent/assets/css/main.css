@@ -73,6 +73,7 @@ input, select, textarea {
 
 /* Basic */
 
+
    html {
       box-sizing: border-box;
    }
@@ -169,6 +170,105 @@ input, select, textarea {
    section:last-child, article:last-child {
       margin-bottom: 0;
    }
+
+	html {
+		box-sizing: border-box;
+	}
+
+	*, *:before, *:after {
+		box-sizing: inherit;
+	}
+
+	@-ms-viewport {
+		width: device-width;
+	}
+
+	body {
+		font-size: 13.5pt;
+		font-family: sans-serif;
+		
+		font-family: 'Ubuntu Condensed', sans-serif;
+		color: #878e83;
+		letter-spacing: -1px;
+	}
+
+	h1, h2, h3, h4 {
+		font-weight: normal;
+	}
+
+	h1 {
+		text-transform: lowercase;
+	}
+
+	h2 {
+		text-transform: uppercase;
+		font-size: 1.6em;
+		letter-spacing: 0.35em;
+		font-weight: 900;
+		line-height: 1.5;
+	}
+
+	h3, h4 {
+		color: #283121;
+		margin-bottom: 0.5em;
+	}
+
+	h3 {
+		font-size: 1.2em;
+		margin-bottom: 0.8em;
+	}
+
+	h4 {
+		font-size: 1em;
+	}
+
+	p, ul {
+		margin-bottom: 1.25em;
+	}
+
+	p {
+		line-height: 1.8em;
+	}
+
+	strong {
+		color: #474e43;
+	}
+
+	img.left {
+		float: left;
+		margin: 2px 1.25em 0 0;
+	}
+
+	img.top {
+		margin: 4px 0 2.25em 0;
+	}
+
+	ul {
+		padding: 0.25em 0 0 0;
+	}
+
+	a {
+		color: #5d93a2;
+		text-decoration: underline;
+	}
+
+		a:hover {
+			text-decoration: none;
+		}
+
+	* > p:last-child {
+		margin-bottom: 0 !important;
+	}
+
+	section, article {
+		margin: 0 0 60px 0;
+	}
+
+	section:last-child, article:last-child {
+		margin-bottom: 0;
+	}
+
+
 .btn{
   background:#007294;
   color:#fff;
@@ -185,6 +285,7 @@ input, select, textarea {
   text-decoration: none;
 }
 .btn1 {
+
    position: relative;
    border: 0;
    padding: 10px 20px;
@@ -192,6 +293,15 @@ input, select, textarea {
    text-align: center;
    color: white;
    cursor: pointer;
+
+	position: relative;
+	border: 0;
+	padding: 10px 20px;
+	display: inline-block;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+
 }
 .rounded {
   border-radius: 10px;
@@ -223,7 +333,30 @@ input, select, textarea {
   width:100%;
   transition:800ms ease all;
 }
-   
+
+	/* 슬라이드 조작 */
+	 .slide{height:400px;overflow:hidden;position:relative;}
+    .slide li{position:absolute;left:0;right:0;top:0;bottom:0;opacity:0;transition:1s;}
+    .slide li:nth-child(1){background:#ffa;}
+    .slide li:nth-child(2){background:#faa;}
+    .slide li:nth-child(3){background:#afa;}
+    .slide li:nth-child(4){background:#aaf;}
+    .slide input{display:none;}
+    .slide .bullet{position:absolute;bottom:20px;left:0;right:0;text-align:center;z-index:10;}
+    .slide .bullet label{width:10px;height:10px;border-radius:10px;border:2px solid #666;display:inline-block;background:#fff;font-size:0;transition:0.5s;cursor:pointer;}
+    /* 슬라이드 조작 */
+    #pos1:checked ~ ul li:nth-child(1),
+    #pos2:checked ~ ul li:nth-child(2),
+    #pos3:checked ~ ul li:nth-child(3),
+    #pos4:checked ~ ul li:nth-child(4){opacity:1;}
+    /* bullet 조작 */
+    #pos1:checked ~ .bullet label:nth-child(1),
+    #pos2:checked ~ .bullet label:nth-child(2),
+    #pos3:checked ~ .bullet label:nth-child(3),
+    #pos4:checked ~ .bullet label:nth-child(4){background:#666;}
+
+	
+
 /* TABLE */
 .table{
    width: 100%;
@@ -2152,6 +2285,7 @@ td a{
 }
 /* Banner */
 
+
    #banner-wrapper {
       background: #c8d2bc url(images/bg1.png);
       padding: 2em 0;
@@ -2187,6 +2321,41 @@ td a{
          opacity: 0.8;
       }
 
+	#banner-wrapper {
+		background: #c8d2bc url(images/bg1.png);
+	}
+
+	#banner {
+		position: relative;
+		width: 100%;
+		padding: 6em 0;
+		border-radius: 10px;
+		background-image: url(images/banner.jpg);
+		background-size: cover;
+		text-align: center;
+		box-shadow: inset 0 0 0 20px #fff;
+	}
+
+		#banner h2 {
+			font-size: 3.3em;
+			color: #fff;
+			text-align: center;
+			letter-spacing: -2px;
+			margin: 0;
+		}
+
+		#banner span {
+			display: block;
+			left: 0;
+			margin: 0.5em 0 0 0;
+			font-size: 1.6em;
+			color: #fff;
+			letter-spacing: -1px;
+			text-transform: lowercase;
+			opacity: 0.8;
+		}
+
+
 /* Main */
 
    #main {
@@ -2196,9 +2365,16 @@ td a{
 
 /* Footer */
 
+
    #footer-wrapper {
       padding: 4em 0;
    }
+
+	#footer-wrapper {
+		padding: 4em 0;
+		background-color: #e3e9dc;
+	}
+
 
 /* Copyright */
 
@@ -2552,9 +2728,16 @@ td a{
 
       /* Footer */
 
+
          #footer-wrapper {
             padding: 40px 0;
          }
+
+			#footer-wrapper {
+				padding: 25px 0;
+				height: 100px;
+			}
+
 
       /* Copyright */
 

@@ -19,7 +19,7 @@
 			<div class="tit">SHOP 관리</div>
 			<ol class="leftmenu"><!--여기안에 세부메뉴 존재  -->
 				<li class="menu"><!--한개의 세부메뉴 단위  -->
-					<a href="#">상품 관리</a>
+					<a href="${pageContext.request.contextPath }/admin/shop/product/productList">상품 관리</a>
 				</li>
 				<li class="menu"><!--한개의 세부메뉴 단위  -->
 					<a href="#">상품 후기 관리</a>
