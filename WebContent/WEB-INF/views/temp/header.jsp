@@ -10,7 +10,7 @@
 
 				<header id="header">
 					<h1>
-						<a href="${pageContext.request.contextPath }/index.do" id="logo">GAZUA</a>
+						<a href="${pageContext.request.contextPath }/index.do" id="logo">UDK</a>
 					</h1>
 					<nav id="nav">
 						<a href="${pageContext.request.contextPath }/index.do" class="current-page-item">HOME</a> 
