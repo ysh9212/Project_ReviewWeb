@@ -1,4 +1,4 @@
-package com.project.community.qna;
+package com.project.community.board;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,12 +8,11 @@ import java.util.List;
 
 import com.project.board.BoardDAO;
 import com.project.board.BoardDTO;
-import com.project.community.notice.NoticeDTO;
 import com.project.shopPage.SearchRow;
 import com.project.util.DBConnector;
 
-public class QnaDAO implements BoardDAO{
-
+public class ComBoardDAO implements BoardDAO{
+	
 	@Override
 	public int getNum() throws Exception {
 		int result = 0;
@@ -29,7 +28,7 @@ public class QnaDAO implements BoardDAO{
 	@Override
 	public int getTotalCount(SearchRow searchRow, Connection con) throws Exception {
 		int result = 0;
-		String sql ="select count(no) from community_qna where "+searchRow.getSearch().getKind()+" like ?";
+		String sql ="select count(no) from community_board where "+searchRow.getSearch().getKind()+" like ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+searchRow.getSearch().getSearch()+"%");
 		ResultSet rs = st.executeQuery();
@@ -42,17 +41,19 @@ public class QnaDAO implements BoardDAO{
 	@Override
 	public List<BoardDTO> selectList(SearchRow searchRow, Connection con) throws Exception {
 		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
-		String sql = "select no, title, writer, reg_date, hit from community_qna";
+		String sql = "select no, title, writer, reg_date, hit, recommend, decommend from community_board";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		while(rs.next()) {
-			NoticeDTO noticeDTO = new NoticeDTO();
-			noticeDTO.setNo(rs.getInt("no"));
-			noticeDTO.setTitle(rs.getString("title"));
-			noticeDTO.setWriter(rs.getString("writer"));
-			noticeDTO.setReg_date(rs.getString("reg_date"));
-			noticeDTO.setHit(rs.getInt("hit"));
-			ar.add(noticeDTO);
+			ComBoardDTO comBoardDTO = new ComBoardDTO();
+			comBoardDTO.setNo(rs.getInt("no"));
+			comBoardDTO.setTitle(rs.getString("title"));
+			comBoardDTO.setWriter(rs.getString("writer"));
+			comBoardDTO.setReg_date(rs.getString("reg_date"));
+			comBoardDTO.setHit(rs.getInt("hit"));
+			comBoardDTO.setRecommend(rs.getInt("recommend"));
+			comBoardDTO.setDecommend(rs.getInt("decommend"));
+			ar.add(comBoardDTO);
 		}
 		rs.close();
 		st.close();
@@ -60,30 +61,29 @@ public class QnaDAO implements BoardDAO{
 	}
 	@Override
 	public BoardDTO selectOne(int no, Connection con) throws Exception {
-		QnaDTO qnaDTO = new QnaDTO();
-		String sql = "select * from community_qna where no=?";
+		ComBoardDTO comBoardDTO = new ComBoardDTO();
+		String sql = "select * from community_board where no=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, no);
 		ResultSet rs = st.executeQuery();
 		if(rs.next()) {
-			qnaDTO.setNo(rs.getInt("no"));
-			qnaDTO.setTitle(rs.getString("title"));
-			qnaDTO.setWriter(rs.getString("writer"));
-			qnaDTO.setReg_date(rs.getString("reg_date"));
-			qnaDTO.setHit(rs.getInt("hit"));
-			qnaDTO.setRecommend(rs.getInt("recommend"));
-			qnaDTO.setDecommend(rs.getInt("decommend"));
-			qnaDTO.setContents(rs.getString("contents"));
+			comBoardDTO.setNo(rs.getInt("no"));
+			comBoardDTO.setTitle(rs.getString("title"));
+			comBoardDTO.setWriter(rs.getString("writer"));
+			comBoardDTO.setReg_date(rs.getString("reg_date"));
+			comBoardDTO.setHit(rs.getInt("hit"));
+			comBoardDTO.setRecommend(rs.getInt("recommend"));
+			comBoardDTO.setDecommend(rs.getInt("decommend"));
+			comBoardDTO.setContents(rs.getString("contents"));
 		}
 		rs.close();
 		st.close();
-		return qnaDTO;
+		return comBoardDTO;
 	}
-
 	@Override
 	public int insert(BoardDTO boardDTO, Connection con) throws Exception {
 		int result = 0;
-		String sql = "insert into community_qna values(community_seq.nextval,?,?,sysdate,0,0,0,?)";
+		String sql = "insert into community_board values(community_seq.nextval,?,?,sysdate,0,0,0,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, boardDTO.getTitle());
 		st.setString(2, boardDTO.getWriter());
@@ -92,11 +92,10 @@ public class QnaDAO implements BoardDAO{
 		st.close();
 		return result;
 	}
-
 	@Override
 	public int update(BoardDTO boardDTO, Connection con) throws Exception {
 		int result = 0;
-		String sql = "update community_qna set title=?, contents=? where no=?";
+		String sql = "update community_board set title=?, contents=? where no=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, boardDTO.getTitle());
 		st.setString(2, boardDTO.getContents());
@@ -107,16 +106,16 @@ public class QnaDAO implements BoardDAO{
 	}
 	@Override
 	public int updateHit(int no, Connection con) throws Exception {
-		String sql = "update community_qna set hit = hit+'1' where no=?";
+		String sql = "update community_board set hit = hit+'1' where no=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, no);
 		int result = st.executeUpdate();
 		st.close();
-		return 0;
+		return result;
 	}
 	@Override
 	public int delete(int no, Connection con) throws Exception {
-		String sql = "delete community_qna where no=?";
+		String sql = "delete community_board where no=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, no);
 		int result = st.executeUpdate();

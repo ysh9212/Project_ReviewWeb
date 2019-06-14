@@ -1,5 +1,7 @@
 package com.project.community.used;
 
-public class UsedDTO {
+import com.project.board.BoardDTO;
+
+public class UsedDTO extends BoardDTO{
 
 }

@@ -1,4 +1,4 @@
-package com.project.community.qna;
+package com.project.community.board;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project.action.Action;
 import com.project.action.ActionForward;
+import com.project.board.BoardDAO;
 import com.project.board.BoardDTO;
-import com.project.community.board.ComBoardDTO;
 import com.project.shopPage.SearchMakePage;
 import com.project.shopPage.SearchPager;
 import com.project.shopPage.SearchRow;
 import com.project.util.DBConnector;
 
-public class QnaService implements Action{
-	private QnaDAO qnaDAO;
-	public QnaService() {
-		qnaDAO = new QnaDAO();
+public class ComBoardService implements Action{
+	private ComBoardDAO comBoardDAO;
+	public ComBoardService() {
+	comBoardDAO = new ComBoardDAO();	
 	}
-
+	// 처음 게시글 나열
 	@Override
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
@@ -34,21 +34,23 @@ public class QnaService implements Action{
 		String kind = request.getParameter("kind");
 		String search = request.getParameter("search");
 		SearchMakePage s = new SearchMakePage(curPage, kind, search);
+		// 1. row;
 		SearchRow searchRow = s.makeRow();
 		int totalCount = 0;
 		Connection con = null;
 		try {
-			con = DBConnector.getConnect();
-			List<BoardDTO> ar = qnaDAO.selectList(searchRow, con);
-			totalCount = qnaDAO.getTotalCount(searchRow, con);
-			SearchPager searchPager = s.makePage(totalCount);
-			request.setAttribute("pager", searchPager);
-			request.setAttribute("list", ar);
-			request.setAttribute("board", "board");
-			actionForward.setCheck(true);
-			actionForward.setPath("../../WEB-INF/views/community/qna/communityQna.jsp");
+		con = DBConnector.getConnect();
+		List<BoardDTO> ar = comBoardDAO.selectList(searchRow, con);
+		//2. page;
+		totalCount = comBoardDAO.getTotalCount(searchRow, con);
+		SearchPager searchPager = s.makePage(totalCount);
+		request.setAttribute("pager", searchPager);
+		request.setAttribute("list", ar);
+		request.setAttribute("board", "board");
+		actionForward.setCheck(true);
+		actionForward.setPath("../../WEB-INF/views/community/board/communityBoard.jsp");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			// TODO: handle exception
 			e.printStackTrace();
 			request.setAttribute("message", "Server Error");
 			request.setAttribute("path", "../../index.do");
@@ -57,6 +59,7 @@ public class QnaService implements Action{
 		}
 		return actionForward;
 	}
+
 	@Override
 	public ActionForward select(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
@@ -65,8 +68,8 @@ public class QnaService implements Action{
 		try {
 			con = DBConnector.getConnect();
 			int no = Integer.parseInt(request.getParameter("no"));
-			boardDTO = qnaDAO.selectOne(no, con);
-			qnaDAO.updateHit(no, con);
+			boardDTO = comBoardDAO.selectOne(no, con);
+			comBoardDAO.updateHit(no, con);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -81,36 +84,38 @@ public class QnaService implements Action{
 		String path = "";
 		if(boardDTO != null) {
 			request.setAttribute("dto", boardDTO);
-			path = "../../WEB-INF/views/community/qna/communityQnaSelect.jsp";
+			path = "../../WEB-INF/views/community/board/communityBoardSelect.jsp";
 		}else {
 			request.setAttribute("message", "No Data");
-			request.setAttribute("path", "./communityQna");
+			request.setAttribute("path", "./communityBoard");
 			path="../WEB-INF/views/common/result.jsp";
 		}
 		actionForward.setCheck(true);
 		actionForward.setPath(path);
 		return actionForward;
 	}
+
 	@Override
 	public ActionForward insert(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
 		String method = request.getMethod();
 		boolean check = true;
-		String path = "../../WEB-INF/views/community/qna/communityQnaWrite.jsp";
+		String path = "../../WEB-INF/views/community/board/communityBoardWrite.jsp";
 		if(method.equals("POST")) {
-			QnaDTO qnaDTO = new QnaDTO();
-			qnaDTO.setTitle(request.getParameter("title"));
-			qnaDTO.setWriter(request.getParameter("writer"));
-			qnaDTO.setContents(request.getParameter("contents"));
+			ComBoardDTO comBoardDTO = new ComBoardDTO();
+			comBoardDTO.setTitle(request.getParameter("title"));
+			comBoardDTO.setWriter(request.getParameter("writer"));
+			comBoardDTO.setContents(request.getParameter("contents"));
 			int result = 0;
 			Connection con = null;
+			
 			try {
 				con = DBConnector.getConnect();
 				con.setAutoCommit(false);
 				
-				int no = qnaDAO.getNum();
-				qnaDTO.setNo(no);
-				result = qnaDAO.insert(qnaDTO, con);
+				int no = comBoardDAO.getNum();
+				comBoardDTO.setNo(no);
+				result = comBoardDAO.insert(comBoardDTO, con);
 				if(result<1) {
 					throw new Exception();
 				}
@@ -136,10 +141,10 @@ public class QnaService implements Action{
 			}
 			if(result>0) {
 				check = false;
-				path="./communityQna";
+				path="./communityBoard";
 			}else {
 				request.setAttribute("message", "Write Fail");
-				request.setAttribute("path", "./communityQna");
+				request.setAttribute("path", "./communityBoard");
 				check = true;
 				path="../../WEB-INF/views/common/result.jsp";
 			}
@@ -153,19 +158,19 @@ public class QnaService implements Action{
 	public ActionForward update(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
 		boolean check = true;
-		String path = "../../WEB-INF/views/community/qna/communityQnaUpdate.jsp";
+		String path = "../../WEB-INF/views/community/board/communityBoardUpdate.jsp";
 		String method = request.getMethod();
 		if(method.equals("POST")) {
 			Connection con = null;
 			int result = 0;
 			try {
 				con = DBConnector.getConnect();
-				QnaDTO qnaDTO = new QnaDTO();
-				qnaDTO.setTitle(request.getParameter("title"));
-				qnaDTO.setWriter(request.getParameter("writer"));
-				qnaDTO.setContents(request.getParameter("contents"));
-				qnaDTO.setNo(Integer.parseInt(request.getParameter("no")));
-				result = qnaDAO.update(qnaDTO, con);
+				ComBoardDTO comBoardDTO = new ComBoardDTO();
+				comBoardDTO.setTitle(request.getParameter("title"));
+				comBoardDTO.setWriter(request.getParameter("writer"));
+				comBoardDTO.setContents(request.getParameter("contents"));
+				comBoardDTO.setNo(Integer.parseInt(request.getParameter("no")));
+				result = comBoardDAO.update(comBoardDTO, con);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -178,7 +183,7 @@ public class QnaService implements Action{
 				}
 			}
 			check =false;
-			path = "./communityQna";
+			path = "./communityBoard";
 			// end of post
 		}else {
 			int no = Integer.parseInt(request.getParameter("no"));
@@ -187,7 +192,7 @@ public class QnaService implements Action{
 			
 			try {
 				con = DBConnector.getConnect();
-				boardDTO = qnaDAO.selectOne(no, con);
+				boardDTO = comBoardDAO.selectOne(no, con);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -199,7 +204,7 @@ public class QnaService implements Action{
 					e.printStackTrace();
 				}
 			} // end of finally
-			request.setAttribute("dto", boardDTO);
+			request.setAttribute("bdto", boardDTO);
 		}
 		actionForward.setCheck(check);
 		actionForward.setPath(path);
@@ -209,13 +214,13 @@ public class QnaService implements Action{
 	public ActionForward delete(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
 		boolean check = true;
-		String path = "";
+		String path ="";
 		Connection con = null;
 		int result = 0;
 		try {
 			con = DBConnector.getConnect();
 			int no = Integer.parseInt(request.getParameter("no"));
-			result = qnaDAO.delete(no, con);
+			result = comBoardDAO.delete(no, con);
 			request.setAttribute("result", result);
 			check = true;
 			path = "../../WEB-INF/views/common/result2.jsp";

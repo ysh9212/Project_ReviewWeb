@@ -1,5 +1,7 @@
 package com.project.community.bug;
 
-public class BugDTO {
+import com.project.board.BoardDTO;
+
+public class BugDTO extends BoardDTO{
 
 }

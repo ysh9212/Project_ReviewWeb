@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 글쓰기</title>
+<title>QnA 글쓰기</title>
 <c:import url="../../temp/bootstrap.jsp" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -52,7 +52,7 @@ $(function() {
 	<div class="page-wrapper">
 		<div id="main">
 			<div class="container">
-			<form id ="frm"action="./communityBoardWrite" method="post">
+			<form id ="frm"action="./communityQnaWrite" method="post">
 			<div class="form-group">
 				<label for="title">Title:</label> 
 				<input type="text" class="form-control" id="title" name = "title">

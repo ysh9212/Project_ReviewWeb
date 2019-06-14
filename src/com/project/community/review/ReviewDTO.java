@@ -1,5 +1,7 @@
 package com.project.community.review;
 
-public class ReviewDTO {
+import com.project.board.BoardDTO;
+
+public class ReviewDTO extends BoardDTO{
 
 }

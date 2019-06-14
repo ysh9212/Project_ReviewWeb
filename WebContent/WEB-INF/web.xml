@@ -60,5 +60,68 @@
   	<servlet-name>comments</servlet-name>
   	<url-pattern>/comments/*</url-pattern>
   </servlet-mapping>
+	<servlet>
+		<servlet-name>home</servlet-name>
+		<servlet-class>com.project.control.HomeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>home</servlet-name>
+		<url-pattern>/index.do</url-pattern>
+	</servlet-mapping>
+	<filter>
+		<filter-name>encoding</filter-name>
+		<filter-class>com.project.filter.Filter_Encoding</filter-class>
+		<init-param>
+			<param-name>kind</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<servlet>
+		<servlet-name>shop</servlet-name>
+		<servlet-class>com.project.control.ShopController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>shop</servlet-name>
+		<url-pattern>/shop/*</url-pattern>
+
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>shopqnacomments</servlet-name>
+		<servlet-class>com.project.control.ShopCommentsController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>shopqnacomments</servlet-name>
+		<url-pattern>/shopqnacomments/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>news</servlet-name>
+		<servlet-class>com.project.control.NewsController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>news</servlet-name>
+		<url-pattern>/news/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>member</servlet-name>
+		<servlet-class>com.project.control.MemberController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>member</servlet-name>
+		<url-pattern>/member/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>community</servlet-name>
+		<servlet-class>com.project.control.CommunityController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>community</servlet-name>
+		<url-pattern>/community/*</url-pattern>
+	</servlet-mapping>
+	
 	
 </web-app>

@@ -40,7 +40,7 @@ margin: 0 auto;
   margin: 0 auto;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #015068;
 }
 
 .navi_li {
