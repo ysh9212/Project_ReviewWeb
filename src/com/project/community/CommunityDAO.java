@@ -8,7 +8,6 @@ import java.util.List;
 
 import com.project.board.BoardDAO;
 import com.project.board.BoardDTO;
-import com.project.community.board.ComBoardDTO;
 import com.project.community.bug.BugDTO;
 import com.project.community.notice.NoticeDTO;
 import com.project.community.qna.QnaDTO;
@@ -19,7 +18,7 @@ import com.project.util.DBConnector;
 
 public class CommunityDAO implements BoardDAO{
 
-	// »ç¿ë ¾ÈÇÔ;
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½;
 	@Override
 	public List<BoardDTO> selectList(SearchRow searchRow, Connection con) throws Exception {
 		// TODO Auto-generated method stub
