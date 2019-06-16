@@ -18,7 +18,7 @@ import com.project.news.NewsService;
 @WebServlet("/NewsController")
 public class NewsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-private NewsService newsService;
+	private NewsService newsService;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -46,14 +46,16 @@ private NewsService newsService;
 		}else if(command.equals("/qnaDelete")) {
 			actionForward = newsService.delete(request, response);
 		}
-		
-		
+		System.out.println(actionForward.isCheck());
+		System.out.println(actionForward.getPath());
 		if(actionForward.isCheck()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
 			view.forward(request, response);
 		}else {
 			response.sendRedirect(actionForward.getPath());
 		}
+		
+	
 	}
 
 	/**

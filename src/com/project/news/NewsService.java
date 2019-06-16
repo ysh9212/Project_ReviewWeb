@@ -74,10 +74,11 @@ public class NewsService implements Action {
 
 	@Override
 	public ActionForward select(HttpServletRequest request, HttpServletResponse response) {
-ActionForward actionForward = new ActionForward();
+		ActionForward actionForward = new ActionForward();
 		
 		BoardDTO boardDTO = null;
 		Connection con = null;
+		String path = "";
 		
 		try {
 			con = DBConnector.getConnect();
@@ -95,14 +96,13 @@ ActionForward actionForward = new ActionForward();
 				e.printStackTrace();
 			}
 		}
-		String path = "";
 		if(boardDTO != null) {
 			request.setAttribute("dto", boardDTO);
-			path = "../../WEB-INF/views/news/newsSelect.jsp";
+			path="../WEB-INF/views/news/newsSelect.jsp";
 		}else {
 			request.setAttribute("message", "No Data");
 			request.setAttribute("path", "./newsList");
-			path="../WEB-INF/views/common/result.jsp";
+			path ="../WEB-INF/views/common/result.jsp";
 		}
 		actionForward.setCheck(true);
 		actionForward.setPath(path);
