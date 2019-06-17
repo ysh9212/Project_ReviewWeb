@@ -2226,8 +2226,9 @@ td a{
 		text-align: center;
 		color: #A6A88F;
 		border-top: solid 1px #ced0b7;
-		padding: 3em 0 0 0;
-		margin: 3em 0 0 0;
+	}
+	#copyright a {
+	text-decoration: none;
 	}
 
 		#copyright a {
