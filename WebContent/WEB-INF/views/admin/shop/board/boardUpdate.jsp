@@ -49,17 +49,16 @@ $(function() {
 				<form action="./${board }Update" method="post" id="frm">
 				<input type="hidden" name = "no" value="${dto.no }">
 					<div class="form-group">
-						<label for="title">Title:</label> <input type="text"
-							class="form-control" id="title" name="title"
-							value="${dto.title }">
+						<div class="title">Title:</div> 
+						 <input type="text"	class="form-control" id="title" name="title" value="${dto.title }">
 					</div>
 					<div class="form-group">
-						<label for="writer">Writer:</label> <input type="text"
+						<div class="title">Writer:</div>  <input type="text"
 							class="form-control" id="writer" name="writer"
 							value="${dto.writer }" readonly="readonly">
 					</div>
 					<div class="form-group">
-						<label for="contents">Contents:</label>
+						<div class="title">Contents:</div> 
 						<textarea class="form-control" rows="5" id="contents"
 							name="contents">${dto.contents}</textarea>
 					</div>
