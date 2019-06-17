@@ -1,6 +1,7 @@
 package com.project.community;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,8 +37,9 @@ public class CommunityService {
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
 		SearchRow searchRow = new SearchRow();
+		Connection con = null;
 		try {
-			Connection con = DBConnector.getConnect();
+			con = DBConnector.getConnect();
 			List<BoardDTO> ar = noticeDAO.selectList(searchRow, con);
 			List<BoardDTO> bAr = comBoardDAO.selectList(searchRow, con);
 			List<BoardDTO> rAr = reviewDAO.selectList(searchRow, con);
@@ -66,6 +68,13 @@ public class CommunityService {
 			e.printStackTrace();
 			actionForward.setCheck(true);
 			actionForward.setPath("../WEB-INF/views/community/communityList.jsp");
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		return actionForward;
