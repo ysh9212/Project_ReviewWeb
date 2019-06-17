@@ -45,19 +45,19 @@ public class CommunityService {
 			List<BoardDTO> uAr = usedDAO.selectList(searchRow, con);
 			
 			request.setAttribute("nlist", ar);
-			request.setAttribute("nboard", "°øÁö»çÇ×");
+			request.setAttribute("nboard", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
 			request.setAttribute("blist", bAr);
-			request.setAttribute("bboard", "ÀÚÀ¯°Ô½ÃÆÇ");
+			request.setAttribute("bboard", "ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½");
 
 			request.setAttribute("rlist", rAr);
-			request.setAttribute("rboard", "À¯Àú¸®ºä");
+			request.setAttribute("rboard", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
 			request.setAttribute("buglist", bugAr);
-			request.setAttribute("bugboard", "¹ö±×°Ô½ÃÆÇ");
+			request.setAttribute("bugboard", "ï¿½ï¿½ï¿½×°Ô½ï¿½ï¿½ï¿½");
 
 			request.setAttribute("ulist", uAr);
-			request.setAttribute("uboard", "Áß°í»óÇ°");
+			request.setAttribute("uboard", "ï¿½ß°ï¿½ï¿½Ç°");
 
 			actionForward.setCheck(true);
 			actionForward.setPath("../WEB-INF/views/community/communityList.jsp");
@@ -67,6 +67,7 @@ public class CommunityService {
 			actionForward.setCheck(true);
 			actionForward.setPath("../WEB-INF/views/community/communityList.jsp");
 		}
+		
 		return actionForward;
 	}
 
