@@ -16,7 +16,6 @@
 
 			<!-- Banner -->
 			<div class="container" style="padding-top:4em;">
-				<div id="banner-wrapper">
 
 							<div class="slide">
 									<h2 style="text-align: center;">UDK</h2>
@@ -38,7 +37,6 @@
 									    </p>
 								</div>
 
-				</div>
 			</div>
 			<!-- Main -->
 				<div id="main">

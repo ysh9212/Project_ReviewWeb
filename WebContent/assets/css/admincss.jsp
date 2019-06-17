@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <style type="text/css">
+/*header  */
 .header{
 	width: 100%;
 	border: 0;
@@ -96,9 +97,11 @@ td{
 }
 td a{
 	text-decoration: none;
+	color: #5d93a2;
 }
-a{
-	color: gray;
+.tit a{
+	color: black;
+	text-decoration: none;
 }
 .table-striped {
   > tbody > tr:nth-of-type(odd) {
@@ -111,8 +114,69 @@ a{
 .table-hover > tbody > tr:hover {
     background-color: #ddd;
   }
+/* 버튼 */
+.btn{
+  background:#007294;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:40px;
+  font-size:1.3em;
+  padding:0 0.7em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  border-radius: 10px;
+  float: right;
+  text-decoration: none;
+}
+.btn:before,.button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #007294;
+  transition:400ms ease all;
+}
+.btn:hover{
+  background:#fff;
+  color:#007294;
+}
+.btn:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.btn:hover:before,.btn:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+.rounded {
+  border-radius: 10px;
+}
+.btn1.blue {box-shadow: 0px 4px #74a3b0;}
+.btn1.blue:active {box-shadow: 0 0 #74a3b0; background-color: #709CA8;}
+.btn1.blue, .btn-two.blue     {background-color: #7fb1bf;}
+
+.btn1 {
+	position: relative;
+	border: 0;
+	padding: 10px 20px;
+	display: inline-block;
+	text-align: center;
+	color: white;
+	cursor: pointer;
 }
 /* 페이지 css */
+.adminhome{
+	float: right;
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+}
 .center{
 	text-align: center;
 	align-items: center;
@@ -122,6 +186,16 @@ a{
 	margin: 20px 0;
 	text-align: center;
 	list-style: none;
+}
+.pager li{
+	display: inline;
+}
+.pager li>a, .pager li>span {
+    display: inline-block;
+    padding: 5px 14px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
 }
 .pagination {
   display: inline-block;
@@ -141,7 +215,11 @@ a{
   color: white;
   border: 1px solid #4CAF50;
 }
-
+.pagination>li:first-child>a, .pagination>li:first-child>span {
+    margin-left: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
 .pagination a:hover:not(.active) {background-color: #ddd;}
 
 .pagination a:first-child {

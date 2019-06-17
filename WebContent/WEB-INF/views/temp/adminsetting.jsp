@@ -3,7 +3,7 @@
 <!--헤더  -->
 <div class ="header">
 관리자 페이지 입니다
-<a href="${pageContext.request.contextPath }/index.do">나의 홈페이지 가기</a>
+<a href="${pageContext.request.contextPath }/index.do" class="adminhome">나의 홈페이지 가기</a>
 </div>
 
 <!--바디  -->
@@ -12,7 +12,7 @@
 	<ul class="leftmenu">
 		<li>
 			<div class="tit">
-				<a href="#">처음으로</a>
+				<a href="${pageContext.request.contextPath }/admin.do">처음으로</a>
 			</div>
 		</li>
 		<li><!--SHOP 관리  -->
