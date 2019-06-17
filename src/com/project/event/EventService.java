@@ -52,7 +52,7 @@ public class EventService implements Action {
 
 			request.setAttribute("pager", searchPager);
 			request.setAttribute("list", ar);
-			request.setAttribute("board", "event");
+			request.setAttribute("board","event");
 			actionForward.setCheck(true);
 			actionForward.setPath("../WEB-INF/views/event/eventList.jsp");
 		} catch (Exception e) {

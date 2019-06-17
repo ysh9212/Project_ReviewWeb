@@ -19,43 +19,46 @@ import com.project.news.NewsService;
 public class NewsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private NewsService newsService;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public NewsController() {
-        super();
-        // TODO Auto-generated constructor stub
-    newsService = new NewsService();
-    
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public NewsController() {
+		super();
+		// TODO Auto-generated constructor stub
+		newsService = new NewsService();
+
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String command = request.getPathInfo();
 		ActionForward actionForward = new ActionForward();
 		if (command.equals("/newsList")) {
 			actionForward = newsService.list(request, response);
-		}else if(command.equals("/newsSelect")) {
-			actionForward =newsService.select(request, response);
+		} else if (command.equals("/newsSelect")) {
+			actionForward = newsService.select(request, response);
 		}
 		System.out.println(actionForward.isCheck());
 		System.out.println(actionForward.getPath());
-		if(actionForward.isCheck()) {
+		if (actionForward.isCheck()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
 			view.forward(request, response);
-		}else {
+		} else {
 			response.sendRedirect(actionForward.getPath());
 		}
-		
-	
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

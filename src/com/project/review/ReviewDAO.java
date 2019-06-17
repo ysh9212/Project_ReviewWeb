@@ -30,7 +30,7 @@ public class ReviewDAO implements BoardDAO {
 	@Override
 	public int getTotalCount(SearchRow searchRow, Connection con) throws Exception {
 		int result = 0;
-		String sql = "select count(no) from Review where " + searchRow.getSearch().getKind() + " like ?";
+		String sql = "select count(no) from review where " + searchRow.getSearch().getKind() + " like ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%" + searchRow.getSearch().getSearch() + "%");
 		ResultSet rs = st.executeQuery();

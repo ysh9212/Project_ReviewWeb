@@ -15,11 +15,11 @@ import com.project.shopPage.SearchRow;
 import com.project.util.DBConnector;
 import com.project.board.BoardDTO;
 import com.project.review.ReviewDAO;
+
 public class ReviewService implements Action {
 	private ReviewDAO reviewDAO;
 
 	public ReviewService() {
-	ReviewDAO reviewDAO = new ReviewDAO();
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class ReviewService implements Action {
 
 			request.setAttribute("pager", searchPager);
 			request.setAttribute("list", ar);
-			request.setAttribute("board", "review");
+			request.setAttribute("board","review");
 			actionForward.setCheck(true);
 			actionForward.setPath("../WEB-INF/views/review/reviewList.jsp");
 		} catch (Exception e) {
