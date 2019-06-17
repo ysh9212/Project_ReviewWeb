@@ -15,7 +15,7 @@
 					<nav id="nav">
 						<a href="${pageContext.request.contextPath }/index.do" class="current-page-item">HOME</a> 
 						<a href="#">REVIEW</a> 
-						<a href="${pageContext.request.contextPath }/news/newsList">NEWS</a>
+						<a href="${pageContext.request.contextPath}/news/newsList">NEWS</a> 
 						<div class="dropdown">
 							<a href="${pageContext.request.contextPath }/community/communityList">COMMUNITY</a>
 							<div class="dropdown-content">
@@ -35,6 +35,7 @@
 							<a href="${pageContext.request.contextPath }/shop/qna/qnaList">QnA</a>
 							<a href="${pageContext.request.contextPath }/shop/mqna/mqnaList">자주 묻는 질문</a>
 						</div>
+						<a href="${pageContext.request.contextPath}/event/eventList">EVENT</a>
 							</div>
 						<% MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");%>
 						<% if(memberDTO != null){ %>
