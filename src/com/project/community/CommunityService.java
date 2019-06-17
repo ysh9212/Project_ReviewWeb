@@ -47,19 +47,19 @@ public class CommunityService {
 			List<BoardDTO> uAr = usedDAO.selectList(searchRow, con);
 			
 			request.setAttribute("nlist", ar);
-			request.setAttribute("nboard", "��������");
+			request.setAttribute("nboard", "공지사항");
 
 			request.setAttribute("blist", bAr);
-			request.setAttribute("bboard", "�����Խ���");
+			request.setAttribute("bboard", "자유게시판");
 
 			request.setAttribute("rlist", rAr);
-			request.setAttribute("rboard", "��������");
+			request.setAttribute("rboard", "사용자리뷰");
 
 			request.setAttribute("buglist", bugAr);
-			request.setAttribute("bugboard", "���װԽ���");
+			request.setAttribute("bugboard", "버그리포트");
 
 			request.setAttribute("ulist", uAr);
-			request.setAttribute("uboard", "�߰��ǰ");
+			request.setAttribute("uboard", "중고제품");
 
 			actionForward.setCheck(true);
 			actionForward.setPath("../WEB-INF/views/community/communityList.jsp");

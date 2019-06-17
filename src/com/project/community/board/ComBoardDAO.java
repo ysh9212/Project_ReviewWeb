@@ -17,7 +17,7 @@ public class ComBoardDAO implements BoardDAO{
 	public int getNum() throws Exception {
 		int result = 0;
 		Connection con = DBConnector.getConnect();
-		String sql = "select community_seq.nextval from dual";
+		String sql = "select community_board_seq.nextval from dual";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		rs.next();
@@ -70,11 +70,11 @@ public class ComBoardDAO implements BoardDAO{
 			comBoardDTO.setNo(rs.getInt("no"));
 			comBoardDTO.setTitle(rs.getString("title"));
 			comBoardDTO.setWriter(rs.getString("writer"));
+			comBoardDTO.setContents(rs.getString("contents"));
 			comBoardDTO.setReg_date(rs.getString("reg_date"));
 			comBoardDTO.setHit(rs.getInt("hit"));
 			comBoardDTO.setRecommend(rs.getInt("recommend"));
 			comBoardDTO.setDecommend(rs.getInt("decommend"));
-			comBoardDTO.setContents(rs.getString("contents"));
 		}
 		rs.close();
 		st.close();
@@ -83,11 +83,11 @@ public class ComBoardDAO implements BoardDAO{
 	@Override
 	public int insert(BoardDTO boardDTO, Connection con) throws Exception {
 		int result = 0;
-		String sql = "insert into community_board values(community_seq.nextval,?,?,sysdate,0,0,0,?)";
+		String sql = "insert into community_board values(community_board_seq.nextval,?,?,?,sysdate,0,0,0)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, boardDTO.getTitle());
-		st.setString(2, boardDTO.getWriter());
-		st.setString(3, boardDTO.getContents());
+		st.setString(2, boardDTO.getContents());
+		st.setString(3, boardDTO.getWriter());
 		result = st.executeUpdate();
 		st.close();
 		return result;

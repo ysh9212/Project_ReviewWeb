@@ -17,7 +17,7 @@ public class BugDAO implements BoardDAO{
 	public int getNum() throws Exception {
 		int result = 0;
 		Connection con = DBConnector.getConnect();
-		String sql = "select communityBug_seq.nextval from dual";
+		String sql = "select community_Bug_seq.nextval from dual";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		rs.next();
