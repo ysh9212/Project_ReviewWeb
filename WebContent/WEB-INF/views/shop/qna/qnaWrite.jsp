@@ -19,7 +19,7 @@ $(function() {
 	    oAppRef: oEditors,
 	    elPlaceHolder: "contents",
 	    //SmartEditor2Skin.html 파일이 존재하는 경로
-	    sSkinURI: "/servlet_4/se2/SmartEditor2Skin.html",  
+	    sSkinURI: "/Project_ReviewWeb/se2/SmartEditor2Skin.html",  
 	    htParams : {
 	        // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
 	        bUseToolbar : true,             
@@ -51,15 +51,15 @@ $(function() {
 			<div class="container">
 			<form id ="frm"action="./qnaWrite" method="post">
 			<div class="form-group">
-				<label for="title">Title:</label> 
+				<div class="title">Title:</div> 
 				<input type="text" class="form-control" id="title" name = "title">
 			</div>
 			<div class="form-group">
-				<label for="writer">Writer:</label> <input type="text"
-					class="form-control" id="writer" name="writer">
+				<div class="title">Writer:</div> 
+				<input type="text" 	class="form-control" id="writer" name="writer">
 			</div>
 			<div class="form-group">
-				<label for="contents">Contents:</label>
+				<div class="title">Contents:</div> 
 				<textarea class="form-control" rows="5" id="contents" name="contents"></textarea>
 			</div>		
 				<input type="button" id = "save" class="btn" value = "write">

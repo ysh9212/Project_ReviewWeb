@@ -50,15 +50,15 @@ $(function() {
 			<div class="container">
 			<form id ="frm"action="./${board }Write" method="post">
 			<div class="form-group">
-				<label for="title">Title:</label> 
+				<div class="title">Title:</div> 
 				<input type="text" class="form-control" id="title" name = "title">
 			</div>
 			<div class="form-group">
-				<label for="writer">Writer:</label> <input type="text"
-					class="form-control" id="writer" name="writer">
+				<div class="title">Writer:</div> 
+				<input type="text" value="관리자" class="form-control" id="writer" name="writer" readonly="readonly">
 			</div>
 			<div class="form-group">
-				<label for="contents">Contents:</label>
+				<div class="title">Contents:</div> 
 				<textarea class="form-control" rows="5" id="contents" name="contents"></textarea>
 			</div>		
 				<input type="button" id = "save" class="btn" value = "write">
