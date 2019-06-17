@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.project.board.BoardDAO;
 import com.project.board.BoardDTO;
+import com.project.community.board.ComBoardDTO;
 import com.project.community.bug.BugDTO;
 import com.project.community.notice.NoticeDTO;
 import com.project.community.qna.QnaDTO;
