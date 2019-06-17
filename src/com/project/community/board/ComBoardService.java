@@ -46,7 +46,7 @@ public class ComBoardService implements Action{
 		SearchPager searchPager = s.makePage(totalCount);
 		request.setAttribute("pager", searchPager);
 		request.setAttribute("list", ar);
-		request.setAttribute("board", "board");
+		request.setAttribute("board", "communityBoard");
 		actionForward.setCheck(true);
 		actionForward.setPath("../../WEB-INF/views/community/board/communityBoard.jsp");
 		} catch (Exception e) {

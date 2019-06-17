@@ -47,6 +47,7 @@
 		</c:forEach>
 		</tbody>
 	</table>
+	<jsp:include page="../communityCommon/paging.jsp"/>
 	</div>
 	<a href="./communityQnaWrite" class="btn btn-primary">Write</a>
 </div>

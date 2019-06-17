@@ -44,7 +44,7 @@ public class QnaService implements Action{
 			SearchPager searchPager = s.makePage(totalCount);
 			request.setAttribute("pager", searchPager);
 			request.setAttribute("list", ar);
-			request.setAttribute("board", "board");
+			request.setAttribute("board", "communityQna");
 			actionForward.setCheck(true);
 			actionForward.setPath("../../WEB-INF/views/community/qna/communityQna.jsp");
 		} catch (Exception e) {

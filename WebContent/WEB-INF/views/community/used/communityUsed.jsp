@@ -83,6 +83,7 @@
 				<!-- container -->
 			</div>
 			<!--main  -->
+	<jsp:include page="../communityCommon/paging.jsp"/>
 	</div>
 	<!-- body -->
 			<%@include file="../../temp/footer.jsp"%>

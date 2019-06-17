@@ -38,12 +38,30 @@ public class BugDAO implements BoardDAO{
 		st.close();
 		return result;
 	}
+	public List<BoardDTO> List(Connection con)throws Exception{
+		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
+		String sql = "select title from community_bug where rownum <=5 order by no desc";
+		PreparedStatement st = con.prepareStatement(sql);
+		ResultSet rs = st.executeQuery();
+		while(rs.next()) {
+			BugDTO bugDTO = new BugDTO();
+			bugDTO.setTitle(rs.getString("title"));
+			ar.add(bugDTO);
+		}
+		return ar;
+	}
 	// 초기 게시글 목록 나열;
 	@Override
 	public List<BoardDTO> selectList(SearchRow searchRow, Connection con) throws Exception {
 		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
-		String sql = "select no, title, writer, reg_date, hit from community_bug";
+		String sql = "select * from " + 
+				"(select rownum R, p.* from " + 
+				"(select * from community_bug where "+searchRow.getSearch().getKind()+" like ? order by no desc) p) " + 
+				"where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, "%"+searchRow.getSearch().getSearch()+"%");
+		st.setInt(2, searchRow.getStartRow());
+		st.setInt(3, searchRow.getLastRow());
 		ResultSet rs = st.executeQuery();
 		while(rs.next()) {
 			BugDTO bugDTO = new BugDTO();

@@ -12,7 +12,7 @@
 <jsp:include page="../communityCommon/css.jsp" />
 </style>
 <head>
-<title>공지사항</title>
+<title>${list}</title>
 </head>
 <body>
 	<%@include file="../../temp/header.jsp"%>
@@ -44,9 +44,11 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<jsp:include page="../communityCommon/paging.jsp"/>
 		</div>
 
 	</div>
 	<%@include file="../../temp/footer.jsp"%>
+	<%@include file="../../temp/activeweb.jsp"%>
 </body>
 </html>
