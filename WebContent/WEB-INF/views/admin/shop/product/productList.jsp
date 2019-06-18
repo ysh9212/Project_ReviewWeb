@@ -18,6 +18,7 @@ SHOP ${board } 페이지
 	<thead>
 		<tr>
 			<th>번호</th>
+			<th>상품 명</th>
 		</tr>
 	</thead>
 </table>
