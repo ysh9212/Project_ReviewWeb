@@ -55,7 +55,7 @@ public class MemberDAO {
 			m.setPw(rs.getString("pw"));
 			m.setName(rs.getString("name"));
 			m.setNickname(rs.getString("nickname"));
-			m.setBirth(rs.getString("birth"));
+			m.setBirth(rs.getDate("birth"));
 			m.setPhone(rs.getString("phone"));
 			m.setAddress(rs.getString("address"));
 			m.setEmail(rs.getString("email"));
@@ -68,7 +68,6 @@ public class MemberDAO {
 	
 	public int memberJoin(MemberDTO dto, Connection con) throws Exception{
 		
-		con = DBConnector.getConnect();
 		String sql = "insert into member values(?,?,?,?,?,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		
@@ -76,7 +75,7 @@ public class MemberDAO {
 		st.setString(2, dto.getPw());
 		st.setString(3, dto.getName());
 		st.setString(4, dto.getNickname());
-		st.setString(5, dto.getBirth());
+		st.setDate(5, dto.getBirth());
 		st.setString(6, dto.getPhone());
 		st.setString(7, dto.getAddress());
 		st.setString(8, dto.getEmail());

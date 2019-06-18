@@ -208,21 +208,27 @@
 <script type="text/javascript">
 	$(function(){
 		var frm = document.frm;
-			
-			
-			var gender = document.getElementById('gender').value;
+	
 			var email = document.getElementById('email').value;
-		
+			
+			var name = document.getElementById('name').value;
+			var yy = document.getElementById('yy').value;
+			var mm = document.getElementById('mm').value;
+			var dd = document.getElementById('dd').value;
+			var address = document.getElementById('address').value;
+			var phone = document.getElementById('phone').value;
+			var birth = yy+mm+dd;
+			var id = document.getElementById('id').value;
+			var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 			
 			$('#id').keyup(function(){
-				var id = document.getElementById('id').value;
 				var idcheck = document.getElementById('idcheck');
 				if(id.length > 9){
 					idcheck.innerHTML = '아이디는 10자 미만으로 입력하세요';
+			
 				}else if(id.length < 10){
 					idcheck.innerHTML = '';
-				}else if(id == ''){
-					idcheck.innerHTML = '아이디를 입력해주세요.';
+				
 				}
 				
 			});
@@ -242,7 +248,6 @@
 				
 				xhttp.onreadystatechange = function(){
 					if(this.readyState == 4 && this.status == 200){
-						
 						if(this.responseText.trim()=='1'){
 						$('#result').html("사용가능한 ID");
 						$("#result").css("color","blue");
@@ -256,20 +261,37 @@
 				}			
 			});
 			
-			$('#pswd1').blur(function() {
-				var pw = document.getElementById('pswd1');
-				var pwcheck = document.getElementById('pwcheck');
-				if (pw.value.length < 6&& pw.value.length>1) {
-					document.getElementById('pwcheck').style.color = "red";
-					pwcheck.innerHTML = '패스워드는 6자 이상으로 입력하세요';
-				} else if (pw.value.length > 5) {
-					pwcheck.innerHTML = '';
-				} else if(pw.value ==''){
-					document.getElementById('pwcheck').style.color = "red";
+			
+			// 특수문자+영문+숫자 조합 // 같은 문자 반복 x
+			
+			$('#pswd1').change(function(){
+				checkPassword($('#pswd1').val(),$('id').val());
+			});
+			function checkPassword(pswd1,id){
+				if(!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/.test(pswd1)){            
+			        alert('숫자+영문자+특수문자 조합으로 8자리 이상 사용해야 합니다.');
+			        $('#pswd1').val('').focus();
+			        return false;
+			    }    
+			    var checkNumber = pswd1.search(/[0-9]/g);
+			    var checkEnglish = pswd1.search(/[a-z]/ig);
+			    if(checkNumber <0 || checkEnglish <0){
+			        alert("숫자와 영문자를 혼용하여야 합니다.");
+			        $('#pswd1').val('').focus();
+			        return false;
+			    }
+			    if(/(\w)\1\1\1/.test(pswd1)){
+			        alert('같은 문자를 4번 이상 사용하실 수 없습니다.');
+			        $('#pswd1').val('').focus();
+			        return false;
+			    }
+			    
+			    if(pw.value ==''){
+			    	var pwcheck = document.getElementById('pwcheck').style.color = "red";
 					pwcheck.innerHTML='필수 입력 항목입니다.';
 				}
-			});
-			
+			     
+			}
 			$('#pswd2').blur(function() {
 				var pwd1 = document.getElementById('pswd2');
 				var pwdoverlap = document.getElementById('pwdoverlap');
@@ -285,17 +307,21 @@
 					pwdoverlap.innerHTML = '비밀번호가 일치하지 않습니다';
 				}
 			});
+			
+			
 			//닉네임
 			$('#nickname').keyup(function(){
-				var nickname = document.getElementById('nickname').value;
+				
 				var nicknamecheck = document.getElementById('nicknamecheck');
 				if(nickname.length > 5){
 					document.getElementById('nicknamecheck').style.color = "red";
 					nicknamecheck.innerHTML = '닉네임은 6자 미만으로 입력하세요';
 				}else if(nickname.length < 6){
 					nicknamecheck.innerHTML = '';
+					return false;
 				}else if(nickname == ''){
 					nicknamecheck.innerHTML = '닉네임을 입력해주세요.';
+					return false;
 				}
 				
 			});
@@ -329,19 +355,20 @@
 			});
 			
 			//이름
+			
 			$('#name').blur(function() {
-			var name = document.getElementById('name');
 			var namec = document.getElementById('namecheck');
 			if (name.value == '') {
 				document.getElementById('namecheck').style.color = "red";
 				namec.innerHTML = '필수 입력 항목입니다';
 			} else if (name.value.length > 5) {
 				namec.innerHTML = '';
+				return false;
 			}
 			});
 			
 			$('#yy').blur(function() {
-				var yy = document.getElementById('yy');
+				
 				var yyc = document.getElementById('birthcheck');
 				if (yy.value == '') {
 					document.getElementById('birthcheck').style.color = "red";
@@ -350,7 +377,7 @@
 			});
 			
 			$('#dd').blur(function() {
-				var dd = document.getElementById('dd');
+				
 				var ddc = document.getElementById('birthcheck');
 				if (dd.value == '') {
 					document.getElementById('birthcheck').style.color = "red";
@@ -359,7 +386,7 @@
 			});
 			
 			$('#phone').blur(function() {
-				var phone = document.getElementById('phone');
+				
 				var phonec = document.getElementById('phonecheck');
 				if (phone.value == '') {
 					document.getElementById('phonecheck').style.color = "red";
@@ -370,7 +397,7 @@
 			});
 			
 			$('#address').blur(function() {
-				var address = document.getElementById('address');
+				
 				var addressc = document.getElementById('addresscheck');
 				if (address.value == '') {
 					document.getElementById('addresscheck').style.color = "red";
@@ -382,7 +409,7 @@
 			
 			//이메일
 			$('#email').blur(function() {
-				var email = document.getElementById('email');
+				
 				var emailc = document.getElementById('emailcheck');
 				if (email.value == '') {
 					document.getElementById('emailcheck').style.color = "red";
@@ -405,7 +432,20 @@
 			
 			$('#btnJoin').click(function(){
 				
-			if(!id && id.length){
+				var email = document.getElementById('email').value;
+				var id = document.getElementById('id').value;
+				
+				var nickname = document.getElementById('nickname').value;
+				var name = document.getElementById('name').value;
+				var yy = document.getElementById('yy').value;
+				var mm = document.getElementById('mm').value;
+				var dd = document.getElementById('dd').value;
+				var address = document.getElementById('address').value;
+				var phone = document.getElementById('phone').value;
+				var birth = yy+mm+dd;
+				
+			
+			if(!id || id.length>=10){
 				alert("아이디를 입력하세요");
 				f.id.focus();
 				return false;
@@ -444,12 +484,6 @@
 				f.dd.focus();
 				return false;
 			}
-			if(!gender){
-				alert("성별을 선택하세요");
-				f.gender.focus();
-				return false;
-			}
-			
 			if(!phone){
 				alert("핸드폰 번호를 입력하세요");
 				f.phone.focus();
@@ -468,24 +502,27 @@
 				return false;
 			}
 			
+			if(!check(re2, email, "적합하지 않은 이메일 형식입니다.")) {
+		           return false;
+		       }
+			
 			location.href = "./memberJoin.jsp";
 		});
 			
 	});
-	
-	
+
 	
 		
 
 
 </script>
-
+	
 </head>
 <body>
 <%@include file="../temp/header.jsp" %>
 
 
-<form action="${pageContext.request.contextPath}/member/memberJoin" method="post" enctype="multipart/form-data">
+<form action="${pageContext.request.contextPath}/member/memberJoin" method="post">
 <div id="page-wrapper">
 	<div id="main">
 		<div class="container">
@@ -494,7 +531,7 @@
 				<div class="join_content">
 					<div class="join_row">
 						<h3 class="join_title"><label for="id">아이디</label></h3>
-						<span class="ps_box int_id"><input type="text" id="id" class="int" title="ID" maxlength="20"></span>
+						<span class="ps_box int_id"><input type="text" id="id" name="id" class="int" title="ID" maxlength="20"></span>
 						<input type="hidden" id="idConfirm" value="0">
 						<input type="button" value="중복확인" id="idoverlap" >
 						<div id="result" class="check"></div>
@@ -578,20 +615,6 @@
 		</div>
 		<div id="birthcheck" class = "check"></div>
 		
-		<div class="join_row join_sex">
-			<h3 class="join_title">
-				<label for="gender">성별</label>
-			</h3>
-			<div class="ps_box gender_code">
-				<select id="gender" name="gender" class="sel" aria-label="성별">
-					<option value selected>성별</option>
-					<option value="M">남자</option>
-					<option value="W">여자</option>
-				</select>
-			</div>
-		</div>
-		<div id="gendercheck" class = "check"></div>
-		
 		<div class="join_row">
 				<h3 class="join_title">
 					<label for="phone">핸드폰 번호</label>
@@ -622,7 +645,7 @@
 				</label>
 			</h3>
 			<span class="ps_box box_right_space email ">
-				<input type="text" id="email" name="email" maxlength="100" placeholder="이메일 입력" aria-label="이메일 입력" class="int">
+				<input type="email" id="email" name="email" maxlength="100" placeholder="이메일 입력" aria-label="이메일 입력" class="int">
 			</span>
 			<div id="emailcheck" class = "check"></div>
 			
