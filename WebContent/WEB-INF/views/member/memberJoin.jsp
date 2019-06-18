@@ -508,6 +508,30 @@
 						</span>
 							<div id="pwcheck" class="check"></div>
 						</div>
+		<div id = "wrap">
+		
+		<h2> 회원가입합시다.</h2>
+		<div class="join_content">
+			<div class="join_row">
+				<h3 class="join_title">
+				<label for="id">아이디</label>
+				</h3>
+			<span class="ps_box int_id">
+				<input type="text" id="id" class="int" title="ID" maxlength="20">
+			</span>
+			<span class="error_next_box" id="idMsg" role="alert">필수 정보입니다.</span>
+			</div>
+			<div class="join_row">
+			<h3 class="join_title">
+				<label for="pswd1">비밀번호</label>
+			</h3>
+			<span class="ps_box int_pass" id="pswdImg">
+				<input type="password" id="pswd1" name="pswd1" class="int" title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20">
+				<span class="1b1">
+					<span id="pswd1Span" class="step_txt"></span>
+				</span>
+			</span>
+			<span class="error_next_box" id="pswd1Msg" role="alert">필수 정보입니다.</span>
 			
 			<h3 class="join_title">
 				<label for="pswd2">비밀번호 재확인</label>
@@ -584,7 +608,7 @@
 			</h3>
 			<div class="ps_box gender_code">
 				<select id="gender" name="gender" class="sel" aria-label="성별">
-					<option value selected>성별</option>
+					<option  selected>성별</option>
 					<option value="M">남자</option>
 					<option value="W">여자</option>
 				</select>
@@ -635,6 +659,16 @@
 		
 	</div>
 			</div>
+		<div>
+				<button type="button" id="btnJoin" class="btn_type">
+				<span>Join</span>
+				</button>
+			</div>
+		
+		
+	</div>
+			</div>
+		
 		</div>
 	</div>
 	

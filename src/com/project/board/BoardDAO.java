@@ -30,4 +30,5 @@ public interface BoardDAO {
 		
 		//delete
 		public int delete(int no, Connection con) throws Exception;
+		
 }

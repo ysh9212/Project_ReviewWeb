@@ -5,6 +5,7 @@ import java.sql.Connection;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 import com.project.action.Action;
 import com.project.action.ActionForward;
@@ -72,6 +73,9 @@ public class MemberService implements Action {
 	
 	public ActionForward mypage(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionforward = new ActionForward();
+
+		String method = request.getMethod();
+
 		boolean check = true;
 		
 		actionforward.setCheck(check);

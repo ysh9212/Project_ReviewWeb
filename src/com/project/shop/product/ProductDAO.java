@@ -25,7 +25,7 @@ public class ProductDAO{
 	
 	public int getTotalCount(SearchRow searchRow, Connection con) throws Exception{
 		int result = 0;
-		String sql = "select count(pnum) from product where "+searchRow.getSearch().getKind()+" like ?";
+		String sql = "select count(product_no) from product where "+searchRow.getSearch().getKind()+" like ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+searchRow.getSearch().getSearch()+"%");
 		ResultSet rs = st.executeQuery();
@@ -42,7 +42,7 @@ public class ProductDAO{
 
 		String sql = "select * from " +
 				"(select rownum R, p.* from " +
-				"(select * from product where "+searchRow.getSearch().getKind()+" like ? order by num desc) p) "+
+				"(select * from product where "+searchRow.getSearch().getKind()+" like ? order by product_no desc) p) "+
 				"where R between ? and ?";
 
 		PreparedStatement st = con.prepareStatement(sql);
@@ -53,13 +53,11 @@ public class ProductDAO{
 		
 		while(rs.next()) {
 			ProductDTO productDTO = new ProductDTO();
-			productDTO.setPnum(rs.getInt("num"));
-			productDTO.setPcategory_num(rs.getInt("pcategory_num"));
-			productDTO.setPname(rs.getString("pname"));
-			productDTO.setPcontents(rs.getString("pcontents"));
-			productDTO.setPrice(rs.getInt("price"));
-			productDTO.setPcount(rs.getInt("pcount"));
-			productDTO.setPreg_date(rs.getString("preg_date"));
+			productDTO.setProduct_no(rs.getInt("product_no"));
+			productDTO.setProduct_color(rs.getString("product_color"));
+			productDTO.setProduct_size(rs.getString("product_size"));
+			productDTO.setProduct_stock(rs.getInt("product_stock"));
+			productDTO.setProduct_price(rs.getInt("product_price"));
 			ar.add(productDTO);
 		}
 		rs.close();
@@ -67,23 +65,21 @@ public class ProductDAO{
 		return ar;
 	}
 	//select
-	public ProductDTO selectOne(int pnum, Connection con) throws Exception{
+	public ProductDTO selectOne(int product_no, Connection con) throws Exception{
 		ProductDTO productDTO = new ProductDTO();
-		String sql = "select * from product where pnum=?";
+		String sql = "select * from product where product_no=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
-		st.setInt(1, productDTO.getPnum());
+		st.setInt(1, productDTO.getProduct_no());
 		
 		ResultSet rs = st.executeQuery();
 		
 		if(rs.next()) {
-			productDTO.setPnum(rs.getInt("pnum"));
-			productDTO.setPcategory_num(rs.getInt("pcategory_num"));
-			productDTO.setPname(rs.getString("pname"));
-			productDTO.setPcontents(rs.getString("pcontents"));
-			productDTO.setPrice(rs.getInt("price"));
-			productDTO.setPcount(rs.getInt("pcount"));
-			productDTO.setPreg_date(rs.getString("preg_date"));
+			productDTO.setProduct_no(rs.getInt("product_no"));
+			productDTO.setProduct_color(rs.getString("product_color"));
+			productDTO.setProduct_size(rs.getString("product_size"));
+			productDTO.setProduct_stock(rs.getInt("product_stock"));
+			productDTO.setProduct_price(rs.getInt("product_price"));
 		}
 		rs.close();
 		st.close();
@@ -94,13 +90,12 @@ public class ProductDAO{
 	//insert
 	public int insert(ProductDTO productDTO, Connection con) throws Exception{
 		int result =0;
-		String sql = "insert into product values(pcategory_num,?,?,?,?,?,sysdate";
+		String sql = "insert into product values(product_seq.nextval,?,?,?,?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, productDTO.getPcategory_num());
-		st.setString(2, productDTO.getPname());
-		st.setString(3, productDTO.getPcontents());
-		st.setInt(4, productDTO.getPrice());
-		st.setInt(5, productDTO.getPcount());
+		st.setString(1, productDTO.getProduct_color());
+		st.setString(2, productDTO.getProduct_size());
+		st.setInt(3, productDTO.getProduct_stock());
+		st.setInt(4, productDTO.getProduct_price());
 		
 		result = st.executeUpdate();
 		st.close();
@@ -108,11 +103,11 @@ public class ProductDAO{
 	}
 	
 	//delete
-	public int delete(int pnum, Connection con) throws Exception{
+	public int delete(int product_no, Connection con) throws Exception{
 		int result =0;
-		String sql = "delete product where pnum=?";
+		String sql = "delete product where product_no=?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, pnum);
+		st.setInt(1, product_no);
 		
 		result = st.executeUpdate();
 		
@@ -123,14 +118,13 @@ public class ProductDAO{
 	//update
 	public int update(ProductDTO productDTO, Connection con) throws Exception{
 		int result = 0;
-		String sql = "update product set pcategory_num=?, pname=?, pcontents=?, price=?,pcount=? where pnum=?";
+		String sql = "update product set product_color=?, product_size=?, product_stock=?,product_price=? where product_no=?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, productDTO.getPcategory_num());
-		st.setString(2, productDTO.getPname());
-		st.setString(3, productDTO.getPcontents());
-		st.setInt(4, productDTO.getPrice());
-		st.setInt(5, productDTO.getPcount());
-		st.setInt(6, productDTO.getPnum());
+		st.setString(1, productDTO.getProduct_color());
+		st.setString(2, productDTO.getProduct_size());
+		st.setInt(3, productDTO.getProduct_stock());
+		st.setInt(4, productDTO.getProduct_price());
+		st.setInt(5, productDTO.getProduct_no());
 		
 		result = st.executeUpdate();
 		st.close();

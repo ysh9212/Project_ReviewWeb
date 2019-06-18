@@ -8,12 +8,15 @@
 <link rel="stylesheet" href="../assets/css/main.css" />
 </head>
 <body>
+
 <%@include file = "../temp/header.jsp" %>
 <div id="page-wrapper">
 	<div id="main">
 		<div class="container">
 			<form action="${pageContext.request.contextPath}member/memberMypage" method="post">
 				<h2> 마이페이지 </h2>
+			<form action="./memberMyPage">
+				<h1> my page</h1>
 			
 			
 			</form>

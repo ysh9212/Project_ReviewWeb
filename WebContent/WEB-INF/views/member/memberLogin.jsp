@@ -84,6 +84,8 @@ html{color: -internal-root-color;}
 .btn_type2{
     width: 25%;
     padding: 4px 0;
+    width: 15%;
+    padding: 5px 0;
     font-size: 10px;
     font-weight: 700;
     text-align: center;
@@ -102,6 +104,16 @@ html{color: -internal-root-color;}
     
     .remember{
     	margin-top: 13px;
+
+    
+    }
+    
+    .checkbox{
+    margin-top : 10px;
+    }
+    
+    .btn_wrap2{
+    	margin: right;
     }
 </style>
 
@@ -142,11 +154,18 @@ html{color: -internal-root-color;}
 		<a href="${pageContext.request.contextPath}/member/memberSearchPw"><button type="button" id="btnLogin3" class="btn_type2"><span>비밀번호 찾기</span></button></a>
 		<a href="${pageContext.request.contextPath}/member/memberSearchId"><button type="button" id="btnLogin2" class="btn_type2"><span>아이디 찾기</span></button></a>
 		
+			<div class="checkbox">
+		<label><input type="checkbox" name="check" value="1"> Remember me</label>
+	</div>
 	</div>
 </form>
 <div class="ch_btn">
 	
 	
+	<div class="btn_wrap2">
+		<button type="button" id="btnLogin2" class="btn_type2"><span>아이디 찾기</span></button>
+		<button type="button" id="btnLogin3" class="btn_type2"><span>비밀번호 찾기</span></button>
+	</div>
 		</div>
 	</div>
 	</div>
