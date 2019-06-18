@@ -1,6 +1,6 @@
-package com.project.shop.product_main;
+package com.project.shop.admin.product_main;
 
-public class Product_mainDTO {
+public class AdminProduct_mainDTO {
 	private int product_main_no;
 	private int product_no;
 	private int product_category_no;

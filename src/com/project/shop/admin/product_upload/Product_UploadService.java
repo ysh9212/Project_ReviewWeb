@@ -1,4 +1,4 @@
-package com.project.shop.product_upload;
+package com.project.shop.admin.product_upload;
 
 import java.io.File;
 import java.sql.Connection;
@@ -47,7 +47,7 @@ public class Product_UploadService implements Action {
 			//1.절대 경로
 			String path = request.getContextPath();
 			//2. 최종 결과물
-			String result = "&bNewLine=true&sFileURL="+path+"/uplad_se2/"+fileName;
+			String result = "&bNewLine=true&sFileURL="+path+"/upload/"+fileName;
 			//3.
 			result = callback+ "?callback_func="+callback_func+result;
 			

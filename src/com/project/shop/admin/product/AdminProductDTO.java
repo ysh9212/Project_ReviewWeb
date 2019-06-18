@@ -1,6 +1,6 @@
-package com.project.shop.product;
+package com.project.shop.admin.product;
 
-public class ProductDTO {
+public class AdminProductDTO {
 	private int product_no;
 	private String product_color;
 	private String product_size;

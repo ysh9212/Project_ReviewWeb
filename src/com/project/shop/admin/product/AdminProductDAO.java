@@ -1,4 +1,4 @@
-package com.project.shop.product;
+package com.project.shop.admin.product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,7 @@ import java.util.List;
 import com.project.shopPage.SearchRow;
 import com.project.util.DBConnector;
 
-public class ProductDAO{
+public class AdminProductDAO{
 	
 	public int getNum() throws Exception{
 		int result = 0;
@@ -37,8 +37,8 @@ public class ProductDAO{
 	}
 	
 	//list
-	public List<ProductDTO> selectList(SearchRow searchRow, Connection con) throws Exception{
-		ArrayList<ProductDTO> ar = new ArrayList<ProductDTO>();
+	public List<AdminProductDTO> selectList(SearchRow searchRow, Connection con) throws Exception{
+		ArrayList<AdminProductDTO> ar = new ArrayList<AdminProductDTO>();
 
 		String sql = "select * from " +
 				"(select rownum R, p.* from " +
@@ -52,7 +52,7 @@ public class ProductDAO{
 		ResultSet rs = st.executeQuery();
 		
 		while(rs.next()) {
-			ProductDTO productDTO = new ProductDTO();
+			AdminProductDTO productDTO = new AdminProductDTO();
 			productDTO.setProduct_no(rs.getInt("product_no"));
 			productDTO.setProduct_color(rs.getString("product_color"));
 			productDTO.setProduct_size(rs.getString("product_size"));
@@ -65,12 +65,12 @@ public class ProductDAO{
 		return ar;
 	}
 	//select
-	public ProductDTO selectOne(int product_no, Connection con) throws Exception{
-		ProductDTO productDTO = new ProductDTO();
+	public AdminProductDTO selectOne(int product_no, Connection con) throws Exception{
+		AdminProductDTO productDTO = new AdminProductDTO();
 		String sql = "select * from product where product_no=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
-		st.setInt(1, productDTO.getProduct_no());
+		st.setInt(1, product_no);
 		
 		ResultSet rs = st.executeQuery();
 		
@@ -88,7 +88,7 @@ public class ProductDAO{
 	}
 	
 	//insert
-	public int insert(ProductDTO productDTO, Connection con) throws Exception{
+	public int insert(AdminProductDTO productDTO, Connection con) throws Exception{
 		int result =0;
 		String sql = "insert into product values(product_seq.nextval,?,?,?,?";
 		PreparedStatement st = con.prepareStatement(sql);
@@ -116,7 +116,7 @@ public class ProductDAO{
 		return result;
 	}
 	//update
-	public int update(ProductDTO productDTO, Connection con) throws Exception{
+	public int update(AdminProductDTO productDTO, Connection con) throws Exception{
 		int result = 0;
 		String sql = "update product set product_color=?, product_size=?, product_stock=?,product_price=? where product_no=?";
 		PreparedStatement st = con.prepareStatement(sql);

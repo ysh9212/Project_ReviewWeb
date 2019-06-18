@@ -1,4 +1,4 @@
-package com.project.shop.product_main;
+package com.project.shop.admin.product_main;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,7 @@ import java.util.List;
 import com.project.shopPage.SearchRow;
 import com.project.util.DBConnector;
 
-public class Product_mainDAO {
+public class AdminProduct_mainDAO {
 	public int getNum() throws Exception{
 		int result = 0;
 		Connection con = DBConnector.getConnect();
@@ -36,8 +36,8 @@ public class Product_mainDAO {
 	}
 	
 	//list
-	public List<Product_mainDTO> selectList(SearchRow searchRow, Connection con) throws Exception{
-		ArrayList<Product_mainDTO> ar = new ArrayList<Product_mainDTO>();
+	public List<AdminProduct_mainDTO> selectList(SearchRow searchRow, Connection con) throws Exception{
+		ArrayList<AdminProduct_mainDTO> ar = new ArrayList<AdminProduct_mainDTO>();
 
 		String sql = "select * from " +
 				"(select rownum R, p.* from " +
@@ -51,7 +51,7 @@ public class Product_mainDAO {
 		ResultSet rs = st.executeQuery();
 		
 		while(rs.next()) {
-			Product_mainDTO product_mainDTO = new Product_mainDTO();
+			AdminProduct_mainDTO product_mainDTO = new AdminProduct_mainDTO();
 			product_mainDTO.setProduct_main_no(rs.getInt("product_main_no"));
 			product_mainDTO.setProduct_no(rs.getInt("product_no"));
 			product_mainDTO.setProduct_category_no(rs.getInt("product_category_no"));
@@ -66,8 +66,8 @@ public class Product_mainDAO {
 		return ar;
 	}
 	//select
-	public Product_mainDTO selectOne(int product_main_no, Connection con) throws Exception{
-		Product_mainDTO product_mainDTO = new Product_mainDTO();
+	public AdminProduct_mainDTO selectOne(int product_main_no, Connection con) throws Exception{
+		AdminProduct_mainDTO product_mainDTO = new AdminProduct_mainDTO();
 		String sql = "select * from product_main where product_main_no=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
@@ -91,16 +91,15 @@ public class Product_mainDAO {
 	}
 	
 	//insert
-	public int insert(Product_mainDTO product_mainDTO, Connection con) throws Exception{
+	public int insert(AdminProduct_mainDTO product_mainDTO, Connection con) throws Exception{
 		int result =0;
-		String sql = "insert into product_main values(product_main_seq.nextval,?,?,?,?,?,?";
+		String sql = "insert into product_main values(product_main_seq.nextval,?,?,?,?,sysdate,?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, product_mainDTO.getProduct_no());
 		st.setInt(2, product_mainDTO.getProduct_category_no());
 		st.setString(3, product_mainDTO.getProduct_title());
 		st.setString(4, product_mainDTO.getProduct_detail());
-		st.setString(5, product_mainDTO.getProduct_date());
-		st.setInt(6, product_mainDTO.getCart_no());
+		st.setInt(5, product_mainDTO.getCart_no());
 		
 		result = st.executeUpdate();
 		st.close();
@@ -121,7 +120,7 @@ public class Product_mainDAO {
 		return result;
 	}
 	//update
-	public int update(Product_mainDTO product_mainDTO, Connection con) throws Exception{
+	public int update(AdminProduct_mainDTO product_mainDTO, Connection con) throws Exception{
 		int result = 0;
 		String sql = "update product_main set product_no=?, product_category_no=?, product_title=?,product_detail=?, cart_no=? where product_main_no=?";
 		PreparedStatement st = con.prepareStatement(sql);

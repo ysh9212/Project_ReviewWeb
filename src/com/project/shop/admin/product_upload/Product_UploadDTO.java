@@ -1,4 +1,4 @@
-package com.project.shop.product_upload;
+package com.project.shop.admin.product_upload;
 
 public class Product_UploadDTO {
 	private int pno;

@@ -1,4 +1,4 @@
-package com.project.shop.product_upload;
+package com.project.shop.admin.product_upload;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

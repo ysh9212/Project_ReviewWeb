@@ -1,6 +1,6 @@
-package com.project.shop.product_category;
+package com.project.shop.admin.product_category;
 
-public class Product_CategoryDTO {
+public class AdminProduct_CategoryDTO {
 	private int product_category_no;
 	private String poduct_category_name;
 	public int getProduct_category_no() {
