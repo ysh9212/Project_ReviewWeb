@@ -10,9 +10,18 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="../../assets/css/main.css" />
-<title>${bboard}select</title>
+<title>${board}select</title>
 <script type="text/javascript">
 	$(function() {
+		// 리스트로 이동;
+		$('#list').click(function() {
+			location.href="./communityBoard";
+		});
+		// 수정폼으로 이동;
+		$('#update').click(function() {
+			location.href="./communityBoardUpdate?no=${dto.no}";
+		});
+		// 게시글 삭제;
 		$('#delete').click(function() {
 			var check = confirm("정말 삭제하시겠습니까?");
 			if (check) {
@@ -26,7 +35,94 @@
 					location.href="./communityBoard";
 				});
 			}
+		}); // end of 게시글 삭제 function;
+	});
+		// end of 게시글 function;
+	// 댓글	
+	$(function() {
+		getList();
+		var curPage=1;
+		// 댓글 리스트
+		function getList(count) {
+			$.get("../communityComments/comBoardCommentsList?no=${dto.no}&curPage="+count, function(data, status) {
+				data = data.trim();
+				if(data==1){
+					$("#clist").html(data);
+				}else {
+					$("#clist").append(data);
+				}
+			});
+		}
+		// 댓글 더보기;
+		$("#more").click(function() {
+			curPage++;
+			getList(curPage);
 		});
+		// 댓글 insert;
+		$("#btn").click(function() {
+			var writer = $("#writer").val();
+			var contents = $("#contents").val();
+			var no = '${dto.no}';
+			$.post("../communityComments/comBoardCommentsInsert",{
+				writer:writer,
+				contents:contents,
+				no:no
+			}, function(data) {
+				data = data.trim();
+				if(data=="1"){
+					alert("success");
+					getList(1);
+				}else {
+					alert("Fail");
+				}
+			});
+		});
+		
+		
+		//댓글 수정
+		$("#list").on("click", ".update", function(){
+			var id=$(this).attr("title");
+			var con= $("#c"+id).html();
+			$("#updateContents").val(con);
+			$("#cnum").val(id);
+		});
+		$("#updateBtn").click(function() {
+			var contents= $("#updateContents").val();
+			var cnum=  $("#cnum").val();
+			$.post("../comments/commentsUpdate",{
+				contents:contents,
+				cnum:cnum
+			}, function(data) {
+				data = data.trim();
+				if(data=="1"){
+					alert("Success");
+					//getList(1);
+					$("#c"+cnum).html(contents);
+				}else {
+					alert("Fail");
+				}
+			});
+		});
+		
+		// 댓글 삭제;
+		$("#clist").on("click", ".del", function() {
+			var cnum = $(this).attr("id");
+			var check=confirm("삭제 할거냐?");
+			if(check){
+				$.get("../comments/commentsDelete?cnum="+cnum, function(data) {
+					data = data.trim();
+					if(data=="1"){
+						alert("Delete Success");
+						getList(1);
+					}else {
+						alert("Delete Fail");
+					}
+				});
+				
+			}
+			
+		});
+		
 	});
 </script>
 </head>
@@ -35,6 +131,7 @@
 <div id="body">
 <jsp:include page="../communityCommon/navi.jsp"/>
 	<div class="page-wrapper">
+<!-- ----------------------------------게시글--------------------------------- -->
 		<div id="main">
 			<div class="container">
 				<table class="table table-hover">
@@ -59,16 +156,45 @@
 					</tr>
 				</table>
 			</div>
-		</div>
-		<a href="./communityBoard">목록</a>
-		<a href="./communityBoardUpdate?no=${dto.no}">수정</a>
 		<button id="list" class="list">목록</button>
 		<button id="update" class="update">수정</button>
 		<button id="delete" class="del">삭제</button>
 		<button id="recommend" class="rec">추천</button>
 		<button id="decommend" class="dec">비추천</button>
+		</div>
 	</div>
+<br>
+
+<!-- ----------------------------------댓글입력-------------------------------- -->
+<div id = comments_input>
+			<div id = "comments_w">
+				<label for="writer">Writer</label>
+				<input type="text" id="writer" name="writer">
+			</div>
+			<div id = "comments_c">
+				<label for="contents">Contents</label>
+				<textarea id="contents" name="contents" style="width:100%;height:100;border:1;overflow:visible;text-overflow:ellipsis;"></textarea>
+			</div>
+			<button class="btn btn-danger" id="btn">Write</button>
+</div> <!-- end of body_footer  -->
+<!-- ----------------------------------댓글리스트---------------------------------- -->
+<div id = commentslist class="container">
+			<div class="row">
+				<table class="table table-bordered" id="clist">
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>글쓴이</th>
+							<th>내용</th>
+							<th>날짜</th>
+						</tr>
+					</thead>
+				</table>
+				<button id="more">더보기</button>
+			</div>
 </div>
+</div><!-- end of body  -->
 <%@include file="../../temp/footer.jsp" %>
+<%@include file="../../temp/activeweb.jsp"%>
 </body>
 </html>

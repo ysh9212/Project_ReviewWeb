@@ -61,8 +61,8 @@
 				</table>
 			</div>
 		</div>
-		<a href="./communityQna">목록</a>
-		<a href="./communityQnaUpdate?no=${dto.no}">수정</a>
+		<button id="list" class="list">목록</button>
+		<button id="update" class="update">수정</button>
 		<button id="delete" class="del">삭제</button>
 		<button id="recommend" class="rec">추천</button>
 		<button id="decommend" class="dec">비추천</button>
