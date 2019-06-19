@@ -66,16 +66,6 @@ input::-moz-focus-inner {
 
 input, select, textarea {
 
-   -moz-appearance: none;
-   -webkit-appearance: none;
-   -ms-appearance: none;
-   appearance: none;
-
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	-ms-appearance: none;
-	appearance: none;
-
 }
 
 /* Basic */
@@ -607,6 +597,13 @@ td a{
 
 /* Image */
 
+
+			.image.avatar img {
+				border-radius: 100%;
+				width: 100%;
+			}
+
+
    .image {
       border-radius: 0.35em;
       border: 0;
@@ -715,6 +712,7 @@ td a{
             border-radius: 100%;
             width: 100%;
          }
+
 
 
 

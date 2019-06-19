@@ -15,38 +15,55 @@ public class AdminService {
 	public AdminService() {
 		adminDAO = new AdminDAO();
 	}
-	
+
 	public ActionForward select(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
-		AdminDTO adminDTO = null;
+		boolean check = true;
 		Connection con = null;
-		
-		try {
-			con = DBConnector.getConnect();
-			adminDTO = adminDAO.login(adminDTO, con);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
+		String method = request.getMethod();
+		String path="../WEB-INF/views/admin/adminLogin.jsp";
+		if(method.equals("POST")) {
+			AdminDTO adminDTO = new AdminDTO();
+
+			adminDTO.setId(request.getParameter("id"));
+			adminDTO.setPw(request.getParameter("pw"));
 			try {
-				con.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				con = DBConnector.getConnect();
+				adminDTO = adminDAO.login(adminDTO, con);
+				if(adminDTO.getId().equals("admin")) {
+					request.getSession().setAttribute("session", adminDTO);
+					check = false;
+					path="../admin.do";
+				}else {
+					request.setAttribute("message", "잘못된 정보 입니다");
+					request.setAttribute("path", "./adminLogin");
+					path="../WEB-INF/views/common/result.jsp";
+					check = true;
+				}
+			}catch (Exception e) {
+				// TODO: handle exception
 			}
-		} //finally
-		String path="";
-		if(adminDTO != null) {
-			request.setAttribute("dto", adminDTO);
-			request.setAttribute("admin", "admin");
-			path="./main.jsp";
-		}else {
-			request.setAttribute("message", "잘못된 정보 입니다");
-			request.setAttribute("path", "./adminLogin.jsp");
-			path="../WEB-INF/views/common/result.jsp";
+			finally {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}//finally
 		}
-		actionForward.setCheck(true);
+
+
+		actionForward.setCheck(check);
 		actionForward.setPath(path);
+
+		return actionForward;
+	}
+	public ActionForward logout(HttpServletRequest request, HttpServletResponse response) {
+		ActionForward actionForward = new ActionForward();
+		request.getSession().invalidate();
+		actionForward.setCheck(false);
+		actionForward.setPath("../admin.do");
 		
 		return actionForward;
 	}
