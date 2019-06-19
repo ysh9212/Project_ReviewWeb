@@ -39,8 +39,13 @@
 			</div>
 		</div>
 	</div>
-
+	
+	<div id ="body">
+	
+	<p>댓글창</p>
+	
+</div>
 	<%@include file="../temp/footer.jsp"%>
-	<%@include file="../temp/activeweb.jsp"%>
+	
 </body>
 </html>

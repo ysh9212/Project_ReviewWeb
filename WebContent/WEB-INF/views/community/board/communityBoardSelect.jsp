@@ -67,6 +67,7 @@
 		<button id="delete" class="del">삭제</button>
 		<button id="recommend" class="rec">추천</button>
 		<button id="decommend" class="dec">비추천</button>
+		
 	</div>
 </div>
 <%@include file="../../temp/footer.jsp" %>
