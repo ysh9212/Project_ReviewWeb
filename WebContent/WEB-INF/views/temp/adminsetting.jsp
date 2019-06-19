@@ -3,7 +3,8 @@
 <!--헤더  -->
 <div class ="header">
 관리자 페이지 입니다
-<a href="${pageContext.request.contextPath }/index.do" class="adminhome">나의 홈페이지 가기</a>
+<a href="${pageContext.request.contextPath }/index.do" class="adminhome">나의 홈페이지 가기</a><br>
+<a href="${pageContext.request.contextPath }/admin/adminLogout" class="adminhome">관리자 로그아웃</a>
 </div>
 
 <!--바디  -->

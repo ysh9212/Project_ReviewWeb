@@ -39,6 +39,7 @@
 		});
 	
 </script>
+
 <style type="text/css">
 #container{
 		margin: 0 auto;
@@ -90,6 +91,7 @@
     background-color: #007294;
     }
 </style>
+
 </head>
 <body>
 <%@include file = "../temp/header.jsp" %>

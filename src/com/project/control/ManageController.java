@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.project.action.ActionForward;
+import com.project.shop.admin.AdminService;
 import com.project.shop.admin.mqna.AdminShopMqnaService;
 import com.project.shop.admin.notice.AdminShopNoticeService;
 import com.project.shop.admin.qna.AdminShopQnaService;
@@ -23,6 +24,7 @@ public class ManageController extends HttpServlet {
 	private AdminShopNoticeService adminShopNoticeService;
 	private AdminShopQnaService adminShopQnaService;
 	private AdminShopMqnaService adminShopMqnaService;
+	private AdminService adminService;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -32,6 +34,7 @@ public class ManageController extends HttpServlet {
         adminShopNoticeService = new AdminShopNoticeService();
         adminShopQnaService = new AdminShopQnaService();
         adminShopMqnaService = new AdminShopMqnaService();
+        adminService = new AdminService();
         // TODO Auto-generated constructor stub
     }
 
@@ -86,7 +89,12 @@ public class ManageController extends HttpServlet {
 		else if(command.equals("/productList")){
 			actionForward.setCheck(true);
 			actionForward.setPath("../../../WEB-INF/views/admin/shop/product/productList.jsp");
-			
+		}
+		//login
+		else if(command.equals("/adminLogin")) {
+			actionForward = adminService.select(request, response);
+		}else if(command.equals("/adminLogout")) {
+			actionForward = adminService.logout(request, response);
 		}
 		 
 		
