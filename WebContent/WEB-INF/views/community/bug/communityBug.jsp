@@ -44,8 +44,8 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<jsp:include page="../communityCommon/paging.jsp"/>
 		</div>
-		<a href="./communityBoardWrite" class="btn btn-primary">Write</a>
 	</div>
 	<%@include file="../../temp/footer.jsp"%>
 </body>

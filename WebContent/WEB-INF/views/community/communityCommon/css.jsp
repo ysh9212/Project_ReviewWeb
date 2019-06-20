@@ -10,7 +10,7 @@
 <style type="text/css">
 #body {
 	width: 1250px;
-	height: 1500px;
+	height: auto;
 	background-color: white;
 	margin: 0 auto;
 }
@@ -58,4 +58,5 @@ margin: 0 auto;
 .navi_li a:hover {
   background-color: #111;
 }
+
 </style>

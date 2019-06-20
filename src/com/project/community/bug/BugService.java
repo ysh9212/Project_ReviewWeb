@@ -43,7 +43,7 @@ public class BugService implements Action{
 			SearchPager searchPager = s.makePage(totalCount);
 			request.setAttribute("pager", searchPager);
 			request.setAttribute("list", ar);
-			request.setAttribute("board", "board");
+			request.setAttribute("board", "communityBug");
 			actionForward.setCheck(true);
 			actionForward.setPath("../../WEB-INF/views/community/bug/communityBug.jsp");
 		} catch (Exception e) {

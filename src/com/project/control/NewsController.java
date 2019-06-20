@@ -46,8 +46,6 @@ public class NewsController extends HttpServlet {
 		}else if(command.equals("/qnaDelete")) {
 			actionForward = newsService.delete(request, response);
 		}
-		System.out.println(actionForward.isCheck());
-		System.out.println(actionForward.getPath());
 		if(actionForward.isCheck()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
 			view.forward(request, response);

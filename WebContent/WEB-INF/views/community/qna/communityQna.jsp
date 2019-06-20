@@ -27,8 +27,6 @@
 				<td>글쓴이</td>
 				<td>날짜</td>
 				<td>조회수</td>
-				<td>추천</td>
-				<td>비추천</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -41,12 +39,11 @@
 				<td>${dto.writer}</td>
 				<td>${dto.reg_date}</td>
 				<td>${dto.hit}</td>
-				<td>${dto.recommend}</td>
-				<td>${dto.decommend}</td>
 			</tr>
 		</c:forEach>
 		</tbody>
 	</table>
+	<jsp:include page="../communityCommon/paging.jsp"/>
 	</div>
 	<a href="./communityQnaWrite" class="btn btn-primary">Write</a>
 </div>
