@@ -13,15 +13,15 @@
 <title>${board}select</title>
 <script type="text/javascript">
 	$(function() {
-		// 리스트로 이동;
+		// 리스트로 이동;(완)
 		$('#list').click(function() {
 			location.href="./communityBoard";
 		});
-		// 수정폼으로 이동;
+		// 수정폼으로 이동;(완)
 		$('#update').click(function() {
 			location.href="./communityBoardUpdate?no=${dto.no}";
 		});
-		// 게시글 삭제;
+		// 게시글 삭제;(완)
 		$('#delete').click(function() {
 			var check = confirm("정말 삭제하시겠습니까?");
 			if (check) {
@@ -36,49 +36,46 @@
 				});
 			}
 		}); // end of 게시글 삭제 function;
-	});
-		// end of 게시글 function;
-	// 댓글	
+	});// end of 게시글 function;
+	// 댓글
 	$(function() {
 		getList();
 		var curPage=1;
 		// 댓글 리스트
 		function getList(count) {
-			$.get("../communityComments/comBoardCommentsList?no=${dto.no}&curPage="+count, function(data, status) {
-				data = data.trim();
-				if(data==1){
-					$("#clist").html(data);
+			$.get("../communityComments/comBoardCommentsList?no=${dto.no}&curPage="+count, function(data) {
+				var data = data.trim();
+				if(count==1){
+					$("#comments_list").html(data);
 				}else {
 					$("#clist").append(data);
 				}
 			});
 		}
-		// 댓글 더보기;
+		// 댓글 더보기;(완)
 		$("#more").click(function() {
 			curPage++;
 			getList(curPage);
 		});
-		// 댓글 insert;
-		$("#btn").click(function() {
+		// 댓글 insert; - 입력시 자동 새로고침이 안됨
+		$("#comment_write").click(function() {
 			var writer = $("#writer").val();
 			var contents = $("#contents").val();
 			var no = '${dto.no}';
 			$.post("../communityComments/comBoardCommentsInsert",{
+				no:no,
 				writer:writer,
-				contents:contents,
-				no:no
+				contents:contents
 			}, function(data) {
 				data = data.trim();
 				if(data=="1"){
-					alert("success");
+					alert("댓글이 등록되었습니다.")					
 					getList(1);
 				}else {
-					alert("Fail");
+					alert("댓글 등록에 실패하였습니다.");
 				}
 			});
 		});
-		
-		
 		//댓글 수정
 		$("#list").on("click", ".update", function(){
 			var id=$(this).attr("title");
@@ -103,11 +100,10 @@
 				}
 			});
 		});
-		
 		// 댓글 삭제;
 		$("#clist").on("click", ".del", function() {
 			var cnum = $(this).attr("id");
-			var check=confirm("삭제 할거냐?");
+			var check = confirm("삭제 할거냐?");
 			if(check){
 				$.get("../comments/commentsDelete?cnum="+cnum, function(data) {
 					data = data.trim();
@@ -118,12 +114,39 @@
 						alert("Delete Fail");
 					}
 				});
-				
 			}
-			
 		});
-		
-	});
+	});//end of 댓글
+	// 추천
+	$(function (){
+		$("#recommend").click(function () {
+			var no = ${dto.no};
+			var check = confirm("추천하시겠습니까?");
+			if(check){
+				alert("추천되었습니다.")
+				$.get("./communityBoardRecommend?no="+no, function(data){
+					data = data.trim();
+				})
+			}else{
+				alert("실패하였습니다.");
+			}
+		})
+	})
+	// 비추천
+	$(function (){
+		$("#decommend").click(function () {
+			var no = ${dto.no};
+			var check = confirm("비추천하시겠습니까?");
+			if(check){
+				alert("비추천되었습니다.")
+				$.get("./communtiyBoardDecommend?no="+no, function(data){
+					data = data.trim();
+				})
+			}else{
+				alert("실패하였습니다.");
+			}
+		})
+	})
 </script>
 </head>
 <body>
@@ -164,9 +187,9 @@
 		</div>
 	</div>
 <br>
-
+<div class = "container">
+		<div id = comments>
 <!-- ----------------------------------댓글입력-------------------------------- -->
-<div id = comments_input>
 			<div id = "comments_w">
 				<label for="writer">Writer</label>
 				<input type="text" id="writer" name="writer">
@@ -175,11 +198,9 @@
 				<label for="contents">Contents</label>
 				<textarea id="contents" name="contents" style="width:100%;height:100;border:1;overflow:visible;text-overflow:ellipsis;"></textarea>
 			</div>
-			<button class="btn btn-danger" id="btn">Write</button>
-</div> <!-- end of body_footer  -->
+			<button class="btn btn-danger" id="comment_write">Write</button>
 <!-- ----------------------------------댓글리스트---------------------------------- -->
-<div id = commentslist class="container">
-			<div class="row">
+			<div id = "comments_list" class="container">
 				<table class="table table-bordered" id="clist">
 					<thead>
 						<tr>
@@ -192,7 +213,8 @@
 				</table>
 				<button id="more">더보기</button>
 			</div>
-</div>
+		</div>
+	</div> <!-- end of body_footer  -->
 </div><!-- end of body  -->
 <%@include file="../../temp/footer.jsp" %>
 <%@include file="../../temp/activeweb.jsp"%>

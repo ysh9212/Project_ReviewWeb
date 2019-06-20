@@ -87,6 +87,10 @@ public class CommunityController extends HttpServlet {
 			actionForward = comBoardService.update(request, response);
 		}else if(command.equals("/board/communityBoardDelete")){
 			actionForward = comBoardService.delete(request, response);
+		}else if(command.equals("/board/communityBoardRecommend")){
+			actionForward = comBoardService.recommend(request, response);
+		}else if(command.equals("/board/communtiyBoardDecommend")){
+			actionForward = comBoardService.decommend(request, response);
 		// 자유게시판 댓글	
 		}else if(command.equals("/communityComments/comBoardCommentsList")) {
 			actionForward = comBoardCommentsService.list(request, response);
@@ -107,7 +111,11 @@ public class CommunityController extends HttpServlet {
 			actionForward = reviewService.update(request, response);
 		}else if(command.equals("/review/communityReviewDelete")){
 			actionForward = reviewService.delete(request, response);
-		
+		// 사용자리뷰 댓글
+		}else if(command.equals("/communityComments/reviewCommentsList")){
+		}else if(command.equals("/communityComments/reviewCommentsInsert")){
+		}else if(command.equals("/communityComments/reviewCommentsUpdate")){
+		}else if(command.equals("/communityComments/reviewCommentsDelete")){
 		// 중고나라
 		}else if(command.equals("/used/communityUsed")) {
 			actionForward = usedService.list(request, response);

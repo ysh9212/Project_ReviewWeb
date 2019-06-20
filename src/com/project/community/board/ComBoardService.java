@@ -108,7 +108,6 @@ public class ComBoardService implements Action{
 			comBoardDTO.setContents(request.getParameter("contents"));
 			int result = 0;
 			Connection con = null;
-			
 			try {
 				con = DBConnector.getConnect();
 				con.setAutoCommit(false);
@@ -153,7 +152,6 @@ public class ComBoardService implements Action{
 		actionForward.setPath(path);
 		return actionForward;
 	}
-
 	@Override
 	public ActionForward update(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
@@ -230,6 +228,44 @@ public class ComBoardService implements Action{
 		}
 		actionForward.setCheck(check);
 		actionForward.setPath(path);
+		return actionForward;
+	}
+	public ActionForward recommend(HttpServletRequest request, HttpServletResponse response) {
+		ActionForward actionForward = new ActionForward();
+		boolean check = true;
+		String path = "";
+		Connection con = null;
+		int result = 0;
+		try {
+			con = DBConnector.getConnect();
+			int no = Integer.parseInt(request.getParameter("no"));
+			result = comBoardDAO.recommend(no, con);
+			request.setAttribute("result", result);
+			check = true;
+			path = "../../WEB-INF/views/common/result2.jsp";
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return actionForward;
+	}
+	public ActionForward decommend(HttpServletRequest request, HttpServletResponse response) {
+		ActionForward actionForward = new ActionForward();
+		boolean check = true;
+		String path = "";
+		Connection con = null;
+		int result = 0;
+		try {
+			con = DBConnector.getConnect();
+			int no = Integer.parseInt(request.getParameter("no"));
+			result = comBoardDAO.decommend(no, con);
+			request.setAttribute("result", result);
+			check = true;
+			path = "../../WEB-INF/views/common/result2.jsp";
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return actionForward;
 	}
 }

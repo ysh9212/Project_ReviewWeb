@@ -83,8 +83,17 @@ public class ComBoardCommentsService implements Action{
 			}
 		}
 		request.setAttribute("result", result);
-		actionForward.setCheck(true);
-		actionForward.setPath("../../common/result2.jsp"); // 뭔가 result2로 가는 경로;
+		if(result==1) {
+			request.setAttribute("message", "댓글입력에 성공하였습니다.");
+			request.setAttribute("path", "./communityBoardSelect?no="+comBoardCommentsDTO.getNo());
+			actionForward.setCheck(true);
+			actionForward.setPath("../WEB-INF/views/community/communityCommon/result.jsp");
+		}else {
+			request.setAttribute("message", "댓글입력에 실패하였습니다.");
+			request.setAttribute("path", "./communityBoardSelect?no="+comBoardCommentsDTO.getNo());
+			actionForward.setCheck(true);
+			actionForward.setPath("../WEB-INF/views/community/communityCommon/result.jsp");
+		}
 		return actionForward;
 	}
 	@Override

@@ -10,7 +10,7 @@
 <style type="text/css">
 #body {
 	width: 1250px;
-	height: 1500px;
+	height: auto;
 	background-color: white;
 	margin: 0 auto;
 }

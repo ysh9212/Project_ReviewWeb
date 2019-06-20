@@ -139,4 +139,20 @@ public class ComBoardDAO implements BoardDAO{
 		st.close();
 		return result;
 	}
+	public int recommend(int no, Connection con) throws Exception{
+		String sql = "update community_board set recommend = recommend+'1' where no=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, no);
+		int result = st.executeUpdate();
+		st.close();
+		return result;
+	}
+	public int decommend(int no, Connection con) throws Exception{
+		String sql = "update community_board set decommend = decommend+'1' where no=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, no);
+		int result = st.executeUpdate();
+		st.close();
+		return result;
+	}
 }

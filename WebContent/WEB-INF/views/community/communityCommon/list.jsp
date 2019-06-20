@@ -7,9 +7,11 @@
 		<td>${dto.writer}</td>
 		<td>${dto.contents}</td>
 		<td>${dto.reg_date}</td>
-<%-- 		<c:if test="${'test' eq dto.writer}">
-		<td><button data-toggle="modal" title="${dto.cnum}" class="update" data-target="#myModal">Update</button> <button class="del" id="${dto.cnum}">Delete</button> </td>
-		</c:if> --%>
-		<td><button>Update</button><button>Delete</button></td>
+		<td><button title="${dto.cnum}" class="update">수정</button><button>삭제</button></td>
 	</tr>
 </c:forEach>
+<!--  
+		<c:if test="${'test' eq dto.writer}">
+		<td><button data-toggle="modal" title="${dto.cnum}" class="update" data-target="#myModal">Update</button> <button class="del" id="${dto.cnum}">Delete</button> </td>
+		</c:if>
+-->
