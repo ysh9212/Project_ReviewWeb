@@ -43,7 +43,7 @@ public class NoticeService implements Action{
 			SearchPager searchPager = s.makePage(totalCount);
 			request.setAttribute("pager", searchPager);
 			request.setAttribute("list", ar);
-			request.setAttribute("board", "board");
+			request.setAttribute("board", "communityNotice");
 			actionForward.setCheck(true);
 			actionForward.setPath("../../WEB-INF/views/community/notice/communityNotice.jsp");
 		} catch (Exception e) {

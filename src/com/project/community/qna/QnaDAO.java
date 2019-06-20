@@ -42,8 +42,14 @@ public class QnaDAO implements BoardDAO{
 	@Override
 	public List<BoardDTO> selectList(SearchRow searchRow, Connection con) throws Exception {
 		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
-		String sql = "select no, title, writer, reg_date, hit from community_qna";
+		String sql = "select * from " + 
+				"(select rownum R, p.* from " + 
+				"(select * from community_qna where "+searchRow.getSearch().getKind()+" like ? order by no desc) p) " + 
+				"where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, "%"+searchRow.getSearch().getSearch()+"%");
+		st.setInt(2, searchRow.getStartRow());
+		st.setInt(3, searchRow.getLastRow());
 		ResultSet rs = st.executeQuery();
 		while(rs.next()) {
 			NoticeDTO noticeDTO = new NoticeDTO();

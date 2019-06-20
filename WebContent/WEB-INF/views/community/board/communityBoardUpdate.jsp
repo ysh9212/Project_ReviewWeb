@@ -33,7 +33,7 @@ $(function() {
 	    }, 
 	    fOnAppLoad : function(){
 	        //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-	        oEditors.getById["contents"].exec("PASTE_HTML", ["내용을 입력하세요"]);
+	        oEditors.getById["contents"].exec("PASTE_HTML", ["contents"]);
 	    },
 	    fCreator: "createSEditor2"
 	}); //텍스트 폼 바꿈 스마트에디터
@@ -65,7 +65,7 @@ $(function() {
 			<div class="form-group">
 				<label for="contents">Contents:</label>
 				<textarea class="form-control" rows="5" id="contents" name="contents">${dto.contents}</textarea>
-			</div>		
+			</div>
 				<input type="button" id = "save" class="btn btn-danger" value = "write">
 			</form>
 			</div>

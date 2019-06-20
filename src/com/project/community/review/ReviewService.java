@@ -43,7 +43,7 @@ public class ReviewService implements Action{
 		SearchPager searchPager = s.makePage(totalCount);
 		request.setAttribute("pager", searchPager);
 		request.setAttribute("list", ar);
-		request.setAttribute("board", "board");
+		request.setAttribute("board", "communityReview");
 		actionForward.setCheck(true);
 		actionForward.setPath("../../WEB-INF/views/community/review/communityReview.jsp");
 		} catch (Exception e) {

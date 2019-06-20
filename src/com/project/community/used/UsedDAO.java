@@ -22,6 +22,9 @@ public class UsedDAO implements BoardDAO{
 		return 0;
 	}
 
+	public List<BoardDTO> List(Connection con) throws Exception{
+		return null;
+	}
 	@Override
 	public List<BoardDTO> selectList(SearchRow searchRow, Connection con) throws Exception {
 		// TODO Auto-generated method stub

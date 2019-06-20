@@ -12,7 +12,6 @@ import com.project.shopPage.SearchRow;
 import com.project.util.DBConnector;
 
 public class ComBoardDAO implements BoardDAO{
-	
 	@Override
 	public int getNum() throws Exception {
 		int result = 0;
@@ -38,11 +37,29 @@ public class ComBoardDAO implements BoardDAO{
 		st.close();
 		return result;
 	}
+	public List<BoardDTO> List(Connection con)throws Exception{
+		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
+		String sql = "select title from community_board where rownum <= 5 order by no desc";
+		PreparedStatement st = con.prepareStatement(sql);
+		ResultSet rs = st.executeQuery();
+		while(rs.next()) {
+			ComBoardDTO comBoardDTO = new ComBoardDTO();
+			comBoardDTO.setTitle(rs.getString("title"));
+			ar.add(comBoardDTO);
+		}
+		return ar;
+	}
 	@Override
 	public List<BoardDTO> selectList(SearchRow searchRow, Connection con) throws Exception {
 		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
-		String sql = "select no, title, writer, reg_date, hit, recommend, decommend from community_board";
+		String sql = "select * from " + 
+				"(select rownum R, p.* from " + 
+				"(select * from community_board where "+searchRow.getSearch().getKind()+" like ? order by no desc) p) " + 
+				"where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, "%"+searchRow.getSearch().getSearch()+"%");
+		st.setInt(2, searchRow.getStartRow());
+		st.setInt(3, searchRow.getLastRow());
 		ResultSet rs = st.executeQuery();
 		while(rs.next()) {
 			ComBoardDTO comBoardDTO = new ComBoardDTO();
@@ -116,6 +133,22 @@ public class ComBoardDAO implements BoardDAO{
 	@Override
 	public int delete(int no, Connection con) throws Exception {
 		String sql = "delete community_board where no=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, no);
+		int result = st.executeUpdate();
+		st.close();
+		return result;
+	}
+	public int recommend(int no, Connection con) throws Exception{
+		String sql = "update community_board set recommend = recommend+'1' where no=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, no);
+		int result = st.executeUpdate();
+		st.close();
+		return result;
+	}
+	public int decommend(int no, Connection con) throws Exception{
+		String sql = "update community_board set decommend = decommend+'1' where no=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, no);
 		int result = st.executeUpdate();

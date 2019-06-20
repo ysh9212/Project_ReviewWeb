@@ -11,6 +11,7 @@ import com.project.board.BoardDTO;
 import com.project.community.board.ComBoardDAO;
 import com.project.community.bug.BugDAO;
 import com.project.community.notice.NoticeDAO;
+import com.project.community.notice.NoticeDTO;
 import com.project.community.qna.QnaDAO;
 import com.project.community.review.ReviewDAO;
 import com.project.community.used.UsedDAO;
@@ -37,11 +38,11 @@ public class CommunityService {
 		ActionForward actionForward = new ActionForward();
 		SearchRow searchRow = new SearchRow();
 		try {
-			Connection con = DBConnector.getConnect();
-			List<BoardDTO> ar = noticeDAO.selectList(searchRow, con);
-			List<BoardDTO> bAr = comBoardDAO.selectList(searchRow, con);
-			List<BoardDTO> rAr = reviewDAO.selectList(searchRow, con);
-			List<BoardDTO> bugAr = bugDAO.selectList(searchRow, con);
+			con = DBConnector.getConnect();
+			List<BoardDTO> ar = noticeDAO.List(con);
+			List<BoardDTO> bAr = comBoardDAO.List(con);
+			List<BoardDTO> rAr = reviewDAO.List(con);
+			List<BoardDTO> bugAr = bugDAO.List(con);
 			List<BoardDTO> uAr = usedDAO.selectList(searchRow, con);
 			
 			request.setAttribute("nlist", ar);
@@ -57,8 +58,8 @@ public class CommunityService {
 			request.setAttribute("bugboard", "���װԽ���");
 
 			request.setAttribute("ulist", uAr);
-			request.setAttribute("uboard", "�߰��ǰ");
-
+			request.setAttribute("uboard", "중고제품");
+			
 			actionForward.setCheck(true);
 			actionForward.setPath("../WEB-INF/views/community/communityList.jsp");
 		} catch (Exception e) {

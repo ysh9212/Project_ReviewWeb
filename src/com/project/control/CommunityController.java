@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.project.action.ActionForward;
 import com.project.community.CommunityService;
 import com.project.community.board.ComBoardService;
+import com.project.community.board.comments.ComBoardCommentsService;
 import com.project.community.bug.BugService;
 import com.project.community.notice.NoticeService;
 import com.project.community.qna.QnaService;
@@ -27,6 +28,7 @@ public class CommunityController extends HttpServlet {
 	private CommunityService communityService;
 	private NoticeService noticeService;
 	private ComBoardService comBoardService;
+	private ComBoardCommentsService comBoardCommentsService;
 	private ReviewService reviewService;
 	private UsedService usedService;
 	private QnaService qnaService;
@@ -41,6 +43,7 @@ public class CommunityController extends HttpServlet {
         communityService = new CommunityService(); // 객체 생성을 안해서 service로 계속 연결을 못하고 있었음;
         noticeService = new NoticeService();
         comBoardService = new ComBoardService();
+        comBoardCommentsService = new ComBoardCommentsService();
         reviewService = new ReviewService();
         usedService = new UsedService();
         qnaService = new QnaService();
@@ -84,7 +87,19 @@ public class CommunityController extends HttpServlet {
 			actionForward = comBoardService.update(request, response);
 		}else if(command.equals("/board/communityBoardDelete")){
 			actionForward = comBoardService.delete(request, response);
-
+		}else if(command.equals("/board/communityBoardRecommend")){
+			actionForward = comBoardService.recommend(request, response);
+		}else if(command.equals("/board/communtiyBoardDecommend")){
+			actionForward = comBoardService.decommend(request, response);
+		// 자유게시판 댓글	
+		}else if(command.equals("/communityComments/comBoardCommentsList")) {
+			actionForward = comBoardCommentsService.list(request, response);
+		}else if(command.equals("/communityComments/comBoardCommentsInsert")){
+			actionForward = comBoardCommentsService.insert(request, response);
+		}else if(command.equals("/communityComments/comBoardCommentsUpdate")) {
+			actionForward = comBoardCommentsService.update(request, response);
+		}else if(command.equals("/communityComments/comBoardCommentsDelete")) {
+			actionForward = comBoardCommentsService.delete(request, response);
 		// 사용자리뷰
 		}else if(command.equals("/review/communityReview")) {
 			actionForward = reviewService.list(request, response);
@@ -96,7 +111,11 @@ public class CommunityController extends HttpServlet {
 			actionForward = reviewService.update(request, response);
 		}else if(command.equals("/review/communityReviewDelete")){
 			actionForward = reviewService.delete(request, response);
-		
+		// 사용자리뷰 댓글
+		}else if(command.equals("/communityComments/reviewCommentsList")){
+		}else if(command.equals("/communityComments/reviewCommentsInsert")){
+		}else if(command.equals("/communityComments/reviewCommentsUpdate")){
+		}else if(command.equals("/communityComments/reviewCommentsDelete")){
 		// 중고나라
 		}else if(command.equals("/used/communityUsed")) {
 			actionForward = usedService.list(request, response);
