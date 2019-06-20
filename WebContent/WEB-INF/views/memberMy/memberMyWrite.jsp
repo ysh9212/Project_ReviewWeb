@@ -16,7 +16,7 @@
 		<div class="container">
 			<jsp:include page="./memberMyCommon/navi.jsp"/>
 			<div id = "wrap">
-			<form action="${pageContext.request.contextPath}memberMy/memberMyWrite" method="post">
+			<form action="${pageContext.request.contextPath}/memberMy/memberMyWrite" method="post">
 				<h2 class="memberinfor">내 글 보기 </h2>
 				
 			

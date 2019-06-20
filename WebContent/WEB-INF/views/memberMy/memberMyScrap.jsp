@@ -17,7 +17,7 @@
 		<div class="container">
 			<jsp:include page="./memberMyCommon/navi.jsp"/>
 			<div id = "wrap">
-			<form action="${pageContext.request.contextPath}memberMy/memberMyScrap" method="post">
+			<form action="${pageContext.request.contextPath}/memberMy/memberMyScrap" method="post">
 				<h2 class="memberinfor"> 내가 한 스크랩 보기 </h2>
 				
 			

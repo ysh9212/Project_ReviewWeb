@@ -12,7 +12,7 @@
 <body>
 
 <%@include file = "../temp/header.jsp" %>
-<form action="${pageContext.request.contextPath}memberMy/memberMyQna" method="post">
+<form action="${pageContext.request.contextPath}/memberMy/memberMyQna" method="post">
 <div id="page-wrapper">
 	<div id="main">
 		<div class="container">
