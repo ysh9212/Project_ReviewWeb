@@ -77,7 +77,7 @@ public class ReviewService implements Action {
 
 	@Override
 	public ActionForward select(HttpServletRequest request, HttpServletResponse response) {
-		ReviewDAO eventDAO = new ReviewDAO();
+		ReviewDAO reviewDAO = new ReviewDAO();
 ActionForward actionForward = new ActionForward();
 		
 		BoardDTO boardDTO = null;
@@ -86,8 +86,8 @@ ActionForward actionForward = new ActionForward();
 		try {
 			con = DBConnector.getConnect();
 			int no = Integer.parseInt(request.getParameter("no"));
-			boardDTO =eventDAO.selectOne(no, con);
-			eventDAO.updateHit(no, con);
+			boardDTO =reviewDAO.selectOne(no, con);
+			reviewDAO.updateHit(no, con);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
