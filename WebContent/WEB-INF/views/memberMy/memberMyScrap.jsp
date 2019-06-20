@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../assets/css/main.css" />
+<jsp:include page="./memberMyCommon/css.jsp"/>
+
 </head>
 <body>
 
@@ -13,13 +15,14 @@
 <div id="page-wrapper">
 	<div id="main">
 		<div class="container">
-			<form action="${pageContext.request.contextPath}member/memberMypage" method="post">
-				<h2> 마이페이지 </h2>
-			<form action="./memberMyPage">
-				<h1> my page</h1>
-			
+			<jsp:include page="./memberMyCommon/navi.jsp"/>
+			<div id = "wrap">
+			<form action="${pageContext.request.contextPath}memberMy/memberMyScrap" method="post">
+				<h2 class="memberinfor"> 내가 한 스크랩 보기 </h2>
+				
 			
 			</form>
+			</div>
 		</div>
 	</div>
 </div>

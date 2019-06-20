@@ -46,12 +46,11 @@ public class MemberController extends HttpServlet {
 			actionforward = memberService.logout(request, response);
 		}else if(command.equals("/idCheck")) {
 			actionforward = memberService.idCheck(request, response);
-		}else if(command.equals("/memberMypage")) {
-			actionforward = memberService.mypage(request, response);
 		}else if(command.equals("/memberSearchId")) {
 			actionforward = memberService.searchId(request, response);
 		}else if(command.equals("/memberSearchPw")) {
 			actionforward = memberService.searchPw(request, response);
+			
 		}else if(command.equals("/nicknameCheck")) {
 			actionforward = memberService.nicknameCheck(request, response);
 		}

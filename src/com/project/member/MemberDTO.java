@@ -1,11 +1,12 @@
 package com.project.member;
 
+import java.sql.Date;
 
 public class MemberDTO {
 	private String id;
 	private String pw;
 	private String nickname;
-	private String birth;
+	private Date birth;
 	private String phone;
 	private String email;
 	private String name;
@@ -29,10 +30,10 @@ public class MemberDTO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public String getBirth() {
+	public Date getBirth() {
 		return birth;
 	}
-	public void setBirth(String birth) {
+	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
 	public String getPhone() {
