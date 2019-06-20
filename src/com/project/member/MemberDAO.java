@@ -25,6 +25,7 @@ public class MemberDAO {
 		
 	}
 	
+	
 	public int nicknameCheck(String nickname, Connection con)throws Exception{
 		String sql = "select nickname from member where nickname=?";
 		PreparedStatement st = con.prepareStatement(sql);
@@ -132,4 +133,16 @@ public class MemberDAO {
 		st.close();
 		return m;
 	}
+	
+	//delete
+		public int memberDelete(String id, Connection con) throws Exception{
+			
+			String sql = "delete member where id=?";
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setString(1, id);
+			int result = st.executeUpdate();
+			st.close();
+			
+			return result;
+		}
 }

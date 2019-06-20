@@ -46,6 +46,8 @@ public class MemberService implements Action {
 		return actionforward;
 	}
 	
+	
+	
 	public ActionForward nicknameCheck(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionforward = new ActionForward();
 		String nickname = request.getParameter("nickname");
@@ -75,15 +77,6 @@ public class MemberService implements Action {
 		return actionforward;
 	}
 	
-	public ActionForward mypage(HttpServletRequest request, HttpServletResponse response) {
-		ActionForward actionforward = new ActionForward();
-		boolean check = true;
-		
-		actionforward.setCheck(check);
-		actionforward.setPath("../WEB-INF/views/member/memberMypage.jsp");
-		
-		return actionforward;
-	}
 	
 	public ActionForward searchId(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionforward = new ActionForward();
@@ -187,7 +180,7 @@ public class MemberService implements Action {
 					}
 					
 					String AuthenticationKey = temp.toString();
-					System.out.println(AuthenticationKey);
+				
 					
 					javax.mail.Session session = javax.mail.Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 						
@@ -255,7 +248,6 @@ public class MemberService implements Action {
 			MemberDTO memberDTO = new MemberDTO();
 			
 			String checkbox = request.getParameter("check");
-			System.out.println(request.getParameter("id"));
 			if(checkbox!=null) {
 				Cookie c = new Cookie("check", request.getParameter("id"));
 				c.setMaxAge(60*60*24*7);
@@ -336,7 +328,7 @@ public class MemberService implements Action {
 			}
 			
 		}
-		System.out.println(result);
+	
 		if(result>0) {
 			check = false;
 			path = "../index.do";

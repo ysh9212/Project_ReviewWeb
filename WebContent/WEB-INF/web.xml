@@ -28,7 +28,6 @@
     <servlet-name>shop</servlet-name>
     <url-pattern>/shop/*</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>member</servlet-name>
     <servlet-class>com.project.control.MemberController</servlet-class>
@@ -37,8 +36,12 @@
     <servlet-name>member</servlet-name>
     <url-pattern>/member/*</url-pattern>
   </servlet-mapping>
-  
-  
-  
-
+  <servlet>
+    <servlet-name>memberMy</servlet-name>
+    <servlet-class>com.project.control.MyPageController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>memberMy</servlet-name>
+    <url-pattern>/memberMy/*</url-pattern>
+  </servlet-mapping>
 </web-app>

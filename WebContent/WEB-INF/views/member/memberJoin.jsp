@@ -210,7 +210,6 @@
 		var frm = document.frm;
 	
 			var email = document.getElementById('email').value;
-			
 			var name = document.getElementById('name').value;
 			var yy = document.getElementById('yy').value;
 			var mm = document.getElementById('mm').value;
@@ -219,6 +218,8 @@
 			var phone = document.getElementById('phone').value;
 			var birth = yy+mm+dd;
 			var id = document.getElementById('id').value;
+			
+			// 이메일 @ 형식 유지
 			var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 			
 			$('#id').keyup(function(){
@@ -286,7 +287,7 @@
 			        return false;
 			    }
 			    
-			    if(pw.value ==''){
+			    if(pswd1.value ==''){
 			    	var pwcheck = document.getElementById('pwcheck').style.color = "red";
 					pwcheck.innerHTML='필수 입력 항목입니다.';
 				}
@@ -295,13 +296,13 @@
 			$('#pswd2').blur(function() {
 				var pwd1 = document.getElementById('pswd2');
 				var pwdoverlap = document.getElementById('pwdoverlap');
-				if (pswd1.value == pwd1.value) {
-					document.getElementById('pwdoverlap').style.color = "blue";
-					pwdoverlap.innerHTML = '비밀번호가 일치합니다';
-				} else if(pswd2.value ==''){
+				if (pswd2.value ==''){
 					document.getElementById('pwdoverlap').style.color = "red";
 					pwdoverlap.innerHTML = '필수 입력 항목입니다.';
-				} 
+				} else if(pswd1.value == pwd1.value) {
+					document.getElementById('pwdoverlap').style.color = "blue";
+					pwdoverlap.innerHTML = '비밀번호가 일치합니다';
+				}
 				else if(pswd1.value != pwd1.value){
 					document.getElementById('pwdoverlap').style.color = "red";
 					pwdoverlap.innerHTML = '비밀번호가 일치하지 않습니다';
@@ -357,6 +358,7 @@
 			//이름
 			
 			$('#name').blur(function() {
+			var name = document.getElementById('name');
 			var namec = document.getElementById('namecheck');
 			if (name.value == '') {
 				document.getElementById('namecheck').style.color = "red";
@@ -368,7 +370,7 @@
 			});
 			
 			$('#yy').blur(function() {
-				
+				var yy = document.getElementById('yy');
 				var yyc = document.getElementById('birthcheck');
 				if (yy.value == '') {
 					document.getElementById('birthcheck').style.color = "red";
@@ -377,16 +379,20 @@
 			});
 			
 			$('#dd').blur(function() {
-				
+				var dd = document.getElementById('dd');
 				var ddc = document.getElementById('birthcheck');
 				if (dd.value == '') {
 					document.getElementById('birthcheck').style.color = "red";
 					ddc.innerHTML = '필수 입력 항목입니다';
 				} 
+				if(dd.value > 31){
+					 $('#dd').val('').focus();
+				}
+				
 			});
 			
 			$('#phone').blur(function() {
-				
+				var phone = document.getElementById('phone');
 				var phonec = document.getElementById('phonecheck');
 				if (phone.value == '') {
 					document.getElementById('phonecheck').style.color = "red";
@@ -397,7 +403,7 @@
 			});
 			
 			$('#address').blur(function() {
-				
+				var address = document.getElementById('address');
 				var addressc = document.getElementById('addresscheck');
 				if (address.value == '') {
 					document.getElementById('addresscheck').style.color = "red";
@@ -434,7 +440,7 @@
 				
 				var email = document.getElementById('email').value;
 				var id = document.getElementById('id').value;
-				
+				var pswd1 = document.getElementById('pswd1').value;
 				var nickname = document.getElementById('nickname').value;
 				var name = document.getElementById('name').value;
 				var yy = document.getElementById('yy').value;

@@ -22,7 +22,7 @@
 						<% MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");%>
 						<% if(memberDTO != null){ %>
 						<a class="nav-link" href="${pageContext.request.contextPath}/member/memberLogout">Logout</a>
-						<a class="nav-link" href="${pageContext.request.contextPath}/member/memberMypage">Mypage</a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/memberMy/memberMyPage">MyPage</a>
 					
 						<%}else { %>
 						<a class="mav-link" href="${pageContext.request.contextPath}/member/memberLogin">Login</a>
