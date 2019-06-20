@@ -47,7 +47,7 @@
 				<div id="body">
 				
 						<table class="table table-hover">
-							<%-- <c:forEach items="${commentsList }" var="cdto"> --%>
+							 <c:forEach items="${commentsList }" var="cdto">
 								<thead>
 									<tr>
 
@@ -67,7 +67,7 @@
 								<tr>
 
 								</tr>
-							<%-- </c:forEach> --%>
+							</c:forEach>
 							
 						</table>
 				</div>

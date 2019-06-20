@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.project.action.ActionForward;
+import com.project.review.CommentsService;
 import com.project.review.ReviewService;
 
 /**
@@ -19,6 +20,7 @@ import com.project.review.ReviewService;
 public class ReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ReviewService reviewService;
+	private CommentsService commentsService;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -27,7 +29,7 @@ public class ReviewController extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 		reviewService = new ReviewService();
-
+		commentsService = new CommentsService();
 	}
 
 	/**
@@ -42,9 +44,15 @@ public class ReviewController extends HttpServlet {
 			actionForward = reviewService.list(request, response);
 		} else if (command.equals("/reviewSelect")) {
 			actionForward = reviewService.select(request, response);
+		} else if (command.equals("/commentsList")) {
+			actionForward = commentsService.list(request, response);
+		} else if (command.equals("/commentsInsert")) {
+			actionForward = commentsService.insert(request, response);
+		} else if (command.equals("/commentsUpdate")) {
+			actionForward = commentsService.update(request, response);
+		} else if (command.equals("/commentsDelete")) {
+			actionForward = commentsService.delete(request, response);
 		}
-		System.out.println(actionForward.isCheck());
-		System.out.println(actionForward.getPath());
 		if (actionForward.isCheck()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
 			view.forward(request, response);
