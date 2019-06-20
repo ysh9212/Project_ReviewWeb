@@ -1,4 +1,4 @@
-package com.project.shop.product;
+package com.project.shop.cart;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -9,54 +9,31 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project.action.Action;
 import com.project.action.ActionForward;
-import com.project.shopPage.SearchMakePage;
-import com.project.shopPage.SearchPager;
-import com.project.shopPage.SearchRow;
 import com.project.util.DBConnector;
 
-public class ProductService implements Action{
-	private ProductDAO productDAO;
-	public ProductService() {
-		productDAO = new ProductDAO();
+public class CartService implements Action{
+	private CartDAO cartDAO;
+	public CartService() {
+		cartDAO = new CartDAO();
 	}
-
 	@Override
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
-		int curPage = 1;
-		try {
-			curPage = Integer.parseInt(request.getParameter("curPage"));
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		String kind = request.getParameter("kind");
-		String search = request.getParameter("search");
-		
-		SearchMakePage s = new SearchMakePage(curPage, kind, search);
-		
-		SearchRow searchRow = s.makeRow();
-		List<ProductDTO> ar = null;
 		Connection con = null;
 		
 		try {
 			con = DBConnector.getConnect();
-			ar = productDAO.selectList(searchRow, con);
+			String id = request.getParameter("id");
+			List<CartDTO> ar =  cartDAO.selectList(id, con);
 			
-			int totalCount = productDAO.getTotalCount(searchRow, con);
-			SearchPager searchPager = s.makePage(totalCount);
-			
-			request.setAttribute("pager", searchPager);
 			request.setAttribute("list", ar);
 			actionForward.setCheck(true);
-			actionForward.setPath("../WEB-INF/views/shop/shopList.jsp");
-
+			actionForward.setPath("../../WEB-INF/views/shop/product/cartList.jsp");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			request.setAttribute("message", "Server Error");
-			request.setAttribute("path", "../index.do");
-			actionForward.setCheck(true);
-			actionForward.setPath("../WEB-INF/views/common/result.jsp");
+			
 		}finally {
 			try {
 				con.close();
@@ -64,23 +41,20 @@ public class ProductService implements Action{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		}
-		
 		return actionForward;
 	}
 
 	@Override
 	public ActionForward select(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
-		ProductDTO productDTO = null;
+		CartDTO cartDTO = null;
 		Connection con = null;
 		
 		try {
 			con = DBConnector.getConnect();
-			int pno = Integer.parseInt(request.getParameter("pno"));
-			productDTO = productDAO.selectOne(pno, con);
-			
+			int no = Integer.parseInt(request.getParameter("no"));
+			cartDTO = cartDAO.selectOne(no, con);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -93,13 +67,8 @@ public class ProductService implements Action{
 			}
 		}
 		String path = "";
-		if(productDTO != null) {
-			request.setAttribute("dto", productDTO);
-			path = "../WEB-INF/views/shop/product/productSelect.jsp";
-		}else {
-			request.setAttribute("message", "No DATA");
-			request.setAttribute("path", "./shopList");
-			path = "../WEB-INF/views/common/result.jsp";
+		if(cartDTO != null) {
+			request.setAttribute("dto", cartDTO);
 		}
 		actionForward.setCheck(true);
 		actionForward.setPath(path);
@@ -109,8 +78,50 @@ public class ProductService implements Action{
 
 	@Override
 	public ActionForward insert(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
+		ActionForward actionForward = new ActionForward();
+		boolean cehck = true;
+		
+		CartDTO cartDTO = new CartDTO();
+		cartDTO.setNo(Integer.parseInt(request.getParameter("no")));
+		cartDTO.setPno(Integer.parseInt(request.getParameter("pno")));
+		cartDTO.setId(request.getParameter("id"));
+		cartDTO.setCount(Integer.parseInt(request.getParameter("count")));
+		cartDTO.setPrice(Integer.parseInt(request.getParameter("price")));
+		
+		Connection con = null;
+		int result = 0;
+		try {
+			con = DBConnector.getConnect();
+			result = cartDAO.insert(cartDTO, con);
+			
+			if(result<1) {
+				throw new Exception();
+			}
+			con.commit();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result = 0;
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}finally {
+			try {
+				con.setAutoCommit(true);
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} 
+		if(result>0) {
+			
+		}
+		
+		return actionForward;
 	}
 
 	@Override

@@ -215,7 +215,7 @@ public class AdminShopQnaService implements Action{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			request.setAttribute("message", "Server Error");
-			request.setAttribute("path", "../../index.do");
+			request.setAttribute("path", "../../admin.do");
 			actionForward.setCheck(true);
 			actionForward.setPath("../../../WEB-INF/views/common/result.jsp");
 		}finally {

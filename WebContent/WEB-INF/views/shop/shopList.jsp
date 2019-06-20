@@ -26,7 +26,7 @@
 								<span class="image">
 								<img src="../images/hani.jpg" alt="" width="400" height="300">
 								</span>
-								<a href="#">
+								<a href="./product/productSelect?pno=${dto.pno }">
 								<h2>대박 물품</h2>
 								<div class="content">
 								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>

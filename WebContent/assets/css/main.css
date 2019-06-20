@@ -67,7 +67,9 @@ input::-moz-focus-inner {
 input, select, textarea {
 
 }
-
+textarea{
+	width: 99%;
+}
 /* Basic */
 
 
