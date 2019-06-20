@@ -31,7 +31,7 @@ public class CommentsService implements Action{
 			// TODO: handle exception
 		}
 		
-		num = Integer.parseInt(request.getParameter("num"));
+		num = Integer.parseInt(request.getParameter("cnum"));
 		
 		SearchMakePage searchMakePage = new SearchMakePage(curPage, "", "");
 		SearchRow searchRow = searchMakePage.makeRow();

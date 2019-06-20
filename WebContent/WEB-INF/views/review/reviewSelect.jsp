@@ -47,7 +47,7 @@
 				<div id="body">
 				
 						<table class="table table-hover">
-							 <c:forEach items="${commentsList }" var="cdto">
+							 <c:forEach items="${commentsList}" var="cdto">
 								<thead>
 									<tr>
 
@@ -59,9 +59,9 @@
 									</tr>
 								</thead>
 								<tr>
-									<td>${dto.writer}</td>
-									<td>${dto.contents}</td>
-									<td>${dto.reg_date}</td>
+									<td>${cdto.writer}</td>
+									<td>${cdto.contents}</td>
+									<td>${cdto.reg_date}</td>
 
 								</tr>
 								<tr>
