@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.project.action.ActionForward;
 import com.project.shop.mqna.ShopMqnaService;
 import com.project.shop.notice.ShopNoticeService;
+import com.project.shop.product.ProductService;
 import com.project.shop.qna.ShopQnaService;
 
 
@@ -24,6 +25,7 @@ public class ShopController extends HttpServlet {
     private ShopNoticeService shopNoticeService;
     private ShopQnaService shopQnaService;
     private ShopMqnaService shopMqnaService;
+    private ProductService productService;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -32,6 +34,7 @@ public class ShopController extends HttpServlet {
         shopNoticeService = new ShopNoticeService();
         shopQnaService = new ShopQnaService();
         shopMqnaService = new ShopMqnaService();
+        productService = new ProductService();
         // TODO Auto-generated constructor stub
     }
 
@@ -46,11 +49,18 @@ public class ShopController extends HttpServlet {
 		if(command.equals("/shopList")) {
 			actionForward.setCheck(true);
 			actionForward.setPath("../WEB-INF/views/shop/shopList.jsp");
-		}else if(command.equals("/noticeList")){
+		}else if(command.equals("/productSelect")) {
+			actionForward.setCheck(true);
+			actionForward.setPath("../../WEB-INF/views/shop/product/productSelect.jsp");
+		}
+		//notice
+		else if(command.equals("/noticeList")){
 			actionForward = shopNoticeService.list(request, response);
 		}else if(command.equals("/noticeSelect")) {
 			actionForward = shopNoticeService.select(request, response);
-		}else if(command.equals("/qnaList")) {
+		}
+		//qna
+		else if(command.equals("/qnaList")) {
 			actionForward = shopQnaService.list(request, response);
 		}else if(command.equals("/qnaSelect")) {
 			actionForward = shopQnaService.select(request, response);
@@ -60,7 +70,9 @@ public class ShopController extends HttpServlet {
 			actionForward = shopQnaService.update(request, response);
 		}else if(command.equals("/qnaDelete")) {
 			actionForward = shopQnaService.delete(request, response);
-		}else if(command.equals("/mqnaList")) {
+		}
+		//mqna
+		else if(command.equals("/mqnaList")) {
 			actionForward = shopMqnaService.list(request, response);
 		}else if(command.equals("/mqnaSelect")) {
 			actionForward = shopMqnaService.select(request, response);

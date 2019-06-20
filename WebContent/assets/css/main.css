@@ -70,7 +70,9 @@ input, select, textarea {
 	-ms-appearance: none;
 	appearance: none;
 }
-
+textarea{
+	width: 99%;
+}
 /* Basic */
 
 	html {
