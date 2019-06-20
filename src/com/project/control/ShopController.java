@@ -52,6 +52,9 @@ public class ShopController extends HttpServlet {
 		}else if(command.equals("/productSelect")) {
 			actionForward.setCheck(true);
 			actionForward.setPath("../../WEB-INF/views/shop/product/productSelect.jsp");
+		}else if(command.equals("/productPurchase")) {
+			actionForward.setCheck(true);
+			actionForward.setPath("../../WEB-INF/views/shop/product/productPurchase.jsp");
 		}
 		//notice
 		else if(command.equals("/noticeList")){

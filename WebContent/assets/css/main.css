@@ -74,7 +74,10 @@ textarea{
 	width: 99%;
 }
 /* Basic */
-
+#contents{
+	width: 99.8%;
+	height: 500px;
+}
 	html {
 		box-sizing: border-box;
 	}
