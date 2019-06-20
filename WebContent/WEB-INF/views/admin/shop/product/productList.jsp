@@ -25,7 +25,7 @@ SHOP ${board } 페이지
 		<c:forEach items="${list }" var = "dto">
 			<tr>
 				<td>${dto.product_main_no }</td>
-				<td><a href="./${board}Select?no=${dto.product_main_no}">${dto.product_title }</a></td>
+				<td><a href="./productSelect?pno=${dto.pno}">${dto.title }</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>
@@ -41,23 +41,23 @@ SHOP ${board } 페이지
 		</form>
 		<ul class="pager center">
 			<c:if test="${pager.curBlock gt 1 }">
-				<li class="previous"><a href="./${board}List?curPage=${pager.startNum-1}&kind=${pager.search.kind}&search=${pager.search.search}">Previous</a></li>
+				<li class="previous"><a href="./shopList?curPage=${pager.startNum-1}&kind=${pager.search.kind}&search=${pager.search.search}">Previous</a></li>
 			</c:if>
 			<li>
 				<ul class="pagination center">
 					<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" step="1" var="i">
-					<li class="center"><a href="./${board}List?curPage=${i}&kind=${pager.search.kind}&search=${pager.search.search}">${i}</a></li>
+					<li class="center"><a href="./shopList?curPage=${i}&kind=${pager.search.kind}&search=${pager.search.search}">${i}</a></li>
 					
 					</c:forEach>
 				</ul>
 
 			</li>
 			<c:if test="${pager.curBlock lt pager.totalBlock }">
-				<li class="next"><a href="./${board}List?curPage=${pager.lastNum+1}&kind=${pager.search.kind}&search=${pager.search.search}">Next</a></li>
+				<li class="next"><a href="./shopList?curPage=${pager.lastNum+1}&kind=${pager.search.kind}&search=${pager.search.search}">Next</a></li>
 			</c:if>
 		</ul>
 	</div>
-	<a href="./${board}Write" class="btn btn-primary">상품추가</a>
+	<a href="./productWrite" class="btn btn-primary">상품추가</a>
 </div>
 </body>
 </html>

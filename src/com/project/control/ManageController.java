@@ -89,6 +89,9 @@ public class ManageController extends HttpServlet {
 		else if(command.equals("/productList")){
 			actionForward.setCheck(true);
 			actionForward.setPath("../../../WEB-INF/views/admin/shop/product/productList.jsp");
+		}else if(command.equals("/productWrite")) {
+			actionForward.setCheck(true);
+			actionForward.setPath("../../../WEB-INF/views/admin/shop/product/productWrite.jsp");
 		}
 		//login
 		else if(command.equals("/adminLogin")) {

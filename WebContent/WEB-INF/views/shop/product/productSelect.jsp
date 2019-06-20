@@ -397,7 +397,13 @@ text-decoration: none;
 		});
 		
 		$('#addcart').click(function(){
+			var member_id = "<%=(String)session.getAttribute("memberDTO")%>"
+			if(member_id == 'null'){
+				alert('로그인 후 이용 가능합니다');
+				return false;
+			}else{
 			location.href = './cartList.jsp';
+			}
 		});
 			  
 		$('#purchase').click(function(){
