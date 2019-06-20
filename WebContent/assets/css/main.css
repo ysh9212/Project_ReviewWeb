@@ -170,6 +170,12 @@ textarea{
       margin-bottom: 0;
    }
 
+
+#contents{
+	width: 99.8%;
+	height: 500px;
+}
+
 	html {
 		box-sizing: border-box;
 	}

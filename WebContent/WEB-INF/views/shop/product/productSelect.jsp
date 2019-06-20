@@ -270,6 +270,7 @@
 }
 a:link {
 text-decoration: none;
+	text-align: center;
 }
 .vip-tabcontentwrap{
 	position: relative;
@@ -368,6 +369,9 @@ text-decoration: none;
     border: 0;
     border-bottom: 1px solid #d6d7d8;
 }
+.purchase a{
+	text-align: center;
+}
 </style>
 <script type="text/javascript">
 	$(function(){
@@ -397,7 +401,13 @@ text-decoration: none;
 		});
 			  
 		$('#purchase').click(function(){
-			location.href ="./productPurchase.jsp";
+			var member_id = "<%=(String)session.getAttribute("memberDTO")%>"
+			if(member_id == 'null'){
+				alert('로그인 후 이용 가능합니다');
+				return false;
+			}else{
+			location.href="./productPurchase?pno=";
+			}
 		});
 		
 	});
@@ -573,7 +583,8 @@ text-decoration: none;
 							<div class="form_bottom">
 						        <div class="section_bottombtns">
                 				<button class="btn_primary btn_white btn_mycart"  id="addcart" ><em>장바구니</em></button>
-								<button class="btn_primary btn_blue" id="purchase" ><em>구매하기</em></button>
+                				<button class="btn_primary btn_blue"  id="purchase" ><em>구매하기</em></button>
+								
                     
        					 		</div>
 								<div class="tooltip_priceguide tooltip_layer">
