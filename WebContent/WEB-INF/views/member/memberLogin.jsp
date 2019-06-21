@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -114,11 +114,12 @@ html{color: -internal-root-color;}
 </head>
 <body>
 <%@include file = "../temp/header.jsp" %>
+<form method="post" action="./memberLogin">
 <div id="page-wrapper">
 	<div id ="main">
 		<div class="container">
 		<div id = "wrap">
-<form method="post" action="./memberLogin">
+
 
 			<div class="login_content">
 				<div class="login_row">
@@ -168,13 +169,14 @@ html{color: -internal-root-color;}
 	</div>
 	
 
-</form>
+
 	
 	
 		</div>
 	</div>
 	</div>
 </div>
+</form>
 
 <%@include file="../temp/footer.jsp" %>
 
