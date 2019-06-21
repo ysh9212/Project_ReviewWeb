@@ -8,10 +8,10 @@
 <meta charset="UTF-8">
 <title>${board }Select</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="../../assets/css/main.css"/>
+<link rel="stylesheet" href="../assets/css/main.css"/>
 </head>
 <body>
-	<%@include file="../../temp/header.jsp"%>
+	<%@include file="../temp/header.jsp"%>
 	<div class="page-wrapper">
 		<div id="main">
 			<div class="container">
@@ -33,14 +33,14 @@
 						<td>${dto.hit}</td>
 					</tr>
 					<tr>
-						<td colspan="6">${dto.contents}
+						<td colspan="5">${dto.contents}
 					</tr>
 				</table>
 			</div>
 		</div>
 	</div>
 
-	<%@include file="../../temp/footer.jsp"%>
-	<%@include file="../../temp/activeweb.jsp"%>
+	<%@include file="../temp/footer.jsp"%>
+	<%@include file="../temp/activeweb.jsp"%>
 </body>
 </html>
