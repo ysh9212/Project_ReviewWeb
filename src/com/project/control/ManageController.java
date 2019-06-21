@@ -13,6 +13,7 @@ import com.project.action.ActionForward;
 import com.project.shop.admin.AdminService;
 import com.project.shop.admin.mqna.AdminShopMqnaService;
 import com.project.shop.admin.notice.AdminShopNoticeService;
+import com.project.shop.admin.product.ProductService;
 import com.project.shop.admin.qna.AdminShopQnaService;
 
 /**
@@ -25,7 +26,7 @@ public class ManageController extends HttpServlet {
 	private AdminShopQnaService adminShopQnaService;
 	private AdminShopMqnaService adminShopMqnaService;
 	private AdminService adminService;
-       
+    private ProductService productService;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -35,6 +36,7 @@ public class ManageController extends HttpServlet {
         adminShopQnaService = new AdminShopQnaService();
         adminShopMqnaService = new AdminShopMqnaService();
         adminService = new AdminService();
+        productService = new ProductService();
         // TODO Auto-generated constructor stub
     }
 
@@ -87,11 +89,15 @@ public class ManageController extends HttpServlet {
 			actionForward= adminShopMqnaService.delete(request, response);
 		}//product
 		else if(command.equals("/productList")){
-			actionForward.setCheck(true);
-			actionForward.setPath("../../../WEB-INF/views/admin/shop/product/productList.jsp");
+			actionForward = productService.list(request, response);
 		}else if(command.equals("/productWrite")) {
-			actionForward.setCheck(true);
-			actionForward.setPath("../../../WEB-INF/views/admin/shop/product/productWrite.jsp");
+			actionForward = productService.insert(request, response);
+		}else if(command.equals("/productUpdate")) {
+			actionForward = productService.update(request, response);
+		}else if(command.equals("/productSelect")) {
+			actionForward = productService.select(request, response);
+		}else if(command.equals("/productDelete")) {
+			actionForward = productService.delete(request, response);
 		}
 		//login
 		else if(command.equals("/adminLogin")) {

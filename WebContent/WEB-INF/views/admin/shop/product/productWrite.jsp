@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품 추가</title>
+<title>UDK 관리자 페이지</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <script type="text/javascript" src="../../../se2/js/HuskyEZCreator.js" charset="utf-8"></script>
 <c:import url="../../../../../assets/css/admincss.jsp"/>
@@ -46,7 +46,7 @@ $(function() {
 <c:import url="../../../temp/adminsetting.jsp"/>
 <div class="main">
 SHOP ${board } 페이지
-	<form id="frm" action="./productWrite" method="post">
+	<form id="frm" action="./productWrite" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			상품 카테고리<br>
 			<select name="kind">

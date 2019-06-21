@@ -45,20 +45,27 @@
     <url-pattern>/admin.do</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>manage</servlet-name>
-  	<servlet-class>com.project.control.ManageController</servlet-class>
+    <servlet-name>manage</servlet-name>
+    <servlet-class>com.project.control.ManageController</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>manage</servlet-name>
-  	<url-pattern>/admin/*</url-pattern>
+    <servlet-name>manage</servlet-name>
+    <url-pattern>/admin/*</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>comments</servlet-name>
-  	<servlet-class>com.project.control.CommentsController</servlet-class>
+    <servlet-name>comments</servlet-name>
+    <servlet-class>com.project.control.CommentsController</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>comments</servlet-name>
-  	<url-pattern>/comments/*</url-pattern>
+    <servlet-name>comments</servlet-name>
+    <url-pattern>/comments/*</url-pattern>
   </servlet-mapping>
-	
+  <servlet>
+    <servlet-name>product_upload</servlet-name>
+    <servlet-class>com.project.control.ProductUploadController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>product_upload</servlet-name>
+    <url-pattern>/productupload/*</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -50,7 +50,7 @@ $(function() {
 					</div>
 					<div class="form-group">
 							<div class="title">Writer:</div> 
-							<input type="text"	class="form-control" id="writer" name="writer" value="${dto.writer }" readonly="readonly">
+							<input type="text"	class="form-control" id="writer" name="writer" value="${memberDTO.nickname }" readonly="readonly">
 					</div>
 					<div class="form-group">
 							<div class="title">Contents:</div> 

@@ -18,7 +18,8 @@ public class ProductDAO {
 		ResultSet rs = st.executeQuery();
 		rs.next();
 		result=rs.getInt(1);
-		DBConnector.disConnect(rs, st, con);
+		rs.close();
+		st.close();
 		return result;
 	}
 	
@@ -79,7 +80,7 @@ public class ProductDAO {
 			productDTO.setTitle(rs.getString("title"));
 			productDTO.setDetail(rs.getString("detail"));
 			productDTO.setReg_date(rs.getString("reg_date"));
-			productDTO.setStock(rs.getInt(rs.getInt("stock")));
+			productDTO.setStock(rs.getInt("stock"));
 			productDTO.setPrice(rs.getInt("price"));
 		}
 		rs.close();
