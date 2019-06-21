@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -529,159 +529,151 @@
 
 
 <form action="${pageContext.request.contextPath}/member/memberJoin" method="post">
-		<div id="page-wrapper">
-			<div id="main">
-				<div class="container">
-					<div id="wrap">
-						<h2>회원가입합시다.</h2>
-						<div class="join_content">
-							<div class="join_row">
-								<h3 class="join_title">
-									<label for="id">아이디</label>
-								</h3>
-								<span class="ps_box int_id"><input type="text" id="id" name="id" class="int" title="ID" maxlength="20"></span> 
-								<input type="hidden" id="idConfirm" value="0"> 
-								<input type="button" value="중복확인" id="idoverlap">
-								<div id="result" class="check"></div>
-								<div id="idcheck" class="check"></div>
+<div id="page-wrapper">
+	<div id="main">
+		<div class="container">
 
-							</div>
-							<div class="join_row">
-								<h3 class="join_title">
-									<label for="pswd1">비밀번호</label>
-								</h3>
-								<span class="ps_box int_pass" id="pswdImg"> <input
-									type="password" id="pswd1" name="pswd1" class="int"
-									title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20">
-								</span>
-								<div id="pwcheck" class="check"></div>
-							</div>
-
-							<h3 class="join_title">
-								<label for="pswd2">비밀번호 재확인</label>
-							</h3>
-							<span class="ps_box int_pass" id="pswd2Img"> <input
-								type="password" id="pswd2" name="pswd2" class="int"
-								title="비밀번호 재확인 입력" aria-describedby="pswd2Blind" maxlength="20">
-							</span>
-							<div id="pwdoverlap" class="check"></div>
-						</div>
-						<!--  -->
-						<div class="join_row">
-							<h3 class="join_title">
-								<label for="nickname">닉네임</label>
-							</h3>
-							<span class="ps_box box_right_space"><input type="text"
-								id="nickname" name="nickname" title="닉네임" class="int"
-								maxlength="40"></span> <input type="hidden" id="idConfirm"
-								value="0"> <input type="button" value="중복확인"
-								id="idoverlap2">
-							<div id="result2" class="check"></div>
-							<div id="nicknamecheck" class="check"></div>
-						</div>
-
-						<div class="join_row">
-							<h3 class="join_title">
-								<label for="name">이름</label>
-							</h3>
-							<span class="ps_box box_right_space"> <input type="text"
-								id="name" name="name" title="이름" class="int" maxlength="40">
-							</span>
-							<div id="namecheck" class="check"></div>
-						</div>
-						<div class="join_row join_birthday">
-							<h3 class="join_title">
-								<label for="yy">생년월일</label>
-							</h3>
-							<div class="bir_wrap">
-								<div class="bir_yy">
-									<span class="ps_box"> <input type="text" id="yy"
-										name="yy" placeholder="년(4자)" aria-label="년(4자)" class="int"
-										maxlength="4">
-									</span>
-								</div>
-								<div class="bir_mm">
-									<span class="ps_box"> <select id="mm" name="mm"
-										class="sel" aria-label="월">
-											<option>월</option>
-											<option value="01">1</option>
-											<option value="02">2</option>
-											<option value="03">3</option>
-											<option value="04">4</option>
-											<option value="05">5</option>
-											<option value="06">6</option>
-											<option value="07">7</option>
-											<option value="08">8</option>
-											<option value="09">9</option>
-											<option value="10">10</option>
-											<option value="11">11</option>
-											<option value="12">12</option>
-									</select>
-									</span>
-								</div>
-
-								<div class="bir_dd">
-									<span class="ps_box"> <input type="text" id="dd"
-										name="dd" placeholder="일" class="int" maxlength="2"> <label
-										for="dd" class="1b1"></label>
-									</span>
-								</div>
-							</div>
-						</div>
-						<div id="birthcheck" class="check"></div>
-
-						<div class="join_row">
-							<h3 class="join_title">
-								<label for="phone">핸드폰 번호</label>
-							</h3>
-							<span class="ps_box box_right_space"> <input type="text"
-								id="phone" name="phone" title="핸드폰 번호" class="int"
-								maxlength="40">
-							</span>
-							<div id="phonecheck" class="check"></div>
-						</div>
-
-						<!--  -->
-
-						<div class="join_row">
-							<h3 class="join_title">
-								<label for="address">주소</label>
-							</h3>
-							<span class="ps_box box_right_space"> <input type="text"
-								id="address" name="address" title="주소" class="int"
-								maxlength="40">
-							</span>
-							<div id="addresscheck" class="check"></div>
-						</div>
-
-						<!--  -->
-						<div class="join_row join_email">
-							<h3 class="join_title">
-								<label for="email"> 이메일 인증 </label>
-							</h3>
-							<span class="ps_box box_right_space email "> <input
-								type="email" id="email" name="email" maxlength="100"
-								placeholder="이메일 입력" aria-label="이메일 입력" class="int">
-							</span>
-							<div id="emailcheck" class="check"></div>
-
-						</div>
-
-						<div>
-							<input type="submit" id="btnJoin" class="btn_type" value="Join">
-						</div>
-
-
+			<div id = "wrap">
+				<h2> 회원가입합시다.</h2>
+				<div class="join_content">
+					<div class="join_row">
+						<h3 class="join_title"><label for="id">아이디</label></h3>
+						<span class="ps_box int_id"><input type="text" id="id" name="id" class="int" title="ID" maxlength="20"></span>
+						<input type="hidden" id="idConfirm" value="0">
+						<input type="button" value="중복확인" id="idoverlap" >
+						<div id="result" class="check"></div>
+						<div id="idcheck" class="check"></div>
+						
 					</div>
+					<div class="join_row">
+						<h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+						<span class="ps_box int_pass" id="pswdImg">
+							<input type="password" id="pswd1" name="pswd1" class="int" title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20" >
+						</span>
+							<div id="pwcheck" class="check"></div>
+						</div>
+			
+			<h3 class="join_title">
+				<label for="pswd2">비밀번호 재확인</label>
+			</h3>
+			<span class="ps_box int_pass" id="pswd2Img">
+				<input type="password" id="pswd2" name="pswd2" class="int" title="비밀번호 재확인 입력" aria-describedby="pswd2Blind" maxlength="20">
+			</span>	
+				<div id="pwdoverlap" class="check"></div>
+			</div>
+		<!--  -->
+			<div class="join_row">
+				<h3 class="join_title">
+					<label for="nickname">닉네임</label>
+				</h3>
+				<span class="ps_box box_right_space"><input type="text" id="nickname" name="nickname" title="닉네임" class="int" maxlength="40"></span>
+				<input type="hidden" id="idConfirm" value="0">
+				<input type="button" value="중복확인" id="idoverlap2" >
+				<div id="result2" class="check"></div>
+				<div id="nicknamecheck" class ="check"></div>
+			</div>
+		
+			<div class="join_row">
+				<h3 class="join_title">
+					<label for="name">이름</label>
+				</h3>
+				<span class="ps_box box_right_space">
+					<input type="text" id="name" name="name" title="이름" class="int" maxlength="40">
+				</span>
+				<div id="namecheck" class ="check"></div>
+			</div>
+		<div class="join_row join_birthday">
+			<h3 class="join_title">
+				<label for="yy">생년월일</label>
+			</h3>
+			<div class="bir_wrap">
+				<div class="bir_yy">
+					<span class="ps_box">
+						<input type="text" id="yy" name="yy" placeholder="년(4자)" aria-label="년(4자)" class="int" maxlength="4">
+					</span>
+				</div>
+				<div class="bir_mm">
+					<span class="ps_box">
+						<select id="mm" name="mm"class="sel" aria-label="월">
+							<option>월</option>
+							<option value="01">1</option>
+							<option value="02">2</option>
+							<option value="03">3</option>
+							<option value="04">4</option>
+							<option value="05">5</option>
+							<option value="06">6</option>
+							<option value="07">7</option>
+							<option value="08">8</option>
+							<option value="09">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+					</span>
+				</div>
+			
+				<div class="bir_dd">
+					<span class="ps_box">
+						<input type="text" id="dd" name="dd" placeholder="일" class="int" maxlength="2">
+						<label for="dd" class="1b1"></label>
+					</span>
 				</div>
 				<div></div>
 
 
 			</div>
 		</div>
+		<div id="birthcheck" class = "check"></div>
+		
+		<div class="join_row">
+				<h3 class="join_title">
+					<label for="phone">핸드폰 번호</label>
+				</h3>
+				<span class="ps_box box_right_space">
+					<input type="text" id="phone" name="phone" title="핸드폰 번호" class="int" maxlength="40">
+				</span>
+				<div id="phonecheck" class ="check"></div>
+			</div>
+			
+		<!--  -->
+		
+		<div class="join_row">
+				<h3 class="join_title">
+					<label for="address">주소</label>
+				</h3>
+				<span class="ps_box box_right_space">
+					<input type="text" id="address" name="address" title="주소" class="int" maxlength="40">
+				</span>
+				<div id="addresscheck" class ="check"></div>
+			</div>
+			
+		<!--  -->
+		<div class="join_row join_email">
+			<h3 class="join_title">
+				<label for="email">
+				이메일 인증
+				</label>
+			</h3>
+			<span class="ps_box box_right_space email ">
+				<input type="email" id="email" name="email" maxlength="100" placeholder="이메일 입력" aria-label="이메일 입력" class="int">
+			</span>
+			<div id="emailcheck" class = "check"></div>
+			
+		</div>
+	
+		<div>
+				<input type="submit" id="btnJoin" class="btn_type" value="Join">
+			</div>
+		
+		
 
+	</div>
+			</div>
 
-	</form>
+		</div>
+	</div>
+	
+</form>
 <%@include file="../temp/footer.jsp" %>
 </body>
 </html>

@@ -47,6 +47,7 @@
 				var data = data.trim();
 				if(count==1){
 					$("#comments_list").html(data);
+					$("#clist").html(data);
 				}else {
 					$("#clist").append(data);
 				}
@@ -75,6 +76,7 @@
 					alert("댓글 등록에 실패하였습니다.");
 				}
 			});
+
 		});
 		//댓글 수정
 		$("#list").on("click", ".update", function(){
@@ -210,6 +212,9 @@
 							<th>날짜</th>
 						</tr>
 					</thead>
+
+				<!-- 여기에 list.jsp가 붙는것 같음 -->
+
 				</table>
 				<button id="more">더보기</button>
 			</div>

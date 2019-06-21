@@ -17,8 +17,6 @@
 	<div id="page-wrapper">
 		<div id="main">
 			<div class="container">
-				
-			
 			</div>
 		</div>
 	</div>

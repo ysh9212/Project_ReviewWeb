@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Ubuntu+Condensed");
+﻿@import url("https://fonts.googleapis.com/css?family=Ubuntu+Condensed");
 
 /*
    Minimaxing by HTML5 UP
@@ -57,6 +57,34 @@ body {
 mark {
    background-color: transparent;
    color: inherit;
+}
+
+.dropdown{
+   position: relative;
+   display: inline-block;
+}
+.dropdown-content{
+   display: none;
+   position: absolute;
+   background-color: #007b9d;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   padding: 12px 16px;
+   z-index: 100;
+   font-color: black;
+   vertical-align: middle;
+   border-radius: 10px;
+   border: solid 1px #006e8b;
+    box-shadow: inset 0px 0px 0px 1px #12a0bf, 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+}            
+            
+.dropdown-content > a{
+   color: black;
+   font-size: 0.7em;
+   vertical-align: middle;
+}
+.dropdown:hover .dropdown-content{
+   display: block;
 }
 
 input::-moz-focus-inner {

@@ -40,7 +40,6 @@
 		<url-pattern>/shopqnacomments/*</url-pattern>
 	</servlet-mapping>
 	<servlet>
-
 		<servlet-name>indexadmin</servlet-name>
 		<servlet-class>com.project.control.IndexAdminController</servlet-class>
 	</servlet>
@@ -81,6 +80,15 @@
 		<servlet-class>com.project.control.EventController</servlet-class>
 	</servlet>
 
+	<servlet>
+		<servlet-name>event</servlet-name>
+		<servlet-class>com.project.control.EventController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>event</servlet-name>
+		<url-pattern>/event/*</url-pattern>
+	</servlet-mapping>
 
 	<servlet-mapping>
 		<servlet-name>event</servlet-name>
@@ -103,7 +111,6 @@
 		<servlet-name>community</servlet-name>
 		<url-pattern>/community/*</url-pattern>
 	</servlet-mapping>
-
 
 	<servlet>
 		<servlet-name>memberMy</servlet-name>

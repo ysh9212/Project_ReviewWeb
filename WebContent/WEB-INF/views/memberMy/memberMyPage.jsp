@@ -49,13 +49,13 @@
 <body>
 
 <%@include file = "../temp/header.jsp" %>
+<form action="${pageContext.request.contextPath}/memberMy/memberMyPage" method="post">
 <div id="page-wrapper">
 	<div id="main">
 		<div class="container">
 		<jsp:include page="./memberMyCommon/navi.jsp"/>
 		<div id = "wrap">
-			<form action="${pageContext.request.contextPath}/memberMy/memberMyPage" method="post">
-				<h2 class="memberinfor">회원정보</h2>
+			<h2 class="memberinfor">회원정보</h2>
 				<div class="memberinfor_label">
 					<div class="label">
 					<label>아이디:${memberDTO.id}</label>
@@ -86,11 +86,11 @@
 					<a href="${pageContext.request.contextPath}/memberMy/memberMyUpdate"><input type="button" id="btnJoin" class="btn_type" value="회원정보 변경"></a>
 				</div>
 			
-			</form>
-		</div>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
+</form>
 <%@include file="../temp/footer.jsp" %>
 </body>
 </html>

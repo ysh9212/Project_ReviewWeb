@@ -1,4 +1,4 @@
-package com.project.member;
+﻿package com.project.member;
 
 
 import java.sql.Connection;
@@ -65,33 +65,23 @@ public class MemberService implements Action {
 		
 		request.setAttribute("result", check);
 		actionforward.setCheck(true);
+
 		actionforward.setPath("../WEB-INF/views/common/result2.jsp");
+
 		return actionforward;
 	}
 	
 	public ActionForward logout(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionforward = new ActionForward();
+
 		request.getSession().invalidate();  // 세션을 종료
+
 		actionforward.setCheck(false);
 		actionforward.setPath("../index.do");
 		
 		return actionforward;
 	}
 	
-
-	public ActionForward mypage(HttpServletRequest request, HttpServletResponse response) {
-		ActionForward actionforward = new ActionForward();
-
-		String method = request.getMethod();
-
-		boolean check = true;
-		
-		actionforward.setCheck(check);
-		actionforward.setPath("../WEB-INF/views/member/memberMypage.jsp");
-		
-		return actionforward;
-	}
-
 	
 	public ActionForward searchId(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionforward = new ActionForward();
@@ -244,6 +234,7 @@ public class MemberService implements Action {
 		
 		return actionforward;
 	}
+	
 	@Override
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
@@ -263,6 +254,7 @@ public class MemberService implements Action {
 			MemberDTO memberDTO = new MemberDTO();
 			
 			String checkbox = request.getParameter("check");
+
 			if(checkbox!=null) {
 				Cookie c = new Cookie("check", request.getParameter("id"));
 				c.setMaxAge(60*60*24*7);
@@ -277,6 +269,7 @@ public class MemberService implements Action {
 			
 			try {
 				memberDTO = memberDAO.memberLogin(memberDTO);
+
 				if(memberDTO != null) {
 					request.getSession().setAttribute("member", memberDTO);
 					check = false;
@@ -304,6 +297,7 @@ public class MemberService implements Action {
 		ActionForward actionforward = new ActionForward();
 		
 		String method = request.getMethod();
+
 		boolean check = true;
 		String path="../WEB-INF/views/member/memberJoin.jsp";
 		if(method.equals("POST")) {
@@ -354,13 +348,14 @@ public class MemberService implements Action {
 			path = "../WEB-INF/views/common/result.jsp";
 		}
 	
+			memberDTO.setId("id");
+
 		}
 		actionforward.setCheck(check);
 		actionforward.setPath(path);
 		
 		return actionforward;
 	}
-	
 
 	@Override
 	public ActionForward update(HttpServletRequest request, HttpServletResponse response) {

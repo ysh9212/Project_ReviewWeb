@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -8,7 +8,6 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="../assets/css/main.css" />
-	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 <style type="text/css">
 html{color: -internal-root-color;}
 
@@ -82,10 +81,9 @@ html{color: -internal-root-color;}
 	}
 	
 .btn_type2{
+
     width: 25%;
     padding: 4px 0;
-    width: 15%;
-    padding: 5px 0;
     font-size: 10px;
     font-weight: 700;
     text-align: center;
@@ -104,24 +102,12 @@ html{color: -internal-root-color;}
     
     .remember{
     	margin-top: 13px;
-
-    
-    }
-    
-    .checkbox{
-    margin-top : 10px;
-    }
-    
-    .btn_wrap2{
-    	margin: right;
     }
     
     #naverIdLogin{
     	margin-top: 13px;
     }
 </style>
-
-
 
 </head>
 <body>
@@ -178,9 +164,6 @@ html{color: -internal-root-color;}
 		
 	
 	</div>
-	
-
-	
 	
 	
 		</div>
