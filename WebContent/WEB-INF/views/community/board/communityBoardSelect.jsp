@@ -91,7 +91,7 @@
 			alert("??")
 		})
 		*/
-		$("#comment_write").click(function() {
+		$("#comments_write").click(function() {
 			var writer = $("#writer").val();
 			var contents = $("#contents").val();
 			var no = '${dto.no}';
