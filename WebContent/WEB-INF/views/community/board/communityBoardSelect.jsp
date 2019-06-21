@@ -46,9 +46,9 @@
 			$.get("../communityComments/comBoardCommentsList?no=${dto.no}&curPage="+count, function(data) {
 				var data = data.trim();
 				if(count==1){
-					$("#comment_list").html(data);
+					$("#comments_list").html(data);
 				}else {
-					$("#comment_list").append(data);
+					$("#comments_list").append(data);
 				}
 			});
 		}
@@ -266,7 +266,7 @@
 				<label for="contents">내용</label>
 				<textarea id="contents" name="contents" style="width:100%;height:100;border:1;overflow:visible;text-overflow:ellipsis;"></textarea>
 			</div>
-			<button class="btn btn-danger" id="comment_write">Write</button>
+			<button class="btn btn-danger" id="comments_write">Write</button>
 <!-- 댓글 입력끝 -->
 	</div>
 <!-- 댓글 출력폼 -->
