@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.project.action.ActionForward;
 import com.project.member.MemberService;
 
-
 /**
  * Servlet implementation class MemberController
  */
@@ -54,8 +53,7 @@ public class MemberController extends HttpServlet {
 		}else if(command.equals("/nicknameCheck")) {
 			actionforward = memberService.nicknameCheck(request, response);
 		}
-		
-		
+
 		
 		if(actionforward.isCheck()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionforward.getPath());
@@ -65,7 +63,7 @@ public class MemberController extends HttpServlet {
 		}
 	}
 	
-	
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -77,5 +75,3 @@ public class MemberController extends HttpServlet {
 		doGet(request, response);
 	}
 
-
-}

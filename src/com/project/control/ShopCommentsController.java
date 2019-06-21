@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.project.action.ActionForward;
-import com.project.shop.qna.comments.CommentsService;
+import com.project.shop.notice.comments.CommentsService;
 
 /**
  * Servlet implementation class ShopCommentsController

@@ -1,6 +1,6 @@
-<%@page import="com.project.member.MemberDTO"%>
+﻿<%@page import="com.project.member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <!-- Header -->
 <div id="header-wrapper">
@@ -10,7 +10,7 @@
 
 				<header id="header">
 					<h1>
-						<a href="${pageContext.request.contextPath }/index.do" id="logo">GAZUA</a>
+						<a href="${pageContext.request.contextPath }/index.do" id="logo">UDK</a>
 					</h1>
 					<nav id="nav">
 						<a href="${pageContext.request.contextPath }/index.do" class="current-page-item">HOME</a> 
@@ -35,20 +35,22 @@
 							<a href="${pageContext.request.contextPath }/shop/qna/qnaList">QnA</a>
 							<a href="${pageContext.request.contextPath }/shop/mqna/mqnaList">자주 묻는 질문</a>
 						</div>
-							</div>
+
 						<a href="${pageContext.request.contextPath}/event/eventList">EVENT</a>
+							</div>
 						<% MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");%>
 						<% if(memberDTO != null){ %>
 						<a class="nav-link" href="${pageContext.request.contextPath}/member/memberLogout">Logout</a>
-						<a class="nav-link" href="${pageContext.request.contextPath}/memberMy/memberMyPage">MyPage</a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/member/memberMypage">Mypage</a>
 					
 						<%}else { %>
 						<a class="mav-link" href="${pageContext.request.contextPath}/member/memberLogin">Login</a>
 						<a class="nav-link" href="${pageContext.request.contextPath}/member/memberCheck">Join</a>
 						
 						<%} %>
-						
+
 					</nav>
+
 				</header>
 
 			</div>

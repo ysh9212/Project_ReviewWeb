@@ -8,7 +8,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="../assets/css/main.css" />
-	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+
 <style type="text/css">
 html{color: -internal-root-color;}
 
@@ -82,6 +82,7 @@ html{color: -internal-root-color;}
 	}
 	
 .btn_type2{
+
     width: 25%;
     padding: 4px 0;
     font-size: 10px;
@@ -93,6 +94,7 @@ html{color: -internal-root-color;}
     background-color: #007294;
     margin-top : 10px;
     margin-right : 8px;
+
 	float : right;
     }
     
@@ -108,8 +110,6 @@ html{color: -internal-root-color;}
     	margin-top: 13px;
     }
 </style>
-
-
 
 </head>
 <body>
@@ -142,6 +142,7 @@ html{color: -internal-root-color;}
 				</div>
 		
 			</div>
+
 			
 	<div class="btn_wrap2">
 		<label><input type="checkbox" name="check" value="1" class="remember"> Remember me</label>
