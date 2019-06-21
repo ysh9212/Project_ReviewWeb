@@ -8,10 +8,9 @@
 				<div class="col-12">
 					<div id="copyright" style="text-align: center;">
 						<ul class="link-list">
-							<li><a href="#">이용약관</a></li>
-							<li><a href="#">개인정보처리방침</a></li>
-							<li><a href="#">광고 및 제휴</a></li>
-							<li><a href="#">리뷰 문의</a></li>
+							<li><a href="${pageContext.request.contextPath }/basic/condiciones">이용약관</a></li>
+							<li><a href="${pageContext.request.contextPath }/basic/personalProtected">개인정보처리방침</a></li>
+							<li><a href="${pageContext.request.contextPath }/community/qna/communityQna">리뷰 문의</a></li>
 						</ul>
 					</div>
 				</div>
