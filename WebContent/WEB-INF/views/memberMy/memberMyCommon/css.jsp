@@ -13,7 +13,7 @@
     	font-size: 8px;
     }
 #body {
-	width: 1250px;
+	width: 100%;
 	height: 1500px;
 	background-color: white;
 	margin: 0 auto;
@@ -24,7 +24,7 @@
 }
 
 #wrap{
-	width: 800px;
+	width: 1000px;
 	margin: 0 auto;
 }
 .table_body {

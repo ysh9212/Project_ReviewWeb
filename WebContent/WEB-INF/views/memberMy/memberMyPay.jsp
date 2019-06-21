@@ -17,7 +17,7 @@
 		<div class="container">
 				<jsp:include page="./memberMyCommon/navi.jsp"/>
 				<div id = "wrap">
-				<form action="${pageContext.request.contextPath}/memberMy/memberMyPay" method="post">
+				<form action="${pageContext.request.contextPath}memberMy/memberMyPay" method="post">
 				<h2 class="memberinfor"> 결제내역 </h2>
 				
 			

@@ -126,11 +126,11 @@ html{color: -internal-root-color;}
 </head>
 <body>
 <%@include file = "../temp/header.jsp" %>
+<form method="post" action="./memberLogin">
 <div id="page-wrapper">
 	<div id ="main">
 		<div class="container">
 		<div id = "wrap">
-<form method="post" action="./memberLogin">
 
 			<div class="login_content">
 				<div class="login_row">
@@ -176,23 +176,18 @@ html{color: -internal-root-color;}
 	naverLogin.init();
 </script>
 		
-			<div class="checkbox">
-		<label><input type="checkbox" name="check" value="1"> Remember me</label>
-	</div>
+	
 	</div>
 	
 
-</form>
 	
 	
-	<div class="btn_wrap2">
-		<button type="button" id="btnLogin2" class="btn_type2"><span>아이디 찾기</span></button>
-		<button type="button" id="btnLogin3" class="btn_type2"><span>비밀번호 찾기</span></button>
-	</div>
+	
 		</div>
 	</div>
 	</div>
 </div>
+</form>
 
 <%@include file="../temp/footer.jsp" %>
 

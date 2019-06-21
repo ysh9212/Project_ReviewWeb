@@ -24,7 +24,7 @@
     float: left;
     }
 
-.btn{
+.btnbtn{
 	margin-top: 50px;
 }
 .memberinfor_label{
@@ -80,7 +80,7 @@
 					</div>
 				</div>
 				
-				<div class="btn">
+				<div class="btnbtn">
 					<a href="${pageContext.request.contextPath}/memberMy/memberMyDelete"><input type="button" id="btnJoin" class="btn_type" value="탈퇴"></a>
 					<a href="${pageContext.request.contextPath}/memberMy/memberMyPwUpdate"><input type="button" id="btnJoin" class="btn_type" value="비밀번호 변경"></a>
 					<a href="${pageContext.request.contextPath}/memberMy/memberMyUpdate"><input type="button" id="btnJoin" class="btn_type" value="회원정보 변경"></a>

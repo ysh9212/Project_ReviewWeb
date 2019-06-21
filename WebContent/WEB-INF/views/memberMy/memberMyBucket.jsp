@@ -18,7 +18,7 @@
 			<jsp:include page="./memberMyCommon/navi.jsp"/>
 			<div id = "wrap">
 		
-			<form action="${pageContext.request.contextPath}/memberMy/memberMyBucket" method="post">
+			<form action="${pageContext.request.contextPath}memberMy/memberMyBucket" method="post">
 				<h2 class="memberinfor"> 장바구니 </h2>
 				
 			
