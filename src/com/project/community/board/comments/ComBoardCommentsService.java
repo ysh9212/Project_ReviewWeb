@@ -48,9 +48,9 @@ public class ComBoardCommentsService implements Action{
 				e.printStackTrace();
 			}
 		}
-		request.setAttribute("list", ar);
+		request.setAttribute("commentsList", ar);
 		actionForward.setCheck(true);
-		actionForward.setPath("../../WEB-INF/views/community/communityCommon/list.jsp"); // 정해야됨;
+		actionForward.setPath("../../WEB-INF/views/community/communityCommon/list.jsp");
 		return actionForward;
 	}
 	// 사용안함;
@@ -82,19 +82,10 @@ public class ComBoardCommentsService implements Action{
 				e.printStackTrace();
 			}
 		}
-		request.setAttribute("result", result);
-		if(result==1) {
-			request.setAttribute("message", "댓글입력에 성공하였습니다.");
-			request.setAttribute("path", "./communityBoardSelect?no="+comBoardCommentsDTO.getNo());
+			request.setAttribute("result", result);
 			actionForward.setCheck(true);
-			actionForward.setPath("../WEB-INF/views/community/communityCommon/result.jsp");
-		}else {
-			request.setAttribute("message", "댓글입력에 실패하였습니다.");
-			request.setAttribute("path", "./communityBoardSelect?no="+comBoardCommentsDTO.getNo());
-			actionForward.setCheck(true);
-			actionForward.setPath("../WEB-INF/views/community/communityCommon/result.jsp");
-		}
-		return actionForward;
+			actionForward.setPath("../../WEB-INF/views/community/communityCommon/result2.jsp");
+			return actionForward;
 	}
 	@Override
 	public ActionForward update(HttpServletRequest request, HttpServletResponse response) {
@@ -146,7 +137,7 @@ public class ComBoardCommentsService implements Action{
 		}
 		request.setAttribute("result", result);
 		actionForward.setCheck(true);
-		actionForward.setPath(""); // 뭔가 result2로 가는 경로;
+		actionForward.setPath("../../WEB-INF/views/community/communityCommon/result2.jsp");
 		return actionForward;
 	}
 }

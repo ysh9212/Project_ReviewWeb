@@ -69,7 +69,6 @@ public class CommunityService {
 			actionForward.setCheck(true);
 			actionForward.setPath("../WEB-INF/views/community/communityList.jsp");
 		}
-		
 		return actionForward;
 	}
 

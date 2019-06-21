@@ -221,7 +221,7 @@ public class ComBoardService implements Action{
 			result = comBoardDAO.delete(no, con);
 			request.setAttribute("result", result);
 			check = true;
-			path = "../../WEB-INF/views/common/result2.jsp";
+			path = "../../WEB-INF/views/community/communityCommon/result2.jsp";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
