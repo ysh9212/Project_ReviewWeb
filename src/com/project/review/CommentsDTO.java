@@ -2,7 +2,7 @@ package com.project.review;
 
 public class CommentsDTO {
 	private int cnum;
-	private int num;
+	private int no;
 	private String writer;
 	private String contents;
 	private String reg_date;
@@ -12,11 +12,11 @@ public class CommentsDTO {
 	public void setCnum(int cnum) {
 		this.cnum = cnum;
 	}
-	public int getNum() {
-		return num;
+	public int getNo() {
+		return no;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setNo(int no) {
+		this.no = no;
 	}
 	public String getWriter() {
 		return writer;

@@ -20,7 +20,7 @@ import com.project.review.ReviewService;
 public class ReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ReviewService reviewService;
-	private CommentsService commentsService;
+
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -29,7 +29,7 @@ public class ReviewController extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 		reviewService = new ReviewService();
-		commentsService = new CommentsService();
+		
 	}
 
 	/**
@@ -44,14 +44,6 @@ public class ReviewController extends HttpServlet {
 			actionForward = reviewService.list(request, response);
 		} else if (command.equals("/reviewSelect")) {
 			actionForward = reviewService.select(request, response);
-		} else if (command.equals("/commentsList")) {
-			actionForward = commentsService.list(request, response);
-		} else if (command.equals("/commentsInsert")) {
-			actionForward = commentsService.insert(request, response);
-		} else if (command.equals("/commentsUpdate")) {
-			actionForward = commentsService.update(request, response);
-		} else if (command.equals("/commentsDelete")) {
-			actionForward = commentsService.delete(request, response);
 		}
 		if (actionForward.isCheck()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());

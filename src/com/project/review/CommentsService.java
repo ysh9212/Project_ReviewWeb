@@ -23,7 +23,7 @@ public class CommentsService implements Action{
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
 		int curPage = 1;
-		int num = 0;
+		int no = 0;
 		
 		try {
 			curPage = Integer.parseInt(request.getParameter("curPage"));
@@ -31,7 +31,7 @@ public class CommentsService implements Action{
 			// TODO: handle exception
 		}
 		
-		num = Integer.parseInt(request.getParameter("cnum"));
+		no = Integer.parseInt(request.getParameter("no"));
 		
 		SearchMakePage searchMakePage = new SearchMakePage(curPage, "", "");
 		SearchRow searchRow = searchMakePage.makeRow();
@@ -40,7 +40,7 @@ public class CommentsService implements Action{
 		
 		try {
 			con = DBConnector.getConnect();
-			ar = commentsDAO.selectList(searchRow, num, con);
+			ar = commentsDAO.selectList(searchRow, no, con);
 		System.out.println(ar);
 		} 
 		
@@ -55,7 +55,7 @@ public class CommentsService implements Action{
 				e.printStackTrace();
 			}
 		}
-		request.setAttribute("commentsList", ar);
+		request.setAttribute("commentslist", ar);
 		actionForward.setCheck(true);
 		actionForward.setPath("../../WEB-INF/views/common/list.jsp");
 		
@@ -72,7 +72,7 @@ public class CommentsService implements Action{
 	public ActionForward insert(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
 		CommentsDTO commentsDTO = new CommentsDTO();
-		commentsDTO.setNum(Integer.parseInt(request.getParameter("num")));
+		commentsDTO.setNo(Integer.parseInt(request.getParameter("no")));
 		commentsDTO.setWriter(request.getParameter("writer"));
 		commentsDTO.setContents(request.getParameter("contents"));
 		int result = 0;

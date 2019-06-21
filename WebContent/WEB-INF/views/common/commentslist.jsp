@@ -2,12 +2,12 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-	<c:forEach items="${commentsList}" var="dcto">
+	<c:forEach items="${commentsList}" var="dto">
 		<tr>
-			<td>${dcto.writer}</td>
-			<td>${dcto.contents}</td>
-			<td>${dcto.reg_date}</td>
-			<c:if test="${'get' eq dcto.writer}">
+			<td>${dto.writer}</td>
+			<td>${dto.contents}</td>
+			<td>${dto.reg_date}</td>
+			<c:if test="${'get' eq dto.writer}">
 			<td><button data-toggle="modal" data-target="#myModal">Update</button><button id="${dto.cnum}" class="del">Delete</button></td>
 			</c:if>
 		</tr>

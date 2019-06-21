@@ -45,31 +45,7 @@
 					</tr>
 				</table>
 				<div id="body">
-				
-						<table class="table table-hover">
-							 <c:forEach items="${commentsList}" var="cdto">
-								<thead>
-									<tr>
-
-
-										<th>작성자</th>
-										<th></th>
-										<th>날짜</th>
-
-									</tr>
-								</thead>
-								<tr>
-									<td>${cdto.writer}</td>
-									<td>${cdto.contents}</td>
-									<td>${cdto.reg_date}</td>
-
-								</tr>
-								<tr>
-
-								</tr>
-							</c:forEach>
-							
-						</table>
+				<%@include file="../common/list.jsp"%>
 				</div>
 			</div>
 		</div>
