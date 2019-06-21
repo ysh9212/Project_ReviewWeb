@@ -13,9 +13,6 @@ import javax.servlet.http.HttpSession;
 import com.project.action.Action;
 import com.project.action.ActionForward;
 import com.project.util.DBConnector;
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 public class MemberService implements Action {
 	private MemberDAO memberdao;
@@ -186,7 +183,7 @@ public class MemberService implements Action {
 					
 					String AuthenticationKey = temp.toString();
 				
-					
+					/*
 					javax.mail.Session session = javax.mail.Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 						
 						protected javax.mail.PasswordAuthentication getPasswordAuthentiation() {
@@ -209,7 +206,7 @@ public class MemberService implements Action {
 						e.printStackTrace();// TODO: handle exception
 					}
 					HttpSession saveKey = request.getSession();
-					
+					*/
 					
 					request.setAttribute("message", "이메일로 패스워드를 전송했습니다. 확인 후 로그인!!!");
 					request.setAttribute("path", "./memberLogin");

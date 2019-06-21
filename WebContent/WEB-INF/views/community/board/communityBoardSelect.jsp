@@ -281,7 +281,7 @@
 				</tr>
 			</thead>
 		</table>
-		<table class="table table-bordered" id="comment_list" style="table-layout: fixed">
+		<table class="table table-bordered" id="comments_list" style="table-layout: fixed">
 			<tbody >
 			</tbody>
 		</table>

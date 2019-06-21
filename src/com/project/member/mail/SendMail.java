@@ -1,31 +1,25 @@
 package com.project.member.mail;
 
 import java.util.*;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 
 public class SendMail {
 	public static void main(String args[]){
 		
-		// SMTP = 이메일을 송수신하는 서버  // JavaMail 라이브러리 사용
+		// SMTP = �씠硫붿씪�쓣 �넚�닔�떊�븯�뒗 �꽌踰�  // JavaMail �씪�씠釉뚮윭由� �궗�슜
 		
-		String host = "smtp.naver.com"; // 네이버 smtp 사용
-		String user = "kws332@naver.com"; // 발신자의 이메일 입력
+		String host = "smtp.naver.com"; // �꽕�씠踰� smtp �궗�슜
+		String user = "kws332@naver.com"; // 諛쒖떊�옄�쓽 �씠硫붿씪 �엯�젰
 		String password = "wons";
 		
-		// 네이버 SMTP 서버 정보를 설정
+		// �꽕�씠踰� SMTP �꽌踰� �젙蹂대�� �꽕�젙
 		Properties props = new Properties();
 		props.put("mail.smtp.host", host);
 		props.put("mail.smtp.port", 587);
 		props.put("mail.smtp.auth", "true");
 		
-		
-		// SMTP 서버정보와 사용자 정보를 기반으로 Session 클래스의 인스턴스를 생성
+		/*
+		// SMTP �꽌踰꾩젙蹂댁� �궗�슜�옄 �젙蹂대�� 湲곕컲�쑝濡� Session �겢�옒�뒪�쓽 �씤�뒪�꽩�뒪瑜� �깮�꽦
 		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 			protected javax.mail.PasswordAuthentication getPasswordAuthentication(){
 				return new javax.mail.PasswordAuthentication(user, password);
@@ -33,17 +27,17 @@ public class SendMail {
 		});
 		
 		
-		// Message 클래스 객체를 사용하여 수신자와 내용, 제목의 메시지 작성
+		// Message �겢�옒�뒪 媛앹껜瑜� �궗�슜�븯�뿬 �닔�떊�옄�� �궡�슜, �젣紐⑹쓽 硫붿떆吏� �옉�꽦
 		try {
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(user));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress("kws332@naver.com"));
 		
-			// 메일 제목
-			message.setSubject("메일 간다!");
+			// 硫붿씪 �젣紐�
+			message.setSubject("硫붿씪 媛꾨떎!");
 		
-			// 메일 내용
-			message.setText("성공!");
+			// 硫붿씪 �궡�슜
+			message.setText("�꽦怨�!");
 		
 			// send the message
 			Transport.send(message); 
@@ -52,5 +46,6 @@ public class SendMail {
 			}catch(MessagingException e) {
 				e.printStackTrace();
 			}
+		*/
 		}
 }
