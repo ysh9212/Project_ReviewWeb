@@ -37,6 +37,7 @@ public class CommunityService {
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
 		SearchRow searchRow = new SearchRow();
+		Connection con;
 		try {
 			con = DBConnector.getConnect();
 			List<BoardDTO> ar = noticeDAO.List(con);
