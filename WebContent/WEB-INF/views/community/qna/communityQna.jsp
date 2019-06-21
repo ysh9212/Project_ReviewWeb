@@ -9,6 +9,7 @@
 <jsp:include page="../communityCommon/css.jsp"/>
 <head>
 <title>QnA</title>
+
 </head>
 <body>
 <%@include file = "../../temp/header.jsp" %>

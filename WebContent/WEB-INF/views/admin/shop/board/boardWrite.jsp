@@ -7,11 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>${board }문의사항</title>
-<c:import url="../../temp/bootstrap.jsp" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<script type="text/javascript" src="../../se2/js/HuskyEZCreator.js" charset="utf-8"></script>
-<link rel="stylesheet" href="../../assets/css/main.css" />
+<script type="text/javascript" src="../../../se2/js/HuskyEZCreator.js" charset="utf-8"></script>
+<c:import url="../../../../../assets/css/admincss.jsp"/>
+<c:import url="../../../temp/bootstrap.jsp" />
 <script type="text/javascript">
 var oEditors = [];
 $(function() {
@@ -31,10 +31,7 @@ $(function() {
 	             
 	        }
 	    }, 
-	    fOnAppLoad : function(){
-	        //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-	        oEditors.getById["contents"].exec("PASTE_HTML", ["내용을 입력하세요"]);
-	    },
+	   
 	    fCreator: "createSEditor2"
 	}); //텍스트 폼 바꿈 스마트에디터
 	
@@ -48,31 +45,27 @@ $(function() {
 </script>
 </head>
 <body>
-	<%@include file="../../temp/header.jsp"%>
-	<div class="page-wrapper">
-		<div id="main">
+<c:import url="../../../temp/adminsetting.jsp"/>
+		<div class="main">
 			<div class="container">
-			<form id ="frm"action="./qnaWrite" method="post">
+			<form id ="frm"action="./${board }Write" method="post">
 			<div class="form-group">
 				<div class="title">Title:</div> 
 				<input type="text" class="form-control" id="title" name = "title">
 			</div>
 			<div class="form-group">
 				<div class="title">Writer:</div> 
-				<input type="text" 	class="form-control" id="writer" name="writer">
+				<input type="text" value="관리자" class="form-control" id="writer" name="writer" readonly="readonly">
 			</div>
 			<div class="form-group">
 				<div class="title">Contents:</div> 
 				<textarea class="form-control" rows="5" id="contents" name="contents"></textarea>
 			</div>		
-				<input type="button" id = "save" class="btn btn-danger" value = "write">
+				<input type="button" id = "save" class="btn" value = "write">
 			</form>
 			</div>
 		</div>
-	</div>
 
 
-	<%@include file="../../temp/footer.jsp"%>
-	<%@include file="../../temp/activeweb.jsp"%>
 </body>
 </html>
