@@ -112,6 +112,10 @@
 		<url-pattern>/memberMy/*</url-pattern>
 	</servlet-mapping>
 
+  <servlet>
+    <servlet-name>product_upload</servlet-name>
+    <servlet-class>com.project.control.ProductUploadController</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>product_upload</servlet-name>
     <url-pattern>/productupload/*</url-pattern>
