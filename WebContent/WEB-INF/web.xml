@@ -112,4 +112,8 @@
 		<url-pattern>/memberMy/*</url-pattern>
 	</servlet-mapping>
 
+  <servlet-mapping>
+    <servlet-name>product_upload</servlet-name>
+    <url-pattern>/productupload/*</url-pattern>
+  </servlet-mapping>
 </web-app>
