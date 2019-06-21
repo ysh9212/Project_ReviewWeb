@@ -24,8 +24,8 @@
     float: left;
     }
 
-.btn{
-	margin-top: 50px;
+.btn11{
+	margin-top : 50px;
 }
 .memberinfor_label{
 	margin: 60px;
@@ -80,10 +80,10 @@
 					</div>
 				</div>
 				
-				<div class="btn">
-					<a href="${pageContext.request.contextPath}/memberMy/memberMyDelete"><input type="button" id="btnJoin" class="btn_type" value="탈퇴"></a>
-					<a href="${pageContext.request.contextPath}/memberMy/memberMyPwUpdate"><input type="button" id="btnJoin" class="btn_type" value="비밀번호 변경"></a>
-					<a href="${pageContext.request.contextPath}/memberMy/memberMyUpdate"><input type="button" id="btnJoin" class="btn_type" value="회원정보 변경"></a>
+				<div class="btn11">
+					<a href="${pageContext.request.contextPath}/memberMy/memberMyDelete"><input type="button" id="btnJoin" class="btn_type btn" value="탈퇴"></a>
+					<a href="${pageContext.request.contextPath}/memberMy/memberMyPwUpdate"><input type="button" id="btnJoin" class="btn_type btn" value="비밀번호 변경"></a>
+					<a href="${pageContext.request.contextPath}/memberMy/memberMyUpdate"><input type="button" id="btnJoin" class="btn_type btn" value="회원정보 변경"></a>
 				</div>
 			
 				</div>
