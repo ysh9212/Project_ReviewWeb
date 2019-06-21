@@ -77,7 +77,6 @@ public class CommunityService {
 				e.printStackTrace();
 			}
 		}
-		
 		return actionForward;
 	}
 
