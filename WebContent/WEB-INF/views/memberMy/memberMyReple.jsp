@@ -18,7 +18,7 @@
 			<jsp:include page="./memberMyCommon/navi.jsp"/>
 			<div id = "wrap">
 			<form action="${pageContext.request.contextPath}memberMy/memberMyReple" method="post">
-				<h2 class="memberinfor"> 내 리플 보기 </h2>
+				<h2 class="memberinfor"> 내 댓글 보기 </h2>
 				
 			
 			</form>

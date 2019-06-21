@@ -16,7 +16,7 @@ public class SendMail {
 		
 		String host = "smtp.naver.com"; // 네이버 smtp 사용
 		String user = "kws332@naver.com"; // 발신자의 이메일 입력
-		String password = "wonsikwonsik";
+		String password = "wons";
 		
 		// 네이버 SMTP 서버 정보를 설정
 		Properties props = new Properties();
