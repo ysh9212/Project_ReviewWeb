@@ -202,7 +202,7 @@ public class ComBoardService implements Action{
 					e.printStackTrace();
 				}
 			} // end of finally
-			request.setAttribute("dto", boardDTO);
+			request.setAttribute("bdto", boardDTO);
 		}
 		actionForward.setCheck(check);
 		actionForward.setPath(path);

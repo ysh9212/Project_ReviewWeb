@@ -1,20 +1,19 @@
 package com.project.shop.product_category;
 
 public class Product_CategoryDTO {
-	private int product_category_no;
-	private String poduct_category_name;
-	public int getProduct_category_no() {
-		return product_category_no;
+	private int cno;
+	private String name;
+	public int getCno() {
+		return cno;
 	}
-	public void setProduct_category_no(int product_category_no) {
-		this.product_category_no = product_category_no;
+	public void setCno(int cno) {
+		this.cno = cno;
 	}
-	public String getPoduct_category_name() {
-		return poduct_category_name;
+	public String getName() {
+		return name;
 	}
-	public void setPoduct_category_name(String poduct_category_name) {
-		this.poduct_category_name = poduct_category_name;
+	public void setName(String name) {
+		this.name = name;
 	}
-
 	
 }

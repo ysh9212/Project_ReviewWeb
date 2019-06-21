@@ -18,7 +18,7 @@ public class NoticeDAO implements BoardDAO{
 	public int getNum() throws Exception {
 		int result = 0;
 		Connection con = DBConnector.getConnect();
-		String sql = "select community_notice_seq.nextval from dual";
+		String sql = "select community_seq.nextval from dual";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		rs.next();
@@ -29,7 +29,7 @@ public class NoticeDAO implements BoardDAO{
 	@Override
 	public int getTotalCount(SearchRow searchRow, Connection con) throws Exception {
 		int result = 0;
-		String sql ="select count(no) from community_notice where "+searchRow.getSearch().getKind()+" like ?";
+		String sql ="select count(no) from community_board where "+searchRow.getSearch().getKind()+" like ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+searchRow.getSearch().getSearch()+"%");
 		ResultSet rs = st.executeQuery();

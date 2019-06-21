@@ -46,9 +46,9 @@
 			$.get("../communityComments/comBoardCommentsList?no=${dto.no}&curPage="+count, function(data) {
 				var data = data.trim();
 				if(count==1){
-					$("#comment_list").html(data);
+					$("#comments_list").html(data);
 				}else {
-					$("#comment_list").append(data);
+					$("#comments_list").append(data);
 				}
 			});
 		}
@@ -289,7 +289,6 @@
 	</div>
 <!-- 댓글 출력끝 -->
 </div><!-- end of container -->
-
 </div><!-- end of body  -->
 <%@include file="../../temp/footer.jsp" %>
 <%@include file="../../temp/activeweb.jsp"%>

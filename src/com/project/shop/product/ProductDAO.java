@@ -10,22 +10,21 @@ import com.project.shopPage.SearchRow;
 import com.project.util.DBConnector;
 
 public class ProductDAO{
-	
-	public int getNum() throws Exception{
-		int result = 0;
+	public int getNum() throws Exception {
+		int result=0;
 		Connection con = DBConnector.getConnect();
-		String sql = "select product_seq.nextval from dual";
-		PreparedStatement st = con.prepareStatement(sql);
+		String sql ="select product_seq.nextval from dual";
+		PreparedStatement st =con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		rs.next();
-		result = rs.getInt(1);
+		result=rs.getInt(1);
 		DBConnector.disConnect(rs, st, con);
 		return result;
 	}
 	
-	public int getTotalCount(SearchRow searchRow, Connection con) throws Exception{
-		int result = 0;
-		String sql = "select count(product_no) from product where "+searchRow.getSearch().getKind()+" like ?";
+	public int getTotalCount(SearchRow searchRow, Connection con) throws Exception {
+		int result=0;
+		String sql ="select count(pno) from product where "+searchRow.getSearch().getKind()+" like ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+searchRow.getSearch().getSearch()+"%");
 		ResultSet rs = st.executeQuery();
@@ -36,50 +35,52 @@ public class ProductDAO{
 		return result;
 	}
 	
-	//list
-	public List<ProductDTO> selectList(SearchRow searchRow, Connection con) throws Exception{
+	public List<ProductDTO> selectList(SearchRow searchRow, Connection con) throws Exception {
 		ArrayList<ProductDTO> ar = new ArrayList<ProductDTO>();
-
-		String sql = "select * from " +
-				"(select rownum R, p.* from " +
-				"(select * from product where "+searchRow.getSearch().getKind()+" like ? order by product_no desc) p) "+
+		
+		String sql = "select * from " + 
+				"(select rownum R, p.* from " + 
+				"(select * from product where "+searchRow.getSearch().getKind()+" like ? order by pno desc) p) " + 
 				"where R between ? and ?";
-
+		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+searchRow.getSearch().getSearch()+"%");
 		st.setInt(2, searchRow.getStartRow());
 		st.setInt(3, searchRow.getLastRow());
 		ResultSet rs = st.executeQuery();
-		
 		while(rs.next()) {
 			ProductDTO productDTO = new ProductDTO();
-			productDTO.setProduct_no(rs.getInt("product_no"));
-			productDTO.setProduct_color(rs.getString("product_color"));
-			productDTO.setProduct_size(rs.getString("product_size"));
-			productDTO.setProduct_stock(rs.getInt("product_stock"));
-			productDTO.setProduct_price(rs.getInt("product_price"));
+			productDTO.setPno(rs.getInt("pno"));
+			productDTO.setCno(rs.getInt("cno"));
+			productDTO.setTitle(rs.getString("title"));
+			productDTO.setDetail(rs.getString("detail"));
+			productDTO.setReg_date(rs.getString("reg_date"));
+			productDTO.setPrice(rs.getInt("price"));
+			productDTO.setStock(rs.getInt("stock"));
 			ar.add(productDTO);
 		}
 		rs.close();
 		st.close();
 		return ar;
 	}
-	//select
-	public ProductDTO selectOne(int product_no, Connection con) throws Exception{
+	
+	public ProductDTO selectOne(int pno, Connection con) throws Exception{
 		ProductDTO productDTO = new ProductDTO();
-		String sql = "select * from product where product_no=?";
+		String sql = "select * from product where pno=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
-		st.setInt(1, productDTO.getProduct_no());
+		st.setInt(1, pno);
 		
 		ResultSet rs = st.executeQuery();
 		
 		if(rs.next()) {
-			productDTO.setProduct_no(rs.getInt("product_no"));
-			productDTO.setProduct_color(rs.getString("product_color"));
-			productDTO.setProduct_size(rs.getString("product_size"));
-			productDTO.setProduct_stock(rs.getInt("product_stock"));
-			productDTO.setProduct_price(rs.getInt("product_price"));
+			productDTO.setPno(rs.getInt("pno"));
+			productDTO.setCno(rs.getInt("cno"));
+			productDTO.setTitle(rs.getString("title"));
+			productDTO.setDetail(rs.getString("detail"));
+			productDTO.setReg_date(rs.getString("reg_date"));
+			productDTO.setStock(rs.getInt(rs.getInt("stock")));
+			productDTO.setPrice(rs.getInt("price"));
 		}
 		rs.close();
 		st.close();
@@ -87,49 +88,21 @@ public class ProductDAO{
 		return productDTO;
 	}
 	
-	//insert
-	public int insert(ProductDTO productDTO, Connection con) throws Exception{
-		int result =0;
-		String sql = "insert into product values(product_seq.nextval,?,?,?,?";
-		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, productDTO.getProduct_color());
-		st.setString(2, productDTO.getProduct_size());
-		st.setInt(3, productDTO.getProduct_stock());
-		st.setInt(4, productDTO.getProduct_price());
-		
-		result = st.executeUpdate();
-		st.close();
-		return result;
-	}
-	
-	//delete
-	public int delete(int product_no, Connection con) throws Exception{
-		int result =0;
-		String sql = "delete product where product_no=?";
-		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, product_no);
-		
-		result = st.executeUpdate();
-		
-		st.close();
-		
-		return result;
-	}
-	//update
-	public int update(ProductDTO productDTO, Connection con) throws Exception{
+	public int insert(ProductDTO productDTO, Connection con)throws Exception{
 		int result = 0;
-		String sql = "update product set product_color=?, product_size=?, product_stock=?,product_price=? where product_no=?";
+		String sql = "insert into product values(?,?,?,?,sysdate,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, productDTO.getProduct_color());
-		st.setString(2, productDTO.getProduct_size());
-		st.setInt(3, productDTO.getProduct_stock());
-		st.setInt(4, productDTO.getProduct_price());
-		st.setInt(5, productDTO.getProduct_no());
+		st.setInt(1, productDTO.getPno());
+		st.setInt(2, productDTO.getCno());
+		st.setString(3, productDTO.getTitle());
+		st.setString(4, productDTO.getDetail());
+		st.setInt(5, productDTO.getPrice());
+		st.setInt(6, productDTO.getStock());
 		
 		result = st.executeUpdate();
 		st.close();
 		
 		return result;
 	}
-
+		
 }

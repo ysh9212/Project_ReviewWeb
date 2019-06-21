@@ -1,42 +1,53 @@
 package com.project.shop.product;
 
 public class ProductDTO {
-	private int product_no;
-	private String product_color;
-	private String product_size;
-	private int product_stock;
-	private int product_price;
-	public int getProduct_no() {
-		return product_no;
+	private int pno;
+	private int cno;
+	private String title;
+	private String detail;
+	private String reg_date;
+	private int price;
+	private int stock;
+	public int getPno() {
+		return pno;
 	}
-	public void setProduct_no(int product_no) {
-		this.product_no = product_no;
+	public void setPno(int pno) {
+		this.pno = pno;
 	}
-	public String getProduct_color() {
-		return product_color;
+	public int getCno() {
+		return cno;
 	}
-	public void setProduct_color(String product_color) {
-		this.product_color = product_color;
+	public void setCno(int cno) {
+		this.cno = cno;
 	}
-	public String getProduct_size() {
-		return product_size;
+	public String getTitle() {
+		return title;
 	}
-	public void setProduct_size(String product_size) {
-		this.product_size = product_size;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public int getProduct_stock() {
-		return product_stock;
+	public String getDetail() {
+		return detail;
 	}
-	public void setProduct_stock(int product_stock) {
-		this.product_stock = product_stock;
+	public void setDetail(String detail) {
+		this.detail = detail;
 	}
-	public int getProduct_price() {
-		return product_price;
+	public String getReg_date() {
+		return reg_date;
 	}
-	public void setProduct_price(int product_price) {
-		this.product_price = product_price;
+	public void setReg_date(String reg_date) {
+		this.reg_date = reg_date;
 	}
-	
-	
-	
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
 }

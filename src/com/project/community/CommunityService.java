@@ -1,7 +1,6 @@
 package com.project.community;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +37,7 @@ public class CommunityService {
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
 		SearchRow searchRow = new SearchRow();
-		Connection con = null;
+		Connection con;
 		try {
 			con = DBConnector.getConnect();
 			List<BoardDTO> ar = noticeDAO.List(con);
@@ -48,16 +47,16 @@ public class CommunityService {
 			List<BoardDTO> uAr = usedDAO.selectList(searchRow, con);
 			
 			request.setAttribute("nlist", ar);
-			request.setAttribute("nboard", "공지사항");
+			request.setAttribute("nboard", "��������");
 
 			request.setAttribute("blist", bAr);
-			request.setAttribute("bboard", "자유게시판");
+			request.setAttribute("bboard", "�����Խ���");
 
 			request.setAttribute("rlist", rAr);
-			request.setAttribute("rboard", "사용자리뷰");
+			request.setAttribute("rboard", "��������");
 
 			request.setAttribute("buglist", bugAr);
-			request.setAttribute("bugboard", "버그리포트");
+			request.setAttribute("bugboard", "���װԽ���");
 
 			request.setAttribute("ulist", uAr);
 			request.setAttribute("uboard", "중고제품");
@@ -69,13 +68,6 @@ public class CommunityService {
 			e.printStackTrace();
 			actionForward.setCheck(true);
 			actionForward.setPath("../WEB-INF/views/community/communityList.jsp");
-		} finally {
-			try {
-				con.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 		return actionForward;
 	}

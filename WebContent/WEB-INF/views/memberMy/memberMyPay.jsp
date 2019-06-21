@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../assets/css/main.css" />
+<jsp:include page="./memberMyCommon/css.jsp"/>
+
 </head>
 <body>
 
@@ -12,11 +15,14 @@
 <div id="page-wrapper">
 	<div id="main">
 		<div class="container">
-			<form action="./memberMyPage">
-				<h1> my page</h1>
-			
+				<jsp:include page="./memberMyCommon/navi.jsp"/>
+				<div id = "wrap">
+				<form action="${pageContext.request.contextPath}memberMy/memberMyPay" method="post">
+				<h2 class="memberinfor"> 결제내역 </h2>
+				
 			
 			</form>
+			</div>
 		</div>
 	</div>
 </div>

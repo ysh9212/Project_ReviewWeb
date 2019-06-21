@@ -7,17 +7,17 @@ import java.sql.ResultSet;
 
 public class DBConnector {
 	public static Connection getConnect() throws Exception {
-		/*
-		String user = "test";
-		String password = "test";
-		String url = "jdbc:oracle:thin:@211.238.142.24:1521:xe";
+		String user = "project";
+		String password = "project";
+		String url = "jdbc:oracle:thin:@211.238.142.44:1521:xe";
 		String driver = "oracle.jdbc.driver.OracleDriver";
-		*/
 		
-		String user = "project"; 
-		String password = "project"; 
-		String url = "jdbc:oracle:thin:@211.238.142.44:1521:xe"; 
-		String driver = "oracle.jdbc.driver.OracleDriver";
+		/*
+		 * String user = "project"; 
+		 * String password = "project"; 
+		 * String url = "jdbc:oracle:thin:@211.238.142.44:1521:xe"; 
+		 * String driver = "oracle.jdbc.driver.OracleDriver";
+		 */
 		
 		//2. driver 筌롫뗀�걟�뵳�딅퓠 嚥≪뮆逾�
 		Class.forName(driver);
@@ -39,4 +39,5 @@ public class DBConnector {
 		st.close();
 		con.close();
 	}
+	
 }

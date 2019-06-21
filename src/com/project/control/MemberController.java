@@ -1,14 +1,12 @@
 package com.project.control;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.project.action.ActionForward;
 import com.project.member.MemberService;
 
@@ -47,9 +45,15 @@ public class MemberController extends HttpServlet {
 			actionforward = memberService.logout(request, response);
 		}else if(command.equals("/idCheck")) {
 			actionforward = memberService.idCheck(request, response);
-		}else if(command.equals("/memberMypage")) {
-			actionforward = memberService.mypage(request, response);
+		}else if(command.equals("/memberSearchId")) {
+			actionforward = memberService.searchId(request, response);
+		}else if(command.equals("/memberSearchPw")) {
+			actionforward = memberService.searchPw(request, response);
+			
+		}else if(command.equals("/nicknameCheck")) {
+			actionforward = memberService.nicknameCheck(request, response);
 		}
+
 		
 		if(actionforward.isCheck()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionforward.getPath());
@@ -59,7 +63,7 @@ public class MemberController extends HttpServlet {
 		}
 	}
 	
-	
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -72,3 +76,4 @@ public class MemberController extends HttpServlet {
 	}
 
 }
+

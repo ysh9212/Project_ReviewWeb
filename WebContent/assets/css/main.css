@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Ubuntu+Condensed");
+﻿@import url("https://fonts.googleapis.com/css?family=Ubuntu+Condensed");
 
 /*
    Minimaxing by HTML5 UP
@@ -59,6 +59,34 @@ mark {
    color: inherit;
 }
 
+.dropdown{
+   position: relative;
+   display: inline-block;
+}
+.dropdown-content{
+   display: none;
+   position: absolute;
+   background-color: #007b9d;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   padding: 12px 16px;
+   z-index: 100;
+   font-color: black;
+   vertical-align: middle;
+   border-radius: 10px;
+   border: solid 1px #006e8b;
+    box-shadow: inset 0px 0px 0px 1px #12a0bf, 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+}            
+            
+.dropdown-content > a{
+   color: black;
+   font-size: 0.7em;
+   vertical-align: middle;
+}
+.dropdown:hover .dropdown-content{
+   display: block;
+}
+
 input::-moz-focus-inner {
    border: 0;
    padding: 0;
@@ -66,18 +94,10 @@ input::-moz-focus-inner {
 
 input, select, textarea {
 
-   -moz-appearance: none;
-   -webkit-appearance: none;
-   -ms-appearance: none;
-   appearance: none;
-
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	-ms-appearance: none;
-	appearance: none;
-
 }
-
+textarea{
+	width: 99%;
+}
 /* Basic */
 
 
@@ -177,6 +197,12 @@ input, select, textarea {
    section:last-child, article:last-child {
       margin-bottom: 0;
    }
+
+
+#contents{
+	width: 99.8%;
+	height: 500px;
+}
 
 	html {
 		box-sizing: border-box;
@@ -607,6 +633,13 @@ td a{
 
 /* Image */
 
+
+			.image.avatar img {
+				border-radius: 100%;
+				width: 100%;
+			}
+
+
    .image {
       border-radius: 0.35em;
       border: 0;
@@ -715,6 +748,7 @@ td a{
             border-radius: 100%;
             width: 100%;
          }
+
 
 
 
