@@ -7,14 +7,21 @@ import java.sql.ResultSet;
 
 public class DBConnector {
 	public static Connection getConnect() throws Exception {
-		String user = "project";
-		String password = "project";
-		String url = "jdbc:oracle:thin:@211.238.142.44:1521:xe";
+		/*
+		String user = "test";
+		String password = "test";
+		String url = "jdbc:oracle:thin:@211.238.142.24:1521:xe";
+		String driver = "oracle.jdbc.driver.OracleDriver";
+		*/
+		
+		String user = "project"; 
+		String password = "project"; 
+		String url = "jdbc:oracle:thin:@211.238.142.44:1521:xe"; 
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		
-		//2. driver 硫붾え由ъ뿉 濡쒕뵫
+		//2. driver 筌롫뗀�걟�뵳�딅퓠 嚥≪뮆逾�
 		Class.forName(driver);
-		//3. 濡쒓렇�씤 Connection
+		//3. 嚥≪뮄�젃占쎌뵥 Connection
 		Connection con = DriverManager.getConnection(url, user, password);
 				
 				
@@ -32,5 +39,4 @@ public class DBConnector {
 		st.close();
 		con.close();
 	}
-	
 }

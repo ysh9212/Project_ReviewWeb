@@ -87,6 +87,7 @@
 		<url-pattern>/event/*</url-pattern>
 	</servlet-mapping>
 
+
 	<servlet>
 		<servlet-name>member</servlet-name>
 		<servlet-class>com.project.control.MemberController</servlet-class>
@@ -103,7 +104,6 @@
 		<servlet-name>community</servlet-name>
 		<url-pattern>/community/*</url-pattern>
 	</servlet-mapping>
-
 
 	<servlet>
 		<servlet-name>memberMy</servlet-name>

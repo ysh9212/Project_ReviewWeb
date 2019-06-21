@@ -3,75 +3,32 @@
 <!-- Footer -->
 <div id="footer-wrapper">
 	<div class="container">
-		<div class="row">
-			<div class="col-8 col-12-medium">
-
-				<section>
-					<h2>How about a truckload of links?</h2>
-					<div>
-						<div class="row">
-							<div class="col-3 col-6-medium col-12-small">
-								<ul class="link-list">
-									<li><a href="#">Sed neque nisi consequat</a></li>
-									<li><a href="#">Dapibus sed mattis blandit</a></li>
-									<li><a href="#">Quis accumsan lorem</a></li>
-									<li><a href="#">Suspendisse varius ipsum</a></li>
-									<li><a href="#">Eget et amet consequat</a></li>
-								</ul>
-							</div>
-							<div class="col-3 col-6-medium col-12-small">
-								<ul class="link-list">
-									<li><a href="#">Quis accumsan lorem</a></li>
-									<li><a href="#">Sed neque nisi consequat</a></li>
-									<li><a href="#">Eget et amet consequat</a></li>
-									<li><a href="#">Dapibus sed mattis blandit</a></li>
-									<li><a href="#">Vitae magna sed dolore</a></li>
-								</ul>
-							</div>
-							<div class="col-3 col-6-medium col-12-small">
-								<ul class="link-list">
-									<li><a href="#">Sed neque nisi consequat</a></li>
-									<li><a href="#">Dapibus sed mattis blandit</a></li>
-									<li><a href="#">Quis accumsan lorem</a></li>
-									<li><a href="#">Suspendisse varius ipsum</a></li>
-									<li><a href="#">Eget et amet consequat</a></li>
-								</ul>
-							</div>
-							<div class="col-3 col-6-medium col-12-small">
-								<ul class="link-list">
-									<li><a href="#">Quis accumsan lorem</a></li>
-									<li><a href="#">Sed neque nisi consequat</a></li>
-									<li><a href="#">Eget et amet consequat</a></li>
-									<li><a href="#">Dapibus sed mattis blandit</a></li>
-									<li><a href="#">Vitae magna sed dolore</a></li>
-								</ul>
-							</div>
-						</div>
+		<section>
+			<div>
+				<div class="col-12">
+					<div id="copyright" style="text-align: center;">
+						<ul class="link-list">
+							<li><a href="#">이용약관</a></li>
+							<li><a href="#">개인정보처리방침</a></li>
+							<li><a href="#">광고 및 제휴</a></li>
+							<li><a href="#">리뷰 문의</a></li>
+						</ul>
 					</div>
-				</section>
-
+				</div>
+				<div class="footimg">
+				SOCIAL<br>
+				<img alt="FaceBook" src="${pageContext.request.contextPath }/images/fb-logo.png" class="fimg">
+				<img alt="Twitter" src="${pageContext.request.contextPath }/images/t-logo.png" class="fimg">
+				<img alt="Youtube" src="${pageContext.request.contextPath }/images/youtube-logo.png" class="fimg">
+				</div>
 			</div>
-			<div class="col-4 col-12-medium">
-
-				<section>
-					<h2>Something of interest</h2>
-					<p>Duis neque nisi, dapibus sed mattis quis, rutrum accumsan
-						sed. Suspendisse eu varius nibh. Suspendisse vitae magna eget odio
-						amet mollis justo facilisis quis. Sed sagittis mauris amet tellus
-						gravida lorem ipsum dolor sit blandit.</p>
-					<footer class="controls">
-						<a href="#" class="button">Oh, please continue ....</a>
-					</footer>
-				</section>
-
-			</div>
-		</div>
+		</section>
 		<div class="row">
 			<div class="col-12">
 
-				<div id="copyright">
+				<div style="text-align: center;">
 					&copy; Untitled. All rights reserved. | Design: 
-					<a href="#">HTML5 UP</a>
+					<a href="#">GAZUA</a>
 				</div>
 
 			</div>

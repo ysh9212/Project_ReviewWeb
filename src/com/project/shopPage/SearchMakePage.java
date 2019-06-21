@@ -38,7 +38,7 @@ public class SearchMakePage {
 		if(totalPage%perBlock != 0) {
 			totalBlock++;
 		}
-		//4 curPage로 curBlock
+		//4 curPage濡� curBlock
 		int curBlock = curPage/perBlock;
 		if(curPage%perBlock !=0) {
 			curBlock++;
@@ -48,7 +48,7 @@ public class SearchMakePage {
 		int startNum=(curBlock-1)*perBlock + 1;
 		int lastNum = curBlock * perBlock;
 		
-		//6.curBlock이 totalBlock
+		//6.curBlock�씠 totalBlock
 		if(curBlock == totalBlock) {
 			lastNum = totalPage;
 		}

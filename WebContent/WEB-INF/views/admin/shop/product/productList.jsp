@@ -58,6 +58,8 @@ SHOP ${board } 페이지
 		</ul>
 	</div>
 	<a href="./${board}Write" class="btn btn-primary">상품추가</a>
+
+
 </div>
 </body>
 </html>

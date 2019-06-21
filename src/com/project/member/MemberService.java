@@ -1,6 +1,7 @@
 package com.project.member;
 
 
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.util.Properties;
@@ -16,6 +17,7 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+
 public class MemberService implements Action {
 	private MemberDAO memberdao;
 
@@ -30,6 +32,7 @@ public class MemberService implements Action {
 		String id = request.getParameter("id");
 		int check = 0;
 		Connection con;
+
 	
 		try {
 			con = DBConnector.getConnect();
@@ -57,6 +60,7 @@ public class MemberService implements Action {
 		try {
 			con = DBConnector.getConnect();
 			check = memberdao.nicknameCheck(nickname, con);
+
 		
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -64,19 +68,24 @@ public class MemberService implements Action {
 		
 		request.setAttribute("result", check);
 		actionforward.setCheck(true);
+
 		actionforward.setPath("../WEB-INF/views/common/result2.jsp");
+
 		return actionforward;
 	}
 	
 	public ActionForward logout(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionforward = new ActionForward();
+
 		request.getSession().invalidate();  // 세션을 종료
+
 		actionforward.setCheck(false);
 		actionforward.setPath("../index.do");
 		
 		return actionforward;
 	}
 	
+
 	
 	public ActionForward searchId(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionforward = new ActionForward();
@@ -226,6 +235,14 @@ public class MemberService implements Action {
 		}
 		actionforward.setCheck(check);
 		actionforward.setPath(path);
+
+	public ActionForward mypage(HttpServletRequest request, HttpServletResponse response) {
+		ActionForward actionforward = new ActionForward();
+		String method = request.getMethod();
+		boolean check = true;
+		
+		String path = "../WEB-INF/views/member/memberMypage.jsp";
+
 		
 		return actionforward;
 	}
@@ -248,6 +265,7 @@ public class MemberService implements Action {
 			MemberDTO memberDTO = new MemberDTO();
 			
 			String checkbox = request.getParameter("check");
+
 			if(checkbox!=null) {
 				Cookie c = new Cookie("check", request.getParameter("id"));
 				c.setMaxAge(60*60*24*7);
@@ -262,6 +280,7 @@ public class MemberService implements Action {
 			
 			try {
 				memberDTO = memberDAO.memberLogin(memberDTO);
+
 				if(memberDTO != null) {
 					request.getSession().setAttribute("member", memberDTO);
 					check = false;
@@ -289,6 +308,7 @@ public class MemberService implements Action {
 		ActionForward actionforward = new ActionForward();
 		
 		String method = request.getMethod();
+
 		boolean check = true;
 		String path="../WEB-INF/views/member/memberJoin.jsp";
 		if(method.equals("POST")) {
@@ -339,13 +359,15 @@ public class MemberService implements Action {
 			path = "../WEB-INF/views/common/result.jsp";
 		}
 	
+			memberDTO.setId("id");
+
 		}
 		actionforward.setCheck(check);
 		actionforward.setPath(path);
 		
 		return actionforward;
 	}
-	
+
 
 	@Override
 	public ActionForward update(HttpServletRequest request, HttpServletResponse response) {

@@ -532,6 +532,7 @@
 <div id="page-wrapper">
 	<div id="main">
 		<div class="container">
+
 			<div id = "wrap">
 				<h2> 회원가입합시다.</h2>
 				<div class="join_content">
@@ -662,8 +663,10 @@
 			</div>
 		
 		
+
 	</div>
 			</div>
+
 		</div>
 	</div>
 	

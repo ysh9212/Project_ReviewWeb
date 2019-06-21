@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-
 import com.project.util.DBConnector;
 
 public class MemberDAO {
@@ -34,6 +33,7 @@ public class MemberDAO {
 		int check=1;
 		if(rs.next()) {
 			check=0;
+
 		}
 		rs.close();
 		st.close();
@@ -69,6 +69,8 @@ public class MemberDAO {
 	
 	public int memberJoin(MemberDTO dto, Connection con) throws Exception{
 		
+
+		con = DBConnector.getConnect();
 		String sql = "insert into member values(?,?,?,?,?,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		
@@ -85,6 +87,7 @@ public class MemberDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
+
 	
 	public MemberDTO memberSearchId(MemberDTO memberDTO, Connection con) throws Exception{
 		MemberDTO m = null;
@@ -145,4 +148,5 @@ public class MemberDAO {
 			
 			return result;
 		}
+
 }
