@@ -166,13 +166,11 @@ html{color: -internal-root-color;}
 	</div>
 	
 	
-		</div>
-	</div>
-	</div>
-</div>
-</form>
 
-<%@include file="../temp/footer.jsp" %>
+		</div>
+	</form>
+
+	<%@include file="../temp/footer.jsp" %>
 
 
 		<!-- Scripts -->

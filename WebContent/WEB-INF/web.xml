@@ -119,5 +119,15 @@
   <servlet-mapping>
     <servlet-name>product_upload</servlet-name>
     <url-pattern>/productupload/*</url-pattern>
+</servlet-mapping>
+
+  <servlet>
+    <servlet-name>basic</servlet-name>
+    <servlet-class>com.project.control.BasicController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>basic</servlet-name>
+    <url-pattern>/basic/*</url-pattern>
+
   </servlet-mapping>
 </web-app>

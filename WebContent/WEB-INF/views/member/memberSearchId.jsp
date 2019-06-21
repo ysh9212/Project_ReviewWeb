@@ -107,11 +107,11 @@
 </head>
 <body>
 <%@include file = "../temp/header.jsp" %>
+<form action="${pageContext.request.contextPath}/member/memberSearchId" id="form1" method="post">
 <div id="page-wrapper">
 	<div id="main">
 		<div class="container">
 		<div id = "wrap">
-			<form action="${pageContext.request.contextPath}/member/memberSearchId" id="form1" method="post">
 			<h2> 아이디  찾기</h2>
 			<div class="search_content">
 				
@@ -136,7 +136,6 @@
 		
 			</div>
 
-			</form>
 			</div>
 			
 			
@@ -144,6 +143,7 @@
 		</div>
 	</div>
 </div>
+</form>
 <%@include file="../temp/footer.jsp" %>
 
 </body>
