@@ -21,72 +21,23 @@
 		<div id="main">
 			<div class="container">
 				<section class="tiles">
-					
+				<c:forEach items="${list }" var="dto">
+					<c:forEach items="${upload }" var="upload">
+								<c:if test="${upload.pno eq dto.pno }">
 							<article class="style2">
 								<span class="image">
-								<img src="../images/hani.jpg" alt="" width="400" height="300">
+								<img src="${pageContext.request.contextPath }/upload/${upload.fname}" alt="" width="400" height="300">
 								</span>
 								<a href="./product/productSelect?pno=${dto.pno }">
-								<h2>대박 물품</h2>
+								<h2>${dto.title }</h2>
 								<div class="content">
-								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
+								<p>${dto.price }원</p>
 								</div>
 								</a>
 							</article>
-							<article class="style2">
-								<span class="image">
-								<img src="../images/hani.jpg" alt="" width="400" height="300">
-								</span>
-								<a href="#">
-								<h2>대박 물품</h2>
-								<div class="content">
-								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
-								</div>
-								</a>
-							</article><article class="style2">
-								<span class="image">
-								<img src="../images/hani.jpg" alt="" width="400" height="300">
-								</span>
-								<a href="#">
-								<h2>대박 물품</h2>
-								<div class="content">
-								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
-								</div>
-								</a>
-							</article>
-							<article class="style2">
-								<span class="image">
-								<img src="../images/hani.jpg" alt="" width="400" height="300">
-								</span>
-								<a href="#">
-								<h2>대박 물품</h2>
-								<div class="content">
-								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
-								</div>
-								</a>
-							</article>
-							<article class="style2">
-								<span class="image">
-								<img src="../images/hani.jpg" alt="" width="400" height="300">
-								</span>
-								<a href="#">
-								<h2>대박 물품</h2>
-								<div class="content">
-								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
-								</div>
-								</a>
-							</article>
-							<article class="style2">
-								<span class="image">
-								<img src="../images/hani.jpg" alt="" width="400" height="300">
-								</span>
-								<a href="#">
-								<h2>대박 물품</h2>
-								<div class="content">
-								<p>꼭사라!!!!!!!!!!!!!!!!!!</p>
-								</div>
-								</a>
-							</article>
+								</c:if>
+					</c:forEach>
+					</c:forEach>
 
 					
 					

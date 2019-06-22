@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.project.action.ActionForward;
+import com.project.shop.cart.CartService;
 import com.project.shop.mqna.ShopMqnaService;
 import com.project.shop.notice.ShopNoticeService;
 import com.project.shop.product.ProductService;
@@ -26,6 +27,7 @@ public class ShopController extends HttpServlet {
     private ShopQnaService shopQnaService;
     private ShopMqnaService shopMqnaService;
     private ProductService productService;
+    private CartService cartService;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -35,6 +37,7 @@ public class ShopController extends HttpServlet {
         shopQnaService = new ShopQnaService();
         shopMqnaService = new ShopMqnaService();
         productService = new ProductService();
+        cartService = new CartService();
         // TODO Auto-generated constructor stub
     }
 
@@ -47,11 +50,9 @@ public class ShopController extends HttpServlet {
 		command = command.substring(last);
 		ActionForward actionForward = new ActionForward();
 		if(command.equals("/shopList")) {
-			actionForward.setCheck(true);
-			actionForward.setPath("../WEB-INF/views/shop/shopList.jsp");
+			actionForward = productService.list(request, response);
 		}else if(command.equals("/productSelect")) {
-			actionForward.setCheck(true);
-			actionForward.setPath("../../WEB-INF/views/shop/product/productSelect.jsp");
+			actionForward = productService.select(request, response);
 		}else if(command.equals("/productPurchase")) {
 			actionForward.setCheck(true);
 			actionForward.setPath("../../WEB-INF/views/shop/product/productPurchase.jsp");
@@ -80,7 +81,10 @@ public class ShopController extends HttpServlet {
 		}else if(command.equals("/mqnaSelect")) {
 			actionForward = shopMqnaService.select(request, response);
 		}
-		
+		//cart
+		else if(command.equals("/cartInsert")) {
+			actionForward = cartService.insert(request, response);
+		}
 		
 		
 		if(actionForward.isCheck()) {

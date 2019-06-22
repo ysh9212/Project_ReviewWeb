@@ -12,8 +12,7 @@
 	<body>
 <%@include file = "./temp/header.jsp" %>
 		<div id="page-wrapper">
-
-
+    
 			<!-- Banner -->
 			<div class="container" style="padding-top:4em;">
 
