@@ -39,11 +39,10 @@ public class Product_UploadDAO {
 		
 		return product_UploadDTO;
 	}
-	public List<Product_UploadDTO> selectList(int pno, Connection con) throws Exception{
+	public List<Product_UploadDTO> selectList(Connection con) throws Exception{
 	      ArrayList<Product_UploadDTO> ar = new ArrayList<Product_UploadDTO>();
-	      String sql = "select * from product_upload where pno=?";
+	      String sql = "select * from product_upload";
 	      PreparedStatement st = con.prepareStatement(sql);
-	      st.setInt(1, pno);
 	      ResultSet rs = st.executeQuery();
 	      while(rs.next()) {
 	    	  Product_UploadDTO product_UploadDTO = new Product_UploadDTO();

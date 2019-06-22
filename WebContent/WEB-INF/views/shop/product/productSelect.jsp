@@ -373,43 +373,69 @@ text-decoration: none;
 	$(function(){
 		
 		 $('#increase').click(function(){ 
-			    var n = $('#increase').index(this);
-			    var num = $("#num:eq("+n+")").val();
-			    if(num>=10){
+			   
+			    var num = $("#num").val();
+			   	num++;
+			   	$('#num').val(num);
+			   	var amount = '${dto.price}'*num;
+			   	$('.unit').empty();
+			   	$('.unit').append(amount+"원");
+			    if(num>10){
 			    	alert('최대 10개 상품 까지 구입 가능 합니다');
 			    	return false;
 			    }
-			    num = $("#num:eq("+n+")").val(num*1+1); 
+			    num = 9;
 		});
 		$('#decrease').click(function(){ 
 				
-			    var n = $('#decrease').index(this);
-			    var num = $(".num:eq("+n+")").val();
-			    if(num<=1){
+			    var num = $('#num').val();
+			    num--;
+			    $('#num').val(num);
+			    var amount='${dto.price}'*num;
+			    $('.unit').empty();
+			    $('.unit').append(amount+"원");
+			    
+			    if(num<1){
 			    	alert('잘못된 입력입니다');
 			    	return false;
 			    }
-			    num = $(".num:eq("+n+")").val(num*1-1); 
 		});
 		
 		$('#addcart').click(function(){
-			var member_id = "<%=(String)session.getAttribute("memberDTO")%>"
-			if(member_id == 'null'){
+			var member_id = "${memberDTO.id}";
+			/* if(member_id == 'null'){
 				alert('로그인 후 이용 가능합니다');
 				return false;
-			}else{
-			location.href = './cartList.jsp';
-			}
+			}else{ */
+				var num = $('#num').val();
+				var price = '${dto.price}' * num;
+				$.ajax({
+					type:"POST",
+					url: "./cartInsert",
+					data: {id: member_id, count:num, price:price, pno:'${dto.pno}'},
+					dataType: "json",
+					cache : false,
+					async: false,
+					success:function(data){
+						alert('저장되었습니다.');
+					},
+					error : function(data){
+						alert('실패하였습니다');
+						return false;
+					}
+				});
+			/* } */
 		});
 			  
 		$('#purchase').click(function(){
-			var member_id = "<%=(String)session.getAttribute("memberDTO")%>"
-			if(member_id == 'null'){
+			var member_id = '${memberDTO.id}';
+			var num = $('#num').val();
+			location.href="./productPurchase?pno=${dto.pno}&num="+num;
+			/* if(member_id == 'null'){
 				alert('로그인 후 이용 가능합니다');
 				return false;
 			}else{
-			location.href="./productPurchase?pno=";
-			}
+			} */
 		});
 		
 	});
@@ -425,7 +451,7 @@ text-decoration: none;
 					<div class="thumb-gallery">
 						<ul class="viewer">
 							<li class="on">
-								<img alt="상품" src="../../images/hani.jpg" width="600" height="600">
+								<img alt="상품" src="${pageContext.request.contextPath }/upload/${upload.fname}" width="600" height="600">
 							</li>
 						</ul>
 					</div><!-- 왼쪽 이미지 -->
@@ -434,15 +460,15 @@ text-decoration: none;
 							<p class="shoptit">
 							 UDK 상품
 							 <span class="rt">
-							 	<span class="pdnum"> 상품 번호 : </span>
+							 	<span class="pdnum"> 상품 번호 : ${dto.pno }</span>
 							 </span>
 							</p>
 							<div id="itemcase_basic">
-								<h1 class="itemtit">상품 명</h1>
+								<h1 class="itemtit">${dto.title }</h1>
 								<p class="price">
 								<strong class="price_real">
 								가격 : 
-								<span class="unit">원</span>
+								<span class="unit">${dto.price }원</span>
 								</strong>
 								</p>
 							</div>
@@ -454,132 +480,8 @@ text-decoration: none;
 									<div class="item-originpd">
 										<button class="bt_increase" id="increase"><span class="blind">수량증가</span></button>
 										<button class="bt_decrease" id="decrease"><span class="blind">수량감소</span></button>
-										<input class="num" type="text" id ="num" maxlength="3" title="수량" value="1">
+										<input class="num" type="text" id ="num" maxlength="3" title="수량" value="1" readonly="readonly">
 									</div>
-									<script type="text/javascript">
-    (function(GmktItem, $){
-        GmktItem.OrderSetList = GmktItem.OrderSetList || [];
-        GmktItem.OrderSetKeyList = GmktItem.OrderSetKeyList || [];
-        GmktItem.OrderLimitCntGroup = GmktItem.OrderLimitCntGroup || {};
-        GmktItem.OrderSetIndex = GmktItem.OrderSetIndex || 0;
-
-        GmktItem.OptionParamCoreAbove = {
-            optOrderSelCnt: 0,
-            combOptionDepth: 0,
-            txtOrderSelCnt: 0,
-            selectedListId: "#coreSelectedList",
-            selOptPrefix: "#optOrderSel",
-            combOptPrefix: "#optOrderComb",
-            txtOptPrefix:"#optOrderTxt",
-            calcOptPrefix:"#optOrderTxtCalc",
-            plusOptPrefix: "#optOrderPlus"
-        };
-
-            
-        GmktItem.OptionParamCoreAbove.combOptionObj = null
-            
-
-    	GmktItem.OrderLimitCntGroup['1504232177'] = {OrderLimitCnt : 10, OrderPossibleCnt : 10};
-
-        GmktItem.OrderSet = GmktItem.OrderSet || {};
-        var OrderSet = GmktItem.OrderSet;
-
-		OrderSet.BaseDiscountPrice = 399000;
-        OrderSet.SellPrice = 500000.0000;
-        OrderSet.IsCouponAvailable = true;
-        OrderSet.CouponBoxAlert = "";
-
-        OrderSet.AuctionNo = 0;
-        OrderSet.BranchZipCode = "";
-        OrderSet.ClassCode = "";
-        OrderSet.ClassKind = "";
-        //CPC
-        OrderSet.DiscountInfo = [];
-
-        //DiscountBiz 수정 필요해보임.
-        
-        OrderSet.BaseCostBasisNoArr = [5394109510,5378658351];
-		
-
-		OrderSet.DiscountKey = ""
-
-		OrderSet.GiftShopShippingCost = 0;
-        OrderSet.GiftShopTransDay = 0;
-        OrderSet.InterestGroupNo = 0;
-        OrderSet.IsFreeInterestExist =  true;
-        OrderSet.IsInstantOrder = false; //조작
-        OrderSet.ItemNo = "1504232177";
-    	OrderSet.ItemNm = "라이젠노트북ASUS X505ZA-BQ473  5000대완판";
-    	OrderSet.GroupIndex = "01";
-        OrderSet.Keyword = "";
-        OrderSet.KeywordSeq = 0;
-		OrderSet.MountBranchSequence = 0; //조작
-        OrderSet.OptionInfo = [];
-        OrderSet.OrderQty = 1;
-        OrderSet.PartnershipCode = "";
-        OrderSet.IsCore = true;
-        OrderSet.PCID = "W";
-        OrderSet.PrePaidType = 1; //조작
-        OrderSet.QuickArriveZipCode = "";
-        OrderSet.ShippingGroupNo = 37198756; // 조작???
-        OrderSet.ShopCode = "";
-        OrderSet.ShoppingGuideNo = 0;
-        OrderSet.SID = 0;
-		OrderSet.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36";
-        OrderSet.IsCPC = false ;
-        OrderSet.SellerCustNo = "122622331";
-    	OrderSet.IsSmartDelivery =  false;
-
-    	OrderSet.BranchPrice = 0;
-		OrderSet.Discount = {"IsDc":true,"OriginPrice":"500,000","DcPrice":"399,000","SpanCostPrice":"101,000","SpanCostRatePrice":"20","CreditCardDcPrice":"394,000","CreditCardDcRate":"99.9","CreditCardInstantDcCount":"","CreditCardPointDcCount":"","CreditCardInstantDc":[{"Name":"스마일카드 첫결제 혜택","DcPrice":"394,000","DcRate":"99.9","MaxDcPrice":"5,000","MinBasePrice":"5,100"}],"CreditCardPointDc":[],"FreeInterestCardImageHtml":"<img src=\"http://image.gmarket.co.kr/UPLOAD_IMAGE/2019/04/26/G마켓_무이자할부_201905_PC.jpg\">","CardAdditionalBenefitHtml":"<a href=\"https://spweb.gmarket.co.kr/ko/plcc/intro/index?source=ebaykorea&medium=G%5FP%5FWEB%5FH&userType=P\" target=\"_blank\"><img src=\"http://image.gmarket.co.kr/UPLOAD_IMAGE/2018/06/18/스마일카드_제휴카드혜택_노출.jpg\" width=\"318\" height=\"62\" alt=\"스마일카드\"></a>\r\n\r\n<a href=\"http://promotion.gmarket.co.kr/planview/plan.asp?sid=159173\" target=\"_blank\"><img src=\"http://image.gmarket.co.kr/UPLOAD_IMAGE/2018/02/28/지마켓_롯데제휴카드노출수정.jpg\" width=\"318\" height=\"62\" alt=\"e플래티넘 롯데카드\"></a>\r\n\r\n<a href=\"http://rpp.gmarket.co.kr/?exhib=26323\" target=\"_blank\"><img src=\"//image.gmarket.co.kr/UPLOAD_IMAGE/2019/02/01/bn_card_318x62_카카오뱅크.jpg\" width=\"318\" height=\"62\" alt=\"카카오뱅크 프렌즈 체크카드\"></a>","isOutOfStock":false,"hasDC":true,"isCreditCardInstantDc":true,"isCreditCardPointDc":false,"HasFreeInterestCardImage":true,"HasCardAdditionalBenefit":true,"CostBasisNo":"53941095105378658351","CostBasisNm":"7%_고정[상품별할인] 상품번호:1504232177","CostResult":"7.000066000.0000","CostBasisKind":"상품별할인상품별할인","CostUnit":"RM","CostPrice":101000.0,"CostPriceYN":"Y","CostWhoFee":"GDME","DealerCostBasisNo":"","DealerCostPrice":0.0,"Sid":0,"PdcCostPrice":0.0,"DealerCostUnit":null,"DealerCostResult":0,"PersonalCouponMaster":null,"PersonalCouponDetail":null,"DcMasterSeqNo":"0","DcCouponNo":"","UsedZeromarginSale":0.0,"GmarketCostBasisKind":"","IsJaehuCheck":true,"PluralCouponDetail":"","UsedCoupon":"","PosClassCd":"","CustomerNo":"","IsZeroMargin":false,"JaehuId":"","LoginId":"","CustomerTelNo":"enUS","PluralKey":"H8xNQxMTAINOTR01DTMjMTM3LVk1MA0yMzUzTc3fODY1ODM1MX8IfzIwMTkwNjIwfzA5MTE1NC40Mjc5NzAxf39/","CouponBoxAlert":""};
-
-        OrderSet.IsOrderLimit =  true;
-        OrderSet.IsECouponTarget = false ;
-        OrderSet.IsSmileClub = false;
-        OrderSet.IsSmilePay = false;
-        OrderSet.IsExpressShop = false;
-        OrderSet.MinBuyCount = 1;
-        OrderSet.BuyUnitCount = 1;
-        OrderSet.MinSellAmount = 8875;
-        OrderSet.IsBizOnItem = false;
-        OrderSet.IsMountService = false;
-        OrderSet.OrderMessage = "";
-        OrderSet.HasNoOption = true;
-        OrderSet.HasTextOptions = false;
-
-        $(function () {
-            $('.item-topinfo .item_options').each(function () {
-                $(this).click(function (e) {
-                e.preventDefault();
-            });
-        });
-
-        combOptLayerType = [
-            "",
-            "",
-            ""
-        ];
-
-        var selectableOptionController = new GmktItem.SelectableOptionController(GmktItem.OptionParamCoreAbove.selOptPrefix, GmktItem.OptionParamCoreAbove.optOrderSelCnt, GmktItem.OptionParamCoreAbove, "200000502");
-        var combinationalOptionController = new GmktItem.CombinationalOptionController(GmktItem.OptionParamCoreAbove.combOptPrefix, GmktItem.OptionParamCoreAbove.combOptionDepth, GmktItem.OptionParamCoreAbove.combOptionObj, GmktItem.OptionParamCoreAbove, combOptLayerType[0], combOptLayerType[1], combOptLayerType[2], "200000502");
-        var calculationalOptionController = new GmktItem.CalculationalOptionController(GmktItem.OptionParamCoreAbove.calcOptPrefix, GmktItem.OptionParamCoreAbove, "200000506");
-        var textOptionController = new GmktItem.TextOptionController(GmktItem.OptionParamCoreAbove.txtOptPrefix, GmktItem.OptionParamCoreAbove, "200000505");
-        new GmktItem.NoOptionController("#noOptionSelectDiv", GmktItem.OptionParamCoreAbove);
-
-        GmktItem.OptionParamCoreAbove.optionInitializer = new GmktItem.OptionInitializer(selectableOptionController, combinationalOptionController, textOptionController, calculationalOptionController);
-        selectableOptionController.enableOptionChain();
-        combinationalOptionController.enableOptionChain();
-        calculationalOptionController.enableOption();
-        textOptionController.enableOption();
-
-
-
-        GmktItem.PlusOptionPool = GmktItem.PlusOptionPool || {};
-    });
-
-    })(window.GmktItem = window.GmktItem || {}, jQuery);
-
-</script>
 								</div>
 							</div><!-- form body  -->
 							<div class="form_bottom">
@@ -621,8 +523,7 @@ text-decoration: none;
 					<div class="vip-tabcontentwrap">
 					<div class="vip-tab_container">
 						<div id="vip-tab_detail" class="vip-tabcontent_lt on vip-tabcontent">
-						상품 설명
-						<img alt="hani" src="../../images/hani.jpg">
+						${dto.detail }
 						</div>
 
 							<div class="vip-detailoption_wrap">
@@ -632,11 +533,11 @@ text-decoration: none;
 											<div class="select-item">
 												<span class="txt minishop-selected">
 												 <span class="thumb"> 
-												 <img src="../../images/hani.jpg" width="60" height="60" alt="썸네일"> 상품 제목 또는 설명
+												 <img src="${pageContext.request.contextPath }/upload/${upload.fname}" width="60" height="60" alt="썸네일"> 상품 제목 또는 설명
 												</span> 
 													<span class="info"> 
 														<span class="item_tit">	
-														상품 제목 
+														${dto.title }
 														</span>
 													</span>
 												</span>

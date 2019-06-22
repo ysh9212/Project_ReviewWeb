@@ -79,7 +79,7 @@ public class ProductDAO{
 			productDTO.setTitle(rs.getString("title"));
 			productDTO.setDetail(rs.getString("detail"));
 			productDTO.setReg_date(rs.getString("reg_date"));
-			productDTO.setStock(rs.getInt(rs.getInt("stock")));
+			productDTO.setStock(rs.getInt("stock"));
 			productDTO.setPrice(rs.getInt("price"));
 		}
 		rs.close();

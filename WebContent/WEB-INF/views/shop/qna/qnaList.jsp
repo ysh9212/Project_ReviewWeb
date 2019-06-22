@@ -62,8 +62,10 @@
 				<li class="next"><a href="./${board}List?curPage=${pager.lastNum+1}&kind=${pager.search.kind}&search=${pager.search.search}">Next</a></li>
 			</c:if>
 		</ul>
-		</div>
+		<c:if test="${memberDTO ne null }">
 		<a href="./${board}Write" class="btn btn-primary">Write</a>
+		</c:if>
+		</div>
 	</div>
 </div>
 

@@ -124,7 +124,6 @@ public class ProductService implements Action{
 		if(method.equals("POST")) {
 			String saveDirectory = request.getServletContext().getRealPath("upload");
 			File file = new File(saveDirectory);
-			System.out.println(saveDirectory);
 			if(!file.exists()) {
 				file.mkdirs();
 			}

@@ -79,10 +79,9 @@ public class CartService implements Action{
 	@Override
 	public ActionForward insert(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
-		boolean cehck = true;
+		boolean check = true;
 		
 		CartDTO cartDTO = new CartDTO();
-		cartDTO.setNo(Integer.parseInt(request.getParameter("no")));
 		cartDTO.setPno(Integer.parseInt(request.getParameter("pno")));
 		cartDTO.setId(request.getParameter("id"));
 		cartDTO.setCount(Integer.parseInt(request.getParameter("count")));
@@ -132,8 +131,29 @@ public class CartService implements Action{
 
 	@Override
 	public ActionForward delete(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
+		ActionForward actionForward = new ActionForward();
+		int result = 0;
+		Connection con = null;
+		
+		try {
+			con = DBConnector.getConnect();
+			int no = Integer.parseInt(request.getParameter("no"));
+			result = cartDAO.delete(no, con);
+			if(result <1) {
+				throw new Exception();
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return actionForward;
 	}
 
 }

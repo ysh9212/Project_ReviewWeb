@@ -60,6 +60,10 @@
 				</table>
 
 
+			<c:if test="${memberDTO.nickname eq dto.writer }">
+			<a href="./qnaDelete?no=${dto.no}" class="btn" id="delete">Delete</a>
+			<a href="./qnaUpdate?no=${dto.no}" class="btn">Update</a>
+			</c:if>
 			</div>
 			
 			<a href="./qnaUpdate?no=${dto.no}" class="btn btn-primary">Update</a>
