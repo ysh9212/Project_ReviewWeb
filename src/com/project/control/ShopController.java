@@ -14,6 +14,7 @@ import com.project.shop.cart.CartService;
 import com.project.shop.mqna.ShopMqnaService;
 import com.project.shop.notice.ShopNoticeService;
 import com.project.shop.product.ProductService;
+import com.project.shop.product_purchase.ProductPurchaseService;
 import com.project.shop.qna.ShopQnaService;
 
 
@@ -28,6 +29,7 @@ public class ShopController extends HttpServlet {
     private ShopMqnaService shopMqnaService;
     private ProductService productService;
     private CartService cartService;
+    private ProductPurchaseService productPurchaseService;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -38,6 +40,7 @@ public class ShopController extends HttpServlet {
         shopMqnaService = new ShopMqnaService();
         productService = new ProductService();
         cartService = new CartService();
+        productPurchaseService = new ProductPurchaseService();
         // TODO Auto-generated constructor stub
     }
 
@@ -54,8 +57,7 @@ public class ShopController extends HttpServlet {
 		}else if(command.equals("/productSelect")) {
 			actionForward = productService.select(request, response);
 		}else if(command.equals("/productPurchase")) {
-			actionForward.setCheck(true);
-			actionForward.setPath("../../WEB-INF/views/shop/product/productPurchase.jsp");
+			actionForward = productPurchaseService.insert(request, response);
 		}
 		//notice
 		else if(command.equals("/noticeList")){

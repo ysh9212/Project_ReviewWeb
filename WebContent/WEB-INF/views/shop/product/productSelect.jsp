@@ -377,38 +377,64 @@ text-decoration: none;
 	$(function(){
 		
 		 $('#increase').click(function(){ 
-			    var n = $('#increase').index(this);
-			    var num = $("#num:eq("+n+")").val();
-			    if(num>=10){
+			   
+			    var num = $("#num").val();
+			   	num++;
+			   	$('#num').val(num);
+			   	var amount = '${dto.price}'*num;
+			   	$('.unit').empty();
+			   	$('.unit').append(amount+"원");
+			    if(num>10){
 			    	alert('최대 10개 상품 까지 구입 가능 합니다');
 			    	return false;
 			    }
-			    num = $("#num:eq("+n+")").val(num*1+1); 
+			    num = 9;
 		});
 		$('#decrease').click(function(){ 
 				
-			    var n = $('#decrease').index(this);
-			    var num = $(".num:eq("+n+")").val();
-			    if(num<=1){
+			    var num = $('#num').val();
+			    num--;
+			    $('#num').val(num);
+			    var amount='${dto.price}'*num;
+			    $('.unit').empty();
+			    $('.unit').append(amount+"원");
+			    
+			    if(num<1){
 			    	alert('잘못된 입력입니다');
 			    	return false;
 			    }
-			    num = $(".num:eq("+n+")").val(num*1-1); 
 		});
 		
 		$('#addcart').click(function(){
-			var member_id = "<%=(String)session.getAttribute("memberDTO")%>"
-			if(member_id == 'null'){
+			var member_id = "${memberDTO.id}";
+			/* if(member_id == 'null'){
 				alert('로그인 후 이용 가능합니다');
 				return false;
-			}else{
-			location.href = './cartInsert?pno=${dto.pno}';
-			}
+			}else{ */
+				var num = $('#num').val();
+				var price = '${dto.price}' * num;
+				$.ajax({
+					type:"POST",
+					url: "./cartInsert",
+					data: {id: member_id, count:num, price:price, pno:'${dto.pno}'},
+					dataType: "json",
+					cache : false,
+					async: false,
+					success:function(data){
+						alert('저장되었습니다.');
+					},
+					error : function(data){
+						alert('실패하였습니다');
+						return false;
+					}
+				});
+			/* } */
 		});
 			  
 		$('#purchase').click(function(){
-			var member_id = "<%=(String)session.getAttribute("memberDTO")%>"
-			location.href="./productPurchase?pno=${dto.pno}";
+			var member_id = '${memberDTO.id}';
+			var num = $('#num').val();
+			location.href="./productPurchase?pno=${dto.pno}&num="+num;
 			/* if(member_id == 'null'){
 				alert('로그인 후 이용 가능합니다');
 				return false;
@@ -458,7 +484,7 @@ text-decoration: none;
 									<div class="item-originpd">
 										<button class="bt_increase" id="increase"><span class="blind">수량증가</span></button>
 										<button class="bt_decrease" id="decrease"><span class="blind">수량감소</span></button>
-										<input class="num" type="text" id ="num" maxlength="3" title="수량" value="1">
+										<input class="num" type="text" id ="num" maxlength="3" title="수량" value="1" readonly="readonly">
 									</div>
 								</div>
 							</div><!-- form body  -->
