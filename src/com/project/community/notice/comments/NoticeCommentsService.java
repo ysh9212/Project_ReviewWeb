@@ -20,7 +20,6 @@ public class NoticeCommentsService implements Action{
 	public NoticeCommentsService() {
 		noticeCommentsDAO = new NoticeCommentsDAO();
 	}
-
 	@Override
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();

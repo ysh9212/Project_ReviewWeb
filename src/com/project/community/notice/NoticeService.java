@@ -43,7 +43,7 @@ public class NoticeService implements Action{
 			request.setAttribute("list", ar);
 			request.setAttribute("board", "communityNotice");
 			actionForward.setCheck(true);
-			actionForward.setPath("../../WEB-INF/views/community/communityBoard/board.jsp");
+			actionForward.setPath("#");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

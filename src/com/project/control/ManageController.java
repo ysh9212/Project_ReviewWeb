@@ -154,7 +154,6 @@ public class ManageController extends HttpServlet {
 		///////////////////////////////// admin community 관련 주소;////////////////////////////////////////////
 		// 공지사항;
 		}else if(command.equals("/adminCommunityNotice")) {
-			System.out.println("도착 확인");
 			actionForward = noticeService.adminList(request, response);
 		}else if(command.equals("/adminCommunityNoticeSelect")) {
 			actionForward = noticeService.select(request, response);
@@ -166,13 +165,13 @@ public class ManageController extends HttpServlet {
 			actionForward = noticeService.delete(request, response);
 		// 자유게시판;
 		}else if(command.equals("/adminCommunityBoard")) {
-			actionForward = comBoardService.list(request, response);
+			actionForward = comBoardService.adminList(request, response);
 		}else if(command.equals("/adminCommunityBoardSelect")) {
-			actionForward = comBoardService.select(request, response);
+			actionForward = comBoardService.adminSelect(request, response);
 		}else if(command.equals("/adminCommunityBoardWrite")){
-			actionForward = comBoardService.insert(request, response);
+			actionForward = comBoardService.adminInsert(request, response);
 		}else if(command.equals("/adminCommunityBoardUpdate")){
-			actionForward = comBoardService.update(request, response);
+			actionForward = comBoardService.adminUpdate(request, response);
 		}else if(command.equals("/adminCommunityBoardDelete")){
 			actionForward = comBoardService.delete(request, response);
 		// 자유게시판 댓글;
@@ -186,7 +185,7 @@ public class ManageController extends HttpServlet {
 				actionForward = comBoardCommentsService.delete(request, response);
 		// 사용자 리뷰;
 		}else if(command.equals("/adminCommunityReview")) {
-			actionForward = reviewService.list(request, response);
+			actionForward = reviewService.adminList(request, response);
 		}else if(command.equals("/adminCommunityReviewSelect")) {
 			actionForward = reviewService.select(request, response);
 		}else if(command.equals("/adminCommunityReviewWrite")){
@@ -196,7 +195,7 @@ public class ManageController extends HttpServlet {
 		}else if(command.equals("/adminCommunityReviewDelete")){
 			actionForward = reviewService.delete(request, response);
 		}else if(command.equals("/adminCommunityReviewCommentsList")){
-			actionForward = reviewCommentsService.list(request, response);
+			actionForward = reviewCommentsService.adminList(request, response);
 		}else if(command.equals("/adminCommunityReviewCommentsInsert")){
 			actionForward = reviewCommentsService.insert(request, response);
 		}else if(command.equals("/adminCommunityReviewCommentsUpdate")){
@@ -205,7 +204,7 @@ public class ManageController extends HttpServlet {
 			actionForward = reviewCommentsService.delete(request, response);
 		// 중고 게시판;
 		}else if(command.equals("/adminCommunityUsed")) {
-			actionForward = usedService.list(request, response);
+			actionForward = usedService.adminList(request, response);
 		}else if(command.equals("/adminCommunutyUsedSelect")) {
 			actionForward = usedService.select(request, response);
 		}else if(command.equals("/adminCommunityusedWrite")){
@@ -221,7 +220,7 @@ public class ManageController extends HttpServlet {
 		}else if(command.equals("/adminReviewCommentsDelete")){	
 		// QnA;
 		}else if(command.equals("/adminCommunityQna")) {
-			actionForward = qnaService.list(request, response);
+			actionForward = qnaService.adminList(request, response);
 		}else if(command.equals("/adminCommunityQnaSelect")) {
 			actionForward = qnaService.select(request, response);
 		}else if(command.equals("/adminCommunityQnaWrite")){
@@ -231,7 +230,7 @@ public class ManageController extends HttpServlet {
 		}else if(command.equals("/adminCommunityQnaDelete")){
 			actionForward = qnaService.delete(request, response);
 		}else if(command.equals("/adminCommunityQnaCommentsList")) {
-			actionForward = qnaCommentsService.list(request, response);
+			actionForward = qnaCommentsService.adminList(request, response);
 		}else if(command.equals("/adminCommunityQnaCommentsInsert")){
 			actionForward = qnaCommentsService.insert(request, response);
 		}else if(command.equals("/adminCommunityQnaCommentsUpdate")) {
@@ -240,7 +239,7 @@ public class ManageController extends HttpServlet {
 			actionForward = qnaCommentsService.delete(request, response);
 		// 버그 리포트;
 		}else if(command.equals("/adminCommunityBug")) {
-			actionForward = bugService.list(request, response);
+			actionForward = bugService.amdinList(request, response);
 		}else if(command.equals("/adminCommunityBugSelect")){
 			actionForward = bugService.select(request, response);
 		}else if(command.equals("/adminCommunityBugWrite")){
@@ -255,7 +254,7 @@ public class ManageController extends HttpServlet {
 			actionForward = bugService.decommend(request, response);
 		// 버그 리포트 댓글;
 		}else if(command.equals("/adminCommunityBugCommentsList")) {
-			actionForward = bugCommentsService.list(request, response);
+			actionForward = bugCommentsService.adminList(request, response);
 		}else if(command.equals("/adminCommunityBugCommentsInsert")){
 			actionForward = bugCommentsService.insert(request, response);
 		}else if(command.equals("/adminCommunityBugCommentsUpdate")) {
