@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.project.action.ActionForward;
-import com.project.review.CommentsService;
 import com.project.review.ReviewService;
 
 /**
@@ -20,45 +19,41 @@ import com.project.review.ReviewService;
 public class ReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ReviewService reviewService;
-
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ReviewController() {
+        super();
+    	reviewService = new ReviewService();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public ReviewController() {
-		super();
-		// TODO Auto-generated constructor stub
-		reviewService = new ReviewService();
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	String command =request.getPathInfo();
+	ActionForward actionForward =new ActionForward();
+	System.out.println(command);
+	if (command.equals("/reviewList")) {
+		actionForward = reviewService.list(request, response);
+	} else if (command.equals("/reviewSelect")) {
+		actionForward = reviewService.select(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String command = request.getPathInfo();
-		ActionForward actionForward = new ActionForward();
-		if (command.equals("/reviewList")) {
-			actionForward = reviewService.list(request, response);
-		} else if (command.equals("/reviewSelect")) {
-			actionForward = reviewService.select(request, response);
-		}
-		if (actionForward.isCheck()) {
-			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
-			view.forward(request, response);
-		} else {
-			response.sendRedirect(actionForward.getPath());
-		}
+	if (actionForward.isCheck()) {
+		RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
+		view.forward(request, response);
+	} else {
+		response.sendRedirect(actionForward.getPath());
 	}
+}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
