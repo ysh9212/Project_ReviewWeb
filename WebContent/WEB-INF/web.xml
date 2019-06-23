@@ -72,14 +72,7 @@
     <servlet-name>review</servlet-name>
     <url-pattern>/review/*</url-pattern>
   </servlet-mapping>
-    <servlet>
-    <servlet-name>reviewcomments</servlet-name>
-    <servlet-class>com.project.control.ReviewCommentsController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>reviewcomments</servlet-name>
-    <url-pattern>/reviewcomments/*</url-pattern>
-  </servlet-mapping>
+
   <servlet>
     <servlet-name>news</servlet-name>
     <servlet-class>com.project.control.NewsController</servlet-class>
