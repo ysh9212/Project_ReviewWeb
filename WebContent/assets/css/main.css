@@ -118,7 +118,7 @@ textarea{
    body {
       font-size: 13.5pt;
       font-family: sans-serif;
-      background-color: #e3e9dc;
+      background-color: white;
       font-family: 'Ubuntu Condensed', sans-serif;
       color: #878e83;
       letter-spacing: -1px;
@@ -371,10 +371,10 @@ textarea{
 	/* 슬라이드 조작 */
 	 .slide{height:400px;overflow:hidden;position:relative;}
     .slide li{position:absolute;left:0;right:0;top:0;bottom:0;opacity:0;transition:1s;}
-    .slide li:nth-child(1){background:#ffa;}
-    .slide li:nth-child(2){background:#faa;}
-    .slide li:nth-child(3){background:#afa;}
-    .slide li:nth-child(4){background:#aaf;}
+    .slide li:nth-child(1){background:white;}
+    .slide li:nth-child(2){background:white;}
+    .slide li:nth-child(3){background:white;}
+    .slide li:nth-child(4){background:white;}
     .slide input{display:none;}
     .slide .bullet{position:absolute;bottom:20px;left:0;right:0;text-align:center;z-index:10;}
     .slide .bullet label{width:10px;height:10px;border-radius:10px;border:2px solid #666;display:inline-block;background:#fff;font-size:0;transition:0.5s;cursor:pointer;}
@@ -3778,7 +3778,6 @@ section .fimg{
    #copyright {
       text-align: center;
       color: #A6A88F;
-      border-top: solid 1px #ced0b7;
       padding: 3em 0 0 0;
       margin: 3em 0 0 0;
    }

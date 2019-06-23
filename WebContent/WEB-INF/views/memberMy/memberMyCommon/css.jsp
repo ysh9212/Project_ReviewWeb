@@ -14,7 +14,7 @@
     }
 #body {
 	width: 100%;
-	height: 1500px;
+	height: 800px;
 	background-color: white;
 	margin: 0 auto;
 }
@@ -87,7 +87,5 @@ html{color: -internal-root-color;}
 	
 	#main {
     padding: 40px 0;
-
-</style>
 
 </style>
