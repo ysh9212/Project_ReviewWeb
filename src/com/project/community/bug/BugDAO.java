@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.project.board.BoardDAO;
 import com.project.board.BoardDTO;
+import com.project.community.board.ComBoardDTO;
 import com.project.community.notice.NoticeDTO;
 import com.project.shopPage.SearchRow;
 import com.project.util.DBConnector;
@@ -37,6 +38,32 @@ public class BugDAO implements BoardDAO{
 		rs.close();
 		st.close();
 		return result;
+	}
+	public List<BoardDTO> AdList(SearchRow searchRow, Connection con)throws Exception{
+		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
+		String sql = "select * from " + 
+				"(select rownum R, p.* from " + 
+				"(select * from community_bug where "+searchRow.getSearch().getKind()+" like ? order by no desc) p) " + 
+				"where R between ? and ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, "%"+searchRow.getSearch().getSearch()+"%");
+		st.setInt(2, searchRow.getStartRow());
+		st.setInt(3, searchRow.getLastRow());
+		ResultSet rs = st.executeQuery();
+		while(rs.next()) {
+			ComBoardDTO comBoardDTO = new ComBoardDTO();
+			comBoardDTO.setNo(rs.getInt("no"));
+			comBoardDTO.setTitle(rs.getString("title"));
+			comBoardDTO.setWriter(rs.getString("writer"));
+			comBoardDTO.setReg_date(rs.getString("reg_date"));
+			comBoardDTO.setHit(rs.getInt("hit"));
+			comBoardDTO.setRecommend(rs.getInt("recommend"));
+			comBoardDTO.setDecommend(rs.getInt("decommend"));
+			ar.add(comBoardDTO);
+		}
+		rs.close();
+		st.close();
+		return ar;
 	}
 	public List<BoardDTO> List(Connection con)throws Exception{
 		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();

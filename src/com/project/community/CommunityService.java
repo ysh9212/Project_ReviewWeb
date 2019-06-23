@@ -11,11 +11,8 @@ import com.project.board.BoardDTO;
 import com.project.community.board.ComBoardDAO;
 import com.project.community.bug.BugDAO;
 import com.project.community.notice.NoticeDAO;
-import com.project.community.notice.NoticeDTO;
-import com.project.community.qna.QnaDAO;
 import com.project.community.review.ReviewDAO;
 import com.project.community.used.UsedDAO;
-import com.project.shopPage.SearchRow;
 import com.project.util.DBConnector;
 
 public class CommunityService {
@@ -30,11 +27,9 @@ public class CommunityService {
 		reviewDAO = new ReviewDAO();
 		usedDAO = new UsedDAO();
 		bugDAO = new BugDAO();
-		
 	}
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
-		SearchRow searchRow = new SearchRow();
 		Connection con;
 		try {
 			con = DBConnector.getConnect();
@@ -42,7 +37,7 @@ public class CommunityService {
 			List<BoardDTO> bAr = comBoardDAO.List(con);
 			List<BoardDTO> rAr = reviewDAO.List(con);
 			List<BoardDTO> bugAr = bugDAO.List(con);
-			List<BoardDTO> uAr = usedDAO.selectList(searchRow, con);
+			List<BoardDTO> uAr = usedDAO.List(con);
 			
 			request.setAttribute("nlist", ar);
 			request.setAttribute("nboard", "공지사항");
