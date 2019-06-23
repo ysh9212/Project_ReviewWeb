@@ -35,7 +35,6 @@ public class EventController extends HttpServlet {
     	EventService eventService = new EventService();
 		String command = request.getPathInfo();
 		ActionForward actionForward = new ActionForward();
-		System.out.println(command);
 		if (command.equals("/eventList")) {
 			actionForward = eventService.list(request, response);
 		}else if(command.equals("/eventSelect")) {

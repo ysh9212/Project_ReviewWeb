@@ -33,12 +33,12 @@ public class ReviewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		
 		ReviewService reviewService = new ReviewService();
 		String command = request.getPathInfo();
 		ActionForward actionForward = new ActionForward();
-		if (command.equals("/reviewList")){
+		if (command.equals("/reviewList")) {
 			actionForward = reviewService.list(request, response);
 		} else if (command.equals("/reviewSelect")) {
 			actionForward = reviewService.select(request, response);
@@ -49,8 +49,7 @@ public class ReviewController extends HttpServlet {
 		} else {
 			response.sendRedirect(actionForward.getPath());
 		}
-}
-
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
