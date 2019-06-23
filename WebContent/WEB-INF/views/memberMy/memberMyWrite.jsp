@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>내 글 보기</title>
+<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath }/images/Teamlogo.ico" />
 <link rel="stylesheet" href="../assets/css/main.css" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
