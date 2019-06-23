@@ -53,6 +53,14 @@
     <url-pattern>/admin/*</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>manage2</servlet-name>
+    <servlet-class>com.project.control.CommunityController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>manage2</servlet-name>
+    <url-pattern>/communityAdmin/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>comments</servlet-name>
     <servlet-class>com.project.control.CommentsController</servlet-class>
   </servlet>

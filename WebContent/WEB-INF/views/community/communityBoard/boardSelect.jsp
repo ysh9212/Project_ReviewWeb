@@ -121,11 +121,12 @@
 			});
 		});
 		//댓글 수정(완);
+		
 		$("#comments_list").on("click", ".update", function(){
-			var cnum=$(this).attr("title"); // list.jps에 있는 title의 cnum값을 가져옴;
-			var con= $("#c"+cnum).html(); // 내용;
-			$("#updateContents").val(con); // #updateContents이름을 가진 modal에 contents값을 넣어 보낸다.
-			$("#cnum").val(cnum);	// #cnum이름을 가진 modal에 cnum값을 넣어 보낸다.
+			var cnum=$(this).attr("title"); 												// list.jps에 있는 title의 cnum값을 가져옴;
+			var con= $("#c"+cnum).html(); 															// 댓글 내용을 con에 넣음;
+			$("#updateContents").val(con);																 // #updateContents이름을 가진 modal에 contents값을 넣어 보낸다.
+			$("#cnum").val(cnum);																				// #cnum이름을 가진 modal에 cnum값을 넣어 보낸다.
 		});
 		$("#updateBtn").click(function() {
 			var contents= $("#updateContents").val();
@@ -144,6 +145,7 @@
 				}
 			});
 		});
+		
 		// 댓글 삭제;
 		$("#comments_list").on("click", ".delete", function (){
 			var cnum = $(this).attr("id");

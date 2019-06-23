@@ -40,20 +40,6 @@ public class ManageController extends HttpServlet {
 	private AdminShopMqnaService adminShopMqnaService;
 	private AdminService adminService;
     private ProductService productService;
-    //////// community /////////
-	private CommunityService communityService;
-	private NoticeService noticeService;
-	private NoticeCommentsService noticeCommentsService;
-	private ComBoardService comBoardService;
-	private ComBoardCommentsService comBoardCommentsService;
-	private ReviewService reviewService;
-	private ReviewCommentsService reviewCommentsService;
-	private UsedService usedService;
-	private UsedCommentsService usedCommentsService;
-	private QnaService qnaService;
-	private QnaCommentsService qnaCommentsService;
-	private BugService bugService;
-	private BugCommentsService bugCommentsService;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -64,29 +50,13 @@ public class ManageController extends HttpServlet {
         adminShopMqnaService = new AdminShopMqnaService();
         adminService = new AdminService();
         productService = new ProductService();
-        ////////community /////////
-        communityService = new CommunityService();
-        noticeService = new NoticeService();
-        noticeCommentsService = new NoticeCommentsService();
-        comBoardService = new ComBoardService();
-        comBoardCommentsService = new ComBoardCommentsService();
-        reviewService = new ReviewService();
-        reviewCommentsService = new ReviewCommentsService();
-        usedService = new UsedService();
-        usedCommentsService = new UsedCommentsService();
-        qnaService = new QnaService();
-        qnaCommentsService = new QnaCommentsService();
-        bugService = new BugService();
-        bugCommentsService = new BugCommentsService();
         // TODO Auto-generated constructor stub
     }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getPathInfo();
-		System.out.println(command);
 		int last=command.lastIndexOf("/");
 		command = command.substring(last);
 		ActionForward actionForward = new ActionForward();
@@ -133,7 +103,6 @@ public class ManageController extends HttpServlet {
 		else if(command.equals("/productList")){
 			actionForward.setCheck(true);
 			actionForward.setPath("../../../WEB-INF/views/admin/shop/product/productList.jsp");
-			
 			actionForward = productService.list(request, response);
 		}else if(command.equals("/productWrite")) {
 			actionForward = productService.insert(request, response);
@@ -147,123 +116,13 @@ public class ManageController extends HttpServlet {
 		//login
 		else if(command.equals("/adminLogin")) {
 			actionForward = adminService.select(request, response);
-		/*
 		}else if(command.equals("/adminLogout")) {
-			actionForward = adminService.logout(request, response);
-		*/
-		///////////////////////////////// admin community 관련 주소;////////////////////////////////////////////
-		// 공지사항;
-		}else if(command.equals("/adminCommunityNotice")) {
-			actionForward = noticeService.adminList(request, response);
-		}else if(command.equals("/adminCommunityNoticeSelect")) {
-			actionForward = noticeService.select(request, response);
-		}else if(command.equals("/adminCommunityNoticeWrite")) {
-			actionForward = noticeService.insert(request, response);
-		}else if(command.equals("/adminCommunityNoticeUpdate")) {
-			actionForward = noticeService.update(request, response);
-		}else if(command.equals("/adminCommunityNoticeDelete")) {
-			actionForward = noticeService.delete(request, response);
-		// 자유게시판;
-		}else if(command.equals("/adminCommunityBoard")) {
-			actionForward = comBoardService.adminList(request, response);
-		}else if(command.equals("/adminCommunityBoardSelect")) {
-			actionForward = comBoardService.adminSelect(request, response);
-		}else if(command.equals("/adminCommunityBoardWrite")){
-			actionForward = comBoardService.adminInsert(request, response);
-		}else if(command.equals("/adminCommunityBoardUpdate")){
-			actionForward = comBoardService.adminUpdate(request, response);
-		}else if(command.equals("/adminCommunityBoardDelete")){
-			actionForward = comBoardService.delete(request, response);
-		// 자유게시판 댓글;
-		}else if(command.equals("/adminCommunityBoardCommentsList")) {
-			actionForward = comBoardCommentsService.list(request, response);
-		}else if(command.equals("/adminCommunityBoardCommentsInsert")){
-			actionForward = comBoardCommentsService.insert(request, response);
-		}else if(command.equals("/adminCommunityBoardCommentsUpdate")) {
-			actionForward = comBoardCommentsService.update(request, response);
-		}else if(command.equals("/adminCommunityBoardCommentsDelete")) {
-				actionForward = comBoardCommentsService.delete(request, response);
-		// 사용자 리뷰;
-		}else if(command.equals("/adminCommunityReview")) {
-			actionForward = reviewService.adminList(request, response);
-		}else if(command.equals("/adminCommunityReviewSelect")) {
-			actionForward = reviewService.select(request, response);
-		}else if(command.equals("/adminCommunityReviewWrite")){
-			actionForward = reviewService.insert(request, response);
-		}else if(command.equals("/adminCommunityReviewUpdate")){
-			actionForward = reviewService.update(request, response);
-		}else if(command.equals("/adminCommunityReviewDelete")){
-			actionForward = reviewService.delete(request, response);
-		}else if(command.equals("/adminCommunityReviewCommentsList")){
-			actionForward = reviewCommentsService.adminList(request, response);
-		}else if(command.equals("/adminCommunityReviewCommentsInsert")){
-			actionForward = reviewCommentsService.insert(request, response);
-		}else if(command.equals("/adminCommunityReviewCommentsUpdate")){
-			actionForward = reviewCommentsService.update(request, response);
-		}else if(command.equals("/adminCommunityReviewCommentsDelete")){
-			actionForward = reviewCommentsService.delete(request, response);
-		// 중고 게시판;
-		}else if(command.equals("/adminCommunityUsed")) {
-			actionForward = usedService.adminList(request, response);
-		}else if(command.equals("/adminCommunutyUsedSelect")) {
-			actionForward = usedService.select(request, response);
-		}else if(command.equals("/adminCommunityusedWrite")){
-			actionForward = usedService.insert(request, response);
-		}else if(command.equals("/adminCommunityusedUpdate")){
-			actionForward = usedService.update(request, response);
-		}else if(command.equals("/adminCommunityusedDelete")){
-			actionForward = usedService.delete(request, response);
-		// 중고게시판 댓글;
-		}else if(command.equals("/adminReviewCommentsList")){
-		}else if(command.equals("/adminReviewCommentsInsert")){
-		}else if(command.equals("/adminReviewCommentsUpdate")){
-		}else if(command.equals("/adminReviewCommentsDelete")){	
-		// QnA;
-		}else if(command.equals("/adminCommunityQna")) {
-			actionForward = qnaService.adminList(request, response);
-		}else if(command.equals("/adminCommunityQnaSelect")) {
-			actionForward = qnaService.select(request, response);
-		}else if(command.equals("/adminCommunityQnaWrite")){
-			actionForward = qnaService.insert(request, response);
-		}else if(command.equals("/adminCommunityQnaUpdate")){
-			actionForward = qnaService.update(request, response);
-		}else if(command.equals("/adminCommunityQnaDelete")){
-			actionForward = qnaService.delete(request, response);
-		}else if(command.equals("/adminCommunityQnaCommentsList")) {
-			actionForward = qnaCommentsService.adminList(request, response);
-		}else if(command.equals("/adminCommunityQnaCommentsInsert")){
-			actionForward = qnaCommentsService.insert(request, response);
-		}else if(command.equals("/adminCommunityQnaCommentsUpdate")) {
-			actionForward = qnaCommentsService.update(request, response);
-		}else if(command.equals("/adminCommunityQnaCommentsDelete")) {
-			actionForward = qnaCommentsService.delete(request, response);
-		// 버그 리포트;
-		}else if(command.equals("/adminCommunityBug")) {
-			actionForward = bugService.amdinList(request, response);
-		}else if(command.equals("/adminCommunityBugSelect")){
-			actionForward = bugService.select(request, response);
-		}else if(command.equals("/adminCommunityBugWrite")){
-			actionForward = bugService.insert(request, response);
-		}else if(command.equals("/adminCommunityBugUpdate")){
-			actionForward = bugService.update(request, response);
-		}else if(command.equals("/adminCommunityBugDelete")){
-			actionForward = bugService.delete(request, response);
-		}else if(command.equals("/adminCommunityBugRecommend")){
-			actionForward = bugService.recommend(request, response);
-		}else if(command.equals("/adminCommunityBugDecommend")){
-			actionForward = bugService.decommend(request, response);
-		// 버그 리포트 댓글;
-		}else if(command.equals("/adminCommunityBugCommentsList")) {
-			actionForward = bugCommentsService.adminList(request, response);
-		}else if(command.equals("/adminCommunityBugCommentsInsert")){
-			actionForward = bugCommentsService.insert(request, response);
-		}else if(command.equals("/adminCommunityBugCommentsUpdate")) {
-			actionForward = bugCommentsService.update(request, response);
-		}else if(command.equals("/adminCommunityBugCommentsDelete")) {
-			actionForward = bugCommentsService.delete(request, response);
+			// actionForward = adminService.logout(request, response);
 		}else {
 			actionForward = new ActionForward();
 		}
+		System.out.println(actionForward.isCheck());
+		System.out.println(actionForward.getPath());
 		if(actionForward.isCheck()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
 			view.forward(request, response);
