@@ -32,23 +32,21 @@ public class ReviewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	String command =request.getPathInfo();
-	ActionForward actionForward =new ActionForward();
-	System.out.println(command);
-	if (command.equals("/reviewList")) {
-		actionForward = reviewService.list(request, response);
-	} else if (command.equals("/reviewSelect")) {
-		actionForward = reviewService.select(request, response);
-	}
-	if (actionForward.isCheck()) {
-		RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
-		view.forward(request, response);
-	} else {
-		response.sendRedirect(actionForward.getPath());
-	}
-}
+		
+			String command = request.getPathInfo();
+			ActionForward actionForward = new ActionForward();
+			if (command.equals("/reviewList")) {
+				actionForward = reviewService.list(request, response);
+			} else if (command.equals("/reviewSelect")) {
+				actionForward = reviewService.select(request, response);
+			}
+			if (actionForward.isCheck()) {
+				RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
+				view.forward(request, response);
+			} else {
+				response.sendRedirect(actionForward.getPath());
+			}
+		}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
