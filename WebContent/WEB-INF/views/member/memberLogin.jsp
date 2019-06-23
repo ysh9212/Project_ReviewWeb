@@ -7,6 +7,7 @@
 	<title>login</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 	<link rel="stylesheet" href="../assets/css/main.css" />
 
 <style type="text/css">
@@ -154,15 +155,16 @@ html{color: -internal-root-color;}
 
 						<div class="btn_wrap2">
 							<label><input type="checkbox" name="check" value="1"
-								class="remember"> Remember me</label> <a
-								href="${pageContext.request.contextPath}/member/memberSearchPw"><button
-									type="button" id="btnLogin3" class="btn_type2 btn">
-									<span>비밀번호 찾기</span>
-								</button></a> <a
-								href="${pageContext.request.contextPath}/member/memberSearchId"><button
-									type="button" id="btnLogin2" class="btn_type2 btn">
-									<span>아이디 찾기</span>
+								class="remember"> Remember me</label>  
+								<a href="${pageContext.request.contextPath}/member/memberSearchPw">
+								<button type="button" id="btnLogin3" class="btn_type2 btn">
+								<span>비밀번호 찾기</span>
 								</button></a>
+								<a href="${pageContext.request.contextPath}/member/memberSearchId">
+								<button type="button" id="btnLogin2" class="btn_type2 btn">
+								<span>아이디 찾기</span>
+								</button></a>
+								
 							<!-- 네이버API -->
 							<div id="naverIdLogin"></div>
 							<!-- 버튼이 들어갈 위치 선언. ID는 반드시 지정된 값으로 설정하여야 합니다.-->

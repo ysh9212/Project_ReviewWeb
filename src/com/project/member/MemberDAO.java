@@ -1,10 +1,8 @@
 package com.project.member;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
-import com.project.util.DBConnector;
+import com.project.util.*;
 
 public class MemberDAO {
 	
@@ -112,23 +110,23 @@ public class MemberDAO {
 		return m;
 	}
 	
-	public MemberDTO memberSearchPw(MemberDTO dto, Connection con) throws Exception{
+	public MemberDTO memberSearchPw(MemberDTO memberDTO, Connection con) throws Exception{
 		MemberDTO m = null;
 		
-		String sql = "select name, email from member where id=? and name=? and email=?";
+		String sql = "select name, pw from member where id=? and name=? and email=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
-		st.setString(1, dto.getId());
-		st.setString(2, dto.getName());
-		st.setString(3, dto.getEmail());
+		st.setString(1, memberDTO.getId());
+		st.setString(2, memberDTO.getName());
+		st.setString(3, memberDTO.getEmail());
 		
 		ResultSet rs = st.executeQuery();
 		
 		
 		if(rs.next()) {
 			m = new MemberDTO();
-			m.setId(rs.getString("name"));
-			m.setName(rs.getString("email"));
+			m.setName(rs.getString("name"));
+			m.setPw(rs.getString("pw"));
 	
 		}
 		
