@@ -1,23 +1,20 @@
 package com.project.control;
 
-import java.io.IOException;
+import java.io.*;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.annotation.*;
+import javax.servlet.http.*;
 
-import com.project.action.ActionForward;
-import com.project.membermy.Reple.MyRepleService;
-import com.project.membermy.Write.MyWriteService;
-import com.project.membermy.bucket.MyBucketService;
-import com.project.membermy.page.MyPageService;
-import com.project.membermy.pay.MyPayService;
-import com.project.membermy.qna.MyQnaService;
-import com.project.membermy.scrap.MyScrapService;
-import com.project.membermy.shop.MyShopService;
+import com.project.action.*;
+import com.project.membermy.Reple.*;
+import com.project.membermy.Write.*;
+import com.project.membermy.bucket.*;
+import com.project.membermy.page.*;
+import com.project.membermy.pay.*;
+import com.project.membermy.qna.*;
+import com.project.membermy.scrap.*;
+import com.project.membermy.shop.*;
 
 /**
  * Servlet implementation class MyPageController
@@ -76,7 +73,7 @@ public class MyPageController extends HttpServlet {
 		}else if(command.equals("/memberMyShop")) {
 			actionforward = myshopService.select(request, response);
 		}else if(command.equals("/memberMyWrite")) {
-			actionforward = mywriteService.select(request, response);
+			actionforward = mywriteService.list(request, response);
 		}else if(command.equals("/memberMyBucket")) {
 			actionforward = mybucketService.select(request, response);
 		}else if(command.equals("/memberMyDelete")) {

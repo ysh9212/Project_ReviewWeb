@@ -1,5 +1,7 @@
 package com.project.membermy.Write;
 
-public class MyWriteDTO {
+import com.project.board.*;
 
+public class MyWriteDTO extends BoardDTO{
+	
 }
