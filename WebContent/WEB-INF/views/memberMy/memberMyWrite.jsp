@@ -7,6 +7,7 @@
 <title>내 글 보기</title>
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath }/images/Teamlogo.ico" />
 <link rel="stylesheet" href="../assets/css/main.css" />
+<c:import url="../temp/bootstrap.jsp" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <jsp:include page="./memberMyCommon/css.jsp"/>
@@ -26,6 +27,7 @@
 							<hr>
 							<div class="container">
 								<table class="table table-hover">
+									<thead>
 									<tr>
 										<td>No</td>
 										<td>Title</td>
@@ -35,6 +37,23 @@
 										<td>Recommand</td>
 										<td>Decommand</td>
 									</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${list}" var="dto">
+											<tr>
+												<td>${dto.no}</td>
+												<td><a
+													href="../community/board/communityBoardSelect?no=${dto.no}">${dto.title}</a>
+												</td>
+												<td>${dto.writer}</td>
+												<td>${dto.reg_date}</td>
+												<td>${dto.hit}</td>
+												<td>${dto.recommend}</td>
+												<td>${dto.decommend}</td>
+											</tr>
+										</c:forEach>
+
+									</tbody>
 								</table>
 							</div>
 
