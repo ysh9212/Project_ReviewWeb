@@ -28,7 +28,6 @@ $(function() {
 	        // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
 	        bUseModeChanger : true,         
 	        fOnBeforeUnload : function(){
-	             
 	        }
 	    }, 
 	    fOnAppLoad : function(){
@@ -40,8 +39,9 @@ $(function() {
 	
 	//저장버튼 클릭시 form 전송
 	$("#save").click(function(){
-	    oEditors.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
+	    oEditors.getById["contents"].exec("UPDATE_CONTENTS_FIELD", ["contents"]);
 	    $("#frm").submit();
+	    alert("수정이 완료되었습니다.")
 	});    
 });
 
@@ -52,8 +52,8 @@ $(function() {
 	<div class="page-wrapper">
 		<div id="main">
 			<div class="container">
-			<form id ="frm"action="./communityBoardUpdate" method="post">
-			<input type="hidden" name = "no" value="${dto.no }">
+			<form id ="frm"action="./${board}Update" method="post">
+			<input type="hidden" name = "no" value="${dto.no}">
 			<div class="form-group">
 				<label for="title">Title:</label> 
 				<input type="text" class="form-control" id="title" name = "title" value="${dto.title}">

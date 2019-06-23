@@ -52,7 +52,7 @@ $(function() {
 	<div class="page-wrapper">
 		<div id="main">
 			<div class="container">
-			<form id ="frm"action="./communityReviewWrite" method="post">
+			<form id ="frm" action="./${board}Write" method="post">
 			<div class="form-group">
 				<label for="title">Title:</label> 
 				<input type="text" class="form-control" id="title" name = "title">

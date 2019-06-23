@@ -46,7 +46,7 @@ public class QnaService implements Action{
 			request.setAttribute("list", ar);
 			request.setAttribute("board", "communityQna");
 			actionForward.setCheck(true);
-			actionForward.setPath("../../WEB-INF/views/community/qna/communityQna.jsp");
+			actionForward.setPath("../../WEB-INF/views/community/communityBoard/board.jsp");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -81,10 +81,11 @@ public class QnaService implements Action{
 		String path = "";
 		if(boardDTO != null) {
 			request.setAttribute("dto", boardDTO);
-			path = "../../WEB-INF/views/community/qna/communityQnaSelect.jsp";
+			request.setAttribute("board", "communityQna");
+			path = "../../WEB-INF/views/community/communityBoard/boardSelect.jsp";
 		}else {
 			request.setAttribute("message", "No Data");
-			request.setAttribute("path", "./communityQna");
+			request.setAttribute("path", "./board");
 			path="../WEB-INF/views/common/result.jsp";
 		}
 		actionForward.setCheck(true);
@@ -96,7 +97,7 @@ public class QnaService implements Action{
 		ActionForward actionForward = new ActionForward();
 		String method = request.getMethod();
 		boolean check = true;
-		String path = "../../WEB-INF/views/community/qna/communityQnaWrite.jsp";
+		String path = "../../WEB-INF/views/community/communityBoard/boardWrite.jsp";
 		if(method.equals("POST")) {
 			QnaDTO qnaDTO = new QnaDTO();
 			qnaDTO.setTitle(request.getParameter("title"));
@@ -107,7 +108,6 @@ public class QnaService implements Action{
 			try {
 				con = DBConnector.getConnect();
 				con.setAutoCommit(false);
-				
 				int no = qnaDAO.getNum();
 				qnaDTO.setNo(no);
 				result = qnaDAO.insert(qnaDTO, con);
@@ -144,16 +144,16 @@ public class QnaService implements Action{
 				path="../../WEB-INF/views/common/result.jsp";
 			}
 		}// end of POST
+		request.setAttribute("board", "communityQna");
 		actionForward.setCheck(check);
 		actionForward.setPath(path);
 		return actionForward;
 	}
-
 	@Override
 	public ActionForward update(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
 		boolean check = true;
-		String path = "../../WEB-INF/views/community/qna/communityQnaUpdate.jsp";
+		String path = "../../WEB-INF/views/community/communityBoard/boardUpdate.jsp";
 		String method = request.getMethod();
 		if(method.equals("POST")) {
 			Connection con = null;
@@ -200,6 +200,7 @@ public class QnaService implements Action{
 				}
 			} // end of finally
 			request.setAttribute("dto", boardDTO);
+			request.setAttribute("board", "communityQna");
 		}
 		actionForward.setCheck(check);
 		actionForward.setPath(path);
@@ -218,7 +219,7 @@ public class QnaService implements Action{
 			result = qnaDAO.delete(no, con);
 			request.setAttribute("result", result);
 			check = true;
-			path = "../../WEB-INF/views/common/result2.jsp";
+			path = "../../WEB-INF/views/community/communityCommon/result2.jsp";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

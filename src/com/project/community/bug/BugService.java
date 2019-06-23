@@ -20,7 +20,7 @@ public class BugService implements Action{
 	public BugService() {
 		bugDAO = new BugDAO();
 	}
-	// Ã³À½ °Ô½Ã±Û ³ª¿­;
+	// Ã³ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½;
 	@Override
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
@@ -45,18 +45,17 @@ public class BugService implements Action{
 			request.setAttribute("list", ar);
 			request.setAttribute("board", "communityBug");
 			actionForward.setCheck(true);
-			actionForward.setPath("../../WEB-INF/views/community/bug/communityBug.jsp");
+			actionForward.setPath("../../WEB-INF/views/community/communityBoard/board.jsp");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			request.setAttribute("message", "Server Error");
-			request.setAttribute("path", "./communityBug.jsp");
+			request.setAttribute("path", "../../index.do");
 			actionForward.setCheck(true);
 			actionForward.setPath("../../WEB-INF/views/common/result.jsp");
 		}
 		return actionForward;
 	}
-	// °Ô½Ã±Û ³»¿ë È®ÀÎ;
 	@Override
 	public ActionForward select(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
@@ -81,18 +80,17 @@ public class BugService implements Action{
 		String path = "";
 		if(boardDTO != null) {
 			request.setAttribute("dto", boardDTO);
-			path = "../../WEB-INF/views/community/bug/communityBugSelect.jsp";
+			request.setAttribute("board", "communityBug");
+			path = "../../WEB-INF/views/community/communityBoard/boardSelect.jsp";
 		}else {
 			request.setAttribute("message", "No Data");
-			request.setAttribute("path", "./communityBug");
+			request.setAttribute("path", "./board");
 			path="../../WEB-INF/views/common/result.jsp";
 		}
 		actionForward.setCheck(true);
 		actionForward.setPath(path);
 		return actionForward;
 	}
-	
-	// »ç¿ë ¾ÈÇÔ
 	@Override
 	public ActionForward insert(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
@@ -107,5 +105,47 @@ public class BugService implements Action{
 	public ActionForward delete(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public ActionForward recommend(HttpServletRequest request, HttpServletResponse response) {
+		ActionForward actionForward = new ActionForward();
+		boolean check = true;
+		String path = "";
+		Connection con = null;
+		int result = 0;
+		try {
+			con = DBConnector.getConnect();
+			int no = Integer.parseInt(request.getParameter("no"));
+			result = bugDAO.recommend(no, con);
+			request.setAttribute("result", result);
+			check = true;
+			path = "../../WEB-INF/views/community/communityBoard/result2.jsp";
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		actionForward.setCheck(check);
+		actionForward.setPath(path);
+		return actionForward;
+	}
+	public ActionForward decommend(HttpServletRequest request, HttpServletResponse response) {
+		ActionForward actionForward = new ActionForward();
+		boolean check = true;
+		String path = "";
+		Connection con = null;
+		int result = 0;
+		try {
+			con = DBConnector.getConnect();
+			int no = Integer.parseInt(request.getParameter("no"));
+			result = bugDAO.decommend(no, con);
+			request.setAttribute("result", result);
+			check = true;
+			path = "../../WEB-INF/views/community/communityBoard/result2.jsp";
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		actionForward.setCheck(check);
+		actionForward.setPath(path);
+		return actionForward;
 	}
 }
