@@ -152,48 +152,7 @@ html{color: -internal-root-color;}
 						</div>
 
 
-						<div class="btn_wrap2">
-							<label><input type="checkbox" name="check" value="1"
-								class="remember"> Remember me</label>  
-								<a href="${pageContext.request.contextPath}/member/memberSearchPw">
-								<button type="button" id="btnLogin3" class="btn_type2 btn">
-								<span>비밀번호 찾기</span>
-								</button></a>
-								<a href="${pageContext.request.contextPath}/member/memberSearchId">
-								<button type="button" id="btnLogin2" class="btn_type2 btn">
-								<span>아이디 찾기</span>
-								</button></a>
-								
-							<!-- 네이버API -->
-							<div id="naverIdLogin"></div>
-							<!-- 버튼이 들어갈 위치 선언. ID는 반드시 지정된 값으로 설정하여야 합니다.-->
-
-							<script type="text/javascript">
-								var naverLogin = new naver.LoginWithNaverId(
-										{
-											clientId : "kTnlKKclm8WeI7PFn3Dr",
-											callbackUrl : "http://127.0.0.1/Project_ReviewWeb/member/memberNaverCallback.jsp",
-											isPopup : false, /* 팝업을 통한 연동처리 여부 */
-											loginButton : {
-												color : "green",
-												type : 3,
-												height : 40
-											}
-										/* 로그인 버튼의 타입을 지정 */
-										});
-
-								/* 설정정보를 초기화하고 연동을 준비 */
-								naverLogin.init();
-							</script>
-
-						</div>
-
-
-
-					</div>
-				</div>
-		
-			</div>
+						
 			
 	<div class="btn_wrap2">
 		<label><input type="checkbox" name="check" value="1" class="remember"> Remember me</label>
@@ -216,9 +175,10 @@ html{color: -internal-root-color;}
 	naverLogin.init();
 </script>
 		
-	
 	</div>
-	
+	</div>
+	</div>
+	</div>
 	
 
 		</div>

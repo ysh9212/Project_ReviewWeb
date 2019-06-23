@@ -112,4 +112,12 @@
     <servlet-name>community</servlet-name>
     <url-pattern>/community/*</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>memberMy</servlet-name>
+    <servlet-class>com.project.control.MyPageController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>memberMy</servlet-name>
+    <url-pattern>/memberMy/*</url-pattern>
+  </servlet-mapping>
 </web-app>

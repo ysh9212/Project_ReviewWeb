@@ -46,7 +46,7 @@
 				});
 				});
 	});
-		function check_modules(){
+		function check_module(){
 		/* $("#check_module").click(function () { */
 			var IMP = window.IMP; // 생략가능
 			IMP.init('imp95286508');
@@ -256,7 +256,7 @@ position: relative;
 								<input id="check_modules" type="button" value="결제" class="buy">
 							</div>
 							<div class="buy2">
-								<img width="50px" height="50px" alt="kakaopay" src="../../images/kakaopay.png" id="check_module" onclick="check_modules()">
+								<img width="50px" height="50px" alt="kakaopay" src="../../images/kakaopay.png"  onclick="check_module()">
 							</div>
 						</div>
 

@@ -1,23 +1,17 @@
 package com.project.shop.product_purchase;
 
-import java.sql.Connection;
+import java.sql.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
-import com.project.action.Action;
-import com.project.action.ActionForward;
-import com.project.shop.admin.product_upload.Product_UploadDAO;
-import com.project.shop.admin.product_upload.Product_UploadDTO;
-import com.project.shop.oder.Order_MainDAO;
-import com.project.shop.oder.Order_MainDTO;
-import com.project.shop.oder_product.Order_ProductDAO;
-import com.project.shop.oder_product.Order_ProductDTO;
-import com.project.shop.pay.PayDAO;
-import com.project.shop.pay.PayDTO;
-import com.project.shop.product.ProductDAO;
-import com.project.shop.product.ProductDTO;
-import com.project.util.DBConnector;
+import com.project.action.*;
+import com.project.member.*;
+import com.project.shop.admin.product_upload.*;
+import com.project.shop.oder.*;
+import com.project.shop.oder_product.*;
+import com.project.shop.pay.*;
+import com.project.shop.product.*;
+import com.project.util.*;
 
 public class ProductPurchaseService implements Action {
 	private PayDAO payDAO;
@@ -54,6 +48,8 @@ public class ProductPurchaseService implements Action {
 		int result = 0;
 		Connection con = null;
 		boolean check = true;
+		MemberDTO memberDTO = (MemberDTO)(request.getSession().getAttribute("member"));
+		request.setAttribute("memberDTO", memberDTO);
 		String path = "../../WEB-INF/views/shop/product/productPurchase.jsp";
 		if(method.equals("POST")) {
 			try {
