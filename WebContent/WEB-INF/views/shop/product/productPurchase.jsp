@@ -98,12 +98,17 @@
 			msg += '상점 거래ID : ' + rsp.merchant_uid;
 			msg += '결제 금액 : ' + rsp.paid_amount;
 			msg += '카드 승인번호 : ' + rsp.apply_num;
+			purchase();
 			} else {
 			var msg = '결제에 실패하였습니다.';
 			msg += rsp.error_msg;
 			}
 			alert(msg);
 			});
+			
+			}//함수 끝
+			function purchase(){
+				$("#frm").submit();
 			}
 	
 </script>
@@ -195,7 +200,7 @@ position: relative;
 		<div id="main">
 			<div class="container">
 				<div class="form-wrapper">
-					<form action="./productPurchase" method="post">
+					<form action="./productPurchase" method="post" id="frm">
 						<input type="hidden" value="${productDTO.pno }" name="pno">
 						<input type="hidden" value="${num }" name="count">
 						<div class="purinfo">
@@ -217,7 +222,7 @@ position: relative;
 							</div>
 							<div class="form-control">
 								<label class="title">총 가격</label>
-								<div><input type="text" name="price" value="${price }원" class="total" readonly>
+								<div><input type="text" name="price" value="${price }" class="total" readonly>
 								</div>
 							</div>
 							<div class="form-control">
@@ -232,25 +237,25 @@ position: relative;
 							<div class="form-control">
 								<label class="title">회원 아이디</label>
 								<div class="con">
-								<input type="text" id="id" name="id" value="${memberDTO.id }" readonly>
+								<input type="text" id="id" name="id" value="cjh3576" readonly>
 								</div>
 							</div>
 							<div class="form-control">
 							 	<label class="title">회원 이름</label>
-								<div class="con"><input type="text" id="name" name="name" value="${memberDTO.name }" readonly> 
+								<div class="con"><input type="text" id="name" name="name" value="최재혁" readonly> 
 								</div>
 							 </div>
 							 <div class="form-control">
 								<label class="title">전화 번호</label>
-							 <input type="tel" id="phone" name="phone"	value="${memberDTO.phone }"> 
+							 <input type="tel" id="phone" name="phone"	value="01099644774"> 
 							 </div>
 							 <div class="form-control">
 								<label class="title">주소</label>
-							 <input type="text" id="address" name="address" value="${memberDTO.address }">
+							 <input type="text" id="address" name="address" value="동대문">
 							 </div>
 							 <div class="form-control">
 								<label class="title">이메일</label>
-							<input type="email" id="email" name="email"	value="${memberDTO.email }">
+							<input type="email" id="email" name="email"	value="cjh3576@naver.com">
 							</div>
 						
 						</div><!-- meminfo  -->
