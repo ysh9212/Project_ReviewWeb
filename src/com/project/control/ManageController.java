@@ -45,6 +45,7 @@ public class ManageController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getPathInfo();
+		System.out.println(command);
 		int last=command.lastIndexOf("/");
 		command = command.substring(last);
 		ActionForward actionForward = new ActionForward();
