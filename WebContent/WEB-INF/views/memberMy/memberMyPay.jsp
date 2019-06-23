@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath }/images/Teamlogo.ico" />
 <link rel="stylesheet" href="../assets/css/main.css" />
 <jsp:include page="./memberMyCommon/css.jsp"/>
 

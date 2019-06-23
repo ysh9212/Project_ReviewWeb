@@ -1,14 +1,13 @@
 package com.project.control;
 
-import java.io.IOException;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import com.project.action.ActionForward;
-import com.project.member.MemberService;
+import java.io.*;
+
+import javax.servlet.*;
+import javax.servlet.annotation.*;
+import javax.servlet.http.*;
+
+import com.project.action.*;
+import com.project.member.*;
 
 /**
  * Servlet implementation class MemberController
@@ -49,7 +48,6 @@ public class MemberController extends HttpServlet {
 			actionforward = memberService.searchId(request, response);
 		}else if(command.equals("/memberSearchPw")) {
 			actionforward = memberService.searchPw(request, response);
-			
 		}else if(command.equals("/nicknameCheck")) {
 			actionforward = memberService.nicknameCheck(request, response);
 		}

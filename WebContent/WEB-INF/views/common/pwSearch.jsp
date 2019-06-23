@@ -4,26 +4,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> 전체 마이 페이지</title>
-<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath }/images/Teamlogo.ico" />
+<title>Insert title here</title>
 <link rel="stylesheet" href="../assets/css/main.css" />
-<jsp:include page="./memberMyCommon/css.jsp"/>
+<style type="text/css">
+#container{
+		margin: 0 auto;
+    	max-width: 768px;
+    	min-width: 460px;
+    	
+	}
 
+#wrap{
+	width: 500px;
+	margin: 0 auto;
+}
+</style>
+<%
+	String name = request.getParameter("name");
+	String pw = request.getParameter("pw");
+%>
 </head>
 <body>
-
 <%@include file = "../temp/header.jsp" %>
 <div id="page-wrapper">
 	<div id="main">
 		<div class="container">
-			<jsp:include page="./memberMyCommon/navi.jsp"/>
 			<div id = "wrap">
-		
-			<form action="${pageContext.request.contextPath}memberMy/memberMyBucket" method="post">
-				<h2 class="memberinfor"> 장바구니 </h2>
-				
 			
-			</form>
+			${pwsearch.name}님의 패스워드는 ${pwsearch.pw} 입니다.
+			 
+			
 			</div>
 		</div>
 	</div>
