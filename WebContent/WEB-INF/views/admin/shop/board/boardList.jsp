@@ -13,7 +13,7 @@
 <body>
 <c:import url="../../../temp/adminsetting.jsp"/>
 <div class="main">
-SHOP ${board} 페이지
+${board} 페이지
 		<table class="table table-hover">
 			<thead>
 				<tr>

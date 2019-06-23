@@ -82,19 +82,19 @@
 			<div class="tit">Community 관리</div>
 			<ol class="leftmenu"><!--여기안에 세부메뉴 존재  -->
 				<li class="menu"><!--한개의 세부메뉴 단위  -->
-					<a href="#">1</a>
+					<a href="${pageContext.request.contextPath }/community/adminCommunityNotice">공지사항</a>
 				</li>
 				<li class="menu"><!--한개의 세부메뉴 단위  -->
-					<a href="#">1</a>
+					<a href="${pageContext.request.contextPath }/community/adminCommunityBoardList">자유게시판</a>
 				</li>
 				<li class="menu"><!--한개의 세부메뉴 단위  -->
-					<a href="#">1</a>
+					<a href="#">유저리뷰</a>
 				</li>
 				<li class="menu"><!--한개의 세부메뉴 단위  -->
-					<a href="#">1</a>
+					<a href="#">버그리포트</a>
 				</li>
 				<li class="menu"><!--한개의 세부메뉴 단위  -->
-					<a href="#">1</a>
+					<a href="#">QnA</a>
 				</li>
 			</ol><!--세부메뉴 끝  -->
 		</li><!--Community 관리 끝  -->

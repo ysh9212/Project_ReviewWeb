@@ -15,19 +15,18 @@
 	$(function() {
 		$('#delete').click(function() {
 			var check = confirm("정말 삭제하시겠습니까?");
-			
-			if (check == 'true') {
+			if (check) {
 				$.get("./${board}Delete?no=${dto.no}", function(data) {
-					$.get("./${board}List", function(data) {
-						location.href ="./${board}List";
+					if(data>0){
+							alert("해당글이 삭제되었습니다.");
+						}else{
+							alert("삭제 실패");
+						}
+						location.href ="./{board}";
 					});
-
-				});
-
-			}
-
-		});
-	});
+				}
+			});
+		});	
 </script>
 </head>
 <body>

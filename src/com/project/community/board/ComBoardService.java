@@ -45,9 +45,9 @@ public class ComBoardService implements Action{
 		SearchPager searchPager = s.makePage(totalCount);
 		request.setAttribute("pager", searchPager);
 		request.setAttribute("list", ar);
-		request.setAttribute("board", "communityBoard");
+		request.setAttribute("board", "adminCommunityBoard");
 		actionForward.setCheck(true);
-		actionForward.setPath("#");
+		actionForward.setPath("../WEB-INF/views/admin/shop/board/boardList.jsp");
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -81,8 +81,8 @@ public class ComBoardService implements Action{
 		String path = "";
 		if(boardDTO != null) {
 			request.setAttribute("dto", boardDTO);
-			request.setAttribute("board", "communityBoard");
-			path = "#";
+			request.setAttribute("board", "adminCommunityBoard");
+			path = "../WEB-INF/views/admin/shop/board/boardSelect.jsp";
 		}else {
 			request.setAttribute("message", "No Data");
 			request.setAttribute("path", "./board"); //
@@ -151,7 +151,7 @@ public class ComBoardService implements Action{
 	public ActionForward adminUpdate(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
 		boolean check = true;
-		String path = "#";
+		String path = "../WEB-INF/views/admin/shop/board/boardSelect.jsp";
 		String method = request.getMethod();
 		if(method.equals("POST")) {
 			Connection con = null;
@@ -198,7 +198,28 @@ public class ComBoardService implements Action{
 				}
 			} // end of finally
 			request.setAttribute("dto", boardDTO);
-			request.setAttribute("board", "communityBoard");
+			request.setAttribute("board", "adminCommunityBoard");
+		}
+		actionForward.setCheck(check);
+		actionForward.setPath(path);
+		return actionForward;
+	}
+	public ActionForward adminDelete(HttpServletRequest request, HttpServletResponse response) {
+		ActionForward actionForward = new ActionForward();
+		boolean check = true;
+		String path ="";
+		Connection con = null;
+		int result = 0;
+		try {
+			con = DBConnector.getConnect();
+			int no = Integer.parseInt(request.getParameter("no"));
+			result = comBoardDAO.delete(no, con);
+			request.setAttribute("result", result);
+			check = true;
+			path = "../WEB-INF/views/community/communityCommon/result2.jsp";
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		actionForward.setCheck(check);
 		actionForward.setPath(path);
