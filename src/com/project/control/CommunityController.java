@@ -23,6 +23,8 @@ import com.project.community.review.ReviewService;
 import com.project.community.review.comments.ReviewCommentsService;
 import com.project.community.used.UsedService;
 import com.project.community.used.comments.UsedCommentsService;
+import com.project.event.comments.EventCommentsService;
+import com.project.news.comments.NewsCommentsService;
 
 /**
  * Servlet implementation class CommunityController
@@ -43,7 +45,10 @@ public class CommunityController extends HttpServlet {
 	private QnaCommentsService qnaCommentsService;
 	private BugService bugService;
 	private BugCommentsService bugCommentsService;
-       
+    private com.project.review.comments.ReviewCommentsService reviewCommentsService2;
+    private NewsCommentsService newsCommentsService;
+    private EventCommentsService eventCommentsService;
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -63,6 +68,9 @@ public class CommunityController extends HttpServlet {
         qnaCommentsService = new QnaCommentsService();
         bugService = new BugService();
         bugCommentsService = new BugCommentsService();
+        reviewCommentsService2 =new com.project.review.comments.ReviewCommentsService();
+        newsCommentsService = new NewsCommentsService();
+        eventCommentsService= new EventCommentsService();
     }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -200,6 +208,36 @@ public class CommunityController extends HttpServlet {
 			actionForward = bugCommentsService.update(request, response);
 		}else if(command.equals("/communityComments/communityBugCommentsDelete")) {
 			actionForward = bugCommentsService.delete(request, response);
+		//----------------------------관리자 작성메뉴------
+			//관리자리뷰 댓글;
+		}else if(command.equals("/communityComments/communityReview2CommentsList")) {
+			actionForward = reviewCommentsService2.list(request, response);
+		}else if(command.equals("/communityComments/communityReview2CommentsInsert")){
+			actionForward = reviewCommentsService2.insert(request, response);
+		}else if(command.equals("/communityComments/communityReview2CommentsUpdate")) {
+			actionForward = reviewCommentsService2.update(request, response);
+		}else if(command.equals("/communityComments/communityReview2CommentsDelete")) {
+			actionForward = reviewCommentsService2.delete(request, response);
+			//관리자 뉴스 댓글;
+		}else if(command.equals("/communityComments/communityNewsCommentsList")) {
+			actionForward = newsCommentsService.list(request, response);
+		}else if(command.equals("/communityComments/communityNewsCommentsInsert")){
+			actionForward = newsCommentsService.insert(request, response);
+		}else if(command.equals("/communityComments/communityNewsCommentsUpdate")) {
+			actionForward = newsCommentsService.update(request, response);
+		}else if(command.equals("/communityComments/communityNewsCommentsDelete")) {
+			actionForward = newsCommentsService.delete(request, response);
+			//이벤트 댓글
+		}else if(command.equals("/communityComments/communityEventCommentsList")) {
+			actionForward = eventCommentsService.list(request, response);
+		}else if(command.equals("/communityComments/communityEventCommentsInsert")){
+			actionForward = eventCommentsService.insert(request, response);
+		}else if(command.equals("/communityComments/communityEventCommentsUpdate")) {
+			actionForward = eventCommentsService.update(request, response);
+		}else if(command.equals("/communityComments/communityEventCommentsDelete")) {
+			actionForward = eventCommentsService.delete(request, response);
+			
+			
 			// 사용안함;
 		}else if(command.equals("/bug/communityBugWrite")){
 			actionForward = bugService.insert(request, response);
