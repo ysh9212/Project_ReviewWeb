@@ -34,9 +34,8 @@
 							<a href="${pageContext.request.contextPath }/shop/qna/qnaList">QnA</a>
 							<a href="${pageContext.request.contextPath }/shop/mqna/mqnaList">자주 묻는 질문</a>
 						</div>
-
-						<a href="${pageContext.request.contextPath}/event/eventList">EVENT</a>
 							</div>
+						<a href="${pageContext.request.contextPath}/event/eventList">EVENT</a>
 						<% MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");%>
 						<% if(memberDTO != null){ %>
 						<a class="nav-link" href="${pageContext.request.contextPath}/member/memberLogout">Logout</a>

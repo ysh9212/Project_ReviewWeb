@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.project.action.ActionForward;
-import com.project.event.CommentsService;
 import com.project.event.EventService;
 
 /**
@@ -19,7 +18,6 @@ import com.project.event.EventService;
 @WebServlet("/EventController")
 public class EventController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       private CommentsService commentsService;
        
     /**
      * @see HttpServlet#HttpServlet()
