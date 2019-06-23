@@ -13,7 +13,7 @@
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <c:import url="../../temp/bootstrap.jsp" />
 <script type="text/javascript">
-	$(function(){
+	 $(function(){
 		 $("#check_modules").click(function () {
 				var IMP = window.IMP; 
 				IMP.init('imp95286508');
@@ -45,8 +45,8 @@
 					alert(msg);
 				});
 				});
-	});
-		function check_modules(){
+	}); 
+		function check_module(){
 		/* $("#check_module").click(function () { */
 			var IMP = window.IMP; // 생략가능
 			IMP.init('imp95286508');
@@ -105,6 +105,7 @@
 			alert(msg);
 			});
 			}
+	
 </script>
 <style type="text/css">
 .purinfo{
@@ -183,6 +184,9 @@ position: relative;
 	margin: auto;
 	float: left;
 }
+#kakao{
+	cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -256,7 +260,7 @@ position: relative;
 								<input id="check_modules" type="button" value="결제" class="buy">
 							</div>
 							<div class="buy2">
-								<img width="50px" height="50px" alt="kakaopay" src="../../images/kakaopay.png" id="check_module" onclick="check_modules()">
+								<img width="50px" height="50px" id="kakao" alt="kakaopay" src="../../images/kakaopay.png"  onclick="check_module()">
 							</div>
 						</div>
 
