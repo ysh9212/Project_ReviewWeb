@@ -19,13 +19,13 @@ import com.project.board.comments.CommentsService;
 public class CommentsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CommentsService commentsService;
-       
+      
     /**
      * @see HttpServlet#HttpServlet()
      */
     public CommentsController() {
         super();
-        commentsService = new CommentsService();
+        commentsService = new CommentsService(); 
         // TODO Auto-generated constructor stub
     }
 

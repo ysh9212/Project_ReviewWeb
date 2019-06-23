@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -253,6 +253,7 @@
 		<button id="delete" class="del">삭제</button>
 		<button id="recommend" class="rec">추천</button>
 		<button id="decommend" class="dec">비추천</button>
+
 <hr>
 <!-- 댓글 시작 -->
 <div class = "container">

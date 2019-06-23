@@ -10,24 +10,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.project.action.ActionForward;
-import com.project.news.NewsService;
+import com.project.review.CommentsService;
+import com.project.review.ReviewService;
 
 /**
- * Servlet implementation class NewsController
+ * Servlet implementation class ReviewController
  */
-@WebServlet("/NewsController")
-public class NewsController extends HttpServlet {
+@WebServlet("/ReviewController")
+public class ReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private NewsService newsService;
+	private ReviewService reviewService;
+
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public NewsController() {
+	public ReviewController() {
 		super();
 		// TODO Auto-generated constructor stub
-		newsService = new NewsService();
-
+		reviewService = new ReviewService();
+		
 	}
 
 	/**
@@ -38,13 +40,12 @@ public class NewsController extends HttpServlet {
 			throws ServletException, IOException {
 		String command = request.getPathInfo();
 		ActionForward actionForward = new ActionForward();
-		if (command.equals("/newsList")) {
-			actionForward = newsService.list(request, response);
-		} else if (command.equals("/newsSelect")) {
-			actionForward = newsService.select(request, response);
+		if (command.equals("/reviewList")) {
+			actionForward = reviewService.list(request, response);
+		} else if (command.equals("/reviewSelect")) {
+			actionForward = reviewService.select(request, response);
 		}
 		if (actionForward.isCheck()) {
-
 			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
 			view.forward(request, response);
 		} else {

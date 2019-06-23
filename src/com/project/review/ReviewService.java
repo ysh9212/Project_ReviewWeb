@@ -1,4 +1,4 @@
-package com.project.event;
+package com.project.review;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -14,18 +14,17 @@ import com.project.shopPage.SearchPager;
 import com.project.shopPage.SearchRow;
 import com.project.util.DBConnector;
 import com.project.board.BoardDTO;
-import com.project.news.NewsDAO;
+import com.project.review.ReviewDAO;
 
-public class EventService implements Action {
-	private NewsDAO newsDAO;
+public class ReviewService implements Action {
+	private ReviewDAO reviewDAO;
 
-	public EventService() {
-	EventDAO eventDAO = new EventDAO();
+	public ReviewService() {
 	}
 
 	@Override
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
-		EventDAO eventDAO = new EventDAO();
+		ReviewDAO reviewDAO = new ReviewDAO();
 		ActionForward actionForward = new ActionForward();
 		int curPage = 1;
 		try {
@@ -44,17 +43,19 @@ public class EventService implements Action {
 
 		try {
 			con = DBConnector.getConnect();
-			List<BoardDTO> ar = eventDAO.selectList(searchRow, con);
+			List<BoardDTO> ar = reviewDAO.selectList(searchRow, con);
 			System.out.println(ar);
+			System.out.println(ar);
+			
 			// 2.page
-			totalCount = eventDAO.getTotalCount(searchRow, con);
+			totalCount = reviewDAO.getTotalCount(searchRow, con);
 			SearchPager searchPager = s.makePage(totalCount);
 
 			request.setAttribute("pager", searchPager);
 			request.setAttribute("list", ar);
-			request.setAttribute("board","event");
+			request.setAttribute("board","review");
 			actionForward.setCheck(true);
-			actionForward.setPath("../WEB-INF/views/event/eventList.jsp");
+			actionForward.setPath("../WEB-INF/views/review/reviewList.jsp");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,7 +77,7 @@ public class EventService implements Action {
 
 	@Override
 	public ActionForward select(HttpServletRequest request, HttpServletResponse response) {
-		EventDAO eventDAO = new EventDAO();
+		ReviewDAO reviewDAO = new ReviewDAO();
 ActionForward actionForward = new ActionForward();
 		
 		BoardDTO boardDTO = null;
@@ -85,8 +86,8 @@ ActionForward actionForward = new ActionForward();
 		try {
 			con = DBConnector.getConnect();
 			int no = Integer.parseInt(request.getParameter("no"));
-			boardDTO =eventDAO.selectOne(no, con);
-			eventDAO.updateHit(no, con);
+			boardDTO =reviewDAO.selectOne(no, con);
+			reviewDAO.updateHit(no, con);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -101,10 +102,10 @@ ActionForward actionForward = new ActionForward();
 		String path = "";
 		if(boardDTO != null) {
 			request.setAttribute("dto", boardDTO);
-			path = "../WEB-INF/views/event/eventSelect.jsp";
+			path = "../WEB-INF/views/review/reviewSelect.jsp";
 		}else {
 			request.setAttribute("message", "No Data");
-			request.setAttribute("path", "./newsList");
+			request.setAttribute("path", "./reviewList");
 			path="../WEB-INF/views/common/result.jsp";
 		}
 		actionForward.setCheck(true);

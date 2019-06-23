@@ -7,11 +7,18 @@
 <head>
 <meta charset="UTF-8">
 <title>${board }Select</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+<jsp:include page="../yshcommon/css.jsp" />
 <link rel="stylesheet" href="../assets/css/main.css" />
+
+
+
+
 
 </head>
 <body>
+
 	<%@include file="../temp/header.jsp"%>
 	<div class="page-wrapper">
 		<div id="main">
@@ -37,16 +44,14 @@
 						<td colspan="5">${dto.contents}
 					</tr>
 				</table>
+				<div id="body">
+				<%@include file="../common/list.jsp"%>
+				</div>
 			</div>
 		</div>
 	</div>
-	
-	<div id ="body">
-	
-	<p>댓글창</p>
-	
-</div>
+
 	<%@include file="../temp/footer.jsp"%>
-	
+	<%@include file="../temp/activeweb.jsp"%>
 </body>
 </html>
