@@ -35,7 +35,6 @@ public class EventController extends HttpServlet {
     	EventService eventService = new EventService();
 		String command = request.getPathInfo();
 		ActionForward actionForward = new ActionForward();
-		System.out.println(command);
 		if (command.equals("/eventList")) {
 			actionForward = eventService.list(request, response);
 		}else if(command.equals("/eventSelect")) {
@@ -47,8 +46,6 @@ public class EventController extends HttpServlet {
 		}else if(command.equals("/eventDelete")) {
 			actionForward = eventService.delete(request, response);
 		}
-		
-		
 		if(actionForward.isCheck()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
 			view.forward(request, response);
@@ -56,8 +53,6 @@ public class EventController extends HttpServlet {
 			response.sendRedirect(actionForward.getPath());
 		}
 	}
-
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
