@@ -21,6 +21,40 @@ public class ReviewService implements Action{
 	public ReviewService() {
 		reviewDAO = new ReviewDAO();
 	}
+	public ActionForward adminList(HttpServletRequest request, HttpServletResponse response) {
+		ActionForward actionForward = new ActionForward();
+		int curPage = 1;
+		try {
+			curPage = Integer.parseInt(request.getParameter("curPage"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		String kind = request.getParameter("kind");
+		String search = request.getParameter("search");
+		SearchMakePage s = new SearchMakePage(curPage, kind, search);
+		SearchRow searchRow = s.makeRow();
+		int totalCount = 0;
+		Connection con = null;
+		try {
+		con = DBConnector.getConnect();
+		List<BoardDTO> ar = reviewDAO.selectList(searchRow, con);
+		totalCount = reviewDAO.getTotalCount(searchRow, con);
+		SearchPager searchPager = s.makePage(totalCount);
+		request.setAttribute("pager", searchPager);
+		request.setAttribute("list", ar);
+		request.setAttribute("board", "communityReview");
+		actionForward.setCheck(true);
+		actionForward.setPath("#");
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			request.setAttribute("message", "Server Error");
+			request.setAttribute("path", "../../index.do");
+			actionForward.setCheck(true);
+			actionForward.setPath("../../WEB-INF/views/community/communityCommon/result.jsp");
+		}
+		return actionForward;
+	}
 	@Override
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();

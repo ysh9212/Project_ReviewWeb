@@ -7,7 +7,13 @@ import com.project.action.Action;
 import com.project.action.ActionForward;
 
 public class UsedService implements Action{
-
+	
+	public ActionForward adminList(HttpServletRequest request, HttpServletResponse response) {
+		ActionForward actionForward = new ActionForward();
+		actionForward.setCheck(true);
+		actionForward.setPath("../../WEB-INF/views/community/used/communityUsed.jsp");
+		return actionForward;
+	}
 	@Override
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
