@@ -11,6 +11,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="../../assets/css/main.css" />
+
 <script type="text/javascript" src="../../se2/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
 var oEditors = [];
@@ -36,6 +37,7 @@ $(function() {
 });
 
 </script>
+
 </head>
 <body>
 	<%@include file="../../temp/header.jsp"%>
@@ -57,7 +59,7 @@ $(function() {
 						<textarea class="form-control" rows="5" id="contents"
 							name="contents">${dto.contents}</textarea>
 					</div>
-					<input type="submit" value = "update" class="btn">
+					<input type="submit" value = "update">
 				</form>
 			</div>
 		</div>

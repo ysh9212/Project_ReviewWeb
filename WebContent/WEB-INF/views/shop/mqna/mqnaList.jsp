@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자주묻는질문</title>
+<title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="../../assets/css/main.css" />
 </head>
@@ -45,14 +45,6 @@
 		
 		</div>
 		<div class="container">
-				<form action="./mqnaList">
-			<select name="kind">
-				<option value="t">제목</option>
-				<option value="c">내용</option>
-			</select>
-			<input type="text" name="search">
-			<button class="btn1 blue rounded">Search</button>	
-		</form>
 		<ul class="pager">
 			<c:if test="${pager.curBlock gt 1 }">
 				<li class="previous"><a href="./${board}List?curPage=${pager.startNum-1}&kind=${pager.search.kind}&search=${pager.search.search}">Previous</a></li>

@@ -89,6 +89,9 @@ public class ManageController extends HttpServlet {
 			actionForward= adminShopMqnaService.delete(request, response);
 		}//product
 		else if(command.equals("/productList")){
+			actionForward.setCheck(true);
+			actionForward.setPath("../../../WEB-INF/views/admin/shop/product/productList.jsp");
+			
 			actionForward = productService.list(request, response);
 		}else if(command.equals("/productWrite")) {
 			actionForward = productService.insert(request, response);

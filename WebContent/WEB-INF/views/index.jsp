@@ -1,18 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <html>
+
 	<head>
 		<title>Project Review</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="./assets/css/main.css" />
+		<link rel="stylesheet" href="./assets/css/main.css"/>
+		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath }/images/Teamlogo.ico" />
+	
 	</head>
 	<body>
+
 <%@include file = "./temp/header.jsp" %>
 		<div id="page-wrapper">
-    
 			<!-- Banner -->
 			<div class="container" style="padding-top:4em;">
 
@@ -143,12 +146,16 @@
 <%@include file="./temp/footer.jsp" %>
 
 
+		</div>
+
+
 		<!-- Scripts -->
 			<script src="./assets/js/jquery.min.js"></script>
 			<script src="./assets/js/browser.min.js"></script>
 			<script src="./assets/js/breakpoints.min.js"></script>
 			<script src="./assets/js/util.js"></script>
 			<script src="./assets/js/main.js"></script>
+
 
 	</body>
 </html>
