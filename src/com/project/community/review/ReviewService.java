@@ -45,14 +45,14 @@ public class ReviewService implements Action{
 		request.setAttribute("list", ar);
 		request.setAttribute("board", "communityReview");
 		actionForward.setCheck(true);
-		actionForward.setPath("../../WEB-INF/views/community/review/communityReview.jsp");
+		actionForward.setPath("../../WEB-INF/views/community/communityBoard/board.jsp");
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 			request.setAttribute("message", "Server Error");
 			request.setAttribute("path", "../../index.do");
 			actionForward.setCheck(true);
-			actionForward.setPath("../../WEB-INF/views/common/result.jsp");
+			actionForward.setPath("../../WEB-INF/views/community/communityCommon/result.jsp");
 		}
 		return actionForward;
 	}
@@ -80,11 +80,12 @@ public class ReviewService implements Action{
 		String path = "";
 		if(boardDTO != null) {
 			request.setAttribute("dto", boardDTO);
-			path = "../../WEB-INF/views/community/review/communityReviewSelect.jsp";
+			request.setAttribute("board", "communityReview");
+			path = "../../WEB-INF/views/community/communityBoard/boardSelect.jsp";
 		}else {
 			request.setAttribute("message", "No Data");
-			request.setAttribute("path", "./communityReview");
-			path="../WEB-INF/views/common/result.jsp";
+			request.setAttribute("path", "./board");
+			path="../../WEB-INF/views/community/communityCommon/result.jsp";
 		}
 		actionForward.setCheck(true);
 		actionForward.setPath(path);
@@ -95,7 +96,7 @@ public class ReviewService implements Action{
 		ActionForward actionForward = new ActionForward();
 		String method = request.getMethod();
 		boolean check = true;
-		String path = "../../WEB-INF/views/community/review/communityReviewWrite.jsp";
+		String path = "../../WEB-INF/views/community/communityBoard/boardWrite.jsp";
 		if(method.equals("POST")) {
 			ReviewDTO reviewDTO = new ReviewDTO();
 			reviewDTO.setTitle(request.getParameter("title"));
@@ -103,7 +104,6 @@ public class ReviewService implements Action{
 			reviewDTO.setContents(request.getParameter("contents"));
 			int result = 0;
 			Connection con = null;
-			
 			try {
 				con = DBConnector.getConnect();
 				con.setAutoCommit(false);
@@ -144,6 +144,7 @@ public class ReviewService implements Action{
 				path="../../WEB-INF/views/common/result.jsp";
 			}
 		}// end of POST
+		request.setAttribute("board", "communityReview");
 		actionForward.setCheck(check);
 		actionForward.setPath(path);
 		return actionForward;
@@ -152,7 +153,7 @@ public class ReviewService implements Action{
 	public ActionForward update(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
 		boolean check = true;
-		String path = "../../WEB-INF/views/community/review/communityReviewUpdate.jsp";
+		String path = "../../WEB-INF/views/community/communityBoard/boardUpdate.jsp";
 		String method = request.getMethod();
 		if(method.equals("POST")) {
 			Connection con = null;
@@ -199,6 +200,7 @@ public class ReviewService implements Action{
 				}
 			} // end of finally
 			request.setAttribute("dto", boardDTO);
+			request.setAttribute("board", "communityReview");
 		}
 		actionForward.setCheck(check);
 		actionForward.setPath(path);
@@ -217,12 +219,54 @@ public class ReviewService implements Action{
 			result = reviewDAO.delete(no, con);
 			request.setAttribute("result", result);
 			check = true;
-			path = "../../WEB-INF/views/common/result2.jsp";
+			path = "../../WEB-INF/views/community/communityCommon/result2.jsp";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		actionForward.setCheck(true);
+		actionForward.setCheck(check);
+		actionForward.setPath(path);
+		return actionForward;
+	}
+	public ActionForward recommend(HttpServletRequest request, HttpServletResponse response) {
+		ActionForward actionForward = new ActionForward();
+		boolean check = true;
+		String path = "";
+		Connection con = null;
+		int result = 0;
+		try {
+			con = DBConnector.getConnect();
+			int no = Integer.parseInt(request.getParameter("no"));
+			result = reviewDAO.recommend(no, con);
+			request.setAttribute("result", result);
+			check = true;
+			path = "../../WEB-INF/views/community/communityCommon/result2.jsp";
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		actionForward.setCheck(check);
+		actionForward.setPath(path);
+		return actionForward;
+	}
+	public ActionForward decommend(HttpServletRequest request, HttpServletResponse response) {
+		ActionForward actionForward = new ActionForward();
+		boolean check = true;
+		String path = "";
+		Connection con = null;
+		int result = 0;
+		try {
+			con = DBConnector.getConnect();
+			int no = Integer.parseInt(request.getParameter("no"));
+			result = reviewDAO.decommend(no, con);
+			request.setAttribute("result", result);
+			check = true;
+			path = "../../WEB-INF/views/community/communityCommon/result2.jsp";
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		actionForward.setCheck(check);
 		actionForward.setPath(path);
 		return actionForward;
 	}

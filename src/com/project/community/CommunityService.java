@@ -23,14 +23,12 @@ public class CommunityService {
 	private ComBoardDAO comBoardDAO;
 	private ReviewDAO reviewDAO;
 	private UsedDAO usedDAO;
-	private QnaDAO qnaDAO;
 	private BugDAO bugDAO;
 	public CommunityService() {
 		noticeDAO = new NoticeDAO();
 		comBoardDAO = new ComBoardDAO();
 		reviewDAO = new ReviewDAO();
 		usedDAO = new UsedDAO();
-		qnaDAO = new QnaDAO();
 		bugDAO = new BugDAO();
 		
 	}
@@ -47,16 +45,16 @@ public class CommunityService {
 			List<BoardDTO> uAr = usedDAO.selectList(searchRow, con);
 			
 			request.setAttribute("nlist", ar);
-			request.setAttribute("nboard", "��������");
+			request.setAttribute("nboard", "공지사항");
 
 			request.setAttribute("blist", bAr);
-			request.setAttribute("bboard", "�����Խ���");
+			request.setAttribute("bboard", "자유게시판");
 
 			request.setAttribute("rlist", rAr);
-			request.setAttribute("rboard", "��������");
+			request.setAttribute("rboard", "사용자리뷰");
 
 			request.setAttribute("buglist", bugAr);
-			request.setAttribute("bugboard", "���װԽ���");
+			request.setAttribute("bugboard", "버그리포트");
 
 			request.setAttribute("ulist", uAr);
 			request.setAttribute("uboard", "중고제품");

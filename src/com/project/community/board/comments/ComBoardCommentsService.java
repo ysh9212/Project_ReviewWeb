@@ -53,7 +53,6 @@ public class ComBoardCommentsService implements Action{
 		actionForward.setPath("../../WEB-INF/views/community/communityCommon/list.jsp");
 		return actionForward;
 	}
-	// 사용안함;
 	@Override
 	public ActionForward select(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
@@ -112,7 +111,7 @@ public class ComBoardCommentsService implements Action{
 		}
 		request.setAttribute("result", result);
 		actionForward.setCheck(true);
-		actionForward.setPath("../../common/result2.jsp"); // 뭔가 result2로 가는 경로;
+		actionForward.setPath("../../WEB-INF/views/community/communityCommon/result2.jsp");
 		return actionForward;
 	}
 	@Override

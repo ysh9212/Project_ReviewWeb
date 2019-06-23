@@ -18,7 +18,7 @@ public class ReviewDAO implements BoardDAO{
 	public int getNum() throws Exception {
 		int result = 0;
 		Connection con = DBConnector.getConnect();
-		String sql = "select community_seq.nextval from dual";
+		String sql = "select community_review_seq.nextval from dual";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		rs.next();
@@ -41,12 +41,13 @@ public class ReviewDAO implements BoardDAO{
 	}
 	public List<BoardDTO> List(Connection con) throws Exception{
 		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
-		String sql = "select title from community_review where rownum <= 5";
+		String sql = "select title, no from community_review where rownum <= 5";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		while(rs.next()) {
 			ReviewDTO reviewDTO = new ReviewDTO();
 			reviewDTO.setTitle(rs.getString("title"));
+			reviewDTO.setNo(rs.getInt("no"));
 			ar.add(reviewDTO);
 		}
 		return ar;
@@ -88,12 +89,12 @@ public class ReviewDAO implements BoardDAO{
 		if(rs.next()) {
 			reviewDTO.setNo(rs.getInt("no"));
 			reviewDTO.setTitle(rs.getString("title"));
+			reviewDTO.setContents(rs.getString("contents"));
 			reviewDTO.setWriter(rs.getString("writer"));
 			reviewDTO.setReg_date(rs.getString("reg_date"));
 			reviewDTO.setHit(rs.getInt("hit"));
 			reviewDTO.setRecommend(rs.getInt("recommend"));
 			reviewDTO.setDecommend(rs.getInt("decommend"));
-			reviewDTO.setContents(rs.getString("contents"));
 		}
 		rs.close();
 		st.close();
@@ -102,11 +103,11 @@ public class ReviewDAO implements BoardDAO{
 	@Override
 	public int insert(BoardDTO boardDTO, Connection con) throws Exception {
 		int result = 0;
-		String sql = "insert into community_review values(community_seq.nextval,?,?,sysdate,0,0,0,?)";
+		String sql = "insert into community_review values(community_review_seq.nextval,?,?,?,sysdate,0,0,0)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, boardDTO.getTitle());
-		st.setString(2, boardDTO.getWriter());
-		st.setString(3, boardDTO.getContents());
+		st.setString(2, boardDTO.getContents());
+		st.setString(3, boardDTO.getWriter());
 		result = st.executeUpdate();
 		st.close();
 		return result;
@@ -137,6 +138,22 @@ public class ReviewDAO implements BoardDAO{
 	@Override
 	public int delete(int no, Connection con) throws Exception {
 		String sql = "delete community_review where no=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, no);
+		int result = st.executeUpdate();
+		st.close();
+		return result;
+	}
+	public int recommend(int no, Connection con) throws Exception{
+		String sql = "update community_review set recommend = recommend+'1' where no=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, no);
+		int result = st.executeUpdate();
+		st.close();
+		return result;
+	}
+	public int decommend(int no, Connection con) throws Exception{
+		String sql = "update community_review set decommend = decommend+'1' where no=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, no);
 		int result = st.executeUpdate();

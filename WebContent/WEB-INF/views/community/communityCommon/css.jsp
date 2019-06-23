@@ -58,5 +58,10 @@ margin: 0 auto;
 .navi_li a:hover {
   background-color: #111;
 }
+#commentsInsertForm {
+	width: 100%;
+	height: 100px;
+	border: 1;
+}
 
 </style>

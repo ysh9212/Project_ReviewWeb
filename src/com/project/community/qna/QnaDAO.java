@@ -18,7 +18,7 @@ public class QnaDAO implements BoardDAO{
 	public int getNum() throws Exception {
 		int result = 0;
 		Connection con = DBConnector.getConnect();
-		String sql = "select community_seq.nextval from dual";
+		String sql = "select community_qna_seq.nextval from dual";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		rs.next();
@@ -85,20 +85,18 @@ public class QnaDAO implements BoardDAO{
 		st.close();
 		return qnaDTO;
 	}
-
 	@Override
 	public int insert(BoardDTO boardDTO, Connection con) throws Exception {
 		int result = 0;
-		String sql = "insert into community_qna values(community_seq.nextval,?,?,sysdate,0,0,0,?)";
+		String sql = "insert into community_qna values(community_qna_seq.nextval,?,?,?,sysdate,0,0,0)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, boardDTO.getTitle());
-		st.setString(2, boardDTO.getWriter());
-		st.setString(3, boardDTO.getContents());
+		st.setString(2, boardDTO.getContents());
+		st.setString(3, boardDTO.getWriter());
 		result = st.executeUpdate();
 		st.close();
 		return result;
 	}
-
 	@Override
 	public int update(BoardDTO boardDTO, Connection con) throws Exception {
 		int result = 0;

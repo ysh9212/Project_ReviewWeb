@@ -21,7 +21,6 @@ public class ComBoardService implements Action{
 	public ComBoardService() {
 	comBoardDAO = new ComBoardDAO();	
 	}
-	// ó�� �Խñ� ����
 	@Override
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
@@ -48,7 +47,7 @@ public class ComBoardService implements Action{
 		request.setAttribute("list", ar);
 		request.setAttribute("board", "communityBoard");
 		actionForward.setCheck(true);
-		actionForward.setPath("../../WEB-INF/views/community/board/communityBoard.jsp");
+		actionForward.setPath("../../WEB-INF/views/community/communityBoard/board.jsp");
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -84,11 +83,12 @@ public class ComBoardService implements Action{
 		String path = "";
 		if(boardDTO != null) {
 			request.setAttribute("dto", boardDTO);
-			path = "../../WEB-INF/views/community/board/communityBoardSelect.jsp";
+			request.setAttribute("board", "communityBoard");
+			path = "../../WEB-INF/views/community/communityBoard/boardSelect.jsp";
 		}else {
 			request.setAttribute("message", "No Data");
-			request.setAttribute("path", "./communityBoard");
-			path="../WEB-INF/views/common/result.jsp";
+			request.setAttribute("path", "./board"); // 확인후 수정 필요할지도;
+			path="../../WEB-INF/views/community/communityBoard/result.jsp";
 		}
 		actionForward.setCheck(true);
 		actionForward.setPath(path);
@@ -100,7 +100,7 @@ public class ComBoardService implements Action{
 		ActionForward actionForward = new ActionForward();
 		String method = request.getMethod();
 		boolean check = true;
-		String path = "../../WEB-INF/views/community/board/communityBoardWrite.jsp";
+		String path = "../../WEB-INF/views/community/communityBoard/boardWrite.jsp";
 		if(method.equals("POST")) {
 			ComBoardDTO comBoardDTO = new ComBoardDTO();
 			comBoardDTO.setTitle(request.getParameter("title"));
@@ -111,7 +111,6 @@ public class ComBoardService implements Action{
 			try {
 				con = DBConnector.getConnect();
 				con.setAutoCommit(false);
-				
 				int no = comBoardDAO.getNum();
 				comBoardDTO.setNo(no);
 				result = comBoardDAO.insert(comBoardDTO, con);
@@ -140,7 +139,7 @@ public class ComBoardService implements Action{
 			}
 			if(result>0) {
 				check = false;
-				path="./communityBoard";
+				path="./communityBoard"; //입력 후 다시 controller에 보내기 위한 path;
 			}else {
 				request.setAttribute("message", "Write Fail");
 				request.setAttribute("path", "./communityBoard");
@@ -148,6 +147,7 @@ public class ComBoardService implements Action{
 				path="../../WEB-INF/views/common/result.jsp";
 			}
 		}// end of POST
+		request.setAttribute("board", "communityBoard");
 		actionForward.setCheck(check);
 		actionForward.setPath(path);
 		return actionForward;
@@ -156,7 +156,7 @@ public class ComBoardService implements Action{
 	public ActionForward update(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
 		boolean check = true;
-		String path = "../../WEB-INF/views/community/board/communityBoardUpdate.jsp";
+		String path = "../../WEB-INF/views/community/communityBoard/boardUpdate.jsp";
 		String method = request.getMethod();
 		if(method.equals("POST")) {
 			Connection con = null;
@@ -202,7 +202,8 @@ public class ComBoardService implements Action{
 					e.printStackTrace();
 				}
 			} // end of finally
-			request.setAttribute("bdto", boardDTO);
+			request.setAttribute("dto", boardDTO);
+			request.setAttribute("board", "communityBoard");
 		}
 		actionForward.setCheck(check);
 		actionForward.setPath(path);
@@ -242,11 +243,13 @@ public class ComBoardService implements Action{
 			result = comBoardDAO.recommend(no, con);
 			request.setAttribute("result", result);
 			check = true;
-			path = "../../WEB-INF/views/common/result2.jsp";
+			path = "../../WEB-INF/views/community/communityCommon/result2.jsp";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		actionForward.setCheck(check);
+		actionForward.setPath(path);
 		return actionForward;
 	}
 	public ActionForward decommend(HttpServletRequest request, HttpServletResponse response) {
@@ -261,11 +264,13 @@ public class ComBoardService implements Action{
 			result = comBoardDAO.decommend(no, con);
 			request.setAttribute("result", result);
 			check = true;
-			path = "../../WEB-INF/views/common/result2.jsp";
+			path = "../../WEB-INF/views/community/communityCommon/result2.jsp";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		actionForward.setCheck(check);
+		actionForward.setPath(path);
 		return actionForward;
 	}
 }
