@@ -88,7 +88,8 @@ public class ProductPurchaseService implements Action {
 				if(result <1) {
 					throw new Exception();
 				}
-				
+				check = false;
+				path = "../../index.do";
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

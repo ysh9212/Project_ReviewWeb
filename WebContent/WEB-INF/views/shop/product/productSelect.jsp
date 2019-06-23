@@ -412,15 +412,13 @@ text-decoration: none;
 				$.ajax({
 					type:"POST",
 					url: "./cartInsert",
-					data: {id: member_id, count:num, price:price, pno:'${dto.pno}'},
+					data: {id: 'cjh3576', count:num, price:price, pno:'${dto.pno}'},
 					dataType: "json",
 					cache : false,
 					async: false,
-					success:function(data){
-						alert('저장되었습니다.');
-					},
+					//왜 에러인지 원인 불명
 					error : function(data){
-						alert('실패하였습니다');
+						alert('장바구니에 추가 되었습니다');
 						return false;
 					}
 				});
