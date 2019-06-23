@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,14 +16,12 @@
 </head>
 <body>
 <%@include file="../temp/header.jsp"%>
-	<form action="${pageContext.request.contextPath}/memberMy/memberMyWrite" method="post">
 		<div id="page-wrapper">
 			<div id="main">
 				<div class="container">
 					<jsp:include page="./memberMyCommon/navi.jsp" />
 					<div id="wrap">
 						<h2 class="memberinfor">내 글 보기</h2>
-
 						<div id="h_body"></div>
 						<div id="body">
 							<hr>
@@ -55,6 +55,7 @@
 
 									</tbody>
 								</table>
+								
 							</div>
 
 						</div>
@@ -63,7 +64,7 @@
 			</div>
 
 		</div>
-	</form>
 	<%@include file="../temp/footer.jsp" %>
+	<%@include file="../temp/activeweb.jsp"%>
 </body>
 </html>
