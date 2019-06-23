@@ -35,7 +35,7 @@ public class ReviewController extends HttpServlet {
 	 */
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
- 28f9369d7cdae130e73261e26ad3bd2ce5afd73d
+
 		ReviewService reviewService = new ReviewService();
 		String command = request.getPathInfo();
 		ActionForward actionForward = new ActionForward();
