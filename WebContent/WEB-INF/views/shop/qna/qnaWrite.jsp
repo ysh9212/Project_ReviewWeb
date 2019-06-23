@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${board }문의사항</title>
+<title>SHOP-세상의 모든 IT</title>
 <c:import url="../../temp/bootstrap.jsp" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
