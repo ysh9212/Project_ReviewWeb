@@ -13,7 +13,6 @@ import com.project.community.comments.CommunityCommentsDTO;
 import com.project.shopPage.SearchRow;
 
 public class ComBoardCommentsDAO implements CommunityCommentsDAO{
-
 	@Override
 	public List<CommunityCommentsDTO> selectList(SearchRow searchRow, int no, Connection con) throws Exception {
 		List<CommunityCommentsDTO> ar = new ArrayList<CommunityCommentsDTO>();
@@ -54,10 +53,10 @@ public class ComBoardCommentsDAO implements CommunityCommentsDAO{
 	@Override
 	public int update(CommunityCommentsDTO communityCommentsDTO, Connection con) throws Exception {
 		int result = 0;
-		String sql = "update community_board_comments set contents=? reg_date=sysdate where cnum=?";
+		String sql = "update community_board_comments set contents=? where cnum=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, communityCommentsDTO.getContents());
-		st.setInt(2, communityCommentsDTO.getCno());
+		st.setInt(2, communityCommentsDTO.getCnum());
 		result = st.executeUpdate();
 		st.close();
 		return result;

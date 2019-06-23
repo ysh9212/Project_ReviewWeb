@@ -40,17 +40,18 @@ public class BugDAO implements BoardDAO{
 	}
 	public List<BoardDTO> List(Connection con)throws Exception{
 		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
-		String sql = "select title from community_bug where rownum <=5 order by no desc";
+		String sql = "select title, no from community_bug where rownum <=5 order by no desc";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		while(rs.next()) {
 			BugDTO bugDTO = new BugDTO();
 			bugDTO.setTitle(rs.getString("title"));
+			bugDTO.setNo(rs.getInt("no"));
 			ar.add(bugDTO);
 		}
 		return ar;
 	}
-	// ÃÊ±â °Ô½Ã±Û ¸ñ·Ï ³ª¿­;
+	// ï¿½Ê±ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½;
 	@Override
 	public List<BoardDTO> selectList(SearchRow searchRow, Connection con) throws Exception {
 		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
@@ -70,13 +71,15 @@ public class BugDAO implements BoardDAO{
 			bugDTO.setWriter(rs.getString("writer"));
 			bugDTO.setReg_date(rs.getString("reg_date"));
 			bugDTO.setHit(rs.getInt("hit"));
+			bugDTO.setRecommend(rs.getInt("recommend"));
+			bugDTO.setDecommend(rs.getInt("decommend"));
 			ar.add(bugDTO);
 		}
 		rs.close();
 		st.close();
 		return ar;
 	}
-	// °Ô½Ã±Û ³»¿ë È®ÀÎ;
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½;
 	@Override
 	public BoardDTO selectOne(int no, Connection con) throws Exception {
 		BugDTO bugDTO = new BugDTO();
@@ -97,8 +100,7 @@ public class BugDAO implements BoardDAO{
 		st.close();
 		return bugDTO;
 	}
-
-	// »ç¿ë¾ÈÇÔ;
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½;
 	@Override
 	public int insert(BoardDTO boardDTO, Connection con) throws Exception {
 		// TODO Auto-generated method stub
@@ -122,5 +124,21 @@ public class BugDAO implements BoardDAO{
 	public int delete(int no, Connection con) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	public int recommend(int no, Connection con) throws Exception{
+		String sql = "update community_bug set recommend = recommend+'1' where no=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, no);
+		int result = st.executeUpdate();
+		st.close();
+		return result;
+	}
+	public int decommend(int no, Connection con) throws Exception{
+		String sql = "update community_bug set decommend = decommend+'1' where no=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, no);
+		int result = st.executeUpdate();
+		st.close();
+		return result;
 	}
 }

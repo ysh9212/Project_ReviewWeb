@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>${list}</title>
+<title>${board}</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="../../assets/css/main.css" />
@@ -36,7 +36,7 @@
 						<c:forEach items="${list}" var="dto">
 							<tr>
 								<td>${dto.no}</td>
-								<td><a href="./communityBoardSelect?no=${dto.no}">${dto.title}</a>
+								<td><a href="./${board}Select?no=${dto.no}">${dto.title}</a>
 								</td>
 								<td>${dto.writer}</td>
 								<td>${dto.reg_date}</td>
@@ -49,7 +49,7 @@
 				</table>
 			<jsp:include page="../communityCommon/paging.jsp"/>
 			</div> <!-- end of container -->
-			<a href="./communityBoardWrite" class="btn btn-primary">Write</a>
+				<a href="./${board}Write" class="btn btn-primary">Write</a>
 		</div> <!-- end of main  -->
 	</div><!-- end of body -->
 		<%@include file="../../temp/footer.jsp"%>

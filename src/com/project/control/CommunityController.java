@@ -14,10 +14,15 @@ import com.project.community.CommunityService;
 import com.project.community.board.ComBoardService;
 import com.project.community.board.comments.ComBoardCommentsService;
 import com.project.community.bug.BugService;
+import com.project.community.bug.comments.BugCommentsService;
 import com.project.community.notice.NoticeService;
+import com.project.community.notice.comments.NoticeCommentsService;
 import com.project.community.qna.QnaService;
+import com.project.community.qna.comments.QnaCommentsService;
 import com.project.community.review.ReviewService;
+import com.project.community.review.comments.ReviewCommentsService;
 import com.project.community.used.UsedService;
+import com.project.community.used.comments.UsedCommentsService;
 
 /**
  * Servlet implementation class CommunityController
@@ -27,12 +32,17 @@ public class CommunityController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CommunityService communityService;
 	private NoticeService noticeService;
+	private NoticeCommentsService noticeCommentsService;
 	private ComBoardService comBoardService;
 	private ComBoardCommentsService comBoardCommentsService;
 	private ReviewService reviewService;
+	private ReviewCommentsService reviewCommentsService;
 	private UsedService usedService;
+	private UsedCommentsService usedCommentsService;
 	private QnaService qnaService;
+	private QnaCommentsService qnaCommentsService;
 	private BugService bugService;
+	private BugCommentsService bugCommentsService;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -40,43 +50,53 @@ public class CommunityController extends HttpServlet {
     public CommunityController() {
         super();
         // TODO Auto-generated constructor stub
-        communityService = new CommunityService(); // °´Ã¼ »ı¼ºÀ» ¾ÈÇØ¼­ service·Î °è¼Ó ¿¬°áÀ» ¸øÇÏ°í ÀÖ¾úÀ½;
+        communityService = new CommunityService(); // ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ serviceï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½;
         noticeService = new NoticeService();
+        noticeCommentsService = new NoticeCommentsService();
         comBoardService = new ComBoardService();
         comBoardCommentsService = new ComBoardCommentsService();
         reviewService = new ReviewService();
+        reviewCommentsService = new ReviewCommentsService();
         usedService = new UsedService();
+        usedCommentsService = new UsedCommentsService();
         qnaService = new QnaService();
+        qnaCommentsService = new QnaCommentsService();
         bugService = new BugService();
+        bugCommentsService = new BugCommentsService();
     }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getPathInfo();
 		ActionForward actionForward = null;
-		// ´ë½Ãº¸µå
+		// ëŒ€ì‹œë³´ë“œ;
 		if(command.equals("/communityList")) {
 			actionForward=communityService.list(request, response);
-		
-		// °øÁö»çÇ×
+		// ê³µì§€ì‚¬í•­;
 		}else if(command.equals("/notice/communityNotice")){
 			actionForward = noticeService.list(request, response);
 		}else if(command.equals("/notice/communityNoticeSelect")) {
 			actionForward = noticeService.select(request, response);
-			
-			// »ç¿ë¾ÈÇÔ;
+		// ì‚¬ìš©ì•ˆí•¨;
 		}else if(command.equals("/notice/communityNoticeWrite")) {
 			actionForward = noticeService.insert(request, response);
-			// »ç¿ë¾ÈÇÔ;
+		// ì‚¬ìš©ì•ˆí•¨;
 		}else if(command.equals("/notice/communityNoticeUpdate")) {
 			actionForward = noticeService.update(request, response);
-			// »ç¿ë¾ÈÇÔ;
+		// ì‚¬ìš©ì•ˆí•¨;
 		}else if(command.equals("/notice/communityNoticeDelete")) {
 			actionForward = noticeService.delete(request, response);
-		
-		// ÀÚÀ¯°Ô½ÃÆÇ
+		// ê³µì§€ì‚¬í•­ ëŒ“ê¸€;
+		}else if(command.equals("/communityComments/communityNoticeCommentsList")) {
+			actionForward = noticeCommentsService.list(request, response);
+		}else if(command.equals("/communityComments/communityNoticeCommentsInsert")){
+			actionForward = noticeCommentsService.insert(request, response);
+		}else if(command.equals("/communityComments/communityNoticeCommentsUpdate")) {
+			actionForward = noticeCommentsService.update(request, response);
+		}else if(command.equals("/communityComments/communityNoticeCommentsDelete")) {
+			actionForward = noticeCommentsService.delete(request, response);
+		//ììœ ê²Œì‹œíŒ;
 		}else if(command.equals("/board/communityBoard")) {
 			actionForward = comBoardService.list(request, response);
 		}else if(command.equals("/board/communityBoardSelect")) {
@@ -89,18 +109,18 @@ public class CommunityController extends HttpServlet {
 			actionForward = comBoardService.delete(request, response);
 		}else if(command.equals("/board/communityBoardRecommend")){
 			actionForward = comBoardService.recommend(request, response);
-		}else if(command.equals("/board/communtiyBoardDecommend")){
+		}else if(command.equals("/board/communityBoardDecommend")){
 			actionForward = comBoardService.decommend(request, response);
-		// ÀÚÀ¯°Ô½ÃÆÇ ´ñ±Û	
-		}else if(command.equals("/communityComments/comBoardCommentsList")) {
+		// ììœ ê²Œì‹œíŒ ëŒ“ê¸€;
+		}else if(command.equals("/communityComments/communityBoardCommentsList")) {
 			actionForward = comBoardCommentsService.list(request, response);
-		}else if(command.equals("/communityComments/comBoardCommentsInsert")){
+		}else if(command.equals("/communityComments/communityBoardCommentsInsert")){
 			actionForward = comBoardCommentsService.insert(request, response);
-		}else if(command.equals("/communityComments/comBoardCommentsUpdate")) {
+		}else if(command.equals("/communityComments/communityBoardCommentsUpdate")) {
 			actionForward = comBoardCommentsService.update(request, response);
-		}else if(command.equals("/communityComments/comBoardCommentsDelete")) {
+		}else if(command.equals("/communityComments/communityBoardCommentsDelete")) {
 			actionForward = comBoardCommentsService.delete(request, response);
-		// »ç¿ëÀÚ¸®ºä
+		// ì‚¬ìš©ì ë¦¬ë·°;
 		}else if(command.equals("/review/communityReview")) {
 			actionForward = reviewService.list(request, response);
 		}else if(command.equals("/review/communityReviewSelect")) {
@@ -111,12 +131,21 @@ public class CommunityController extends HttpServlet {
 			actionForward = reviewService.update(request, response);
 		}else if(command.equals("/review/communityReviewDelete")){
 			actionForward = reviewService.delete(request, response);
-		// »ç¿ëÀÚ¸®ºä ´ñ±Û
-		}else if(command.equals("/communityComments/reviewCommentsList")){
-		}else if(command.equals("/communityComments/reviewCommentsInsert")){
-		}else if(command.equals("/communityComments/reviewCommentsUpdate")){
-		}else if(command.equals("/communityComments/reviewCommentsDelete")){
-		// Áß°í³ª¶ó
+		}else if(command.equals("/review/communityReviewRecommend")){
+			actionForward = reviewService.recommend(request, response);
+		}else if(command.equals("/review/communityReviewDecommend")){
+			actionForward = reviewService.decommend(request, response);
+		// ì‚¬ìš©ì ë¦¬ë·° ëŒ“ê¸€;
+		}else if(command.equals("/communityComments/communityReviewCommentsList")){
+			actionForward = reviewCommentsService.list(request, response);
+		}else if(command.equals("/communityComments/communityReviewCommentsInsert")){
+			actionForward = reviewCommentsService.insert(request, response);
+		}else if(command.equals("/communityComments/communityReviewCommentsUpdate")){
+			actionForward = reviewCommentsService.update(request, response);
+		}else if(command.equals("/communityComments/communityReviewCommentsDelete")){
+			actionForward = reviewCommentsService.delete(request, response);
+		
+		// ì¤‘ê³  ê²Œì‹œíŒ;
 		}else if(command.equals("/used/communityUsed")) {
 			actionForward = usedService.list(request, response);
 		}else if(command.equals("/used/communutyUsedSelect")) {
@@ -127,8 +156,13 @@ public class CommunityController extends HttpServlet {
 			actionForward = usedService.update(request, response);
 		}else if(command.equals("/used/communityusedDelete")){
 			actionForward = usedService.delete(request, response);
+		// ì¤‘ê³ ê²Œì‹œíŒ ëŒ“ê¸€;
+		}else if(command.equals("/communityComments/reviewCommentsList")){
+		}else if(command.equals("/communityComments/reviewCommentsInsert")){
+		}else if(command.equals("/communityComments/reviewCommentsUpdate")){
+		}else if(command.equals("/communityComments/reviewCommentsDelete")){	
 		
-		// QnA
+		// QnA;
 		}else if(command.equals("/qna/communityQna")) {
 			actionForward = qnaService.list(request, response);
 		}else if(command.equals("/qna/communityQnaSelect")) {
@@ -139,28 +173,47 @@ public class CommunityController extends HttpServlet {
 			actionForward = qnaService.update(request, response);
 		}else if(command.equals("/qna/communityQnaDelete")){
 			actionForward = qnaService.delete(request, response);
-			
-		// ¹ö±×¸®Æ÷Æ®
+		// QnA ëŒ“ê¸€;
+		}else if(command.equals("/communityComments/communityQnaCommentsList")) {
+			actionForward = qnaCommentsService.list(request, response);
+		}else if(command.equals("/communityComments/communityQnaCommentsInsert")){
+			actionForward = qnaCommentsService.insert(request, response);
+		}else if(command.equals("/communityComments/communityQnaCommentsUpdate")) {
+			actionForward = qnaCommentsService.update(request, response);
+		}else if(command.equals("/communityComments/communityQnaCommentsDelete")) {
+			actionForward = qnaCommentsService.delete(request, response);
+		// ë²„ê·¸ ë¦¬í¬íŠ¸;
 		}else if(command.equals("/bug/communityBug")) {
 			actionForward = bugService.list(request, response);
 		}else if(command.equals("/bug/communityBugSelect")){
 			actionForward = bugService.select(request, response);
-		
-		
-			// »ç¿ë¾ÈÇÔ;
+		}else if(command.equals("/bug/communityBugRecommend")){
+			actionForward = bugService.recommend(request, response);
+		}else if(command.equals("/bug/communityBugDecommend")){
+			actionForward = bugService.decommend(request, response);
+		// ë²„ê·¸ ë¦¬í¬íŠ¸ ëŒ“ê¸€;
+		}else if(command.equals("/communityComments/communityBugCommentsList")) {
+			actionForward = bugCommentsService.list(request, response);
+		}else if(command.equals("/communityComments/communityBugCommentsInsert")){
+			actionForward = bugCommentsService.insert(request, response);
+		}else if(command.equals("/communityComments/communityBugCommentsUpdate")) {
+			actionForward = bugCommentsService.update(request, response);
+		}else if(command.equals("/communityComments/communityBugCommentsDelete")) {
+			actionForward = bugCommentsService.delete(request, response);
+			// ì‚¬ìš©ì•ˆí•¨;
 		}else if(command.equals("/bug/communityBugWrite")){
 			actionForward = bugService.insert(request, response);
-			// »ç¿ë¾ÈÇÔ;
+			// ì‚¬ìš©ì•ˆí•¨;
 		}else if(command.equals("/bug/communityBugUpdate")){
 			actionForward = bugService.update(request, response);
-			// »ç¿ë¾ÈÇÔ;
+			// ì‚¬ìš©ì•ˆí•¨;
 		}else if(command.equals("/bug/communityBugDelete")){
 			actionForward = bugService.delete(request, response);
 		}else {
-			actionForward = new ActionForward(); // ?? ÀÌ°Å ¿ÖÇÔ? ÃÊ±âÈ­ÀÎ°¡?
+			actionForward = new ActionForward(); // ?? ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ï¿½? ï¿½Ê±ï¿½È­ï¿½Î°ï¿½?
 		}
-		// service¿¡¼­ ÇØ°áÇÑ µÚ ´Ù½Ã return¹ŞÀº actionforward¸¦ ÀÌ¿ëÇØ requesetdispatcher ¸¦ ¼¼ÆÃ;
-		// ±×·¡¾ß path¸¦ ¿¬°áÇØ¼­ Ãâ·Â ÇÒ ¼ö ÀÖ´Âµí?
+		// serviceï¿½ï¿½ï¿½ï¿½ ï¿½Ø°ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ù½ï¿½ returnï¿½ï¿½ï¿½ï¿½ actionforwardï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ requesetdispatcher ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½;
+		// ï¿½×·ï¿½ï¿½ï¿½ pathï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´Âµï¿½?
 		if(actionForward.isCheck()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
 			view.forward(request, response);

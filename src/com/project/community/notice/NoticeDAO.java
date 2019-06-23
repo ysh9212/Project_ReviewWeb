@@ -41,12 +41,13 @@ public class NoticeDAO implements BoardDAO{
 	}
 	public List<BoardDTO> List(Connection con)throws Exception{
 		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
-		String sql = "select title from community_notice where rownum <=5 order by no desc";
+		String sql = "select title, no from community_notice where rownum <=5 order by no desc";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		while(rs.next()) {
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO.setTitle(rs.getString("title"));
+		noticeDTO.setNo(rs.getInt("no"));
 		ar.add(noticeDTO);
 		}
 		rs.close();
@@ -54,7 +55,7 @@ public class NoticeDAO implements BoardDAO{
 		return ar;
 	}
 	
-	// ÃÊ±â °Ô½Ã±Û ¸ñ·Ï ³ª¿­;
+	// ï¿½Ê±ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½;
 	@Override
 	public List<BoardDTO> selectList(SearchRow searchRow, Connection con) throws Exception {
 		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
@@ -80,7 +81,7 @@ public class NoticeDAO implements BoardDAO{
 		st.close();
 		return ar;
 	}
-	// °Ô½Ã±Û ³»¿ëÈ®ÀÎ;
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½;
 	@Override
 	public BoardDTO selectOne(int no, Connection con) throws Exception {
 		NoticeDTO noticeDTO = new NoticeDTO();
@@ -111,7 +112,7 @@ public class NoticeDAO implements BoardDAO{
 		st.close();
 		return 0;
 	}
-	// »ç¿ë ¾ÈÇÔ.
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	@Override
 	public int insert(BoardDTO boardDTO, Connection con) throws Exception {
 		return 0;

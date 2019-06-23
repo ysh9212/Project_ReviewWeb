@@ -20,7 +20,6 @@ public class NoticeService implements Action{
 	public NoticeService() {
 		noticeDAO = new NoticeDAO();
 	}
-	// 처음 게시글 나열;
 	@Override
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
@@ -45,7 +44,7 @@ public class NoticeService implements Action{
 			request.setAttribute("list", ar);
 			request.setAttribute("board", "communityNotice");
 			actionForward.setCheck(true);
-			actionForward.setPath("../../WEB-INF/views/community/notice/communityNotice.jsp");
+			actionForward.setPath("../../WEB-INF/views/community/communityBoard/board.jsp");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -56,7 +55,6 @@ public class NoticeService implements Action{
 		}
 		return actionForward;
 	}
-	// 게시글 내용 확인;
 	@Override
 	public ActionForward select(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward actionForward = new ActionForward();
@@ -81,18 +79,17 @@ public class NoticeService implements Action{
 		String path = "";
 		if(boardDTO != null) {
 			request.setAttribute("dto", boardDTO);
-			path = "../../WEB-INF/views/community/notice/communityNoticeSelect.jsp";
+			request.setAttribute("board", "communityNotice");
+			path = "../../WEB-INF/views/community/communityBoard/boardSelect.jsp";
 		}else {
 			request.setAttribute("message", "No Data");
-			request.setAttribute("path", "./communityNotice");
+			request.setAttribute("path", "./board");
 			path="../WEB-INF/views/common/result.jsp";
 		}
 		actionForward.setCheck(true);
 		actionForward.setPath(path);
 		return actionForward;
 	}
-	
-	// 사용안함
 	@Override
 	public ActionForward insert(HttpServletRequest request, HttpServletResponse response) {
 		return null;
@@ -106,6 +103,4 @@ public class NoticeService implements Action{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-
 }
