@@ -22,12 +22,12 @@
 	margin-left: 70px;
 	margin-right: 40px;
 	margin-bottom: 30px;
-	background-color: yellow;
+	background-color: #E6E6FA;
 }
 #used_body{
 	width: 1230px;
 	height: 500px;
-	background-color: yellow;
+	background-color: #E6E6FA;
 	margin: 0 auto;
 }
 #f_body{
