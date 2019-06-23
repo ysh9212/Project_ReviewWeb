@@ -13,7 +13,7 @@
 					</h1>
 					<nav id="nav">
 						<a href="${pageContext.request.contextPath }/index.do" class="current-page-item">HOME</a> 
-						<a href="#">REVIEW</a> 
+						<a href="${pageContext.request.contextPath}/review/reviewList">REVIEW</a> 
 						<a href="${pageContext.request.contextPath}/news/newsList">NEWS</a> 
 						<div class="dropdown">
 							<a href="${pageContext.request.contextPath }/community/communityList">COMMUNITY</a>
