@@ -29,7 +29,6 @@
 				buyer_tel: document.getElementById('phone').value,
 				buyer_addr: document.getElementById('address').value,
 				m_redirect_url: 'https://www.yourdomain.com/payments/complete'
-				
 				}, function (rsp) {
 					console.log(rsp);
 					if (rsp.success) {
@@ -38,6 +37,7 @@
 						msg += '상점 거래ID : ' + rsp.merchant_uid;
 						msg += '결제 금액 : ' + rsp.paid_amount;
 						msg += '카드 승인번호 : ' + rsp.apply_num;
+						purchase();
 					} else {
 						var msg = '결제에 실패하였습니다.';
 						msg += rsp.error_msg;

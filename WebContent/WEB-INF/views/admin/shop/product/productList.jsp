@@ -31,10 +31,9 @@ SHOP ${board } 페이지
 	</tbody>
 </table>
 <div class="container">
-		<form action="./noticeList">
+		<form action="./productList">
 			<select name="kind">
-				<option value="t">제목</option>
-				<option value="c">내용</option>
+				<option value="t">상품명</option>
 			</select>
 			<input type="text" name="search">
 			<button class="btn1 blue rounded">Search</button>	
