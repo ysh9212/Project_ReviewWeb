@@ -55,6 +55,7 @@
 
 									</tbody>
 								</table>
+			<jsp:include page="../community/communityCommon/paging.jsp"/>
 								
 							</div>
 
@@ -62,7 +63,6 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
 	<%@include file="../temp/footer.jsp" %>
 	<%@include file="../temp/activeweb.jsp"%>

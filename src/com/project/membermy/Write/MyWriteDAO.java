@@ -49,13 +49,40 @@ public class MyWriteDAO implements BoardDAO{
 		}
 		return ar;
 	}
-
+	public List<BoardDTO> selectList(SearchRow searchRow, String id, Connection con) throws Exception{
+		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
+		String sql = "select * from " + 
+				"(select rownum R, p.* from " + 
+				"(select * from community_board where writer=? and "+ searchRow.getSearch().getKind()+" like ? order by no desc) p) " + 
+				"where R between ? and ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, id);
+		st.setString(2, "%"+searchRow.getSearch().getSearch()+"%");
+		st.setInt(3, searchRow.getStartRow());
+		st.setInt(4, searchRow.getLastRow());
+		ResultSet rs = st.executeQuery();
+		while(rs.next()) {
+			ComBoardDTO comBoardDTO = new ComBoardDTO();
+			comBoardDTO.setNo(rs.getInt("no"));
+			comBoardDTO.setTitle(rs.getString("title"));
+			comBoardDTO.setWriter(rs.getString("writer"));
+			comBoardDTO.setReg_date(rs.getString("reg_date"));
+			comBoardDTO.setHit(rs.getInt("hit"));
+			comBoardDTO.setRecommend(rs.getInt("recommend"));
+			comBoardDTO.setDecommend(rs.getInt("decommend"));
+			ar.add(comBoardDTO);
+		}
+		rs.close();
+		st.close();
+		return ar;
+		
+	}
 	@Override
 	public List<BoardDTO> selectList(SearchRow searchRow, Connection con) throws Exception {
 		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
 		String sql = "select * from " + 
 				"(select rownum R, p.* from " + 
-				"(select * from community_board where "+searchRow.getSearch().getKind()+" like ? order by no desc) p) " + 
+				"(select * from community_board where writer=? and"+ searchRow.getSearch()+" like ? order by no desc) p) " + 
 				"where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+searchRow.getSearch().getSearch()+"%");
