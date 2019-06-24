@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <c:import url="../../temp/bootstrap.jsp" />
-<title>${board }Select</title>
+<title>SHOP-세상의 모든 IT</title>
 
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />

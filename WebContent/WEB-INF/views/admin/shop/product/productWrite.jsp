@@ -71,7 +71,7 @@ SHOP ${board } 페이지
 		</div>
 		<div class="form-group">
 			<div class="title">상세 설명</div>
-			<textarea class="form-control" rows="10" id="contents" name="contents"></textarea>
+			<textarea class="form-control" rows="10" id="contents" name="contents" style="width: 99.8%;"></textarea>
 		</div>
 		<div class="form-group">
 			<div class="title">이미지</div>
