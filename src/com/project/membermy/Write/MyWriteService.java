@@ -13,9 +13,11 @@ import com.project.util.*;
 
 public class MyWriteService implements Action{
 	private ComBoardDAO comBoardDAO;
+	private MyWriteDAO myWriteDAO;
 	
 	public MyWriteService() {
 		comBoardDAO = new ComBoardDAO();
+		myWriteDAO = new MyWriteDAO();	
 	}
 	@Override
 	public ActionForward list(HttpServletRequest request, HttpServletResponse response) {
@@ -29,13 +31,18 @@ public class MyWriteService implements Action{
 		String kind = request.getParameter("kind");
 		String search = request.getParameter("search");
 		SearchMakePage s = new SearchMakePage(curPage, kind, search);
+		// MemberDTO memberDTO = new MemberDTO();
+		// memberDTO = (MemberDTO)(request.getSession().getAttribute("memberDTO"));
+		
 		// 1. row;
 		SearchRow searchRow = s.makeRow();
 		int totalCount = 0;
 		Connection con = null;
 		try {
 		con = DBConnector.getConnect();
-		List<BoardDTO> ar = comBoardDAO.selectList(searchRow, con);
+		String id = "sh";
+		
+		List<BoardDTO> ar = myWriteDAO.selectList(searchRow, id, con);
 		//2. page;
 		totalCount = comBoardDAO.getTotalCount(searchRow, con);
 		SearchPager searchPager = s.makePage(totalCount);
