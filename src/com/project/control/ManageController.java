@@ -105,7 +105,6 @@ public class ManageController extends HttpServlet {
 		}else if(command.equals("/adminLogout")) {
 			actionForward = adminService.logout(request, response);
 		}
-		 
 		
 		
 		if(actionForward.isCheck()) {
