@@ -83,19 +83,19 @@
 									<h2>커뮤니티</h2>
 									<ul class="small-image-list">
 										<li>
-											<a href="#"><img src="./images/pic2.jpg" alt="" class="left" /></a>
-											<h4>커뮤니티 첫번째 글</h4>
-											<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo facilisis amet quis.</p>
+											<a href="#"><img src="./images/cc.jpg" alt="" class="left" /></a>
+											<h4>삼성전자, R 시리즈로 갤럭시 A90 출시 예정</h4>
+											<p>A80이 원래 갤럭시 A90으로 출시되려다가 한 단계 낮게 나왔다는 설이었는데 이제 갤럭시 A90에 대한 얘기가 다시 나오고 있습니다.</p>
 										</li>
 										<li>
-											<a href="#"><img src="./images/pic01.jpg" alt="" class="left" /></a>
-											<h4>커뮤니티 두번째 글</h4>
-											<p>Vitae magna eget odio amet mollis justo facilisis amet quis. Sed sagittis consequat.</p>
+											<a href="#"><img src="./images/samsung1.jpg" alt="" class="left" /></a>
+											<h4>삼성전자, 갤럭시 S7 및 S7엣지 분기별 보안패치 제공 중단</h4>
+											<p>삼성전자가 갤럭시 S7 및 갤럭시 S7 엣지의 분기별 보안 패치 제공을 중단합니다.</p>
 										</li>
 										<li>
-											<a href="#"><img src="./images/pic3.jpg" alt="" class="left" /></a>
-											<h4>커뮤니티 세번째 글</h4>
-											<p>Vitae magna eget odio amet mollis justo facilisis amet quis. Sed sagittis consequat.</p>
+											<a href="#"><img src="./images/samsung2.jpg" alt="" class="left" /></a>
+											<h4>샤오미, CC 시리즈 발표</h4>
+											<p>샤오미가 새로운 스마트폰 라인업, CC 시리즈를 발표했습니다.</p>
 										</li>
 									</ul>
 								</section>
