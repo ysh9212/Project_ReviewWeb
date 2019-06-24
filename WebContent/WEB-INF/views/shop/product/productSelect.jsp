@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SHOP-세상의 모든 IT</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="../../assets/css/main.css" />
@@ -375,12 +375,14 @@ text-decoration: none;
 		 $('#increase').click(function(){ 
 			   
 			    var num = $("#num").val();
+			    if(num<10){
 			   	num++;
+			    }
 			   	$('#num').val(num);
 			   	var amount = '${dto.price}'*num;
 			   	$('.unit').empty();
 			   	$('.unit').append(amount+"원");
-			    if(num>10){
+			    if(num>=10){
 			    	alert('최대 10개 상품 까지 구입 가능 합니다');
 			    	return false;
 			    }
@@ -389,13 +391,15 @@ text-decoration: none;
 		$('#decrease').click(function(){ 
 				
 			    var num = $('#num').val();
+			    if(num>1){
 			    num--;
+			    }
 			    $('#num').val(num);
 			    var amount='${dto.price}'*num;
 			    $('.unit').empty();
 			    $('.unit').append(amount+"원");
 			    
-			    if(num<1){
+			    if(num<=1){
 			    	alert('잘못된 입력입니다');
 			    	return false;
 			    }
@@ -413,12 +417,13 @@ text-decoration: none;
 					type:"POST",
 					url: "./cartInsert",
 					data: {id: 'cjh3576', count:num, price:price, pno:'${dto.pno}'},
-					dataType: "json",
-					cache : false,
-					async: false,
+					
 					//왜 에러인지 원인 불명
-					error : function(data){
+					success : function(data){
 						alert('장바구니에 추가 되었습니다');
+					},
+					error : function(data){
+						alert('error');
 						return false;
 					}
 				});

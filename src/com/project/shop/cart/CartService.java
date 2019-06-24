@@ -96,6 +96,9 @@ public class CartService implements Action{
 			if(result<1) {
 				throw new Exception();
 			}
+			request.setAttribute("result", request);
+			actionForward.setCheck(true);
+			actionForward.setPath("../../WEB-INF/views/common/result2.jsp");
 			con.commit();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -3,7 +3,6 @@ package com.project.shop.admin.product;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -123,6 +122,7 @@ public class ProductService implements Action{
 		String method = request.getMethod();
 		if(method.equals("POST")) {
 			String saveDirectory = request.getServletContext().getRealPath("upload");
+			System.out.println("pro"+saveDirectory);
 			File file = new File(saveDirectory);
 			if(!file.exists()) {
 				file.mkdirs();
